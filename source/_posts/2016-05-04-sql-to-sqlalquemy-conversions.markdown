@@ -44,7 +44,7 @@ SELECT SUM(status) as rides
 ### Return a count of rows and distinct
 
 ```sql
-SELECT COUNT(DISTINCT(driver_id)) as drivers
+SELECT COUNT(DISTINCT(author_id)) as authors
 ```
 
 ```python
