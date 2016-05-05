@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Pycharm | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info//blog/categories/pycharm/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info//"/>
+  <updated>2016-05-04T21:20:46-05:00</updated>
+  <id>http://blog.vero4ka.info//</id>
+  <author>
+    <name><![CDATA[Vera Mazhuga]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo Configurar PyCharm Para Compilar Los Archivos SASS]]></title>
+    <link href="http://blog.vero4ka.info//blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/"/>
+    <updated>2015-06-29T03:10:03-05:00</updated>
+    <id>http://blog.vero4ka.info//blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass</id>
+    <content type="html"><![CDATA[<p>Suponemos que tenemos un proyecto con las siguientes carpetas:</p>
+
+<pre><code>app/
+   static/
+        css/
+        sass/
+            main.sass
+            home.sass
+            variables.sass
+</code></pre>
+
+<p>y queremos que cada vez cuando editemos alguno de los archivos <code>.sass</code>, PyCharm lo compile y ponga en la carpeta <code>app/static/css/</code>:</p>
+
+<pre><code>app/
+   static/
+        css/
+            main.css
+            home.css
+        sass/
+            main.sass
+            home.sass
+            variables.sass
+</code></pre>
+
+<p>Para esto debemos ir a <code>File -&gt; Settings -&gt; File Watchers</code> y agregar un nuevo watcher, escogiendo la opción <code>SASS</code></p>
+
+<p><img src="/images/pycharm_file_watchers.png"></p>
+
+<p>y editar las configuraciones:</p>
+
+<p><img src="/images/pycharm_file_watchers_settings.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

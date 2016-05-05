@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Chrome | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info//blog/categories/chrome/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info//"/>
+  <updated>2016-05-04T21:20:46-05:00</updated>
+  <id>http://blog.vero4ka.info//</id>
+  <author>
+    <name><![CDATA[Vera Mazhuga]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Useful Chorme Extentions]]></title>
+    <link href="http://blog.vero4ka.info//blog/2015/03/01/useful-chorme-extentions/"/>
+    <updated>2015-03-01T18:41:53-05:00</updated>
+    <id>http://blog.vero4ka.info//blog/2015/03/01/useful-chorme-extentions</id>
+    <content type="html"><![CDATA[<h4>JSONView</h4>
+
+<p>Validate and view JSON documents.
+<a href="https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc">https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc</a></p>
+
+<h4>Postman - REST Client</h4>
+
+<p><a href="https://chrome.google.com/webstore/detail/fdmmgilgnpjigdojojpjoooidkmcomcm">https://chrome.google.com/webstore/detail/fdmmgilgnpjigdojojpjoooidkmcomcm</a></p>
+
+<h4>Evernote Web Clipper</h4>
+
+<p>Use the Evernote extension to save things you see on the web into your Evernote account.
+<a href="https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc">https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc</a></p>
+
+<h4>GistBox Clipper</h4>
+
+<p>Save code snippets from anywhere on the web. Companion extension to GistBoxApp.com.
+<a href="https://chrome.google.com/webstore/detail/cejmhmbmafamjegaebkjhnckhepgmido">https://chrome.google.com/webstore/detail/cejmhmbmafamjegaebkjhnckhepgmido</a></p>
+
+<h4>XV — XML Viewer</h4>
+
+<p>Powerful XML viewer for Google Chrome
+<a href="https://chrome.google.com/webstore/detail/eeocglpgjdpaefaedpblffpeebgmgddk">https://chrome.google.com/webstore/detail/eeocglpgjdpaefaedpblffpeebgmgddk</a></p>
+
+<h4>LiveReload</h4>
+
+<p><a href="https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei">https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei</a></p>
+]]></content>
+  </entry>
+  
+</feed>
