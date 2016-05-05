@@ -9,12 +9,11 @@
   <meta name="author" content="Vera Mazhuga">
 
   
-  <meta name="description" content="Select all 1
+  <meta name="description" content="Some examples on how to convert raw SQL to SQLAlchemy query: Select all 1
 SELECT COUNT(*) 1
 2
 &gt; from sqlalchemy import text, func
-&gt; db.session.query(func.count()).all() Add labels 1
-SELECT COUNT(*) as &hellip;">
+&gt; db.session. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,7 +103,9 @@ SELECT COUNT(*) as &hellip;">
   </header>
 
 
-<div class="entry-content"><h3>Select all</h3>
+<div class="entry-content"><p>Some examples on how to convert raw SQL to SQLAlchemy query:</p>
+
+<h3>Select all</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
