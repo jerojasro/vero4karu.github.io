@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tdd | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info//blog/categories/tdd/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info//"/>
+  <updated>2016-05-05T07:31:00-05:00</updated>
+  <id>http://blog.vero4ka.info//</id>
+  <author>
+    <name><![CDATA[Vera Mazhuga]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Pruebas Para Formularios en Django]]></title>
+    <link href="http://blog.vero4ka.info//blog/2015/09/30/pruebas-para-formularios-en-django/"/>
+    <updated>2015-09-30T04:49:19-05:00</updated>
+    <id>http://blog.vero4ka.info//blog/2015/09/30/pruebas-para-formularios-en-django</id>
+    <content type="html"><![CDATA[<p>En esta entrada de blog quiero compartir la forma en la que escribo ruebas para formularios en un proyecto de Django.</p>
+
+<p>Primero vamos a instalar los paquetes necesarios:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ pip install django-webtest
+</span><span class='line'>$ pip install factory-boy</span></code></pre></td></tr></table></div></figure></p>
+
+<p><a href="http://webtest.pythonpaste.org/en/latest/WebTest">WebTest</a> es una biblioteca que nos ayuda a escribir pruebas para las aplicaciones wsgi. Es mucho más poderosa comparando con <code>django.test.Client</code> que viene con Django.</p>
+
+<p>En el archivo de configuración especificamos que vamos a usar la base de datos SQLite para correr nuestras pruebas:</p>
+
+<p><figure class='code'><figcaption><span>test_settings.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">default</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">ENGINE</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;:</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">django</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">sqlite3</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Suponemos que queremos escribir una prueba unitaria para una vista que crea un objeto del modelo <code>Event</code>:</p>
+
+<p><figure class='code'><figcaption><span>models.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">start_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">end_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">people</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">history</span><span class="o">.</span><span class="n">Person</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">events</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Aquí está la vista que maneja el formulario para crear un evento:</p>
+
+<p><figure class='code'><figcaption><span>views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">EventCreateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">CreateView</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">model</span> <span class="o">=</span> <span class="n">Event</span>
+</span><span class='line'>    <span class="n">form_class</span> <span class="o">=</span> <span class="n">EventForm</span>
+</span><span class='line'>    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">history</span><span class="p">:</span><span class="n">timeline</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Ahora escribimos nuestra prueba. Vamos a extender la clase <code>django_webtest.WebTest</code>, que en su lugar extiende <code>django.test.TestCase</code> de Django, y crear a un usuario:</p>
+
+<p><figure class='code'><figcaption><span>tests.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">django_webtest</span> <span class="kn">import</span> <span class="n">WebTest</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#115;&amp;#x75;&amp;#x70;&amp;#x65;&amp;#114;&amp;#x75;&amp;#115;&amp;#101;&amp;#x72;&amp;#64;&amp;#x65;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x73;&amp;#117;&amp;#112;&amp;#x65;&amp;#x72;&amp;#117;&amp;#115;&amp;#x65;&amp;#x72;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&lt;/a&gt;&amp;rsquo;,</span>
+</span><span class='line'>            <span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">superuser</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
+</span><span class='line'>            <span class="n">password</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
+</span><span class='line'>        <span class="p">)</span>
+</span><span class='line'>        <span class="nb">super</span><span class="p">(</span><span class="n">HistoryViewsTests</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">test_create_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>    <span class="c"># código para nuestra prueba</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Ahora podemos probar que cuando un usuario trata de acceder nuestra página, se redirige al formulario de acceso (el códigos de estado HTTP es 302):</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">history</span><span class="p">:</span><span class="n">event_create</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">302</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Ahora vamos a acceder la vista como superusuario:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">superuser</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Como tenemos solo un formulario en la página, podemos obtenerlo por una de tres formas: por el atributo <code>.form</code>: <code>response.form</code>, por índice <code>response.forms[0]</code> o por <code>id</code> del formulario (artibuto HTML)<code>response.forms['event_form']</code>.</p>
+
+<p>Para facilitar la depuración de nuestras pruebas, podemos pedir a mostrar el <code>response</code> en navegador predeterminado:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">response</span><span class="o">.</span><span class="n">showbrowser</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Ahora podemos diligenciar nuestro formulario con los datos de prueba:</p>
+
+<p><figure class='code'><figcaption><span>tests.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
+</span><span class='line'>    <span class="c"># &amp;hellip;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">test_create_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">person1</span><span class="p">,</span> <span class="n">person2</span><span class="p">,</span> <span class="n">person3</span> <span class="o">=</span> <span class="n">PersonFactory</span><span class="o">.</span><span class="n">create_batch</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">superuser</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">form</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">forms</span><span class="p">[</span><span class="s">&#39;event_form&#39;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">form</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&#39;Título del evento&#39;</span>
+</span><span class='line'>    <span class="n">form</span><span class="p">[</span><span class="s">&#39;start_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">person1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">person2</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">form</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span><span class="o">.</span><span class="n">follow</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="s">u&#39;Título del evento&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">people</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">person1</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">person2</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">(</span><span class="n">person3</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Para generar objetos del modelo <code>Person</code> usamos la biblioteca <a href="http://factoryboy.readthedocs.org/">Factory Boy</a>:</p>
+
+<p><figure class='code'><figcaption><span>factories.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">Person</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">factory</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">factory.fuzzy</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">PersonFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">django</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">fuzzy</span><span class="o">.</span><span class="n">FuzzyText</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">model</span> <span class="o">=</span> <span class="n">Person</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Así podemos acceder los opciones de una selección o selección múltiple:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='pycon'><span class='line'><span class="go">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="go">&lt;blockquote&gt;&lt;blockquote&gt;&lt;blockquote&gt;&lt;p&gt;print form[&amp;lsquo;people&amp;rsquo;].options</span>
+</span><span class='line'><span class="go">[(u&#39;1&#39;, False, u&#39;GLUZLvZfyjdZEmjNtnAJvsIVljodQjZpzLRDKrqJtYGiDLmSrN&#39;), (u&#39;2&#39;, False, u&#39;vOxDBbmLaUXxJkJzcqYgLQpBieSoLtXJcpHCEPUpYUIzybhsAh&#39;), (u&#39;3&#39;, False, u&#39;tfXSXCTIQICDwVPYvxZGSXgclFTnHbeYSQaMntxJNcgUJjzAwX&#39;)]</span>
+</span><span class='line'><span class="go">form[&amp;lsquo;people&amp;rsquo;] = [person1.id, person2.id]</span>
+</span><span class='line'><span class="go">print form[&amp;lsquo;people&amp;rsquo;].value</span>
+</span><span class='line'><span class="go">[u&#39;1&#39;, u&#39;2&#39;]</span>
+</span></code></pre></td></tr></table></div></figure></p></blockquote></blockquote></blockquote>
+
+<p>Ahora corremos nuestras pruebas y voilà:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./manage.py test
+</span><span class='line'>Creating test database for alias &lsquo;default&rsquo;&hellip;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h2>..&lt;/h2>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Ran 1 test in 0.463s&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>OK
+</span><span class='line'>Destroying test database for alias &lsquo;default&rsquo;&hellip;</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Enlaces:</p>
+
+<ul>
+<li><a href="https://github.com/django-webtest/django-webtest">WebTest</a></li>
+<li><a href="http://webtest.pythonpaste.org/en/latest/forms.html">Manejo de formularios con WebTest</a></li>
+<li><a href="http://factoryboy.readthedocs.org/">Factory Boy</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
