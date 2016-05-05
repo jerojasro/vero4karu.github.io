@@ -6,6 +6,8 @@ comments: true
 categories: SQL, SQLAlquemy
 ---
 
+Some examples on how to convert raw SQL to SQLAlchemy query:
+
 ### Select all
 
 ```sql
