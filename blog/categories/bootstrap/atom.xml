@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Bootstrap | Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info//blog/categories/bootstrap/atom.xml" rel="self"/>
-  <link href="http://blog.vero4ka.info//"/>
-  <updated>2016-05-05T07:31:00-05:00</updated>
-  <id>http://blog.vero4ka.info//</id>
+  <link href="http://blog.vero4ka.info/blog/categories/bootstrap/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-05T07:33:48-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Django Templates: Render an Array in Two Columns Using Bootstrap Grid]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid/"/>
     <updated>2015-03-01T19:03:05-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid</id>
     <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/efd0fdb46ef34971bac2.js'></script>
 <noscript><pre><code>&lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;

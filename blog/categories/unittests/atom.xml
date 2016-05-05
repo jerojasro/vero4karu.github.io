@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Unittests | Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info//blog/categories/unittests/atom.xml" rel="self"/>
-  <link href="http://blog.vero4ka.info//"/>
-  <updated>2016-05-05T07:31:00-05:00</updated>
-  <id>http://blog.vero4ka.info//</id>
+  <link href="http://blog.vero4ka.info/blog/categories/unittests/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-05T07:33:48-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Send Request to AJAX View in Django Tests]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
     <updated>2015-03-01T19:23:37-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>
     <content type="html"><![CDATA[<p>If you have a view that requires an AJAX request, in other words, checks if <code>request.is_ajax()</code>, here is a way you can write a unit test for this view:</p>
 
 <p><div><script src='https://gist.github.com/dca59e325c9f7554d176.js'></script>

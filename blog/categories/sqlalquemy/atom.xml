@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sqlalquemy | Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info//blog/categories/sqlalquemy/atom.xml" rel="self"/>
-  <link href="http://blog.vero4ka.info//"/>
-  <updated>2016-05-05T07:31:00-05:00</updated>
-  <id>http://blog.vero4ka.info//</id>
+  <link href="http://blog.vero4ka.info/blog/categories/sqlalquemy/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-05T07:33:48-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SQL to SQLAlquemy Conversions]]></title>
-    <link href="http://blog.vero4ka.info//blog/2016/05/04/sql-to-sqlalquemy-conversions/"/>
+    <link href="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions/"/>
     <updated>2016-05-04T21:15:39-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2016/05/04/sql-to-sqlalquemy-conversions</id>
+    <id>http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions</id>
     <content type="html"><![CDATA[<h3>Select all</h3>
 
 <pre><code class="sql">SELECT COUNT(*)

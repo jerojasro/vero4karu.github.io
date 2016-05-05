@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Django | Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info//blog/categories/django/atom.xml" rel="self"/>
-  <link href="http://blog.vero4ka.info//"/>
-  <updated>2016-05-05T07:31:00-05:00</updated>
-  <id>http://blog.vero4ka.info//</id>
+  <link href="http://blog.vero4ka.info/blog/categories/django/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-05T07:33:48-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Pruebas Para Formularios en Django]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/09/30/pruebas-para-formularios-en-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django/"/>
     <updated>2015-09-30T04:49:19-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/09/30/pruebas-para-formularios-en-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django</id>
     <content type="html"><![CDATA[<p>En esta entrada de blog quiero compartir la forma en la que escribo ruebas para formularios en un proyecto de Django.</p>
 
 <p>Primero vamos a instalar los paquetes necesarios:</p>
@@ -106,7 +106,7 @@
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#115;&amp;#117;&amp;#x70;&amp;#101;&amp;#x72;&amp;#x75;&amp;#115;&amp;#x65;&amp;#x72;&amp;#x40;&amp;#101;&amp;#x78;&amp;#97;&amp;#109;&amp;#112;&amp;#x6c;&amp;#101;&amp;#46;&amp;#99;&amp;#x6f;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#115;&amp;#117;&amp;#112;&amp;#x65;&amp;#114;&amp;#117;&amp;#115;&amp;#101;&amp;#114;&amp;#x40;&amp;#x65;&amp;#x78;&amp;#97;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&lt;/a&gt;&amp;rsquo;,</span>
+</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#x3a;&amp;#115;&amp;#x75;&amp;#112;&amp;#x65;&amp;#114;&amp;#x75;&amp;#x73;&amp;#101;&amp;#x72;&amp;#64;&amp;#x65;&amp;#x78;&amp;#97;&amp;#x6d;&amp;#112;&amp;#108;&amp;#101;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x73;&amp;#117;&amp;#112;&amp;#101;&amp;#x72;&amp;#x75;&amp;#x73;&amp;#101;&amp;#x72;&amp;#64;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&amp;rsquo;,</span>
 </span><span class='line'>            <span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">superuser</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>            <span class="n">password</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>        <span class="p">)</span>
@@ -283,9 +283,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Raise a Form Invalid Event Inside Form_valid Method of a FormView]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/"/>
     <updated>2015-03-01T19:35:52-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview</id>
     <content type="html"><![CDATA[<p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code>:</p>
 
 <p><div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
@@ -316,9 +316,9 @@ class ContractUpdateView(UpdateView):
   
   <entry>
     <title type="html"><![CDATA[How to Show a BooleanField of a ModelForm as Radio Select (Yes/no) in Django]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/"/>
     <updated>2015-03-01T19:26:52-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django</id>
     <content type="html"><![CDATA[<p>Let&rsquo;s suppose that we have a field <code>is_active</code> in our model. It is a boolean field, but in a template we want to show it as a radio select.</p>
 
 <p>In this case we just need to add <code>choices</code> attribute for the model field and then change a widget of the corresponding form:</p>
@@ -336,9 +336,9 @@ class ContractUpdateView(UpdateView):
   
   <entry>
     <title type="html"><![CDATA[How to Send Request to AJAX View in Django Tests]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
     <updated>2015-03-01T19:23:37-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>
     <content type="html"><![CDATA[<p>If you have a view that requires an AJAX request, in other words, checks if <code>request.is_ajax()</code>, here is a way you can write a unit test for this view:</p>
 
 <p><div><script src='https://gist.github.com/dca59e325c9f7554d176.js'></script>
@@ -365,9 +365,9 @@ class JSONViewTestCase(TestCase):
   
   <entry>
     <title type="html"><![CDATA[¿Cómo Concatenar Querysets Del Mismo Modelo en Django?]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django/"/>
     <updated>2015-03-01T19:21:21-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django</id>
     <content type="html"><![CDATA[<p>Modo #1:</p>
 
 <p>Podemos usar <code>itertools.chain</code> para  unir dos o más querysets:</p>

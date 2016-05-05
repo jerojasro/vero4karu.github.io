@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info//atom.xml" rel="self"/>
-  <link href="http://blog.vero4ka.info//"/>
-  <updated>2016-05-05T07:31:00-05:00</updated>
-  <id>http://blog.vero4ka.info//</id>
+  <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-05T07:33:48-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SQL to SQLAlquemy Conversions]]></title>
-    <link href="http://blog.vero4ka.info//blog/2016/05/04/sql-to-sqlalquemy-conversions/"/>
+    <link href="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions/"/>
     <updated>2016-05-04T21:15:39-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2016/05/04/sql-to-sqlalquemy-conversions</id>
+    <id>http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions</id>
     <content type="html"><![CDATA[<h3>Select all</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -176,9 +176,9 @@
   
   <entry>
     <title type="html"><![CDATA[Pruebas Para Formularios en Django]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/09/30/pruebas-para-formularios-en-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django/"/>
     <updated>2015-09-30T04:49:19-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/09/30/pruebas-para-formularios-en-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django</id>
     <content type="html"><![CDATA[<p>En esta entrada de blog quiero compartir la forma en la que escribo ruebas para formularios en un proyecto de Django.</p>
 
 <p>Primero vamos a instalar los paquetes necesarios:</p>
@@ -428,9 +428,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cómo Configurar PyCharm Para Compilar Los Archivos SASS]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/"/>
     <updated>2015-06-29T03:10:03-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass</id>
+    <id>http://blog.vero4ka.info/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass</id>
     <content type="html"><![CDATA[<p>Suponemos que tenemos un proyecto con las siguientes carpetas:</p>
 
 <pre><code>app/
@@ -457,19 +457,19 @@
 
 <p>Para esto debemos ir a <code>File -&gt; Settings -&gt; File Watchers</code> y agregar un nuevo watcher, escogiendo la opción <code>SASS</code></p>
 
-<p><img src="http://blog.vero4ka.info//images/pycharm_file_watchers.png"></p>
+<p><img src="http://blog.vero4ka.info/images/pycharm_file_watchers.png"></p>
 
 <p>y editar las configuraciones:</p>
 
-<p><img src="http://blog.vero4ka.info//images/pycharm_file_watchers_settings.png"></p>
+<p><img src="http://blog.vero4ka.info/images/pycharm_file_watchers_settings.png"></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Raise a Form Invalid Event Inside Form_valid Method of a FormView]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/"/>
     <updated>2015-03-01T19:35:52-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview</id>
     <content type="html"><![CDATA[<p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code>:</p>
 
 <div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
@@ -500,9 +500,9 @@ class ContractUpdateView(UpdateView):
   
   <entry>
     <title type="html"><![CDATA[How to Show a BooleanField of a ModelForm as Radio Select (Yes/no) in Django]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/"/>
     <updated>2015-03-01T19:26:52-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django</id>
     <content type="html"><![CDATA[<p>Let&rsquo;s suppose that we have a field <code>is_active</code> in our model. It is a boolean field, but in a template we want to show it as a radio select.</p>
 
 <p>In this case we just need to add <code>choices</code> attribute for the model field and then change a widget of the corresponding form:</p>
@@ -522,9 +522,9 @@ class ContractUpdateView(UpdateView):
   
   <entry>
     <title type="html"><![CDATA[How to Send Request to AJAX View in Django Tests]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
     <updated>2015-03-01T19:23:37-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>
     <content type="html"><![CDATA[<p>If you have a view that requires an AJAX request, in other words, checks if <code>request.is_ajax()</code>, here is a way you can write a unit test for this view:</p>
 
 <div><script src='https://gist.github.com/dca59e325c9f7554d176.js'></script>
@@ -551,9 +551,9 @@ class JSONViewTestCase(TestCase):
   
   <entry>
     <title type="html"><![CDATA[¿Cómo Concatenar Querysets Del Mismo Modelo en Django?]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django/"/>
     <updated>2015-03-01T19:21:21-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django</id>
     <content type="html"><![CDATA[<p>Modo #1:</p>
 
 <p>Podemos usar <code>itertools.chain</code> para  unir dos o más querysets:</p>
@@ -575,9 +575,9 @@ res = res.distinct()
   
   <entry>
     <title type="html"><![CDATA[Get an Array of Checked Checkboxes Values Using jQuery]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/"/>
     <updated>2015-03-01T19:17:42-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery</id>
     <content type="html"><![CDATA[<div><script src='https://gist.github.com/9772283.js'></script>
 <noscript><pre><code>&lt;input type=&quot;checkbox&quot; value=&quot;UN&quot; name=&quot;airlines&quot; checked&gt;       
 &lt;input type=&quot;checkbox&quot; value=&quot;IB&quot; name=&quot;airlines&quot;&gt;      
@@ -588,9 +588,9 @@ res = res.distinct()
   
   <entry>
     <title type="html"><![CDATA[Algunos Paquetes útiles Para Django]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/algunos-paquetes-utiles-para-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/algunos-paquetes-utiles-para-django/"/>
     <updated>2015-03-01T19:16:24-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/algunos-paquetes-utiles-para-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/algunos-paquetes-utiles-para-django</id>
     <content type="html"><![CDATA[<h4><a href="https://github.com/omab/python-social-auth">python-social-auth</a></h4>
 
 <p>Autentificación de usuarios con los redes sociales en Django.</p>
@@ -640,9 +640,9 @@ Instrucciones para instalar el módulo: <a href="http://www.ruben-arranz.es/blog
   
   <entry>
     <title type="html"><![CDATA[Django Templates: Render an Array in Two Columns Using Bootstrap Grid]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid/"/>
     <updated>2015-03-01T19:03:05-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid</id>
     <content type="html"><![CDATA[<div><script src='https://gist.github.com/efd0fdb46ef34971bac2.js'></script>
 <noscript><pre><code>&lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
@@ -687,9 +687,9 @@ Instrucciones para instalar el módulo: <a href="http://www.ruben-arranz.es/blog
   
   <entry>
     <title type="html"><![CDATA[How to Validate a Django Form With Inline Formsets]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/"/>
     <updated>2015-03-01T18:57:47-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets</id>
     <content type="html"><![CDATA[<div><script src='https://gist.github.com/1c065cb54baef2da79c2.js'></script>
 <noscript><pre><code>from django.contrib import admin
 
@@ -708,9 +708,9 @@ class EquipmentAdmin(admin.ModelAdmin):
   
   <entry>
     <title type="html"><![CDATA[Generate .zip File in Django]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/generate-zip-file-in-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/generate-zip-file-in-django/"/>
     <updated>2015-03-01T18:47:58-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/generate-zip-file-in-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/generate-zip-file-in-django</id>
     <content type="html"><![CDATA[<p>A view that creates a .ZIP file of multiple files and returns it in response:</p>
 
 <div><script src='https://gist.github.com/3b1768a1cb13f7e457d4.js'></script>
@@ -750,9 +750,9 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
   
   <entry>
     <title type="html"><![CDATA[Django: Python-social-auth Configuration and Pipeline to Get Users Information]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/"/>
     <updated>2015-03-01T18:45:21-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information</id>
     <content type="html"><![CDATA[<p><code>python-social-auth</code> configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django.</p>
 
 <div><script src='https://gist.github.com/9899590.js'></script>
@@ -828,9 +828,9 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
   
   <entry>
     <title type="html"><![CDATA[Useful Chorme Extentions]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/useful-chorme-extentions/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions/"/>
     <updated>2015-03-01T18:41:53-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/useful-chorme-extentions</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions</id>
     <content type="html"><![CDATA[<h4>JSONView</h4>
 
 <p>Validate and view JSON documents.
@@ -863,9 +863,9 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
   
   <entry>
     <title type="html"><![CDATA[MEL Script (Autodesk Maya): Go Through Hierarchy]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/"/>
     <updated>2015-02-21T21:43:47-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy</id>
+    <id>http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy</id>
     <content type="html"><![CDATA[<p>Add a prefix <code>myPrefix_</code> to all child elements of the joint <code>joint1</code>:</p>
 
 <div><script src='https://gist.github.com/11099336.js'></script>
@@ -883,9 +883,9 @@ for($node in $nodes){
   
   <entry>
     <title type="html"><![CDATA[How to Add a Custom Button to Admin Change List View Id Django]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/"/>
     <updated>2015-02-21T17:35:44-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django</id>
     <content type="html"><![CDATA[<div><script src='https://gist.github.com/12fb4de2726c6ef563f3.js'></script>
 <noscript><pre><code>class BasicAdmin(admin.ModelAdmin):
     # ...
@@ -913,9 +913,9 @@ for($node in $nodes){
   
   <entry>
     <title type="html"><![CDATA[How to Raise a Form Invalid Event Inside Form_valid Method of a FormView]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/"/>
     <updated>2015-02-21T17:34:58-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview</id>
+    <id>http://blog.vero4ka.info/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview</id>
     <content type="html"><![CDATA[<p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code></p>
 
 <div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
@@ -946,9 +946,9 @@ class ContractUpdateView(UpdateView):
   
   <entry>
     <title type="html"><![CDATA[How to Pass a Variable From Form to View in Django]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/"/>
     <updated>2015-02-21T11:09:20-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django</id>
+    <id>http://blog.vero4ka.info/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django</id>
     <content type="html"><![CDATA[<p>Sometimes there is a need to pass a variable (parameter) from a <code>FormView</code> (for example, <code>CreateView</code>,  <code>UpdateView</code>) to a form (for example, <code>ModelForm</code>).</p>
 
 <p>Let&rsquo;s suppose that we want to use a value of <code>other_variable</code> from a view <code>MyCreateView</code> in <code>MyForm</code>:</p>

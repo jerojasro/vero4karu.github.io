@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Chrome | Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info//blog/categories/chrome/atom.xml" rel="self"/>
-  <link href="http://blog.vero4ka.info//"/>
-  <updated>2016-05-05T07:31:00-05:00</updated>
-  <id>http://blog.vero4ka.info//</id>
+  <link href="http://blog.vero4ka.info/blog/categories/chrome/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-05T07:33:48-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Useful Chorme Extentions]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/03/01/useful-chorme-extentions/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions/"/>
     <updated>2015-03-01T18:41:53-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/03/01/useful-chorme-extentions</id>
+    <id>http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions</id>
     <content type="html"><![CDATA[<h4>JSONView</h4>
 
 <p>Validate and view JSON documents.

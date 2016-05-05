@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Mel | Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info//blog/categories/mel/atom.xml" rel="self"/>
-  <link href="http://blog.vero4ka.info//"/>
-  <updated>2016-05-05T07:31:00-05:00</updated>
-  <id>http://blog.vero4ka.info//</id>
+  <link href="http://blog.vero4ka.info/blog/categories/mel/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-05T07:33:48-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[MEL Script (Autodesk Maya): Go Through Hierarchy]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/"/>
     <updated>2015-02-21T21:43:47-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy</id>
+    <id>http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy</id>
     <content type="html"><![CDATA[<p>Add a prefix <code>myPrefix_</code> to all child elements of the joint <code>joint1</code>:</p>
 
 <p><div><script src='https://gist.github.com/11099336.js'></script>

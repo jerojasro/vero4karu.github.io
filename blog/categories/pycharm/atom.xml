@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Pycharm | Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info//blog/categories/pycharm/atom.xml" rel="self"/>
-  <link href="http://blog.vero4ka.info//"/>
-  <updated>2016-05-05T07:31:00-05:00</updated>
-  <id>http://blog.vero4ka.info//</id>
+  <link href="http://blog.vero4ka.info/blog/categories/pycharm/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-05T07:33:48-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cómo Configurar PyCharm Para Compilar Los Archivos SASS]]></title>
-    <link href="http://blog.vero4ka.info//blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/"/>
+    <link href="http://blog.vero4ka.info/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/"/>
     <updated>2015-06-29T03:10:03-05:00</updated>
-    <id>http://blog.vero4ka.info//blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass</id>
+    <id>http://blog.vero4ka.info/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass</id>
     <content type="html"><![CDATA[<p>Suponemos que tenemos un proyecto con las siguientes carpetas:</p>
 
 <pre><code>app/
