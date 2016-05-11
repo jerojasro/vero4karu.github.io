@@ -55,6 +55,7 @@ default_asides: [
   asides/recent_posts.html, 
   asides/github.html, 
   asides/twitter.html, 
+  asides/bitcoin.html, 
   asides/delicious.html, 
   asides/goodreads.html, 
   asides/googleplus.html
