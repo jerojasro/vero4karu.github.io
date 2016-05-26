@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Datetime | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info/blog/categories/datetime/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-05-26T09:18:54-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
+  <author>
+    <name><![CDATA[Vera Mazhuga]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo Obtener El Nombre Del Día De La Semana en Python]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/"/>
+    <updated>2016-05-26T09:02:36-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python</id>
+    <content type="html"><![CDATA[<pre><code class="python">&gt; import calendar
+&gt; calendar.day_name[0]
+'Monday'
+&gt; calendar.day_name[1]
+'Tuesday'
+&gt; calendar.day_name[2]
+'Wednesday'
+&gt; calendar.day_name[3]
+'Thursday'
+&gt; calendar.day_name[4]
+'Friday'
+&gt; calendar.day_name[5]
+'Saturday'
+&gt; calendar.day_name[6]
+'Sunday'
+</code></pre>
+
+<p>Si para nosotros la semana empieze el Domindo, podemos escribirlo de la siguiente forma:</p>
+
+<pre><code class="python">&gt; sunday = 0
+&gt; calendar.day_name[sunday - 1 % 7]
+'Sunday'
+
+&gt; tuesday = 2
+&gt; calendar.day_name[tuesday - 1 % 7]
+'Tuesday'
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

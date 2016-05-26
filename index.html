@@ -9,11 +9,27 @@
   <meta name="author" content="Vera Mazhuga">
 
   
-  <meta name="description" content="Some examples on how to convert raw SQL to SQLAlchemy query: Select all 1
-SELECT COUNT(*) 1
+  <meta name="description" content="1
 2
-&gt; from sqlalchemy import text, func
-&gt; db.session. &hellip;">
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+&gt; import calendar
+&gt; calendar.day_name[0]
+&#39;Monday&#39;
+&gt; calendar.day_name[1]
+&#39;Tuesday&#39;
+&gt; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +97,88 @@ SELECT COUNT(*) 1
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo Obtener El Nombre Del Día De La Semana en Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-05-26T09:02:36-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:02 am</span></time>
+        
+           | <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">calendar</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Monday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Tuesday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Wednesday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Thursday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Friday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Saturday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Sunday&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Si para nosotros la semana empieze el Domindo, podemos escribirlo de la siguiente forma:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">sunday</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="n">sunday</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">%</span> <span class="mi">7</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Sunday&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">tuesday</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="n">tuesday</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">%</span> <span class="mi">7</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Tuesday&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -916,76 +1014,6 @@ Instrucciones para instalar el módulo: <a href="http://www.ruben-arranz.es/blog
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid/">Django Templates: Render an Array in Two Columns Using Bootstrap Grid</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-01T19:03:05-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:03 pm</span></time>
-        
-           | <a href="/blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/django-templates-render-an-array-in-two-columns-using-bootstrap-grid/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><script src='https://gist.github.com/efd0fdb46ef34971bac2.js'></script>
-<noscript><pre><code>&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        1
-    &lt;/div&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        2
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        3
-    &lt;/div&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        4
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        5
-    &lt;/div&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        6
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        7
-    &lt;/div&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        8
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;info-block col-xs-12 col-sm-6&quot;&gt;
-        9
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1001,6 +1029,10 @@ Instrucciones para instalar el módulo: <a href="http://www.ruben-arranz.es/blog
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo Obtener El Nombre Del Día De La Semana en Python</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy Conversions</a>
       </li>
     
@@ -1014,10 +1046,6 @@ Instrucciones para instalar el módulo: <a href="http://www.ruben-arranz.es/blog
     
       <li class="post">
         <a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to Raise a Form Invalid Event Inside Form_valid Method of a FormView</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">How to Show a BooleanField of a ModelForm as Radio Select (Yes/no) in Django</a>
       </li>
     
   </ul>
