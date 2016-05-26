@@ -24,7 +24,7 @@ categories: Python, datetime
 'Sunday'
 ```
 
-Si para nosotros la semana empieze el Domindo, podemos escribirlo de la siguiente forma:
+Si para nosotros la semana empieza el Domindo, podemos escribirlo de la siguiente forma:
 
 ```python
 > sunday = 0
