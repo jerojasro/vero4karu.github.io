@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-05-26T09:18:54-05:00</updated>
+  <updated>2016-07-22T07:42:43-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Flask for Django Developers]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/07/22/flask-for-django-developers/"/>
+    <updated>2016-07-22T07:35:02-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/07/22/flask-for-django-developers</id>
+    <content type="html"><![CDATA[<ol>
+<li>Aplicación básica</li>
+<li>Blueprints</li>
+<li>URLs</li>
+<li>Vistas</li>
+<li>Plantillas (Jinja2)</li>
+<li>Procesadores de contexto</li>
+<li>Modelos (SQLAlchemy, CRUD)</li>
+<li>Formularios</li>
+<li>Autenticación</li>
+<li>Múltiples idiomas</li>
+<li>Mensajes (flash)</li>
+<li>Cache</li>
+</ol>
+
+
+<iframe src="//slides.com/vero4ka/flask-para-desarrolladorres-de-django/embed?style=light" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+<ul>
+<li>Slides: <a href="http://slides.com/vero4ka/flask-para-desarrolladorres-de-django/">http://slides.com/vero4ka/flask-para-desarrolladorres-de-django/</a></li>
+<li>Examples: <a href="https://github.com/vero4karu/flask-examples">https://github.com/vero4karu/flask-examples</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cómo Obtener El Nombre Del Día De La Semana en Python]]></title>
@@ -51,7 +83,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Si para nosotros la semana empieze el Domindo, podemos escribirlo de la siguiente forma:</p>
+<p>Si para nosotros la semana empieza el Domindo, podemos escribirlo de la siguiente forma:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

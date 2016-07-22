@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Datetime | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/datetime/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-05-26T09:18:54-05:00</updated>
+  <updated>2016-07-22T07:42:43-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[Vera Mazhuga]]></name>
@@ -35,7 +35,7 @@
 'Sunday'
 </code></pre>
 
-<p>Si para nosotros la semana empieze el Domindo, podemos escribirlo de la siguiente forma:</p>
+<p>Si para nosotros la semana empieza el Domindo, podemos escribirlo de la siguiente forma:</p>
 
 <pre><code class="python">&gt; sunday = 0
 &gt; calendar.day_name[sunday - 1 % 7]
