@@ -6,19 +6,10 @@
 <head>
   <meta charset="utf-8">
   <title>Cansada de ser feliz</title>
-  <meta name="author" content="Vera Mazhuga">
+  <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Aplicación básica
-Blueprints
-URLs
-Vistas
-Plantillas (Jinja2)
-Procesadores de contexto
-Modelos (SQLAlchemy, CRUD)
-Formularios
-Autenticación
-Múltiples &hellip;">
+  <meta name="description" content="Suponemos que en nuestro proyecto de Flask hay una tabla Client definida usando Flask-SQLAlchemy y queremos monetorear los cambios que se realizan &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -59,7 +50,7 @@ Múltiples &hellip;">
   <header role="banner"><hgroup>
   <h1><a href="/">Cansada de ser feliz</a></h1>
   
-    <h2>my tech notes</h2>
+    <h2>tech notes</h2>
   
 </hgroup>
 
@@ -86,6 +77,186 @@ Múltiples &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Monitoreo De Acciones De Usuarios en Flask (SQLAlchemy)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-22T08:23:58-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>8:23 am</span></time>
+        
+           | <a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suponemos que en nuestro proyecto de Flask hay una tabla <code>Client</code> definida usando <a href="http://flask-sqlalchemy.pocoo.org/">Flask-SQLAlchemy</a> y queremos monetorear los cambios que se realizan sobre los objetos de ese modelo.</p>
+
+<p>Para esto agregamos tres señales:</p>
+
+<figure class='code'><figcaption><span>models.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">event</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">main.signals</span> <span class="kn">import</span> <span class="n">receive_before_update</span><span class="p">,</span> <span class="n">receive_before_insert</span><span class="p">,</span> <span class="n">receive_before_delete</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">email</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">phone</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="s">&#39;before_insert&#39;</span><span class="p">,</span> <span class="n">receive_before_insert</span><span class="p">)</span>
+</span><span class='line'><span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="s">&#39;before_update&#39;</span><span class="p">,</span> <span class="n">receive_before_update</span><span class="p">)</span>
+</span><span class='line'><span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="s">&#39;before_delete&#39;</span><span class="p">,</span> <span class="n">receive_before_delete</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>EN el gódigo de cada señal llamamos los métodos <code>inspect()</code> y <code>get_history()</code> para detectar los cambios sobre el objeto:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">state</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">client_object</span><span class="p">)</span>
+</span><span class='line'><span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+</span><span class='line'>     <span class="n">hist</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get_history</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Por ejemplo, para el atributo <code>name</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="err">&#39;added&#39;:</span> <span class="err">[&#39;Company</span> <span class="err">A&#39;],</span>
+</span><span class='line'>    <span class="err">&#39;deleted&#39;:</span> <span class="err">[&#39;Company</span> <span class="err">B&#39;],</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>El mégoto <code>get_history()</code> nos devuelve un objeto <code>sqlalchemy.orm.attributes.History</code> que tiene los siguientes atributos:</p>
+
+<ul>
+<li><code>added</code> - listado de valores agregados al atributo de nuestro objeto</li>
+<li><code>deleted</code> - listado de valores eliminados del atributo de nuestro objeto</li>
+<li><code>unchanged</code> - listado de valores del atributo de nuestro objeto que se quedaron intactos</li>
+<li><code>has_changes()</code> - método que retorna <code>True</code> si no habían ningunos cambios de valor de nuestro atributo.</li>
+</ul>
+
+
+<p>Ahora, usando la variable <code>current_user</code> de la biblioteca <a href="https://flask-login.readthedocs.io/">Flask-Login</a>, podemos guargar el usuario que realizó los cambios:</p>
+
+<figure class='code'><figcaption><span>signals.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">current_user</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">save_changes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">state</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">changes</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">hist</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get_history</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">if</span> <span class="ow">not</span> <span class="n">hist</span><span class="o">.</span><span class="n">has_changes</span><span class="p">():</span>
+</span><span class='line'>                <span class="k">continue</span>
+</span><span class='line'>            <span class="n">added</span> <span class="o">=</span> <span class="n">format_changes_value</span><span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">added</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">deleted</span> <span class="o">=</span> <span class="n">format_changes_value</span><span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">deleted</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">added</span> <span class="o">!=</span> <span class="n">deleted</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">changes</span><span class="p">[</span><span class="n">attr</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>                    <span class="s">&#39;added&#39;</span><span class="p">:</span> <span class="n">added</span><span class="p">,</span>
+</span><span class='line'>                    <span class="s">&#39;deleted&#39;</span><span class="p">:</span> <span class="n">deleted</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">}</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">changes</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">mongo</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">user_logs</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+</span><span class='line'>                <span class="n">current_user_id</span><span class="o">=</span><span class="n">current_user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">table_name</span><span class="o">=</span><span class="n">target</span><span class="o">.</span><span class="n">__tablename__</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">object_id</span><span class="o">=</span><span class="n">target</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">changes</span><span class="o">=</span><span class="n">changes</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span>
+</span><span class='line'>            <span class="p">))</span>
+</span><span class='line'>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">pass</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">receive_before_insert</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">save_changes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="s">&#39;create&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">receive_before_update</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">save_changes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="s">&#39;update&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">receive_before_delete</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">save_changes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="s">&#39;delete&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -947,42 +1118,6 @@ res = res.distinct()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/">Get an Array of Checked Checkboxes Values Using jQuery</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-01T19:17:42-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:17 pm</span></time>
-        
-           | <a href="/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><script src='https://gist.github.com/9772283.js'></script>
-<noscript><pre><code>&lt;input type=&quot;checkbox&quot; value=&quot;UN&quot; name=&quot;airlines&quot; checked&gt;       
-&lt;input type=&quot;checkbox&quot; value=&quot;IB&quot; name=&quot;airlines&quot;&gt;      
-&lt;input type=&quot;checkbox&quot; value=&quot;SU&quot; name=&quot;airlines&quot; checked&gt;</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -996,6 +1131,10 @@ res = res.distinct()
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Monitoreo De Acciones De Usuarios en Flask (SQLAlchemy)</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/07/22/flask-for-django-developers/">Flask for Django Developers</a>
@@ -1015,6 +1154,22 @@ res = res.distinct()
     
       <li class="post">
         <a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Cómo Configurar PyCharm Para Compilar Los Archivos SASS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to Raise a Form Invalid Event Inside Form_valid Method of a FormView</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">How to Show a BooleanField of a ModelForm as Radio Select (Yes/no) in Django</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/">How to Send Request to AJAX View in Django Tests</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django/">¿Cómo Concatenar Querysets Del Mismo Modelo en Django?</a>
       </li>
     
   </ul>
@@ -1275,7 +1430,7 @@ res = res.distinct()
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Vera Mazhuga -
+  Copyright &copy; 2016 - vero4ka -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
   <i>Image: <a href="http://photojournal.jpl.nasa.gov/catalog/PIA00422">Valles Marineris</a></i>
 </p>
