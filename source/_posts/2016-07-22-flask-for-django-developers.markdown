@@ -3,7 +3,7 @@ layout: post
 title: "Flask for Django developers"
 date: 2016-07-22 07:35:02 -0500
 comments: true
-categories: Flask, Django, Python
+categories: [Flask, Django, Python]
 ---
 
 1. Aplicación básica

@@ -3,7 +3,7 @@ layout: post
 title: "SQL to SQLAlquemy conversions"
 date: 2016-05-04 21:15:39 -0500
 comments: true
-categories: SQL, SQLAlquemy
+categories: [SQL, SQLAlquemy]
 ---
 
 Some examples on how to convert raw SQL to SQLAlchemy query:

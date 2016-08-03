@@ -3,7 +3,7 @@ layout: post
 title: "Cómo obtener el nombre del día de la semana en Python"
 date: 2016-05-26 09:02:36 -0500
 comments: true
-categories: Python, datetime
+categories: [Python, datetime]
 ---
 
 ```python
