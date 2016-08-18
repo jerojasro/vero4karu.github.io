@@ -16,9 +16,9 @@ Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para l
 
 {% img /images/tpaga_sandbox_dashboard.png %}
 
-Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjatas de crédito) asociados a los Clientes y **Charges** (Transacciónes o cobros por tarjéta de crédito).
+Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjetas de crédito) asociados a los Clientes y **Charges** (Transacciónes o cobros por tarjéta de crédito).
 
-Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería `requests` que nos permiritá hacer peticiones HTTP:
+Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería `requests` que nos permitirá hacer peticiones HTTP:
 
 ```bash
 $ pip install requests
@@ -166,7 +166,7 @@ Mirando la tabla de [sandbox.tpaga.co/merchantDashboard/cards](https://sandbox.t
 
 ### Realizar el pago por la tarjeta de crédito
 
-Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al [addCreditCardCharge](https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge) endpoint con los siguientes paramentros:
+Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al [addCreditCardCharge](https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge) endpoint con los siguientes parametros:
 
 * `orderId` - nuestro id interno que asociamos al pago, que luego nos ayudaría identificar la transacción en el dashboard de Tpaga;
 * `amount`- cantidad de dinero para cobrar,
