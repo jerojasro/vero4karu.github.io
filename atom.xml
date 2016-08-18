@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-18T13:55:14-05:00</updated>
+  <updated>2016-08-18T14:15:00-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -28,9 +28,9 @@
 
 <p><img src="http://blog.vero4ka.info/images/tpaga_sandbox_dashboard.png"></p>
 
-<p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjatas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjéta de crédito).</p>
+<p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjetas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjéta de crédito).</p>
 
-<p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permiritá hacer peticiones <a href="HTTP:">HTTP:</a></p>
+<p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permitirá hacer peticiones <a href="HTTP:">HTTP:</a></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install requests
@@ -279,7 +279,7 @@
 
 <h3>Realizar el pago por la tarjeta de crédito</h3>
 
-<p>Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al <a href="https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge">addCreditCardCharge</a> endpoint con los siguientes paramentros:</p>
+<p>Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al <a href="https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge">addCreditCardCharge</a> endpoint con los siguientes parametros:</p>
 
 <ul>
 <li><code>orderId</code> - nuestro id interno que asociamos al pago, que luego nos ayudaría identificar la transacción en el dashboard de Tpaga;</li>
