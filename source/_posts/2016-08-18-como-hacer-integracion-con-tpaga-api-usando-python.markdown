@@ -168,7 +168,7 @@ Mirando la tabla de [sandbox.tpaga.co/merchantDashboard/cards](https://sandbox.t
 
 Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al [addCreditCardCharge](https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge) endpoint con los siguientes parametros:
 
-* `orderId` - nuestro id interno que asociamos al pago, que luego nos ayudaría identificar la transacción en el dashboard de Tpaga;
+* `orderId` - nuestro id interno que asociamos al pago, que luego nos ayudaría a identificar la transacción en el dashboard de Tpaga;
 * `amount`- cantidad de dinero para cobrar,
 * `currency`- tipo de moneda, por ejemplo, 'COP',
 * `creditCard` - token de la tarjeta de crédito.
@@ -236,7 +236,7 @@ En otros casos necesitaremos verificar que los datos que pasamos en la petición
 
 ### Revertir el pago
 
-Los bancos nos permiten revertir el pago dentro de 24 horas después de la transacción. Para hacerlo debenos mandar token de la transacción que queremos revertir al [refundCreditCardCharge](https://tpaga.co/docs/swaggers/v2#!/Credit_Card/refundCreditCardCharge) endpoint.
+Los bancos nos permiten revertir el pago dentro de 24 horas después de la transacción. Para hacerlo debemos mandar token de la transacción que queremos revertir al [refundCreditCardCharge](https://tpaga.co/docs/swaggers/v2#!/Credit_Card/refundCreditCardCharge) endpoint.
 
 ```python
 >> refund_cc_response = client.refund_cc(cc_charge_id)
