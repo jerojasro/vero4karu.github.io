@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tpaga | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/tpaga/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-18T14:25:13-05:00</updated>
+  <updated>2016-08-18T14:33:31-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -283,6 +283,8 @@ refund_cc_response {
 <li>Documentación para la librería <a href="http://docs.python-requests.org/en/master/">Requests: HTTP for Humans</a></li>
 </ul>
 
+
+<p>Muchas gracias a <a href="https://twitter.com/jerojasro">@jerojasro</a> por su ayuda y paciencia.</p>
 ]]></content>
   </entry>
   
