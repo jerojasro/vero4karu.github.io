@@ -87,7 +87,7 @@ El método `__init__` nos va a inicializar nuestor cliente, `api_post` - mandar 
 
 ### Crear un cliente
 
-Para crear nuestor cliente, vamos a entiar una petición POST al endpoint `/customer`:
+Para crear nuestor cliente, vamos a enviar una petición POST al endpoint `/customer`:
 
 ```python
 class TpagaTestClient:
