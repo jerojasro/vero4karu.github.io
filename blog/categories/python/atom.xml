@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-18T14:18:10-05:00</updated>
+  <updated>2016-08-18T14:20:07-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -173,7 +173,7 @@ credit_card_token 2k54foql0hki0ot7avrg9nhpvbpqam55
 <p>Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al <a href="https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge">addCreditCardCharge</a> endpoint con los siguientes parametros:</p>
 
 <ul>
-<li><code>orderId</code> - nuestro id interno que asociamos al pago, que luego nos ayudaría identificar la transacción en el dashboard de Tpaga;</li>
+<li><code>orderId</code> - nuestro id interno que asociamos al pago, que luego nos ayudaría a identificar la transacción en el dashboard de Tpaga;</li>
 <li><code>amount</code>- cantidad de dinero para cobrar,</li>
 <li><code>currency</code>- tipo de moneda, por ejemplo, &lsquo;COP&rsquo;,</li>
 <li><code>creditCard</code> - token de la tarjeta de crédito.</li>
@@ -241,7 +241,7 @@ charge_cc_response {
 
 <h3>Revertir el pago</h3>
 
-<p>Los bancos nos permiten revertir el pago dentro de 24 horas después de la transacción. Para hacerlo debenos mandar token de la transacción que queremos revertir al <a href="https://tpaga.co/docs/swaggers/v2#!/Credit_Card/refundCreditCardCharge">refundCreditCardCharge</a> endpoint.</p>
+<p>Los bancos nos permiten revertir el pago dentro de 24 horas después de la transacción. Para hacerlo debemos mandar token de la transacción que queremos revertir al <a href="https://tpaga.co/docs/swaggers/v2#!/Credit_Card/refundCreditCardCharge">refundCreditCardCharge</a> endpoint.</p>
 
 <pre><code class="python">&gt;&gt; refund_cc_response = client.refund_cc(cc_charge_id)
 &gt;&gt; print('refund_cc_response', refund_cc_response)
