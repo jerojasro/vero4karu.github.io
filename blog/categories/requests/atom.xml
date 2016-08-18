@@ -4,7 +4,7 @@
   <title><![CDATA[Category: requests | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/requests/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-18T12:26:40-05:00</updated>
+  <updated>2016-08-18T13:55:14-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Cómo hacer integracion con Tpaga API usando Python]]></title>
+    <title type="html"><![CDATA[Cómo hacer integración con Tpaga API usando Python]]></title>
     <link href="http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/"/>
     <updated>2016-08-18T08:53:45-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python</id>
@@ -28,7 +28,7 @@
 
 <p><img src="/images/tpaga_sandbox_dashboard.png"></p>
 
-<p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjatas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes).</p>
+<p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjatas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjéta de crédito).</p>
 
 <p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permiritá hacer peticiones <a href="HTTP:">HTTP:</a></p>
 
@@ -118,7 +118,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 
 <p>Otros campos que podemos enviar para guardar nuestros clientes se puede encontrar aquí: <a href="https://tpaga.co/docs/swaggers/v2#!/Customer/createCustomer">tpaga.co/docs/swaggers/v2#!/Customer/createCustomer</a>.</p>
 
-<p>En el dashboard de Tpaga podemos asegurarnos de que el ciente fue creado exitosamente:</p>
+<p>En el dashboard de Tpaga podemos asegurarnos de que el ciente <a href="https://en.wikipedia.org/wiki/The_Little_Golden_Calf#Cultural_influence">&ldquo;Horns and Hoofs&rdquo;</a> fue creado exitosamente:</p>
 
 <p><img src="/images/tpaga_dashboard_customers.png"></p>
 
