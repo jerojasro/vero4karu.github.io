@@ -6,7 +6,7 @@ comments: true
 categories: [Flask, SQLAlchemy]
 ---
 
-Suponemos que en nuestro proyecto de Flask hay una tabla `Client` definida usando [Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org/) y queremos monetorear los cambios que se realizan sobre los objetos de ese modelo.
+Suponemos que en nuestro proyecto de Flask hay un modelo `Client` definidao usando [Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org/) y queremos monetorear los cambios que se realizan sobre los objetos de ese modelo.
 
 Para esto agregamos tres señales:
 
