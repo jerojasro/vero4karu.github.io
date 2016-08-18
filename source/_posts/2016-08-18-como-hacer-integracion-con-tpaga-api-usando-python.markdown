@@ -18,7 +18,7 @@ Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para l
 
 Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjetas de crédito) asociados a los Clientes y **Charges** (Transacciónes o cobros por tarjéta de crédito).
 
-Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería `requests` que nos permitirá hacer peticiones HTTP:
+Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería `requests` que nos permitirá hacer peticiones HTTP.
 
 ```bash
 $ pip install requests
