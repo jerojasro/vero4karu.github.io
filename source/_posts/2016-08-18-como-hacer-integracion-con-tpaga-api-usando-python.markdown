@@ -6,17 +6,17 @@ comments: true
 categories: [Python, Tpaga, API, requests]
 ---
 
-[Tpaga](https://tpaga.co/) es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y 
+[Tpaga](https://tpaga.co/) es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y fácil para usar.
 
-Para obtener nuestros claves pública y privada para conectarnos con el API de Tpaga y hacer pruebas, primero creamos cuanta en el "sandbox" de la plataforma: [sandbox.tpaga.co](https://sandbox.tpaga.co/).
+Para obtener nuestros claves de acceso y conectarnos con el API de Tpaga, creamos una cuenta en el "sandbox" de la plataforma: [sandbox.tpaga.co](https://sandbox.tpaga.co/).
 
 {% img /images/tpaga_sandbox_login.png %}
 
-Al registrarnos podemos ver que ahora tenemos dos claves que vamos a usar para la autenticación: **Private Api Key** y **Public Api Key**:
+Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para la autenticación: **Private Api Key** y **Public Api Key**:
 
 {% img /images/tpaga_sandbox_dashboard.png %}
 
-Tpaga tiene unos modelos básicos que nos permitirán estructurar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjatas de crédito) asociados a los Clientes y **Charges** (Transacciónes).
+Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjatas de crédito) asociados a los Clientes y **Charges** (Transacciónes).
 
 Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería `requests` que nos permiritá hacer peticiones HTTP:
 
@@ -83,11 +83,11 @@ class TpagaTestClient:
 
 ```
 
-El método `__init__` nos va a inicializar nuestor cliente, `api_post``- mandar peticiones POST a la ruta especificada (`path`) del API, `json_from_response``- obtener un objeto JSON de la respuesta de API, `fail``- imprimir los detalles de la respuesta si la petición no terminó con éxito.
+El método `__init__` nos va a inicializar nuestor cliente, `api_post` - mandar peticiones POST a la ruta especificada (`path`) del API, `json_from_response` - obtener un objeto JSON de la respuesta de API, `fail` - imprimir los detalles de la respuesta si la petición no ha terminado con éxito.
 
 ### Crear un cliente
 
-Para crear un cliente, vamos a entiar una petición POST al endpoint `/customer`:
+Para crear nuestor cliente, vamos a entiar una petición POST al endpoint `/customer`:
 
 ```python
 class TpagaTestClient:
@@ -97,7 +97,6 @@ class TpagaTestClient:
         response = self.api_post('customer', data)
         return self.json_from_response(response)
 ```
-
 
 ```python
 >> client = TpagaTestClient()
@@ -229,9 +228,9 @@ charge_cc_response {
 }
 ```
 
-Si el pago fue exitoso, el código de respuesta es `201` y en el JSON podemos ver que la llave `paid` es `True`y `amount``es igual al valor cobrado de la tarjeta.
+Si el pago fue exitoso, el código de respuesta es `201` y en el JSON podemos ver que la llave `paid` es `True` y `amount` es igual al valor cobrado de la tarjeta.
 
-En el caso del código de respuesta `402`, tendríamos fijarnos en los valores de `errorCode` y `errorMessage` para entender qué pasó con la transacción. Por ejemplo, el código `43` significa que el dueño de la tarjeta la reportó como robada, y `61` - que el monto máximo de tarjeta fue excedido.
+En el caso cuando el código de respuesta es `402`, tendríamos fijarnos en los valores de `errorCode` y `errorMessage` para entender qué pasó con la transacción. Por ejemplo, el código de error `43` significa que el dueño de la tarjeta la reportó como robada, y `61` - que el monto máximo de tarjeta fue excedido.
 
 En otros casos necesitaremos verificar que los datos que pasamos en la petición sean válidos y tengan todos los valores necesarios. 
 
