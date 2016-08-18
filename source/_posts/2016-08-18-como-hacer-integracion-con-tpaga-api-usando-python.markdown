@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cómo hacer integracion con Tpaga API usando Python"
+title: "Cómo hacer integración con Tpaga API usando Python"
 date: 2016-08-18 08:53:45 -0500
 comments: true
 categories: [Python, Tpaga, API, requests]
@@ -16,7 +16,7 @@ Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para l
 
 {% img /images/tpaga_sandbox_dashboard.png %}
 
-Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjatas de crédito) asociados a los Clientes y **Charges** (Transacciónes).
+Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjatas de crédito) asociados a los Clientes y **Charges** (Transacciónes o cobros por tarjéta de crédito).
 
 Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería `requests` que nos permiritá hacer peticiones HTTP:
 
@@ -112,7 +112,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 
 Otros campos que podemos enviar para guardar nuestros clientes se puede encontrar aquí: [tpaga.co/docs/swaggers/v2#!/Customer/createCustomer](https://tpaga.co/docs/swaggers/v2#!/Customer/createCustomer).
 
-En el dashboard de Tpaga podemos asegurarnos de que el ciente fue creado exitosamente:
+En el dashboard de Tpaga podemos asegurarnos de que el ciente ["Horns and Hoofs"](https://en.wikipedia.org/wiki/The_Little_Golden_Calf#Cultural_influence) fue creado exitosamente:
 
 {% img /images/tpaga_dashboard_customers.png %}
 
