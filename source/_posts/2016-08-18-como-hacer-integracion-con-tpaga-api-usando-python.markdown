@@ -277,3 +277,5 @@ Enlaces:
 * Tpaga FAQ [tpaga.zendesk.com/hc/es](https://tpaga.zendesk.com/hc/es)
 * Documentación para la librería [Requests: HTTP for Humans](http://docs.python-requests.org/en/master/)
 
+Muchas gracias a [@jerojasro](https://twitter.com/jerojasro) por su ayuda y paciencia.
+
