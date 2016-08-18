@@ -4,7 +4,7 @@
   <title><![CDATA[Category: api | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/api/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-18T14:20:07-05:00</updated>
+  <updated>2016-08-18T14:25:13-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -30,7 +30,7 @@
 
 <p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjetas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjéta de crédito).</p>
 
-<p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permitirá hacer peticiones <a href="HTTP:">HTTP:</a></p>
+<p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permitirá hacer peticiones HTTP.</p>
 
 <pre><code class="bash">$ pip install requests
 </code></pre>
