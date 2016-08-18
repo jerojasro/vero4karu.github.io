@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ajax | Cansada de ser feliz]]></title>
+  <title><![CDATA[Category: ajax | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/ajax/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-03T10:44:45-05:00</updated>
+  <updated>2016-08-18T12:17:49-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How to Send Request to AJAX View in Django Tests]]></title>
+    <title type="html"><![CDATA[How to send request to AJAX view in Django tests]]></title>
     <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
     <updated>2015-03-01T19:23:37-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>

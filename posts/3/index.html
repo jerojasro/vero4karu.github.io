@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Sometimes there is a need to pass a variable (parameter) from a FormView (for example, CreateView, UpdateView) to a form (for example, ModelForm). &hellip;">
+  <meta name="description" content="class BasicAdmin(admin.ModelAdmin): # ... def get_urls(self): urls = super(BasicAdmin, self).get_urls() my_urls = patterns( &#39;&#39;, (r&#39;^ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,7 +83,116 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">How to Pass a Variable From Form to View in Django</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">How to add a custom button to admin change list view id Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T17:35:44-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:35 pm</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div><script src='https://gist.github.com/12fb4de2726c6ef563f3.js'></script>
+<noscript><pre><code>class BasicAdmin(admin.ModelAdmin):
+    # ...
+
+    def get_urls(self):
+        urls = super(BasicAdmin, self).get_urls()
+        my_urls = patterns(
+            &#39;&#39;,
+            (r&#39;^download_as_xls/$&#39;, self.download_as_xls_view)
+        )
+        return my_urls + urls
+
+    def download_as_xls_view(self, request):
+        &quot;&quot;&quot;Generates an xls file
+        &quot;&quot;&quot;
+
+        response = HttpResponse(mimetype=&#39;application/ms-excel&#39;)
+        response[&#39;Content-Disposition&#39;] = \
+            &#39;attachment; filename=Report.xls&#39;
+        # do something
+        return response</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T17:34:58-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:34 pm</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code></p>
+
+<div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
+<noscript><pre><code>from django.forms.util import ErrorList
+from django import forms
+
+class ContractUpdateView(UpdateView):
+    model = Contract
+    template_name = &#39;contract/contract_form.html&#39;
+    form_class = ContractForm
+
+    def form_valid(self, form):
+        if self.request.POST.get(&#39;finish&#39;):
+            if (
+                not form.cleaned_data[&#39;number&#39;] or
+                not self.object.images.count()
+            ):
+                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList([
+                    u&#39;You have to add images and a contract number&#39;
+                ])
+                return self.form_invalid(form)
+            self.object.is_submitted = True
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">How to pass a variable from form to view in Django</a></h1>
     
     
       <p class="meta">
@@ -136,43 +245,43 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Monitoreo De Acciones De Usuarios en Flask (SQLAlchemy)</a>
+        <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integracion con Tpaga API usando Python</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/07/22/flask-for-django-developers/">Flask for Django Developers</a>
+        <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Como Hacer Integracion Con Tpaga Api Usando Python</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo Obtener El Nombre Del Día De La Semana en Python</a>
+        <a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Monitoreo de acciones de usuarios en Flask (SQLAlchemy)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy Conversions</a>
+        <a href="/blog/2016/07/22/flask-for-django-developers/">Flask for Django developers</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/09/30/pruebas-para-formularios-en-django/">Pruebas Para Formularios en Django</a>
+        <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo obtener el nombre del día de la semana en Python</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Cómo Configurar PyCharm Para Compilar Los Archivos SASS</a>
+        <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy conversions</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to Raise a Form Invalid Event Inside Form_valid Method of a FormView</a>
+        <a href="/blog/2015/09/30/pruebas-para-formularios-en-django/">Pruebas para formularios en Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">How to Show a BooleanField of a ModelForm as Radio Select (Yes/no) in Django</a>
+        <a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Cómo configurar PyCharm para compilar los archivos SASS</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/">How to Send Request to AJAX View in Django Tests</a>
+        <a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/03/01/como-concatenar-querysets-del-mismo-modelo-en-django/">¿Cómo Concatenar Querysets Del Mismo Modelo en Django?</a>
+        <a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">How to show a BooleanField of a ModelForm as radio select (yes/no) in Django</a>
       </li>
     
   </ul>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Django | Cansada de ser feliz]]></title>
+  <title><![CDATA[Category: django | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/django/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-03T10:44:45-05:00</updated>
+  <updated>2016-08-18T12:17:49-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Flask for Django Developers]]></title>
+    <title type="html"><![CDATA[Flask for Django developers]]></title>
     <link href="http://blog.vero4ka.info/blog/2016/07/22/flask-for-django-developers/"/>
     <updated>2016-07-22T07:35:02-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/07/22/flask-for-django-developers</id>
@@ -46,7 +46,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Pruebas Para Formularios en Django]]></title>
+    <title type="html"><![CDATA[Pruebas para formularios en Django]]></title>
     <link href="http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django/"/>
     <updated>2015-09-30T04:49:19-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django</id>
@@ -138,7 +138,7 @@
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#58;&amp;#115;&amp;#117;&amp;#x70;&amp;#x65;&amp;#x72;&amp;#x75;&amp;#115;&amp;#101;&amp;#x72;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#101;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x73;&amp;#x75;&amp;#112;&amp;#x65;&amp;#x72;&amp;#x75;&amp;#115;&amp;#x65;&amp;#114;&amp;#64;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;&amp;rsquo;,</span>
+</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#x3a;&amp;#x73;&amp;#117;&amp;#112;&amp;#x65;&amp;#114;&amp;#117;&amp;#x73;&amp;#101;&amp;#114;&amp;#x40;&amp;#101;&amp;#x78;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x73;&amp;#117;&amp;#112;&amp;#x65;&amp;#114;&amp;#x75;&amp;#115;&amp;#x65;&amp;#x72;&amp;#64;&amp;#101;&amp;#x78;&amp;#97;&amp;#x6d;&amp;#112;&amp;#108;&amp;#101;&amp;#46;&amp;#99;&amp;#x6f;&amp;#109;&lt;/a&gt;&amp;rsquo;,</span>
 </span><span class='line'>            <span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">superuser</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>            <span class="n">password</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>        <span class="p">)</span>
@@ -314,7 +314,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Raise a Form Invalid Event Inside Form_valid Method of a FormView]]></title>
+    <title type="html"><![CDATA[How to raise a form invalid event inside form_valid method of a FormView]]></title>
     <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/"/>
     <updated>2015-03-01T19:35:52-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview</id>
@@ -347,7 +347,7 @@ class ContractUpdateView(UpdateView):
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Show a BooleanField of a ModelForm as Radio Select (Yes/no) in Django]]></title>
+    <title type="html"><![CDATA[How to show a BooleanField of a ModelForm as radio select (yes/no) in Django]]></title>
     <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/"/>
     <updated>2015-03-01T19:26:52-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django</id>
@@ -367,7 +367,7 @@ class ContractUpdateView(UpdateView):
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Send Request to AJAX View in Django Tests]]></title>
+    <title type="html"><![CDATA[How to send request to AJAX view in Django tests]]></title>
     <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
     <updated>2015-03-01T19:23:37-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>

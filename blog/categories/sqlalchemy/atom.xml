@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Sqlalchemy | Cansada de ser feliz]]></title>
+  <title><![CDATA[Category: sqlalchemy | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/sqlalchemy/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-03T10:44:45-05:00</updated>
+  <updated>2016-08-18T12:17:49-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -14,11 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Monitoreo De Acciones De Usuarios en Flask (SQLAlchemy)]]></title>
+    <title type="html"><![CDATA[Monitoreo de acciones de usuarios en Flask (SQLAlchemy)]]></title>
     <link href="http://blog.vero4ka.info/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/"/>
     <updated>2016-07-22T08:23:58-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy</id>
-    <content type="html"><![CDATA[<p>Suponemos que en nuestro proyecto de Flask hay una tabla <code>Client</code> definida usando <a href="http://flask-sqlalchemy.pocoo.org/">Flask-SQLAlchemy</a> y queremos monetorear los cambios que se realizan sobre los objetos de ese modelo.</p>
+    <content type="html"><![CDATA[<p>Suponemos que en nuestro proyecto de Flask hay un modelo <code>Client</code> definidao usando <a href="http://flask-sqlalchemy.pocoo.org/">Flask-SQLAlchemy</a> y queremos monetorear los cambios que se realizan sobre los objetos de ese modelo.</p>
 
 <p>Para esto agregamos tres señales:</p>
 

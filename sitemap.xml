@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/</loc>
+<lastmod>2016-08-18T08:53:45-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/</loc>
+<lastmod>2016-08-18T00:00:00-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/</loc>
 <lastmod>2016-07-22T08:23:58-05:00</lastmod>
 </url>
@@ -137,5 +145,14 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/sqlalchemy/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/tpaga/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/api/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/requests/</loc>
 </url>
 </urlset>

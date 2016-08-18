@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Sql | Cansada de ser feliz]]></title>
+  <title><![CDATA[Category: sql | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/sql/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-03T10:44:45-05:00</updated>
+  <updated>2016-08-18T12:17:49-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[SQL to SQLAlquemy Conversions]]></title>
+    <title type="html"><![CDATA[SQL to SQLAlquemy conversions]]></title>
     <link href="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions/"/>
     <updated>2016-05-04T21:15:39-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions</id>

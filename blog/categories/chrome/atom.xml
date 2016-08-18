@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Chrome | Cansada de ser feliz]]></title>
+  <title><![CDATA[Category: chrome | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/chrome/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-03T10:44:45-05:00</updated>
+  <updated>2016-08-18T12:17:49-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Useful Chorme Extentions]]></title>
+    <title type="html"><![CDATA[Useful Chorme extentions]]></title>
     <link href="http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions/"/>
     <updated>2015-03-01T18:41:53-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions</id>

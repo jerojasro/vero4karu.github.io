@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Jquery | Cansada de ser feliz]]></title>
+  <title><![CDATA[Category: jquery | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-03T10:44:45-05:00</updated>
+  <updated>2016-08-18T12:17:49-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Get an Array of Checked Checkboxes Values Using jQuery]]></title>
+    <title type="html"><![CDATA[Get an array of checked checkboxes values using jQuery]]></title>
     <link href="http://blog.vero4ka.info/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/"/>
     <updated>2015-03-01T19:17:42-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery</id>

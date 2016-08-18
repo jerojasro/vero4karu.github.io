@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: api | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info/blog/categories/api/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-08-18T12:17:49-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
+  <author>
+    <name><![CDATA[vero4ka]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo hacer integracion con Tpaga API usando Python]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/"/>
+    <updated>2016-08-18T08:53:45-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python</id>
+    <content type="html"><![CDATA[<p><a href="https://tpaga.co/">Tpaga</a> es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y</p>
+
+<p>Para obtener nuestros claves pública y privada para conectarnos con el API de Tpaga y hacer pruebas, primero creamos cuanta en el &ldquo;sandbox&rdquo; de la plataforma: <a href="https://sandbox.tpaga.co/">sandbox.tpaga.co</a>.</p>
+
+<p><img src="/images/tpaga_sandbox_login.png"></p>
+
+<p>Al registrarnos podemos ver que ahora tenemos dos claves que vamos a usar para la autenticación: <strong>Private Api Key</strong> y <strong>Public Api Key</strong>:</p>
+
+<p><img src="/images/tpaga_sandbox_dashboard.png"></p>
+
+<p>Tpaga tiene unos modelos básicos que nos permitirán estructurar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjatas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes).</p>
+
+<p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permiritá hacer peticiones <a href="HTTP:">HTTP:</a></p>
+
+<pre><code class="bash">$ pip install requests
+</code></pre>
+
+<p>Tpaga, como muchos otros sitios web, acepta la autenticación mediante HTTP Basic Auth. La librería <code>requests</code> provee una forma fácil de usarla:</p>
+
+<pre><code class="python">&gt;&gt;&gt; import requests
+&gt;&gt;&gt; TPAGA_PRIVATE_TOKEN = 'pk_test_qvbvuthlvqpijnr0elmtg5jh'
+&gt;&gt;&gt; tpaga_url = 'https://sandbox.tpaga.co/api/customer'
+&gt;&gt;&gt; requests.post(tpaga_url, json={}, auth=(TPAGA_PRIVATE_TOKEN, ''))
+&lt;Response [201]&gt;
+</code></pre>
+
+<p>Escribimos un cliente sencillo que nos permitirá conectarse al API de Tpaga y mandar peticiones:</p>
+
+<pre><code class="python">from urllib import parse as urlparse
+import requests
+
+TPAGA_PRIVATE_TOKEN = 'pk_test_qvbvuthlvqpijnr0elmtg5jh'
+TPAGA_PUBLIC_TOKEN = 'd13fr8n7vhvkuch3lq2ds5qhjnd2pdd2'
+TPAGA_API_URL = 'https://sandbox.tpaga.co/api/'
+
+class TpagaTestClient:
+    def __init__(
+            self,
+            private_token=TPAGA_PRIVATE_TOKEN,
+            public_token=TPAGA_PUBLIC_TOKEN,
+            base_url=TPAGA_API_URL,
+    ):
+        self.base_url = base_url
+        self.private_token = private_token
+        self.public_token = public_token
+
+
+    def api_post(self, path, data, token=None):
+        if not token:
+            token = self.private_token
+        return requests.post(
+            urlparse.urljoin(self.base_url, path),
+            json=data, auth=(token, ''),
+        )
+
+    def fail(self, response):
+        raise Exception(
+            'Whoops, got\n\nSTATUS: {}\n\nHEADERS: {}\n\nCONTENT: {}'.format(
+                response.status_code, 
+                response.headers, 
+                response.content,
+            ))
+
+    def json_from_response(self, response, expected_http_code=None):
+        if not expected_http_code:
+            expected_http_code = [201]
+        if response.status_code not in expected_http_code:
+            self.fail(response)
+        if not response.content:
+            return None
+        return response.json()
+</code></pre>
+
+<p>El método <code>__init__</code> nos va a inicializar nuestor cliente, <code>api_post``- mandar peticiones POST a la ruta especificada (</code>path<code>) del API,</code>json_from_response<code>- obtener un objeto JSON de la respuesta de API, `fail</code>- imprimir los detalles de la respuesta si la petición no terminó con éxito.</p>
+
+<h3>Crear un cliente</h3>
+
+<p>Para crear un cliente, vamos a entiar una petición POST al endpoint <code>/customer</code>:</p>
+
+<pre><code class="python">class TpagaTestClient:
+    # ...
+
+    def create_customer(self, data):
+        response = self.api_post('customer', data)
+        return self.json_from_response(response)
+</code></pre>
+
+<pre><code class="python">&gt;&gt; client = TpagaTestClient()
+&gt;&gt; customer = client.create_customer({
+    'firstName': 'Horns and Hoofs',
+    'email': 'hornsandhoofs@example.com',
+    'phone': '012345678'
+})
+&gt;&gt; customer_token = customer['id']
+&gt;&gt; print('customer_token', customer_token)
+customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
+</code></pre>
+
+<p>Otros campos que podemos enviar para guardar nuestros clientes se puede encontrar aquí: <a href="https://tpaga.co/docs/swaggers/v2#!/Customer/createCustomer">tpaga.co/docs/swaggers/v2#!/Customer/createCustomer</a>.</p>
+
+<p>En el dashboard de Tpaga podemos asegurarnos de que el ciente fue creado exitosamente:</p>
+
+<p><img src="/images/tpaga_dashboard_customers.png"></p>
+
+<p>Teniendo un token de nuestro cliente, podemos agregarle una tarjeta de crédito.</p>
+
+<h3>Registrar una tarhjeta de crédito y asociarla al cliente</h3>
+
+<p>Creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.</p>
+
+<pre><code class="python">class TpagaTestClient:
+    # ...
+
+    def tokenize_cc(self, cc_name, expiry_month, expiry_year, cc_num):
+        ccdata = {
+            'primaryAccountNumber': cc_num,
+            'expirationMonth': expiry_month,
+            'expirationYear': expiry_year,
+            'cardHolderName': cc_name,
+        }
+        response = self.api_post('tokenize/credit_card', ccdata, token=self.public_token)
+        return self.json_from_response(response)
+
+
+    def assoc_cc_to_customer(self, customer_token, cc_temp_token=None):
+        cdata = {'token': cc_temp_token }
+        response = self.api_post(
+            'customer/{}/credit_card_token'.format(customer_token), cdata
+        )
+        return self.json_from_response(response)
+</code></pre>
+
+<pre><code class="python">&gt;&gt; tokenized_credit_card = client.tokenize_cc(
+    cc_name='Pepito Perez', 
+    expiry_month="08", 
+    expiry_year="2020", 
+    cc_num='4111111111111111',
+)
+&gt;&gt; cc_temp_token = tokenized_credit_card['token']
+&gt;&gt; credit_card = client.assoc_cc_to_customer(
+    customer_token=customer_token, 
+    cc_temp_token=cc_temp_token,
+)
+&gt;&gt; credit_card_token = credit_card['id']
+print('credit_card_token', credit_card_token)
+credit_card_token 2k54foql0hki0ot7avrg9nhpvbpqam55
+</code></pre>
+
+<p>Mirando la tabla de <a href="https://sandbox.tpaga.co/merchantDashboard/cards">sandbox.tpaga.co/merchantDashboard/cards</a> vemos que nuestra tarjeta quedó registrada con Tpaga.</p>
+
+<h3>Realizar el pago por la tarjeta de crédito</h3>
+
+<p>Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al <a href="https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge">addCreditCardCharge</a> endpoint con los siguientes paramentros:</p>
+
+<ul>
+<li><code>orderId</code> - nuestro id interno que asociamos al pago, que luego nos ayudaría identificar la transacción en el dashboard de Tpaga;</li>
+<li><code>amount</code>- cantidad de dinero para cobrar,</li>
+<li><code>currency</code>- tipo de moneda, por ejemplo, &lsquo;COP&rsquo;,</li>
+<li><code>creditCard</code> - token de la tarjeta de crédito.</li>
+</ul>
+
+
+<pre><code class="python">class TpagaTestClient:
+    # ...
+
+    def charge_cc(self, cc_token, order_id='BRG-2', amount=1000):
+        cdata = {
+              'orderId': order_id,
+              'currency': 'COP',
+              'taxAmount': 0,
+              'description': 'One bridge in good condition.',
+              'installments': 1,
+              'amount': amount,
+              'creditCard': cc_token,
+        }
+        response = self.api_post('charge/credit_card', cdata)
+        return self.json_from_response(response)
+
+    def refund_cc(self, cc_charge_id):
+        cdata = {
+            'id': cc_charge_id,
+        }
+        response = self.api_post('refund/credit_card', cdata)
+        return self.json_from_response(response, expected_http_code=[202])
+</code></pre>
+
+<pre><code class="python">&gt;&gt; charge_cc_response = client.charge_cc(cc_token=credit_card_token, amount=4500)
+&gt;&gt; cc_charge_id = charge_cc_response['id']
+print('charge_cc_response', charge_cc_response)
+charge_cc_response {
+    'id': '1rnfu463258eph0mlqli4105mjb85kut', 
+    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu', 
+    'thirdPartyId': None, 
+    'installments': 1, 
+    'tpagaFeeAmount': '868.00', 
+    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
+    'iacAmount': '0.00', 
+    'transactionInfo': {'authorizationCode': '723045', 'status': 'authorized'},
+    'netAmount': '3545.00', 
+    'tipAmount': '0.00', 
+    'reteIvaAmount': '0.00', 
+    'reteIcaAmount': '19.00', 
+    'paid': True, 
+    'reteRentaAmount': '68.00', 
+    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP', 
+    'orderId': 'BRG-2', 
+    'description': 'One bridge in good condition.', 
+    'currency': 'COP', 
+    'errorMessage': 'Approved', 
+    'taxAmount': '0.00', 
+    'errorCode': '00', 
+    'amount': '4500.00'
+}
+</code></pre>
+
+<p>Si el pago fue exitoso, el código de respuesta es <code>201</code> y en el JSON podemos ver que la llave <code>paid</code> es <code>True</code>y `amount``es igual al valor cobrado de la tarjeta.</p>
+
+<p>En el caso del código de respuesta <code>402</code>, tendríamos fijarnos en los valores de <code>errorCode</code> y <code>errorMessage</code> para entender qué pasó con la transacción. Por ejemplo, el código <code>43</code> significa que el dueño de la tarjeta la reportó como robada, y <code>61</code> - que el monto máximo de tarjeta fue excedido.</p>
+
+<p>En otros casos necesitaremos verificar que los datos que pasamos en la petición sean válidos y tengan todos los valores necesarios.</p>
+
+<h3>Revertir el pago</h3>
+
+<p>Los bancos nos permiten revertir el pago dentro de 24 horas después de la transacción. Para hacerlo debenos mandar token de la transacción que queremos revertir al <a href="https://tpaga.co/docs/swaggers/v2#!/Credit_Card/refundCreditCardCharge">refundCreditCardCharge</a> endpoint.</p>
+
+<pre><code class="python">&gt;&gt; refund_cc_response = client.refund_cc(cc_charge_id)
+&gt;&gt; print('refund_cc_response', refund_cc_response)
+refund_cc_response {
+    'id': '1rnfu463258eph0mlqli4105mjb85kut', 
+    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu', 
+    'thirdPartyId': None, 
+    'installments': 1, 
+    'tpagaFeeAmount': '868.00', 
+    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
+    'iacAmount': '0.00', 
+    'transactionInfo': {'authorizationCode': '723045', 'status': 'voided'}, 
+    'netAmount': '3545.00', 
+    'tipAmount': '0.00', 
+    'reteIvaAmount': '0.00', 
+    'reteIcaAmount': '19.00', 
+    'paid': False, 
+    'reteRentaAmount': '68.00', 
+    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP', 
+    'orderId': 'BRG-2', 
+    'description': 'One bridge in good condition.', 
+    'currency': 'COP', 
+    'errorMessage': 'Approved', 
+    'taxAmount': '0.00', 
+    'errorCode': '00', 
+    'amount': '4500.00'
+}
+</code></pre>
+
+<p>El JSON que nos devolvió Tpaga <code>transactionInfo.status</code> aparece como <code>voided</code> y el valor de <code>paid</code> ahora es falso:</p>
+
+<p><img src="/images/tpaga_dashboard_refund.png"></p>
+
+<p>Enlaces:</p>
+
+<ul>
+<li>Documentación de Tpaga: <a href="https://tpaga.co/docs/swaggers/v2">tpaga.co/docs/swaggers/v2</a></li>
+<li>Tpaga FAQ <a href="https://tpaga.zendesk.com/hc/es">tpaga.zendesk.com/hc/es</a></li>
+<li>Documentación para la librería <a href="http://docs.python-requests.org/en/master/">Requests: HTTP for Humans</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
