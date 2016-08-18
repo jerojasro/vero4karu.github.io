@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-18T12:17:49-05:00</updated>
+  <updated>2016-08-18T12:26:40-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,17 +18,17 @@
     <link href="http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/"/>
     <updated>2016-08-18T08:53:45-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python</id>
-    <content type="html"><![CDATA[<p><a href="https://tpaga.co/">Tpaga</a> es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y</p>
+    <content type="html"><![CDATA[<p><a href="https://tpaga.co/">Tpaga</a> es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y fácil para usar.</p>
 
-<p>Para obtener nuestros claves pública y privada para conectarnos con el API de Tpaga y hacer pruebas, primero creamos cuanta en el &ldquo;sandbox&rdquo; de la plataforma: <a href="https://sandbox.tpaga.co/">sandbox.tpaga.co</a>.</p>
+<p>Para obtener nuestros claves de acceso y conectarnos con el API de Tpaga, creamos una cuenta en el &ldquo;sandbox&rdquo; de la plataforma: <a href="https://sandbox.tpaga.co/">sandbox.tpaga.co</a>.</p>
 
 <p><img src="http://blog.vero4ka.info/images/tpaga_sandbox_login.png"></p>
 
-<p>Al registrarnos podemos ver que ahora tenemos dos claves que vamos a usar para la autenticación: <strong>Private Api Key</strong> y <strong>Public Api Key</strong>:</p>
+<p>Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para la autenticación: <strong>Private Api Key</strong> y <strong>Public Api Key</strong>:</p>
 
 <p><img src="http://blog.vero4ka.info/images/tpaga_sandbox_dashboard.png"></p>
 
-<p>Tpaga tiene unos modelos básicos que nos permitirán estructurar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjatas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes).</p>
+<p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjatas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes).</p>
 
 <p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permiritá hacer peticiones <a href="HTTP:">HTTP:</a></p>
 
@@ -143,11 +143,11 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>El método <code>__init__</code> nos va a inicializar nuestor cliente, <code>api_post``- mandar peticiones POST a la ruta especificada (</code>path<code>) del API,</code>json_from_response<code>- obtener un objeto JSON de la respuesta de API, `fail</code>- imprimir los detalles de la respuesta si la petición no terminó con éxito.</p>
+<p>El método <code>__init__</code> nos va a inicializar nuestor cliente, <code>api_post</code> - mandar peticiones POST a la ruta especificada (<code>path</code>) del API, <code>json_from_response</code> - obtener un objeto JSON de la respuesta de API, <code>fail</code> - imprimir los detalles de la respuesta si la petición no ha terminado con éxito.</p>
 
 <h3>Crear un cliente</h3>
 
-<p>Para crear un cliente, vamos a entiar una petición POST al endpoint <code>/customer</code>:</p>
+<p>Para crear nuestor cliente, vamos a entiar una petición POST al endpoint <code>/customer</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -395,9 +395,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Si el pago fue exitoso, el código de respuesta es <code>201</code> y en el JSON podemos ver que la llave <code>paid</code> es <code>True</code>y `amount``es igual al valor cobrado de la tarjeta.</p>
+<p>Si el pago fue exitoso, el código de respuesta es <code>201</code> y en el JSON podemos ver que la llave <code>paid</code> es <code>True</code> y <code>amount</code> es igual al valor cobrado de la tarjeta.</p>
 
-<p>En el caso del código de respuesta <code>402</code>, tendríamos fijarnos en los valores de <code>errorCode</code> y <code>errorMessage</code> para entender qué pasó con la transacción. Por ejemplo, el código <code>43</code> significa que el dueño de la tarjeta la reportó como robada, y <code>61</code> - que el monto máximo de tarjeta fue excedido.</p>
+<p>En el caso cuando el código de respuesta es <code>402</code>, tendríamos fijarnos en los valores de <code>errorCode</code> y <code>errorMessage</code> para entender qué pasó con la transacción. Por ejemplo, el código de error <code>43</code> significa que el dueño de la tarjeta la reportó como robada, y <code>61</code> - que el monto máximo de tarjeta fue excedido.</p>
 
 <p>En otros casos necesitaremos verificar que los datos que pasamos en la petición sean válidos y tengan todos los valores necesarios.</p>
 
