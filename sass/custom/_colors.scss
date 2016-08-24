@@ -1,11 +1,11 @@
 //$header-bg: #263347;
-$subtitle-color: lighten(#3F2E27, 58);
-$nav-bg: desaturate(lighten(#854D28, 18), 5);
+$subtitle-color: lighten(#fff, 58);
+$nav-bg: desaturate(lighten(#66B4DA, 18), 5);
 //$nav-bg-front: image-url('noise.png');
 //$nav-bg-back: linear-gradient(lighten($nav-bg, 8), $nav-bg, darken($nav-bg, 11));
-$sidebar-bg: desaturate(lighten(#B26129, 10), 5);
+$sidebar-bg: desaturate(lighten(#66B4DA, 10), 5);
 //$sidebar-link-color: saturate(#526f9a, 10);
-$sidebar-link-color-hover: darken(#B26129, 9);
+$sidebar-link-color-hover: darken(#66B4DA, 9);
 //$footer-bg: #ccc !default;
 //$footer-bg-front: image-url('noise.png');
 //$footer-bg-back: linear-gradient(lighten($footer-bg, 8), $footer-bg, darken($footer-bg, 11));
