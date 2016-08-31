@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sql | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/sql/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-24T09:13:06-05:00</updated>
+  <updated>2016-08-31T10:41:42-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -98,13 +98,16 @@
 
 <h3>Other examples</h3>
 
-<pre><code class="python">bookings = db.session.query(
+<pre><code class="python">today = datetime.datetime.utcnow().date()
+six_months_ago = today - relativedelta(months=6)
+
+books = db.session.query(
     func.to_char(Book.created_at, 'MM'),
     func.count(Book.created_at)
 ).filter(
-    Book.author_id == author.id,
+    Book.author_id == author.id,  # Filter books by author
 ).filter(
-    Book.created_at.between(six_months_ago_min, today_max)
+    Book.created_at.between(six_months_ago_min, today_max)  # Get all books created in last six months
 ).group_by(
     func.to_char(Book.created_at, 'MM')
 ).order_by(func.to_char(Book.created_at, 'MM')).all()
