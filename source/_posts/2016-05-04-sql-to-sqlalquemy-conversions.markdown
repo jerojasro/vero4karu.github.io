@@ -96,13 +96,16 @@ SELECT SUM(((status IN (4, 7))::int)) as books ...
 ### Other examples
 
 ```python
-bookings = db.session.query(
+today = datetime.datetime.utcnow().date()
+six_months_ago = today - relativedelta(months=6)
+
+books = db.session.query(
     func.to_char(Book.created_at, 'MM'),
     func.count(Book.created_at)
 ).filter(
-    Book.author_id == author.id,
+    Book.author_id == author.id,  # Filter books by author
 ).filter(
-    Book.created_at.between(six_months_ago_min, today_max)
+    Book.created_at.between(six_months_ago_min, today_max)  # Get all books created in last six months
 ).group_by(
     func.to_char(Book.created_at, 'MM')
 ).order_by(func.to_char(Book.created_at, 'MM')).all()
