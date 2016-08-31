@@ -9,7 +9,23 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Tpaga es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y fácil para usar. Para obtener nuestros &hellip;">
+  <meta name="description" content="Tenemos dos tablas con equemas iguales dos en bases de datos diferentes: production y history. settings.py1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +93,220 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-31T11:15:01-05:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>11:15 am</span></time>
+        
+           | <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tenemos dos tablas con equemas iguales dos en bases de datos diferentes: <code>production</code> y <code>history</code>.</p>
+
+<figure class='code'><figcaption><span>settings.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">DATABASE_ROUTERS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;routers.HistoricRouter&#39;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;production&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;USER&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="s">&#39;historical&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;history&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;USER&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Escribimos un router para definir a qué base de datos hacer la petición:</p>
+
+<figure class='code'><figcaption><span>routers.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">HistoricRouter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">    A router to control all database operations on models in the historic application.</span>
+</span><span class='line'><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">db_for_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        Attempts to read historic models go to historical.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="s">&#39;historical&#39;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">db_for_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        Attempts to write historic models go to historical.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="s">&#39;historical&#39;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">allow_relation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        Allow relations if a model in the historic app is involved.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">obj1</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span> <span class="ow">or</span> \
+</span><span class='line'>            <span class="n">obj2</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">allow_migrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">app_label</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        Make sure the historic app only appears in the &#39;historical&#39; database.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">db</span> <span class="o">==</span> <span class="s">&#39;historical&#39;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>En nuestros modelos especificamos <code>app_label</code> para referirnos a la base de datos distinta a <code>default</code>:</p>
+
+<figure class='code'><figcaption><span>models.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;authors&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">AbstractBook</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;books.Author&#39;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;books&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">unmanaged</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">Book</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;books&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">HistoricBook</span><span class="p">(</span><span class="n">Book</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">unmanaged</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;books&#39;</span>
+</span><span class='line'>        <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;historic&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>La petición <code>Book.objects.all()</code> va a traer libros de la base de datos <code>production</code> y <code>HistoricBook.objects.all()</code> - de la base de datos <code>history</code>.</p>
+
+<p>Modificando <code>allow_relation</code> en nuestro router, podemos permitir llaves foráneas entre modelos de diferentes bases de datos:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">allow_relation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="bp">True</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1512,58 +1742,6 @@ class ContractUpdateView(UpdateView):
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/">How to send request to AJAX view in Django tests</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-01T19:23:37-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:23 pm</span></time>
-        
-           | <a href="/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you have a view that requires an AJAX request, in other words, checks if <code>request.is_ajax()</code>, here is a way you can write a unit test for this view:</p>
-
-<div><script src='https://gist.github.com/dca59e325c9f7554d176.js'></script>
-<noscript><pre><code>import json
-from django.test import TestCase
-
-class JSONViewTestCase(TestCase):
-
-    def test_json_view(self):
-        response = self.client.post(
-            reverse(&#39;my_json_view&#39;),
-            json.dumps({
-                # your JSON
-            }),
-            &#39;json&#39;,
-            HTTP_X_REQUESTED_WITH=&#39;XMLHttpRequest&#39;,
-        )
-        json_string = response.content
-        response_data = json.loads(json_string)
-        # do smth.</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1577,6 +1755,10 @@ class JSONViewTestCase(TestCase):
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
@@ -1612,10 +1794,6 @@ class JSONViewTestCase(TestCase):
     
       <li class="post">
         <a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">How to show a BooleanField of a ModelForm as radio select (yes/no) in Django</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/">How to send request to AJAX view in Django tests</a>
       </li>
     
   </ul>

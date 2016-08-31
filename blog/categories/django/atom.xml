@@ -4,7 +4,7 @@
   <title><![CDATA[Category: django | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/django/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-31T10:41:42-05:00</updated>
+  <updated>2016-08-31T11:52:32-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Múltiples bases de datos en Django]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django/"/>
+    <updated>2016-08-31T11:15:01-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django</id>
+    <content type="html"><![CDATA[<p>Tenemos dos tablas con equemas iguales dos en bases de datos diferentes: <code>production</code> y <code>history</code>.</p>
+
+<pre><code class="python settings.py">DATABASE_ROUTERS = ['routers.HistoricRouter']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'localhost',
+        'NAME': 'production',
+        'USER': 'secret',
+        'PASSWORD': 'secret',
+    },
+    'historical': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'localhost',
+        'NAME': 'history',
+        'USER': 'secret',
+        'PASSWORD': 'secret',
+    }
+}
+</code></pre>
+
+<p>Escribimos un router para definir a qué base de datos hacer la petición:</p>
+
+<pre><code class="python routers.py">class HistoricRouter(object):
+    """
+    A router to control all database operations on models in the historic application.
+    """
+    def db_for_read(self, model, **hints):
+        """
+        Attempts to read historic models go to historical.
+        """
+        if model._meta.app_label == 'historic':
+            return 'historical'
+        return None
+
+    def db_for_write(self, model, **hints):
+        """
+        Attempts to write historic models go to historical.
+        """
+        if model._meta.app_label == 'historic':
+            return 'historical'
+        return None
+
+    def allow_relation(self, obj1, obj2, **hints):
+        """
+        Allow relations if a model in the historic app is involved.
+        """
+        if obj1._meta.app_label == 'historic' or \
+            obj2._meta.app_label == 'historic':
+            return True
+        return None
+
+    def allow_migrate(self, db, app_label, model_name=None, **hints):
+        """
+        Make sure the historic app only appears in the 'historical' database.
+        """
+        if app_label == 'historic':
+            return db == 'historical'
+        return None
+</code></pre>
+
+<p>En nuestros modelos especificamos <code>app_label</code> para referirnos a la base de datos distinta a <code>default</code>:</p>
+
+<pre><code class="python models.py">class Author(models.Model):
+
+    class Meta:
+        db_table = 'authors'
+
+class AbstractBook(models.Model):
+    author = models.ForeignKey('books.Author', related_name='books')
+    created_at = models.DateTimeField()
+
+    class Meta:
+        unmanaged = True
+        abstract = True
+
+class Book(Book):
+
+    class Meta:
+        db_table = 'books'
+
+class HistoricBook(Book):
+
+    class Meta:
+        unmanaged = True
+        db_table = 'books'
+        app_label = 'historic'
+</code></pre>
+
+<p>La petición <code>Book.objects.all()</code> va a traer libros de la base de datos <code>production</code> y <code>HistoricBook.objects.all()</code> - de la base de datos <code>history</code>.</p>
+
+<p>Modificando <code>allow_relation</code> en nuestro router, podemos permitir llaves foráneas entre modelos de diferentes bases de datos:</p>
+
+<pre><code class="python">    def allow_relation(self, obj1, obj2, **hints):
+        return True
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Flask for Django developers]]></title>
@@ -138,7 +243,7 @@
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#x6d;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#x73;&amp;#x75;&amp;#112;&amp;#x65;&amp;#114;&amp;#117;&amp;#115;&amp;#x65;&amp;#x72;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#108;&amp;#101;&amp;#46;&amp;#x63;&amp;#111;&amp;#x6d;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x73;&amp;#x75;&amp;#x70;&amp;#101;&amp;#x72;&amp;#x75;&amp;#115;&amp;#x65;&amp;#x72;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&amp;rsquo;,</span>
+</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#58;&amp;#115;&amp;#117;&amp;#x70;&amp;#x65;&amp;#114;&amp;#117;&amp;#115;&amp;#101;&amp;#x72;&amp;#x40;&amp;#x65;&amp;#x78;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#111;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#115;&amp;#x75;&amp;#x70;&amp;#101;&amp;#114;&amp;#x75;&amp;#115;&amp;#101;&amp;#x72;&amp;#64;&amp;#101;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;&lt;/a&gt;&amp;rsquo;,</span>
 </span><span class='line'>            <span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">superuser</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>            <span class="n">password</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>        <span class="p">)</span>
@@ -362,35 +467,6 @@ class ContractUpdateView(UpdateView):
         widgets = {
             &#39;is_active&#39;: forms.RadioSelect
         }</code></pre></noscript></div>
-</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to send request to AJAX view in Django tests]]></title>
-    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/"/>
-    <updated>2015-03-01T19:23:37-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>
-    <content type="html"><![CDATA[<p>If you have a view that requires an AJAX request, in other words, checks if <code>request.is_ajax()</code>, here is a way you can write a unit test for this view:</p>
-
-<p><div><script src='https://gist.github.com/dca59e325c9f7554d176.js'></script>
-<noscript><pre><code>import json
-from django.test import TestCase
-
-class JSONViewTestCase(TestCase):
-
-    def test_json_view(self):
-        response = self.client.post(
-            reverse(&#39;my_json_view&#39;),
-            json.dumps({
-                # your JSON
-            }),
-            &#39;json&#39;,
-            HTTP_X_REQUESTED_WITH=&#39;XMLHttpRequest&#39;,
-        )
-        json_string = response.content
-        response_data = json.loads(json_string)
-        # do smth.</code></pre></noscript></div>
 </p>
 ]]></content>
   </entry>

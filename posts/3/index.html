@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="How to raise form invalid inside form_valid method of a FormView (CreateView/UpdateView) and add an error message to non_field_errors from django. &hellip;">
+  <meta name="description" content="class BasicAdmin(admin.ModelAdmin): # ... def get_urls(self): urls = super(BasicAdmin, self).get_urls() my_urls = patterns( &#39;&#39;, (r&#39;^ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">How to add a custom button to admin change list view id Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T17:35:44-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:35 pm</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div><script src='https://gist.github.com/12fb4de2726c6ef563f3.js'></script>
+<noscript><pre><code>class BasicAdmin(admin.ModelAdmin):
+    # ...
+
+    def get_urls(self):
+        urls = super(BasicAdmin, self).get_urls()
+        my_urls = patterns(
+            &#39;&#39;,
+            (r&#39;^download_as_xls/$&#39;, self.download_as_xls_view)
+        )
+        return my_urls + urls
+
+    def download_as_xls_view(self, request):
+        &quot;&quot;&quot;Generates an xls file
+        &quot;&quot;&quot;
+
+        response = HttpResponse(mimetype=&#39;application/ms-excel&#39;)
+        response[&#39;Content-Disposition&#39;] = \
+            &#39;attachment; filename=Report.xls&#39;
+        # do something
+        return response</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -192,6 +245,10 @@ class ContractUpdateView(UpdateView):
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
       </li>
     
@@ -225,10 +282,6 @@ class ContractUpdateView(UpdateView):
     
       <li class="post">
         <a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">How to show a BooleanField of a ModelForm as radio select (yes/no) in Django</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/">How to send request to AJAX view in Django tests</a>
       </li>
     
   </ul>
