@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-08-31T11:52:32-05:00</updated>
+  <updated>2016-09-01T10:20:55-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django/"/>
     <updated>2016-08-31T11:15:01-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django</id>
-    <content type="html"><![CDATA[<p>Tenemos dos tablas con equemas iguales dos en bases de datos diferentes: <code>production</code> y <code>history</code>.</p>
+    <content type="html"><![CDATA[<p>Tenemos dos tablas con esquemas iguales dos en bases de datos diferentes: <code>production</code> y <code>history</code>.</p>
 
 <figure class='code'><figcaption><span>settings.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -200,6 +200,11 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>Enlaces:</p>
+
+<ul>
+<li><a href="https://docs.djangoproject.com/en/1.10/topics/db/multi-db/#cross-database-relations">Django: Cross-database relations</a></li>
+</ul>
 
 ]]></content>
   </entry>
