@@ -6,7 +6,7 @@ comments: true
 categories: [Django]
 ---
 
-Tenemos dos tablas con equemas iguales dos en bases de datos diferentes: `production` y `history`. 
+Tenemos dos tablas con esquemas iguales dos en bases de datos diferentes: `production` y `history`. 
 
 ```python settings.py
 DATABASE_ROUTERS = ['routers.HistoricRouter']
@@ -108,5 +108,6 @@ Modificando `allow_relation` en nuestro router, podemos permitir llaves foránea
         return True
 ```
 
+Enlaces:
 
-
+* [Django: Cross-database relations](https://docs.djangoproject.com/en/1.10/topics/db/multi-db/#cross-database-relations)
