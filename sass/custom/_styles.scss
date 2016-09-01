@@ -13,3 +13,18 @@ figure.code {
     background: lighten($sidebar-bg, 18);
   }
 }
+
+* + table {
+  border: 1px solid #ddd;
+}
+
+* + table th, * + table td {
+  border: 1px solid #ddd;
+  padding: 6px 13px;
+}
+
+* + table th {
+  font-weight: bold;
+  background: url("/images/noise.png?1330434582") repeat scroll left top #F7F3F7;
+}
+
