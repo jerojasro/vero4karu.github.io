@@ -1731,13 +1731,48 @@ class ContractUpdateView(UpdateView):
 
 <p>In this case we just need to add <code>choices</code> attribute for the model field and then change a widget of the corresponding form:</p>
 
-<div><script src='https://gist.github.com/ff27cad71d8f7f80f735.js'></script>
-<noscript><pre><code>class MyForm(forms.ModelForm):
-    class Meta:
-        model = MyModel
-        widgets = {
-            &#39;is_active&#39;: forms.RadioSelect
-        }</code></pre></noscript></div>
+<figure class='code'><figcaption><span>forms.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
+</span><span class='line'>        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="s">&#39;is_active&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">RadioSelect</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>forms.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">STATE_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+</span><span class='line'>        <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="s">u&#39;Yes&#39;</span><span class="p">),</span>
+</span><span class='line'>        <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="s">u&#39;No&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>    <span class="n">is_active</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">verbose_name</span><span class="o">=</span><span class="s">u&#39;Is it active?&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">choices</span><span class="o">=</span><span class="n">STATE_CHOICES</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
