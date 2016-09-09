@@ -9,7 +9,9 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="class BasicAdmin(admin.ModelAdmin): # ... def get_urls(self): urls = super(BasicAdmin, self).get_urls() my_urls = patterns( &#39;&#39;, (r&#39;^ &hellip;">
+  <meta name="description" content="Add a prefix myPrefix_ to all child elements of the joint joint1: string $stat_element = &quot;joint1&quot;;
+select -r $stat_element;
+string $nodes &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +80,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/">MEL Script (Autodesk Maya): Go through hierarchy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T21:43:47-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:43 pm</span></time>
+        
+           | <a href="/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Add a prefix <code>myPrefix_</code> to all child elements of the joint <code>joint1</code>:</p>
+
+<div><script src='https://gist.github.com/11099336.js'></script>
+<noscript><pre><code>string $stat_element = &quot;joint1&quot;;
+select -r $stat_element;
+string $nodes[] = `ls -sl -dag`;
+for($node in $nodes){
+    rename -ignoreShape $node (&quot;myPrefix_&quot; + $node);
+}</code></pre></noscript></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -246,6 +291,10 @@ class ContractUpdateView(UpdateView):
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/">Herramienta para el desarrollo que nos hacen la vida más fácil</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a>
       </li>
     
@@ -279,10 +328,6 @@ class ContractUpdateView(UpdateView):
     
       <li class="post">
         <a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">How to show a BooleanField of a ModelForm as radio select (yes/no) in Django</a>
       </li>
     
   </ul>
@@ -545,7 +590,7 @@ class ContractUpdateView(UpdateView):
   <footer role="contentinfo"><p>
   Copyright &copy; 2016 - vero4ka -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
-  <i>Image: <a href="http://photojournal.jpl.nasa.gov/catalog/PIA00422">Valles Marineris</a></i>
+  <i>Image: <a href="https://unsplash.com/?photo=O85h02qZ24w">unsplash.com</a></i>
 </p>
 </footer>
   

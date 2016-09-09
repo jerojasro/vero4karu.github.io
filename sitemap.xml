@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/</loc>
+<lastmod>2016-09-08T08:48:12-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django/</loc>
 <lastmod>2016-08-31T11:15:01-05:00</lastmod>
 </url>

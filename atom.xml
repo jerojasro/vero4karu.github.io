@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-09-05T09:56:37-05:00</updated>
+  <updated>2016-09-09T10:55:55-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Herramienta para el desarrollo que nos hacen la vida más fácil]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/"/>
+    <updated>2016-09-08T08:48:12-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil</id>
+    <content type="html"><![CDATA[<h2>Editores</h2>
+
+<ul>
+<li><a href="https://www.jetbrains.com/pycharm/">PyCharm</a>: editor para Python.</li>
+<li><a href="https://www.sublimetext.com/">Sublime Text</a></li>
+</ul>
+
+
+<h2>Editar y compartir código en línea</h2>
+
+<ul>
+<li><a href="http://codepen.io/">CodePen</a>: editor de código HTML/JS/CSS en línea.</li>
+<li><a href="https://repl.it/languages/python3">repl.it</a>: editor de Python 3 que permite compartir el código.</li>
+<li><a href="http://dillinger.io/">Dillinger</a>: editor de Markdown.</li>
+</ul>
+
+
+<h2>Bases de datos</h2>
+
+<ul>
+<li><a href="https://www.pgadmin.org/">pgAdmin</a>: administrador de base de datos PostgreSQL.</li>
+<li><a href="https://sqlectron.github.io/">Sqlectron</a></li>
+</ul>
+
+
+<h2>Git</h2>
+
+<ul>
+<li><a href="https://www.gitkraken.com/">GitKraken</a></li>
+</ul>
+
+
+<h2>Screenshots</h2>
+
+<ul>
+<li><a href="http://shutter-project.org/">Shutter</a>: aplicación para tomar y editar screetshots en Linux.</li>
+</ul>
+
+
+<h2>REST</h2>
+
+<ul>
+<li><a href="https://www.getpostman.com/">PostMan</a>: es una extensión del Google Chrome, que permite el envío de peticiones HTTP.</li>
+</ul>
+
+
+<h2>Diff y validación</h2>
+
+<ul>
+<li><a href="https://www.diffchecker.com">Diffchecker</a>: comparar dos textos en línea.</li>
+<li><a href="https://jsonformatter.curiousconcept.com/">JSON Formatter</a>: validar y formatear objetos JSON.</li>
+</ul>
+
+
+<h2>Iconos</h2>
+
+<ul>
+<li><a href="http://fontawesome.io/">Font Awesome</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Múltiples bases de datos en Django]]></title>
@@ -1809,26 +1877,6 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
 <h4>LiveReload</h4>
 
 <p><a href="https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei">https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MEL Script (Autodesk Maya): Go through hierarchy]]></title>
-    <link href="http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/"/>
-    <updated>2015-02-21T21:43:47-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy</id>
-    <content type="html"><![CDATA[<p>Add a prefix <code>myPrefix_</code> to all child elements of the joint <code>joint1</code>:</p>
-
-<div><script src='https://gist.github.com/11099336.js'></script>
-<noscript><pre><code>string $stat_element = &quot;joint1&quot;;
-select -r $stat_element;
-string $nodes[] = `ls -sl -dag`;
-for($node in $nodes){
-    rename -ignoreShape $node (&quot;myPrefix_&quot; + $node);
-}</code></pre></noscript></div>
-
-
-
 ]]></content>
   </entry>
   
