@@ -25,6 +25,7 @@ categories:
 ## Git
 
 * [GitKraken](https://www.gitkraken.com/)
+* [Bash prompt](https://github.com/Axiacore/axiacore_utils/tree/master/git-bash-prompt) para mostrar mostrar información de un repositorio Git.
 
 ## Screenshots
 
