@@ -11,6 +11,21 @@ categories:
 * [PyCharm](https://www.jetbrains.com/pycharm/): editor para Python.
 * [Sublime Text](https://www.sublimetext.com/)
 
+### Plugins para Sublime Text
+
+Para llamar [Package Control](https://packagecontrol.io/installation) desde Sublime Text: ``Control+Shift+P``, escribe "install" y selecciona ``Package Control: Install Package`` en Command Palette.
+
+* [Git](https://github.com/kemayo/sublime-text-git)
+* [GitGutter](https://github.com/jisaacks/GitGutter)
+* [Color Highlighter](https://packagecontrol.io/packages/Color%20Highlighter)
+* [SublimeLinter](https://packagecontrol.io/packages/SublimeLinter)
+* EditorConfig
+* [AngularJS](https://packagecontrol.io/packages/AngularJS)
+* Markdown Extended
+* [Лучшие плагины для Sublime Text](https://habrahabr.ru/post/235901/)
+* [Sublime Text для фронтэнд-разработчика](https://habrahabr.ru/post/244681/)
+* [33 Essential Sublime Text plugins for all developers](http://aslanbakan.com/en/blog/33-essential-sublime-text-plugins-for-all-developers/)
+
 ## Editar y compartir código en línea
 
 * [CodePen](http://codepen.io/): editor de código HTML/JS/CSS en línea.
