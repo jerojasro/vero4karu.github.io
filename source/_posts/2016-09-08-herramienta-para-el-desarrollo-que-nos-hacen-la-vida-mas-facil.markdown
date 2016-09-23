@@ -39,6 +39,7 @@ categories:
 * [Diffchecker](https://www.diffchecker.com): comparar dos textos en línea.
 * [JSON Formatter](https://jsonformatter.curiousconcept.com/): validar y formatear objetos JSON.
 
-## Iconos
+## CSS/Iconos
 
 * [Font Awesome](http://fontawesome.io/)
+* [PerfectPixel](https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi?hl=es): ayuda comparar el diseño de la página web (visuales) con el resultado del mismo en el navegador.
