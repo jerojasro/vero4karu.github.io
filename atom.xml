@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-09-23T10:50:02-05:00</updated>
+  <updated>2016-09-23T10:57:03-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -47,6 +47,7 @@
 
 <ul>
 <li><a href="https://www.gitkraken.com/">GitKraken</a></li>
+<li><a href="https://github.com/Axiacore/axiacore_utils/tree/master/git-bash-prompt">Bash prompt</a> para mostrar mostrar información de un repositorio Git.</li>
 </ul>
 
 
