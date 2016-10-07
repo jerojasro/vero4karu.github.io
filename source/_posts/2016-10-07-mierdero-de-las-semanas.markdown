@@ -20,6 +20,8 @@ Thu | 4 | 4 | 3 | 5
 Fri | 5 | 5 | 4 | 6
 Sat | 6 | 6 | 5 | 7
 
+**Java**: desde 1 (Monday) hasta 7 (Sunday) ([docs](https://docs.oracle.com/javase/8/docs/api/java/time/DayOfWeek.html))
+
 Enlaces:
 
 * [mysql: function dayofweek](https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_dayofweek)
