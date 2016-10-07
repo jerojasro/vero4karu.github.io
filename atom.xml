@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-07T12:05:48-05:00</updated>
+  <updated>2016-10-07T12:06:45-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.vero4ka.info/blog/2016/10/07/mierdero-de-las-semanas/"/>
     <updated>2016-10-07T11:53:05-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/10/07/mierdero-de-las-semanas</id>
-    <content type="html"><![CDATA[<p>Mierdero de las semanas en postgresql y Python:</p>
+    <content type="html"><![CDATA[<p>Bienvenidos al mierdero de las semanas en postgresql y Python:</p>
 
 <table>
 <thead>
