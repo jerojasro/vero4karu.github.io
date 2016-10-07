@@ -8,7 +8,7 @@ categories:
 
 
 
-Mierdero de las semanas en postgresql y Python:
+Bienvenidos al mierdero de las semanas en postgresql y Python:
 
 Día  | postgresql: `EXTRACT(DOW...)` | Python: `isoweekday()` | Python: `weekday()`
 :------------|:-------|-------------|-------------
