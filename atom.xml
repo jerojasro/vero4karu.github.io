@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-09-23T11:05:48-05:00</updated>
+  <updated>2016-10-07T12:03:47-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mierdero de las semanas]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/10/07/mierdero-de-las-semanas/"/>
+    <updated>2016-10-07T11:53:05-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/10/07/mierdero-de-las-semanas</id>
+    <content type="html"><![CDATA[<p>Mierdero de las semanas en postgresql, y :</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">Día  </th>
+<th style="text-align:left;"> postgresql: <code>EXTRACT(DOW...)</code> </th>
+<th> Python: <code>isoweekday()</code> </th>
+<th> Python: <code>weekday()</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">Sun </td>
+<td style="text-align:left;"> 0 </td>
+<td> 7 </td>
+<td> 6</td>
+</tr>
+<tr>
+<td style="text-align:left;">Mon </td>
+<td style="text-align:left;"> 1 </td>
+<td> 1 </td>
+<td> 0</td>
+</tr>
+<tr>
+<td style="text-align:left;">Tue </td>
+<td style="text-align:left;"> 2 </td>
+<td> 2 </td>
+<td> 1</td>
+</tr>
+<tr>
+<td style="text-align:left;">Wed </td>
+<td style="text-align:left;"> 3 </td>
+<td> 3 </td>
+<td> 2</td>
+</tr>
+<tr>
+<td style="text-align:left;">Thu </td>
+<td style="text-align:left;"> 4 </td>
+<td> 4 </td>
+<td> 3</td>
+</tr>
+<tr>
+<td style="text-align:left;">Fri </td>
+<td style="text-align:left;"> 5 </td>
+<td> 5 </td>
+<td> 4</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Herramientas para el desarrollo que nos hacen la vida más fácil]]></title>
@@ -1862,41 +1921,6 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
             )
     user.save()</code></pre></noscript></div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Useful Chorme extentions]]></title>
-    <link href="http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions/"/>
-    <updated>2015-03-01T18:41:53-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions</id>
-    <content type="html"><![CDATA[<h4>JSONView</h4>
-
-<p>Validate and view JSON documents.
-<a href="https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc">https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc</a></p>
-
-<h4>Postman - REST Client</h4>
-
-<p><a href="https://chrome.google.com/webstore/detail/fdmmgilgnpjigdojojpjoooidkmcomcm">https://chrome.google.com/webstore/detail/fdmmgilgnpjigdojojpjoooidkmcomcm</a></p>
-
-<h4>Evernote Web Clipper</h4>
-
-<p>Use the Evernote extension to save things you see on the web into your Evernote account.
-<a href="https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc">https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc</a></p>
-
-<h4>GistBox Clipper</h4>
-
-<p>Save code snippets from anywhere on the web. Companion extension to GistBoxApp.com.
-<a href="https://chrome.google.com/webstore/detail/cejmhmbmafamjegaebkjhnckhepgmido">https://chrome.google.com/webstore/detail/cejmhmbmafamjegaebkjhnckhepgmido</a></p>
-
-<h4>XV — XML Viewer</h4>
-
-<p>Powerful XML viewer for Google Chrome
-<a href="https://chrome.google.com/webstore/detail/eeocglpgjdpaefaedpblffpeebgmgddk">https://chrome.google.com/webstore/detail/eeocglpgjdpaefaedpblffpeebgmgddk</a></p>
-
-<h4>LiveReload</h4>
-
-<p><a href="https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei">https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei</a></p>
 ]]></content>
   </entry>
   

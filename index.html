@@ -9,8 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Editores PyCharm: editor para Python.
-Sublime Text Plugins para Sublime Text Para llamar Package Control desde Sublime Text: Control+Shift+P, escribe &hellip;">
+  <meta name="description" content="Mierdero de las semanas en postgresql, y : Día postgresql: EXTRACT(DOW...) Python: isoweekday() Python: weekday() Sun 0 7 6 Mon 1 1 0 Tue 2 2 1 Wed 3 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +78,88 @@ Sublime Text Plugins para Sublime Text Para llamar Package Control desde Sublime
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/10/07/mierdero-de-las-semanas/">Mierdero de las semanas</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-10-07T11:53:05-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:53 am</span></time>
+        
+           | <a href="/blog/2016/10/07/mierdero-de-las-semanas/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/10/07/mierdero-de-las-semanas/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mierdero de las semanas en postgresql, y :</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">Día  </th>
+<th style="text-align:left;"> postgresql: <code>EXTRACT(DOW...)</code> </th>
+<th> Python: <code>isoweekday()</code> </th>
+<th> Python: <code>weekday()</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">Sun </td>
+<td style="text-align:left;"> 0 </td>
+<td> 7 </td>
+<td> 6</td>
+</tr>
+<tr>
+<td style="text-align:left;">Mon </td>
+<td style="text-align:left;"> 1 </td>
+<td> 1 </td>
+<td> 0</td>
+</tr>
+<tr>
+<td style="text-align:left;">Tue </td>
+<td style="text-align:left;"> 2 </td>
+<td> 2 </td>
+<td> 1</td>
+</tr>
+<tr>
+<td style="text-align:left;">Wed </td>
+<td style="text-align:left;"> 3 </td>
+<td> 3 </td>
+<td> 2</td>
+</tr>
+<tr>
+<td style="text-align:left;">Thu </td>
+<td style="text-align:left;"> 4 </td>
+<td> 4 </td>
+<td> 3</td>
+</tr>
+<tr>
+<td style="text-align:left;">Fri </td>
+<td style="text-align:left;"> 5 </td>
+<td> 5 </td>
+<td> 4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1743,62 +1824,6 @@ Sublime Text Plugins para Sublime Text Para llamar Package Control desde Sublime
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-01T19:35:52-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:35 pm</span></time>
-        
-           | <a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code>:</p>
-
-<div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
-<noscript><pre><code>from django.forms.util import ErrorList
-from django import forms
-
-class ContractUpdateView(UpdateView):
-    model = Contract
-    template_name = &#39;contract/contract_form.html&#39;
-    form_class = ContractForm
-
-    def form_valid(self, form):
-        if self.request.POST.get(&#39;finish&#39;):
-            if (
-                not form.cleaned_data[&#39;number&#39;] or
-                not self.object.images.count()
-            ):
-                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList([
-                    u&#39;You have to add images and a contract number&#39;
-                ])
-                return self.form_invalid(form)
-            self.object.is_submitted = True
-        self.object = form.save()
-        return HttpResponseRedirect(self.get_success_url())</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1812,6 +1837,10 @@ class ContractUpdateView(UpdateView):
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/10/07/mierdero-de-las-semanas/">Mierdero de las semanas</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/">Herramientas para el desarrollo que nos hacen la vida más fácil</a>
@@ -1847,10 +1876,6 @@ class ContractUpdateView(UpdateView):
     
       <li class="post">
         <a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Cómo configurar PyCharm para compilar los archivos SASS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a>
       </li>
     
   </ul>
