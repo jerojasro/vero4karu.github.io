@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Bienvenidos al mierdero de las semanas en postgresql, mysql y Python: Día postgresql: EXTRACT(DOW...) Python: isoweekday() Python: weekday() mysql: &hellip;">
+  <meta name="description" content="Bienvenidos al mierdero de las semanas en postgresql, mysql y Python: Lenguaje Sun Mon Tue Wed Thu Fri Sat postgresql: EXTRACT(DOW...) 0 1 2 3 4 5 6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,74 +108,77 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left;">Día  </th>
-<th style="text-align:left;"> postgresql: <code>EXTRACT(DOW...)</code> </th>
-<th> Python: <code>isoweekday()</code> </th>
-<th> Python: <code>weekday()</code> </th>
-<th> mysql: <code>DAYOFWEEK(...)</code></th>
+<th>Lenguaje                      </th>
+<th>Sun  </th>
+<th> Mon </th>
+<th> Tue </th>
+<th> Wed </th>
+<th> Thu </th>
+<th> Fri </th>
+<th> Sat</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">Sun </td>
-<td style="text-align:left;"> 0 </td>
-<td> 7 </td>
-<td> 6 </td>
-<td> 1</td>
+<td>postgresql: <code>EXTRACT(DOW...)</code> </td>
+<td>  0  </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6</td>
 </tr>
 <tr>
-<td style="text-align:left;">Mon </td>
-<td style="text-align:left;"> 1 </td>
-<td> 1 </td>
-<td> 0 </td>
-<td> 2</td>
+<td>Python: <code>isoweekday()</code>        </td>
+<td>  7  </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6</td>
 </tr>
 <tr>
-<td style="text-align:left;">Tue </td>
-<td style="text-align:left;"> 2 </td>
-<td> 2 </td>
-<td> 1 </td>
-<td> 3</td>
+<td>Python: <code>weekday()</code>           </td>
+<td>  6  </td>
+<td>  0  </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5</td>
 </tr>
 <tr>
-<td style="text-align:left;">Wed </td>
-<td style="text-align:left;"> 3 </td>
-<td> 3 </td>
-<td> 2 </td>
-<td> 4</td>
+<td>mysql: <code>DAYOFWEEK(...)</code>       </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6  </td>
+<td>  7</td>
 </tr>
 <tr>
-<td style="text-align:left;">Thu </td>
-<td style="text-align:left;"> 4 </td>
-<td> 4 </td>
-<td> 3 </td>
-<td> 5</td>
-</tr>
-<tr>
-<td style="text-align:left;">Fri </td>
-<td style="text-align:left;"> 5 </td>
-<td> 5 </td>
-<td> 4 </td>
-<td> 6</td>
-</tr>
-<tr>
-<td style="text-align:left;">Sat </td>
-<td style="text-align:left;"> 6 </td>
-<td> 6 </td>
-<td> 5 </td>
-<td> 7</td>
+<td>Java: <code>DayOfWeek(...)</code>        </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6  </td>
+<td>  7</td>
 </tr>
 </tbody>
 </table>
 
 
-<p><strong>Java</strong>: desde 1 (Monday) hasta 7 (Sunday) (<a href="https://docs.oracle.com/javase/8/docs/api/java/time/DayOfWeek.html">docs</a>)</p>
-
 <p>Enlaces:</p>
 
 <ul>
 <li><a href="https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_dayofweek">mysql: function dayofweek</a></li>
-<li><a href="https://www.postgresql.org/docs/current/static/functions-datetime.html">postgresql: functions datetime</a></li>
+<li><a href="https://www.postgresql.org/docs/current/static/functions-datetime.html">postgresql: function datetime</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/DayOfWeek.html">java: function DayOfWeek</a></li>
 </ul>
 
 </div>
