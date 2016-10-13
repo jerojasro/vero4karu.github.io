@@ -8,7 +8,7 @@ categories:
 
 
 
-Bienvenidos al mierdero de las semanas en postgresql, mysql y Python:
+Bienvenidos al mierdero de las semanas:
 
 Lenguaje                       |Sun  | Mon | Tue | Wed | Thu | Fri | Sat
 -------------------------------|-----|-----|-----|-----|-----|-----|-----
