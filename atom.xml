@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-11T08:29:36-05:00</updated>
+  <updated>2016-10-13T11:11:00-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -23,7 +23,7 @@
 <table>
 <thead>
 <tr>
-<th>Lenguaje                      </th>
+<th>Lenguaje                       </th>
 <th>Sun  </th>
 <th> Mon </th>
 <th> Tue </th>
@@ -35,7 +35,7 @@
 </thead>
 <tbody>
 <tr>
-<td>postgresql: <code>EXTRACT(DOW...)</code> </td>
+<td>postgresql: <code>EXTRACT(DOW...)</code>  </td>
 <td>  0  </td>
 <td>  1  </td>
 <td>  2  </td>
@@ -45,7 +45,7 @@
 <td>  6</td>
 </tr>
 <tr>
-<td>Python: <code>isoweekday()</code>        </td>
+<td>Python: <code>isoweekday()</code>         </td>
 <td>  7  </td>
 <td>  1  </td>
 <td>  2  </td>
@@ -55,7 +55,7 @@
 <td>  6</td>
 </tr>
 <tr>
-<td>Python: <code>weekday()</code>           </td>
+<td>Python: <code>weekday()</code>            </td>
 <td>  6  </td>
 <td>  0  </td>
 <td>  1  </td>
@@ -65,7 +65,7 @@
 <td>  5</td>
 </tr>
 <tr>
-<td>mysql: <code>DAYOFWEEK(...)</code>       </td>
+<td>mysql: <code>DAYOFWEEK(...)</code>        </td>
 <td>  1  </td>
 <td>  2  </td>
 <td>  3  </td>
@@ -75,7 +75,17 @@
 <td>  7</td>
 </tr>
 <tr>
-<td>Java: <code>DayOfWeek(...)</code>        </td>
+<td>Java: <code>DayOfWeek(...)</code>         </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6  </td>
+<td>  7</td>
+</tr>
+<tr>
+<td>Erlang: <code>day_of_the_week(...)</code> </td>
 <td>  1  </td>
 <td>  2  </td>
 <td>  3  </td>
@@ -94,6 +104,7 @@
 <li><a href="https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_dayofweek">mysql: function dayofweek</a></li>
 <li><a href="https://www.postgresql.org/docs/current/static/functions-datetime.html">postgresql: function datetime</a></li>
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/DayOfWeek.html">java: function DayOfWeek</a></li>
+<li><a href="http://erlang.org/doc/man/calendar.html">erlang calendar</a></li>
 </ul>
 
 ]]></content>
