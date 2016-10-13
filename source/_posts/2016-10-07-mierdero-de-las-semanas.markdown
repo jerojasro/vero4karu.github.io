@@ -13,6 +13,7 @@ Bienvenidos al mierdero de las semanas en postgresql, mysql y Python:
 Lenguaje                       |Sun  | Mon | Tue | Wed | Thu | Fri | Sat
 -------------------------------|-----|-----|-----|-----|-----|-----|-----
 postgresql: `EXTRACT(DOW...)`  |  0  |  1  |  2  |  3  |  4  |  5  |  6
+ruby: `time.wday`              |  0  |  1  |  2  |  3  |  4  |  5  |  6
 Python: `isoweekday()`         |  7  |  1  |  2  |  3  |  4  |  5  |  6
 Python: `weekday()`            |  6  |  0  |  1  |  2  |  3  |  4  |  5
 mysql: `DAYOFWEEK(...)`        |  1  |  2  |  3  |  4  |  5  |  6  |  7
