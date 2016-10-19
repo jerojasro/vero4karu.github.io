@@ -34,3 +34,22 @@ class MyModel(models.Model):
     )
 ```
 
+UPDATE:
+
+For newer Django versions.
+
+```python forms.py
+from django.db import models
+
+class MyModel(models.Model):
+    STATE_CHOICES = (
+        (True, u'Yes'),
+        (False, u'No'),
+    )
+    is_active = forms.TypedChoiceField(
+        coerce=lambda x: bool(int(x)),
+        choices=((0, 'No'), (1, 'Yes')),
+        widget=forms.RadioSelect
+    )
+```
+
