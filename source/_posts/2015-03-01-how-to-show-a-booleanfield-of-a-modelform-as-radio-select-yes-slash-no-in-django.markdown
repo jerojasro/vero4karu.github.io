@@ -36,16 +36,13 @@ class MyModel(models.Model):
 
 UPDATE:
 
-For newer Django versions.
+For Django forms.
 
 ```python forms.py
-from django.db import models
 
-class MyModel(models.Model):
-    STATE_CHOICES = (
-        (True, u'Yes'),
-        (False, u'No'),
-    )
+from django import forms
+
+class MyForm(forms.Form):
     is_active = forms.TypedChoiceField(
         coerce=lambda x: bool(int(x)),
         choices=((0, 'No'), (1, 'Yes')),
