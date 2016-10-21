@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-19T08:54:49-05:00</updated>
+  <updated>2016-10-21T14:15:25-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo pasar variable desde una vista a formulario en Django]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/"/>
+    <updated>2016-10-21T14:07:56-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span>views.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MyCreateView</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
+</span><span class='line'>    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;myapp/my_form.html&#39;</span>
+</span><span class='line'>    <span class="n">form_class</span> <span class="o">=</span> <span class="n">MyForm</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">get_form_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyCreateView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_form_kwargs</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c"># La variable que queremos pasar al formulario</span>
+</span><span class='line'>        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">&#39;current_user&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">kwargs</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>forms.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>        <span class="c"># Recibir la variable y borrarla del listado de argumentos.</span>
+</span><span class='line'>        <span class="n">current_user</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;current_user&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nb">super</span><span class="p">(</span><span class="n">MyForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mierdero de las semanas]]></title>
@@ -1913,84 +1968,6 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
         return response</code></pre></noscript></div>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Django: python-social-auth configuration and pipeline to get users information]]></title>
-    <link href="http://blog.vero4ka.info/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/"/>
-    <updated>2015-03-01T18:45:21-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information</id>
-    <content type="html"><![CDATA[<p><code>python-social-auth</code> configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django.</p>
-
-<div><script src='https://gist.github.com/9899590.js'></script>
-<noscript><pre><code>def update_user_social_data(strategy, *args, **kwargs):
-    &quot;&quot;&quot;Set the name and avatar for a user only if is new.
-    &quot;&quot;&quot;
-    print &#39;update_user_social_data ::&#39;, strategy
-    if not kwargs[&#39;is_new&#39;]:
-        return
-
-    full_name = &#39;&#39;
-    backend = kwargs[&#39;backend&#39;]
-
-    user = kwargs[&#39;user&#39;]
-
-    if (
-        isinstance(backend, GoogleOAuth2)
-        or isinstance(backend, FacebookOAuth2)
-    ):
-        full_name = kwargs[&#39;response&#39;].get(&#39;name&#39;)
-    elif (
-        isinstance(backend, LinkedinOAuth)
-        or isinstance(backend, TwitterOAuth)
-    ):
-        if kwargs.get(&#39;details&#39;):
-            full_name = kwargs[&#39;details&#39;].get(&#39;fullname&#39;)
-
-    user.full_name = full_name
-
-    if isinstance(backend, GoogleOAuth2):
-        if response.get(&#39;image&#39;) and response[&#39;image&#39;].get(&#39;url&#39;):
-            url = response[&#39;image&#39;].get(&#39;url&#39;)
-            ext = url.split(&#39;.&#39;)[-1]
-            user.avatar.save(
-               &#39;{0}.{1}&#39;.format(&#39;avatar&#39;, ext),
-               ContentFile(urllib2.urlopen(url).read()),
-               save=False
-            )
-    elif isinstance(backend, FacebookOAuth2):
-        fbuid = kwargs[&#39;response&#39;][&#39;id&#39;]
-        image_name = &#39;fb_avatar_%s.jpg&#39; % fbuid
-        image_url = &#39;http://graph.facebook.com/%s/picture?type=large&#39; % fbuid
-        image_stream = urlopen(image_url)
-
-        user.avatar.save(
-            image_name,
-            ContentFile(image_stream.read()),
-        )
-    elif isinstance(backend, TwitterOAuth):
-        if kwargs[&#39;response&#39;].get(&#39;profile_image_url&#39;):
-            image_name = &#39;tw_avatar_%s.jpg&#39; % full_name
-            image_url = kwargs[&#39;response&#39;].get[&#39;profile_image_url&#39;]
-            image_stream = urlopen(image_url)
-
-            user.avatar.save(
-                image_name,
-                ContentFile(image_stream.read()),
-            )
-    elif isinstance(backend, LinkedinOAuth):
-        if kwargs[&#39;response&#39;].get(&#39;pictureUrl&#39;):
-            image_name = &#39;linked_avatar_%s.jpg&#39; % full_name
-            image_url = kwargs[&#39;response&#39;].get[&#39;pictureUrl&#39;]
-            image_stream = urlopen(image_url)
-
-            user.avatar.save(
-                image_name,
-                ContentFile(image_stream.read()),
-            )
-    user.save()</code></pre></noscript></div>
 
 ]]></content>
   </entry>

@@ -9,7 +9,19 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Bienvenidos al mierdero de las semanas: Lenguaje Sun Mon Tue Wed Thu Fri Sat postgresql: EXTRACT(DOW...) 0 1 2 3 4 5 6 ruby: time.wday 0 1 2 3 4 5 6 &hellip;">
+  <meta name="description" content="views.py1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+class MyCreateView(CreateView): model = MyModel template_name = &#39;myapp/my_form.html&#39; form_class = MyForm &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +90,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/">Cómo pasar variable desde una vista a formulario en Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-10-21T14:07:56-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>2:07 pm</span></time>
+        
+           | <a href="/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span>views.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MyCreateView</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
+</span><span class='line'>    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;myapp/my_form.html&#39;</span>
+</span><span class='line'>    <span class="n">form_class</span> <span class="o">=</span> <span class="n">MyForm</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">get_form_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyCreateView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_form_kwargs</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c"># La variable que queremos pasar al formulario</span>
+</span><span class='line'>        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">&#39;current_user&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">kwargs</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>forms.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>        <span class="c"># Recibir la variable y borrarla del listado de argumentos.</span>
+</span><span class='line'>        <span class="n">current_user</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;current_user&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nb">super</span><span class="p">(</span><span class="n">MyForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1810,68 +1900,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Cómo configurar PyCharm para compilar los archivos SASS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-29T03:10:03-05:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:10 am</span></time>
-        
-           | <a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Suponemos que tenemos un proyecto con las siguientes carpetas:</p>
-
-<pre><code>app/
-   static/
-        css/
-        sass/
-            main.sass
-            home.sass
-            variables.sass
-</code></pre>
-
-<p>y queremos que cada vez cuando editemos alguno de los archivos <code>.sass</code>, PyCharm lo compile y ponga en la carpeta <code>app/static/css/</code>:</p>
-
-<pre><code>app/
-   static/
-        css/
-            main.css
-            home.css
-        sass/
-            main.sass
-            home.sass
-            variables.sass
-</code></pre>
-
-<p>Para esto debemos ir a <code>File -&gt; Settings -&gt; File Watchers</code> y agregar un nuevo watcher, escogiendo la opción <code>SASS</code></p>
-
-<p><img src="/images/pycharm_file_watchers.png"></p>
-
-<p>y editar las configuraciones:</p>
-
-<p><img src="/images/pycharm_file_watchers_settings.png"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1885,6 +1913,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/">Cómo pasar variable desde una vista a formulario en Django</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/10/07/mierdero-de-las-semanas/">Mierdero de las semanas</a>
@@ -1920,10 +1952,6 @@
     
       <li class="post">
         <a href="/blog/2015/09/30/pruebas-para-formularios-en-django/">Pruebas para formularios en Django</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Cómo configurar PyCharm para compilar los archivos SASS</a>
       </li>
     
   </ul>

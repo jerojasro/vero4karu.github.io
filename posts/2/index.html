@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="How to raise form invalid inside form_valid method of a FormView (CreateView/UpdateView) and add an error message to non_field_errors: from django. &hellip;">
+  <meta name="description" content="Suponemos que tenemos un proyecto con las siguientes carpetas: app/ static/ css/ sass/ main.sass home.sass variables.sass y queremos que cada vez &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,68 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Cómo configurar PyCharm para compilar los archivos SASS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-06-29T03:10:03-05:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:10 am</span></time>
+        
+           | <a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suponemos que tenemos un proyecto con las siguientes carpetas:</p>
+
+<pre><code>app/
+   static/
+        css/
+        sass/
+            main.sass
+            home.sass
+            variables.sass
+</code></pre>
+
+<p>y queremos que cada vez cuando editemos alguno de los archivos <code>.sass</code>, PyCharm lo compile y ponga en la carpeta <code>app/static/css/</code>:</p>
+
+<pre><code>app/
+   static/
+        css/
+            main.css
+            home.css
+        sass/
+            main.sass
+            home.sass
+            variables.sass
+</code></pre>
+
+<p>Para esto debemos ir a <code>File -&gt; Settings -&gt; File Watchers</code> y agregar un nuevo watcher, escogiendo la opción <code>SASS</code></p>
+
+<p><img src="/images/pycharm_file_watchers.png"></p>
+
+<p>y editar las configuraciones:</p>
+
+<p><img src="/images/pycharm_file_watchers_settings.png"></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -627,107 +689,6 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/">Django: python-social-auth configuration and pipeline to get users information</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-01T18:45:21-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:45 pm</span></time>
-        
-           | <a href="/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>python-social-auth</code> configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django.</p>
-
-<div><script src='https://gist.github.com/9899590.js'></script>
-<noscript><pre><code>def update_user_social_data(strategy, *args, **kwargs):
-    &quot;&quot;&quot;Set the name and avatar for a user only if is new.
-    &quot;&quot;&quot;
-    print &#39;update_user_social_data ::&#39;, strategy
-    if not kwargs[&#39;is_new&#39;]:
-        return
-
-    full_name = &#39;&#39;
-    backend = kwargs[&#39;backend&#39;]
-
-    user = kwargs[&#39;user&#39;]
-
-    if (
-        isinstance(backend, GoogleOAuth2)
-        or isinstance(backend, FacebookOAuth2)
-    ):
-        full_name = kwargs[&#39;response&#39;].get(&#39;name&#39;)
-    elif (
-        isinstance(backend, LinkedinOAuth)
-        or isinstance(backend, TwitterOAuth)
-    ):
-        if kwargs.get(&#39;details&#39;):
-            full_name = kwargs[&#39;details&#39;].get(&#39;fullname&#39;)
-
-    user.full_name = full_name
-
-    if isinstance(backend, GoogleOAuth2):
-        if response.get(&#39;image&#39;) and response[&#39;image&#39;].get(&#39;url&#39;):
-            url = response[&#39;image&#39;].get(&#39;url&#39;)
-            ext = url.split(&#39;.&#39;)[-1]
-            user.avatar.save(
-               &#39;{0}.{1}&#39;.format(&#39;avatar&#39;, ext),
-               ContentFile(urllib2.urlopen(url).read()),
-               save=False
-            )
-    elif isinstance(backend, FacebookOAuth2):
-        fbuid = kwargs[&#39;response&#39;][&#39;id&#39;]
-        image_name = &#39;fb_avatar_%s.jpg&#39; % fbuid
-        image_url = &#39;http://graph.facebook.com/%s/picture?type=large&#39; % fbuid
-        image_stream = urlopen(image_url)
-
-        user.avatar.save(
-            image_name,
-            ContentFile(image_stream.read()),
-        )
-    elif isinstance(backend, TwitterOAuth):
-        if kwargs[&#39;response&#39;].get(&#39;profile_image_url&#39;):
-            image_name = &#39;tw_avatar_%s.jpg&#39; % full_name
-            image_url = kwargs[&#39;response&#39;].get[&#39;profile_image_url&#39;]
-            image_stream = urlopen(image_url)
-
-            user.avatar.save(
-                image_name,
-                ContentFile(image_stream.read()),
-            )
-    elif isinstance(backend, LinkedinOAuth):
-        if kwargs[&#39;response&#39;].get(&#39;pictureUrl&#39;):
-            image_name = &#39;linked_avatar_%s.jpg&#39; % full_name
-            image_url = kwargs[&#39;response&#39;].get[&#39;pictureUrl&#39;]
-            image_stream = urlopen(image_url)
-
-            user.avatar.save(
-                image_name,
-                ContentFile(image_stream.read()),
-            )
-    user.save()</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -743,6 +704,10 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/">Cómo pasar variable desde una vista a formulario en Django</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/10/07/mierdero-de-las-semanas/">Mierdero de las semanas</a>
@@ -778,10 +743,6 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
     
       <li class="post">
         <a href="/blog/2015/09/30/pruebas-para-formularios-en-django/">Pruebas para formularios en Django</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/">Cómo configurar PyCharm para compilar los archivos SASS</a>
       </li>
     
   </ul>

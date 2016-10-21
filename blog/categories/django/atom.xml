@@ -4,7 +4,7 @@
   <title><![CDATA[Category: django | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/django/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-19T08:54:49-05:00</updated>
+  <updated>2016-10-21T14:15:25-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo pasar variable desde una vista a formulario en Django]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/"/>
+    <updated>2016-10-21T14:07:56-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django</id>
+    <content type="html"><![CDATA[<pre><code class="python views.py">class MyCreateView(CreateView):
+    model = MyModel
+    template_name = 'myapp/my_form.html'
+    form_class = MyForm
+
+    def get_form_kwargs(self):
+        kwargs = super(MyCreateView, self).get_form_kwargs()
+
+        # La variable que queremos pasar al formulario
+        kwargs.update({'current_user': self.request.user})
+
+        return kwargs
+</code></pre>
+
+<pre><code class="python forms.py">class MyForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        # Recibir la variable y borrarla del listado de argumentos.
+        current_user = kwargs.pop('current_user')
+
+        super(MyForm, self).__init__(*args, **kwargs)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Múltiples bases de datos en Django]]></title>
@@ -250,7 +280,7 @@ class HistoricBook(Book):
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#115;&amp;#117;&amp;#112;&amp;#x65;&amp;#114;&amp;#117;&amp;#115;&amp;#101;&amp;#x72;&amp;#x40;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#x6d;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x73;&amp;#x75;&amp;#x70;&amp;#x65;&amp;#x72;&amp;#x75;&amp;#115;&amp;#x65;&amp;#114;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#x70;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#x6d;&lt;/a&gt;&amp;rsquo;,</span>
+</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#x3a;&amp;#x73;&amp;#117;&amp;#x70;&amp;#101;&amp;#x72;&amp;#x75;&amp;#115;&amp;#101;&amp;#x72;&amp;#64;&amp;#x65;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#108;&amp;#101;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#115;&amp;#x75;&amp;#112;&amp;#101;&amp;#114;&amp;#x75;&amp;#x73;&amp;#x65;&amp;#x72;&amp;#64;&amp;#101;&amp;#x78;&amp;#97;&amp;#109;&amp;#112;&amp;#x6c;&amp;#101;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;&lt;/a&gt;&amp;rsquo;,</span>
 </span><span class='line'>            <span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">superuser</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>            <span class="n">password</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>        <span class="p">)</span>
@@ -455,54 +485,6 @@ class ContractUpdateView(UpdateView):
         self.object = form.save()
         return HttpResponseRedirect(self.get_success_url())</code></pre></noscript></div>
 </p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to show a BooleanField of a ModelForm as radio select (yes/no) in Django]]></title>
-    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/"/>
-    <updated>2015-03-01T19:26:52-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django</id>
-    <content type="html"><![CDATA[<p>Let&rsquo;s suppose that we have a field <code>is_active</code> in our model. It is a boolean field, but in a template we want to show it as a radio select.</p>
-
-<p>In this case we just need to add <code>choices</code> attribute for the model field and then change a widget of the corresponding form:</p>
-
-<pre><code class="python forms.py">class MyForm(forms.ModelForm):
-    class Meta:
-        model = MyModel
-        widgets = {
-            'is_active': forms.RadioSelect
-        }
-</code></pre>
-
-<pre><code class="python forms.py">from django.db import models
-
-class MyModel(models.Model):
-    STATE_CHOICES = (
-        (True, u'Yes'),
-        (False, u'No'),
-    )
-    is_active = models.BooleanField(
-        verbose_name=u'Is it active?',
-        default=False,
-        choices=STATE_CHOICES,
-    )
-</code></pre>
-
-<p>UPDATE:</p>
-
-<p>For Django forms.</p>
-
-<pre><code class="python forms.py">
-from django import forms
-
-class MyForm(forms.Form):
-    is_active = forms.TypedChoiceField(
-        coerce=lambda x: bool(int(x)),
-        choices=((0, 'No'), (1, 'Yes')),
-        widget=forms.RadioSelect
-    )
-</code></pre>
 ]]></content>
   </entry>
   
