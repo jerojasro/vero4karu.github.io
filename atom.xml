@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-26T15:36:09-05:00</updated>
+  <updated>2016-10-26T16:29:55-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -154,7 +154,7 @@
 </span><span class='line'><span class="c"># The attachment</span>
 </span><span class='line'><span class="n">part</span> <span class="o">=</span> <span class="n">MIMEApplication</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 </span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Content-Disposition&#39;</span><span class="p">,</span> <span class="s">&#39;attachment&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">file_name</span><span class="p">)</span>
-</span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;text/csv; charset=UTF-8&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;application/vnd.ms-excel; charset=UTF-8&#39;</span><span class="p">)</span>
 </span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="c"># Connect to Amazon SES</span>
@@ -172,6 +172,79 @@
 </span><span class='line'>        <span class="s">&#39;Data&#39;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">(),</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If we need to create a ZIP archive first:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">zipfile</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">tempfile</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">email</span> <span class="kn">import</span> <span class="n">encoders</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span><span class="p">,</span> <span class="n">MIMEBase</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># ....</span>
+</span><span class='line'><span class="n">output</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+</span><span class='line'><span class="n">xls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Create zip file</span>
+</span><span class='line'><span class="n">zf</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">&#39;fileprefix&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s">&#39;.zip&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="nb">zip</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zf</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="nb">zip</span><span class="o">.</span><span class="n">writestr</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+</span><span class='line'><span class="nb">zip</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span class='line'><span class="n">zf</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
+</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Hi, here is your file&#39;</span>
+</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_from</span>
+</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_to</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># What a recipient sees if they don&#39;t use an email reader</span>
+</span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">preamble</span> <span class="o">=</span> <span class="s">&#39;Multipart message.</span><span class="se">\n</span><span class="s">&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># the attachment</span>
+</span><span class='line'><span class="n">part</span> <span class="o">=</span> <span class="n">MIMEBase</span><span class="p">(</span><span class="s">&#39;application&#39;</span><span class="p">,</span> <span class="s">&#39;zip&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">set_payload</span><span class="p">(</span><span class="n">zf</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span><span class='line'><span class="n">encoders</span><span class="o">.</span><span class="n">encode_base64</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
+</span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&#39;Content-Disposition&#39;</span><span class="p">,</span> <span class="s">&#39;attachment&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">filename</span><span class="o">=</span><span class="s">u&#39;{}.zip&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">),</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
+</span><span class='line'><span class="c"># ....</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
