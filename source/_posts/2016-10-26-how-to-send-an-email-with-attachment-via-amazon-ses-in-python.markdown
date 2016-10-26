@@ -66,7 +66,7 @@ msg.preamble = 'Multipart message.\n'
 # The attachment
 part = MIMEApplication(output.getvalue())
 part.add_header('Content-Disposition', 'attachment', filename=file_name)
-part.add_header('Content-Type', 'text/csv; charset=UTF-8')
+part.add_header('Content-Type', 'application/vnd.ms-excel; charset=UTF-8')
 msg.attach(part)
 
 # Connect to Amazon SES
@@ -84,4 +84,43 @@ ses.send_raw_email(
         'Data': msg.as_string(),
     }
 )
+```
+
+If we need to create a ZIP archive first:
+
+```python
+import zipfile
+import tempfile
+from email import encoders
+from email.mime.multipart import MIMEMultipart, MIMEBase
+
+# ....
+output = StringIO.StringIO()
+xls.save(output)
+
+# Create zip file
+zf = tempfile.TemporaryFile(prefix='fileprefix', suffix='.zip')
+zip = zipfile.ZipFile(zf, 'w')
+zip.writestr(file_name, output.getvalue())
+zip.close()
+zf.seek(0)
+
+msg = MIMEMultipart()
+msg['Subject'] = 'Hi, here is your file'
+msg['From'] = email_from
+msg['To'] = email_to
+
+# What a recipient sees if they don't use an email reader
+msg.preamble = 'Multipart message.\n'
+
+# the attachment
+part = MIMEBase('application', 'zip')
+part.set_payload(zf.read())
+encoders.encode_base64(part)
+part.add_header(
+    'Content-Disposition', 'attachment', 
+    filename=u'{}.zip'.format(file_name),
+)
+msg.attach(part)
+# ....
 ```
