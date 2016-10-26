@@ -14,11 +14,13 @@ email_from = 'from@example.com'
 email_to = 'to@example.com'
 
 # Create a workbook
-xls = xlwt.Workbook(style_compression=2)
+xls = xlwt.Workbook()
 # Create a sheet
 sheet = xls.add_sheet('Sheet name')
-# Set style for headers
+# Set styles for headers and dates
 header_style = xlwt.easyxf('font: bold True;')
+date_format = xlwt.XFStyle()
+date_format.num_format_str = 'dd/mm/yyyy hh:mm:ss'
 
 # Header
 labels = [
@@ -41,9 +43,6 @@ for row in range(len(content)):
             continue
         # If it's a date
         if type(data) == datetime.datetime:
-            date_format = xlwt.XFStyle()
-            data = data.replace(tzinfo=None)
-            date_format.num_format_str = 'dd/mm/yyyy hh:mm:ss'
             sheet.write(row, col, data, date_format)
         else:
             sheet.write(row, col, data)
