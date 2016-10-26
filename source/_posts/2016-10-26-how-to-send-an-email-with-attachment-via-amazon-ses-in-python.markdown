@@ -10,8 +10,14 @@ categories: Python, Amazon SES
 import xlwt
 from boto3 import client
 
+email_from = 'from@example.com'
+email_to = 'to@example.com'
+
+# Create a workbook
 xls = xlwt.Workbook(style_compression=2)
+# Create a sheet
 sheet = xls.add_sheet('Sheet name')
+# Set style for headers
 header_style = xlwt.easyxf('font: bold True;')
 
 # Header
@@ -21,6 +27,7 @@ labels = [
 ]
 content = [labels]
 
+# Get data for other rows
 for row in get_rows_with_content():
     content.append(list(row))
 
@@ -28,9 +35,11 @@ for row in get_rows_with_content():
 for row in range(len(content)):
     for col in range(len(content[row])):
         data = content[row][col]
+        # If it's a header
         if row == 0:
             sheet.write(row, col, data, header_style)
             continue
+        # If it's a date
         if type(data) == datetime.datetime:
             date_format = xlwt.XFStyle()
             data = data.replace(tzinfo=None)
@@ -39,16 +48,19 @@ for row in range(len(content)):
         else:
             sheet.write(row, col, data)
 
+# Set filename
 today = datetime.date.today()
 file_name = 'my_file_{}.xls'.format(today.strftime("%Y-%m-%d"))
 
+# Save the file
 output = StringIO.StringIO()
 xls.save(output)
 
+# Build an email
 msg = MIMEMultipart()
-msg['Subject'] = 'Hi, here is your file {}'.format(today.strftime("%Y-%m-%d"))
-msg['From'] = 'from@example.com'
-msg['To'] = 'to@example.com'
+msg['Subject'] = 'Hi, here is your file'
+msg['From'] = email_from
+msg['To'] = email_to
 msg.preamble = 'Multipart message.\n'
 
 # The attachment
@@ -57,15 +69,17 @@ part.add_header('Content-Disposition', 'attachment', filename=file_name)
 part.add_header('Content-Type', 'text/csv; charset=UTF-8')
 msg.attach(part)
 
+# Connect to Amazon SES
 ses = client(
     'ses',
     region_name='us-east-1',
-    aws_access_key_id=current_app.config['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key=current_app.config['AWS_SECRET_ACCESS_KEY'],
+    aws_access_key_id=config['AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key=config['AWS_SECRET_ACCESS_KEY'],
 )
+# And finally, send the email
 ses.send_raw_email(
-    Source=current_app.config['TAPPSI_DASHBOARD_EMAIL'],
-    Destinations=[current_user.email],
+    Source=email_from,
+    Destinations=[email_to],
     RawMessage={
         'Data': msg.as_string(),
     }
