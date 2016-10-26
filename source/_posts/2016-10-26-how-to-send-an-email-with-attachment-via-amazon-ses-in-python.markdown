@@ -60,6 +60,7 @@ msg = MIMEMultipart()
 msg['Subject'] = 'Hi, here is your file'
 msg['From'] = email_from
 msg['To'] = email_to
+# What a recipient sees if they don't use an email reader
 msg.preamble = 'Multipart message.\n'
 
 # The attachment
