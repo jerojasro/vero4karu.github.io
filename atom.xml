@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-26T14:54:08-05:00</updated>
+  <updated>2016-10-26T15:15:48-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -94,7 +94,6 @@
 <span class='line-number'>74</span>
 <span class='line-number'>75</span>
 <span class='line-number'>76</span>
-<span class='line-number'>77</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">xlwt</span>
 </span><span class='line'><span class="kn">from</span> <span class="nn">boto3</span> <span class="kn">import</span> <span class="n">client</span>
 </span><span class='line'>
@@ -102,11 +101,13 @@
 </span><span class='line'><span class="n">email_to</span> <span class="o">=</span> <span class="s">&#39;to@example.com&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="c"># Create a workbook</span>
-</span><span class='line'><span class="n">xls</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">style_compression</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="n">xls</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">()</span>
 </span><span class='line'><span class="c"># Create a sheet</span>
 </span><span class='line'><span class="n">sheet</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">&#39;Sheet name&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="c"># Set style for headers</span>
+</span><span class='line'><span class="c"># Set styles for headers and dates</span>
 </span><span class='line'><span class="n">header_style</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">easyxf</span><span class="p">(</span><span class="s">&#39;font: bold True;&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">date_format</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">XFStyle</span><span class="p">()</span>
+</span><span class='line'><span class="n">date_format</span><span class="o">.</span><span class="n">num_format_str</span> <span class="o">=</span> <span class="s">&#39;dd/mm/yyyy hh:mm:ss&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="c"># Header</span>
 </span><span class='line'><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
@@ -129,9 +130,6 @@
 </span><span class='line'>            <span class="k">continue</span>
 </span><span class='line'>        <span class="c"># If it&#39;s a date</span>
 </span><span class='line'>        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">date_format</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">XFStyle</span><span class="p">()</span>
-</span><span class='line'>            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">date_format</span><span class="o">.</span><span class="n">num_format_str</span> <span class="o">=</span> <span class="s">&#39;dd/mm/yyyy hh:mm:ss&#39;</span>
 </span><span class='line'>            <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">date_format</span><span class="p">)</span>
 </span><span class='line'>        <span class="k">else</span><span class="p">:</span>
 </span><span class='line'>            <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
