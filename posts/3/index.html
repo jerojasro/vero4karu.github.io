@@ -9,7 +9,9 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="python-social-auth configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django. def &hellip;">
+  <meta name="description" content="A view that creates a .ZIP file of multiple files and returns it in response: import os
+import zipfile
+import cStringIO as StringIO class &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +80,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/generate-zip-file-in-django/">Generate .zip file in Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T18:47:58-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:47 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/generate-zip-file-in-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/generate-zip-file-in-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A view that creates a .ZIP file of multiple files and returns it in response:</p>
+
+<div><script src='https://gist.github.com/3b1768a1cb13f7e457d4.js'></script>
+<noscript><pre><code>import os
+import zipfile
+import cStringIO as StringIO
+
+class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
+    model = Contract
+
+    def render_to_response(self, context, **httpresponse_kwargs):
+        contract = self.object
+
+        if not contract.images.exists():
+            return HttpResponseRedirect(
+                reverse(&#39;contract:contract_detail&#39;, args=(contract.id,)),
+            )
+
+        dirname = u&#39;imagenes_contrato_{0}&#39;.format(contract.number)
+        filename = u&#39;{0}.zip&#39;.format(dirname)
+
+        buffer = StringIO.StringIO()
+        z = zipfile.ZipFile(buffer, &#39;w&#39;)
+        for contract_image in contract.images.all():
+            z.write(contract_image.image.path, os.path.join(dirname, os.path.basename(contract_image.image.path)))
+        z.close()
+        buffer.seek(0)
+        response = HttpResponse(buffer.read())
+        response[&#39;Content-Disposition&#39;] = u&#39;attachment; filename={0}&#39;.format(filename)
+        response[&#39;Content-Type&#39;] = &#39;application/x-zip&#39;
+        return response</code></pre></noscript></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -448,6 +515,10 @@ class ContractUpdateView(UpdateView):
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/">How to send an email with attachment via Amazon SES in Python</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/">Cómo pasar variable desde una vista a formulario en Django</a>
       </li>
     
@@ -481,10 +552,6 @@ class ContractUpdateView(UpdateView):
     
       <li class="post">
         <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy conversions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/09/30/pruebas-para-formularios-en-django/">Pruebas para formularios en Django</a>
       </li>
     
   </ul>
