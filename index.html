@@ -218,11 +218,31 @@
 <span class='line-number'>61</span>
 <span class='line-number'>62</span>
 <span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">xlwt</span>
 </span><span class='line'><span class="kn">from</span> <span class="nn">boto3</span> <span class="kn">import</span> <span class="n">client</span>
 </span><span class='line'>
+</span><span class='line'><span class="n">email_from</span> <span class="o">=</span> <span class="s">&#39;from@example.com&#39;</span>
+</span><span class='line'><span class="n">email_to</span> <span class="o">=</span> <span class="s">&#39;to@example.com&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Create a workbook</span>
 </span><span class='line'><span class="n">xls</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">style_compression</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c"># Create a sheet</span>
 </span><span class='line'><span class="n">sheet</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">&#39;Sheet name&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="c"># Set style for headers</span>
 </span><span class='line'><span class="n">header_style</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">easyxf</span><span class="p">(</span><span class="s">&#39;font: bold True;&#39;</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="c"># Header</span>
@@ -232,6 +252,7 @@
 </span><span class='line'><span class="p">]</span>
 </span><span class='line'><span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">labels</span><span class="p">]</span>
 </span><span class='line'>
+</span><span class='line'><span class="c"># Get data for other rows</span>
 </span><span class='line'><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">get_rows_with_content</span><span class="p">():</span>
 </span><span class='line'>    <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
 </span><span class='line'>
@@ -239,9 +260,11 @@
 </span><span class='line'><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)):</span>
 </span><span class='line'>    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">row</span><span class="p">])):</span>
 </span><span class='line'>        <span class="n">data</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
+</span><span class='line'>        <span class="c"># If it&#39;s a header</span>
 </span><span class='line'>        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 </span><span class='line'>            <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header_style</span><span class="p">)</span>
 </span><span class='line'>            <span class="k">continue</span>
+</span><span class='line'>        <span class="c"># If it&#39;s a date</span>
 </span><span class='line'>        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
 </span><span class='line'>            <span class="n">date_format</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">XFStyle</span><span class="p">()</span>
 </span><span class='line'>            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
@@ -250,16 +273,19 @@
 </span><span class='line'>        <span class="k">else</span><span class="p">:</span>
 </span><span class='line'>            <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </span><span class='line'>
+</span><span class='line'><span class="c"># Set filename</span>
 </span><span class='line'><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
 </span><span class='line'><span class="n">file_name</span> <span class="o">=</span> <span class="s">&#39;my_file_{}.xls&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">))</span>
 </span><span class='line'>
+</span><span class='line'><span class="c"># Save the file</span>
 </span><span class='line'><span class="n">output</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
 </span><span class='line'><span class="n">xls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 </span><span class='line'>
+</span><span class='line'><span class="c"># Build an email</span>
 </span><span class='line'><span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Hi, here is your file {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">))</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;from@example.com&#39;</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;to@example.com&#39;</span>
+</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Hi, here is your file&#39;</span>
+</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_from</span>
+</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_to</span>
 </span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">preamble</span> <span class="o">=</span> <span class="s">&#39;Multipart message.</span><span class="se">\n</span><span class="s">&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="c"># The attachment</span>
@@ -268,15 +294,17 @@
 </span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;text/csv; charset=UTF-8&#39;</span><span class="p">)</span>
 </span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
 </span><span class='line'>
+</span><span class='line'><span class="c"># Connect to Amazon SES</span>
 </span><span class='line'><span class="n">ses</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span>
 </span><span class='line'>    <span class="s">&#39;ses&#39;</span><span class="p">,</span>
 </span><span class='line'>    <span class="n">region_name</span><span class="o">=</span><span class="s">&#39;us-east-1&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">],</span>
-</span><span class='line'>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">],</span>
 </span><span class='line'><span class="p">)</span>
+</span><span class='line'><span class="c"># And finally, send the email</span>
 </span><span class='line'><span class="n">ses</span><span class="o">.</span><span class="n">send_raw_email</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">Source</span><span class="o">=</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;TAPPSI_DASHBOARD_EMAIL&#39;</span><span class="p">],</span>
-</span><span class='line'>    <span class="n">Destinations</span><span class="o">=</span><span class="p">[</span><span class="n">current_user</span><span class="o">.</span><span class="n">email</span><span class="p">],</span>
+</span><span class='line'>    <span class="n">Source</span><span class="o">=</span><span class="n">email_from</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">Destinations</span><span class="o">=</span><span class="p">[</span><span class="n">email_to</span><span class="p">],</span>
 </span><span class='line'>    <span class="n">RawMessage</span><span class="o">=</span><span class="p">{</span>
 </span><span class='line'>        <span class="s">&#39;Data&#39;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">(),</span>
 </span><span class='line'>    <span class="p">}</span>
