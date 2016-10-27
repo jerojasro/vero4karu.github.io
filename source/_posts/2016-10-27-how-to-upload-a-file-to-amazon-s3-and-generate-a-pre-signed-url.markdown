@@ -49,7 +49,8 @@ url = s3_client.generate_presigned_url(
     ClientMethod='get_object',
     Params={
         'Bucket': s3_bucket_name,
-        'Key': s3_file_key
+        'Key': s3_file_key,
+        'ExpiresIn': 60 * 60 * 24,  # Default: 3600
     }
 )
 
