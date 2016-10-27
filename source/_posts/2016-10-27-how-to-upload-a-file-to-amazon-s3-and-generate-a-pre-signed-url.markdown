@@ -50,8 +50,8 @@ url = s3_client.generate_presigned_url(
     Params={
         'Bucket': s3_bucket_name,
         'Key': s3_file_key,
-        'ExpiresIn': 60 * 60 * 24,  # Default: 3600
-    }
+    },
+    ExpiresIn=60 * 60 * 24,  # Default: 3600
 )
 
 print(url)
