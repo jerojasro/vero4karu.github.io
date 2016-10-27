@@ -3,7 +3,7 @@ layout: post
 title: "How to send an email with attachment via Amazon SES in Python"
 date: 2016-10-26 14:19:26 -0500
 comments: true
-categories: Python, Amazon SES
+categories: Python, Amazon, SES
 ---
 
 ```python
