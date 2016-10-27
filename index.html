@@ -58,10 +58,7 @@
 47
 48
 49
-50
-51
-52
-53 &hellip;">
+import &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -130,6 +127,137 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">How to upload a file to Amazon S3 and generate a pre-signed URL</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-10-27T09:32:43-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:32 am</span></time>
+        
+           | <a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">datetime</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">StringIO</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">xlwt</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">boto3.session</span> <span class="kn">import</span> <span class="n">Session</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">boto3</span> <span class="kn">import</span> <span class="n">client</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Create a file, for examampla, a XLS workbook.</span>
+</span><span class='line'><span class="n">xls</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">()</span>
+</span><span class='line'><span class="n">ws</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">&#39;A Test Sheet&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">ws</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1234.56</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">file_name</span> <span class="o">=</span> <span class="s">&#39;example.xls&#39;</span>
+</span><span class='line'><span class="n">output</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+</span><span class='line'><span class="n">xls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Save file to S3</span>
+</span><span class='line'><span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">],</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'><span class="n">s3</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">&#39;s3&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">s3_bucket_name</span> <span class="o">=</span> <span class="s">&#39;YourBucket&#39;</span>
+</span><span class='line'><span class="n">s3_file_key</span> <span class="o">=</span> <span class="s">&#39;dir1/dir2/{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="n">s3_bucket_name</span><span class="p">)</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Key</span><span class="o">=</span><span class="n">s3_file_key</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">Body</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Generate a pre-signed URL</span>
+</span><span class='line'><span class="n">s3_client</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&#39;s3&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">region_name</span><span class="o">=</span><span class="s">&#39;us-east-1&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">],</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">generate_presigned_url</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">ClientMethod</span><span class="o">=</span><span class="s">&#39;get_object&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">Params</span><span class="o">=</span><span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;Bucket&#39;</span><span class="p">:</span> <span class="n">s3_bucket_name</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;Key&#39;</span><span class="p">:</span> <span class="n">s3_file_key</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># https://s3.amazonaws.com/YourBucket/dir1/dir2/example.xls?AWSAccessKeyId=ATPAJNUDN3ENT2I4S6EF&amp;Expires=1477582080&amp;Signature=POvreXScdYNES98SPFeAN3y12DL%3D</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1733,198 +1861,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy conversions</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-05-04T21:15:39-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:15 pm</span></time>
-        
-           | <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some examples on how to convert raw SQL to SQLAlchemy query:</p>
-
-<h3>Select all</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">text</span><span class="p">,</span> <span class="n">func</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Add labels</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">requiests</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;requests&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">requests</span>
-</span><span class='line'><span class="mi">12</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Sum</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="k">as</span> <span class="n">rides</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;books&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">books</span>
-</span><span class='line'><span class="mi">12</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Return a count of rows and distinct</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="p">(</span><span class="n">author_id</span><span class="p">))</span> <span class="k">as</span> <span class="n">authors</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">distinct</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">distinct</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">author_id</span><span class="p">))</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;authors&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Query a date range</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">b</span><span class="p">.</span><span class="n">created_at</span> <span class="o">&gt;</span> <span class="k">current_timestamp</span> <span class="o">-</span> <span class="p">(</span><span class="k">current_timestamp</span> <span class="o">-</span> <span class="nb">interval</span> <span class="s1">&#39;5 hours&#39;</span><span class="p">)::</span><span class="n">time</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">now</span><span class="p">)</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Conditional sum</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(((</span><span class="n">status</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">))::</span><span class="nb">int</span><span class="p">))</span> <span class="k">as</span> <span class="n">books</span> <span class="p">...</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy.sql.expression</span> <span class="kn">import</span> <span class="n">case</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">case</span><span class="p">([(</span><span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">in_</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">else_</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;books&#39;</span><span class="p">),</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-</span><span class='line'>    <span class="c"># ...</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>In</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">Book</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">in_</span><span class="p">((</span>
-</span><span class='line'>        <span class="n">BOOK_CONFIRMED</span><span class="p">,</span>
-</span><span class='line'>        <span class="n">BOOK_FINISHED</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">)),</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Other examples</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
-</span><span class='line'><span class="n">six_months_ago</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">books</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">),</span>
-</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">author_id</span> <span class="o">==</span> <span class="n">author</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>  <span class="c"># Filter books by author</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">six_months_ago_min</span><span class="p">,</span> <span class="n">today_max</span><span class="p">)</span>  <span class="c"># Get all books created in last six months</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1938,6 +1874,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">How to upload a file to Amazon S3 and generate a pre-signed URL</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/">How to send an email with attachment via Amazon SES in Python</a>
@@ -1973,10 +1913,6 @@
     
       <li class="post">
         <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo obtener el nombre del día de la semana en Python</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy conversions</a>
       </li>
     
   </ul>

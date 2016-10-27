@@ -9,9 +9,8 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="A view that creates a .ZIP file of multiple files and returns it in response: import os
-import zipfile
-import cStringIO as StringIO class &hellip;">
+  <meta name="description" content="from django.contrib import admin from product.forms import EquipmentForm @admin.register(Equipment)
+class EquipmentAdmin(admin.ModelAdmin): form = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,50 @@ import cStringIO as StringIO class &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">How to validate a Django form with inline formsets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T18:57:47-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:57 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div><script src='https://gist.github.com/1c065cb54baef2da79c2.js'></script>
+<noscript><pre><code>from django.contrib import admin
+
+from product.forms import EquipmentForm
+
+@admin.register(Equipment)
+class EquipmentAdmin(admin.ModelAdmin):
+    form = EquipmentForm
+    
+    inlines = [
+        EquipmentGalleryInline,
+    ]</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -515,6 +558,10 @@ class ContractUpdateView(UpdateView):
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">How to upload a file to Amazon S3 and generate a pre-signed URL</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/">How to send an email with attachment via Amazon SES in Python</a>
       </li>
     
@@ -548,10 +595,6 @@ class ContractUpdateView(UpdateView):
     
       <li class="post">
         <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo obtener el nombre del día de la semana en Python</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy conversions</a>
       </li>
     
   </ul>

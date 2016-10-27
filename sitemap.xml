@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/</loc>
+<lastmod>2016-10-27T09:32:43-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/</loc>
 <lastmod>2016-10-26T14:19:26-05:00</lastmod>
 </url>
@@ -185,5 +189,8 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/ses/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/s3/</loc>
 </url>
 </urlset>

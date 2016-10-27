@@ -9,7 +9,11 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="En esta entrada de blog quiero compartir la forma en la que escribo ruebas para formularios en un proyecto de Django. Primero vamos a instalar los &hellip;">
+  <meta name="description" content="Some examples on how to convert raw SQL to SQLAlchemy query: Select all 1
+SELECT COUNT(*) 1
+2
+&gt; from sqlalchemy import text, func
+&gt; db.session. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +82,198 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy conversions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-05-04T21:15:39-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:15 pm</span></time>
+        
+           | <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some examples on how to convert raw SQL to SQLAlchemy query:</p>
+
+<h3>Select all</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">text</span><span class="p">,</span> <span class="n">func</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Add labels</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">requiests</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;requests&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">requests</span>
+</span><span class='line'><span class="mi">12</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Sum</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="k">as</span> <span class="n">rides</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;books&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">books</span>
+</span><span class='line'><span class="mi">12</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Return a count of rows and distinct</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="p">(</span><span class="n">author_id</span><span class="p">))</span> <span class="k">as</span> <span class="n">authors</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">distinct</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">distinct</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">author_id</span><span class="p">))</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;authors&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Query a date range</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">b</span><span class="p">.</span><span class="n">created_at</span> <span class="o">&gt;</span> <span class="k">current_timestamp</span> <span class="o">-</span> <span class="p">(</span><span class="k">current_timestamp</span> <span class="o">-</span> <span class="nb">interval</span> <span class="s1">&#39;5 hours&#39;</span><span class="p">)::</span><span class="n">time</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">now</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Conditional sum</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(((</span><span class="n">status</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">))::</span><span class="nb">int</span><span class="p">))</span> <span class="k">as</span> <span class="n">books</span> <span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy.sql.expression</span> <span class="kn">import</span> <span class="n">case</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">case</span><span class="p">([(</span><span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">in_</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">else_</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;books&#39;</span><span class="p">),</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="c"># ...</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>In</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">Book</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">in_</span><span class="p">((</span>
+</span><span class='line'>        <span class="n">BOOK_CONFIRMED</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">BOOK_FINISHED</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)),</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Other examples</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+</span><span class='line'><span class="n">six_months_ago</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">books</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">author_id</span> <span class="o">==</span> <span class="n">author</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>  <span class="c"># Filter books by author</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">six_months_ago_min</span><span class="p">,</span> <span class="n">today_max</span><span class="p">)</span>  <span class="c"># Get all books created in last six months</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -855,50 +1051,6 @@ Instrucciones para instalar el módulo: <a href="http://www.ruben-arranz.es/blog
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">How to validate a Django form with inline formsets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-01T18:57:47-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:57 pm</span></time>
-        
-           | <a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><script src='https://gist.github.com/1c065cb54baef2da79c2.js'></script>
-<noscript><pre><code>from django.contrib import admin
-
-from product.forms import EquipmentForm
-
-@admin.register(Equipment)
-class EquipmentAdmin(admin.ModelAdmin):
-    form = EquipmentForm
-    
-    inlines = [
-        EquipmentGalleryInline,
-    ]</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -914,6 +1066,10 @@ class EquipmentAdmin(admin.ModelAdmin):
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">How to upload a file to Amazon S3 and generate a pre-signed URL</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/">How to send an email with attachment via Amazon SES in Python</a>
@@ -949,10 +1105,6 @@ class EquipmentAdmin(admin.ModelAdmin):
     
       <li class="post">
         <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo obtener el nombre del día de la semana en Python</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy conversions</a>
       </li>
     
   </ul>
