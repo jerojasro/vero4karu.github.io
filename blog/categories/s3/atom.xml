@@ -4,7 +4,7 @@
   <title><![CDATA[Category: s3 | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/s3/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-27T09:44:05-05:00</updated>
+  <updated>2016-10-27T09:55:52-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -60,7 +60,8 @@ url = s3_client.generate_presigned_url(
     ClientMethod='get_object',
     Params={
         'Bucket': s3_bucket_name,
-        'Key': s3_file_key
+        'Key': s3_file_key,
+        'ExpiresIn': 60 * 60 * 24,  # Default: 3600
     }
 )
 

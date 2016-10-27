@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-27T09:44:05-05:00</updated>
+  <updated>2016-10-27T09:55:52-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -66,6 +66,7 @@
 <span class='line-number'>46</span>
 <span class='line-number'>47</span>
 <span class='line-number'>48</span>
+<span class='line-number'>49</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">datetime</span>
 </span><span class='line'><span class="kn">import</span> <span class="nn">StringIO</span>
 </span><span class='line'><span class="kn">import</span> <span class="nn">xlwt</span>
@@ -108,7 +109,8 @@
 </span><span class='line'>    <span class="n">ClientMethod</span><span class="o">=</span><span class="s">&#39;get_object&#39;</span><span class="p">,</span>
 </span><span class='line'>    <span class="n">Params</span><span class="o">=</span><span class="p">{</span>
 </span><span class='line'>        <span class="s">&#39;Bucket&#39;</span><span class="p">:</span> <span class="n">s3_bucket_name</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;Key&#39;</span><span class="p">:</span> <span class="n">s3_file_key</span>
+</span><span class='line'>        <span class="s">&#39;Key&#39;</span><span class="p">:</span> <span class="n">s3_file_key</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;ExpiresIn&#39;</span><span class="p">:</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>  <span class="c"># Default: 3600</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">)</span>
 </span><span class='line'>
