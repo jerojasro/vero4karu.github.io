@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-10-27T10:13:27-05:00</updated>
+  <updated>2016-11-02T08:53:50-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -1156,6 +1156,11 @@
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;</span> <span class="n">charge_cc_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">charge_cc</span><span class="p">(</span><span class="n">cc_token</span><span class="o">=</span><span class="n">credit_card_token</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="mi">4500</span><span class="p">)</span>
 </span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">cc_charge_id</span> <span class="o">=</span> <span class="n">charge_cc_response</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span>
 </span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;charge_cc_response&#39;</span><span class="p">,</span> <span class="n">charge_cc_response</span><span class="p">)</span>
@@ -1167,7 +1172,12 @@
 </span><span class='line'>    <span class="s">&#39;tpagaFeeAmount&#39;</span><span class="p">:</span> <span class="s">&#39;868.00&#39;</span><span class="p">,</span>
 </span><span class='line'>    <span class="s">&#39;customer&#39;</span><span class="p">:</span> <span class="s">&#39;gl01l74skk0po9afrjiaaclt0hr5acsh&#39;</span><span class="p">,</span>
 </span><span class='line'>    <span class="s">&#39;iacAmount&#39;</span><span class="p">:</span> <span class="s">&#39;0.00&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s">&#39;transactionInfo&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;authorizationCode&#39;</span><span class="p">:</span> <span class="s">&#39;723045&#39;</span><span class="p">,</span> <span class="s">&#39;status&#39;</span><span class="p">:</span> <span class="s">&#39;authorized&#39;</span><span class="p">},</span>
+</span><span class='line'>    <span class="s">&#39;transactionInfo&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;authorizationCode&#39;</span><span class="p">:</span> <span class="s">&#39;723045&#39;</span><span class="p">,</span>  <span class="c"># código de transacción del banco</span>
+</span><span class='line'>        <span class="s">&#39;status&#39;</span><span class="p">:</span> <span class="s">&#39;authorized&#39;</span><span class="p">,</span>  <span class="c"># Posibles valores: created, fraudulent, </span>
+</span><span class='line'>                                 <span class="c"># settled, processor_declined, authorized,</span>
+</span><span class='line'>                                 <span class="c"># voided</span>
+</span><span class='line'>    <span class="p">},</span>
 </span><span class='line'>    <span class="s">&#39;netAmount&#39;</span><span class="p">:</span> <span class="s">&#39;3545.00&#39;</span><span class="p">,</span>
 </span><span class='line'>    <span class="s">&#39;tipAmount&#39;</span><span class="p">:</span> <span class="s">&#39;0.00&#39;</span><span class="p">,</span>
 </span><span class='line'>    <span class="s">&#39;reteIvaAmount&#39;</span><span class="p">:</span> <span class="s">&#39;0.00&#39;</span><span class="p">,</span>
