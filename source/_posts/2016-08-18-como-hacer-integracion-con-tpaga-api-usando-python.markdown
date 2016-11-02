@@ -210,7 +210,12 @@ charge_cc_response {
     'tpagaFeeAmount': '868.00', 
     'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
     'iacAmount': '0.00', 
-    'transactionInfo': {'authorizationCode': '723045', 'status': 'authorized'},
+    'transactionInfo': {
+        'authorizationCode': '723045',  # código de transacción del banco
+        'status': 'authorized',  # Posibles valores: created, fraudulent, 
+                                 # settled, processor_declined, authorized,
+                                 # voided
+    },
     'netAmount': '3545.00', 
     'tipAmount': '0.00', 
     'reteIvaAmount': '0.00', 
