@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-07T12:22:57-05:00</updated>
+  <updated>2016-12-07T13:40:58-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -1302,7 +1302,7 @@
 </span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">PAGE_DATA</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;tpaga-api-url&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;tokenize/credit_card&#39;</span><span class="p">,</span> <span class="p">{</span>
 </span><span class='line'>      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
 </span><span class='line'>      <span class="nx">beforeSend</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s2">&quot;Basic &quot;</span> <span class="o">+</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">tpaga_public_key</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span><span class="p">));</span>
+</span><span class='line'>          <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">&#39;Authorization&#39;</span><span class="p">,</span> <span class="s1">&#39;Basic &#39;</span> <span class="o">+</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">tpaga_public_key</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span><span class="p">));</span>
 </span><span class='line'>      <span class="p">},</span>
 </span><span class='line'>      <span class="nx">username</span><span class="o">:</span> <span class="nx">tpaga_public_key</span><span class="p">,</span>
 </span><span class='line'>      <span class="nx">password</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
