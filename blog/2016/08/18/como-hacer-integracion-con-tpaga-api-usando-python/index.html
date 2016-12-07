@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Tpaga es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y fácil para usar. Para obtener nuestros &hellip;">
+  <meta name="description" content="Tpaga es una plataforma que permite recibir pagos electrónicos. Tiene una estructura sencilla para entender y fácil para usar. Para obtener nuestros &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,7 +100,7 @@
   </header>
 
 
-<div class="entry-content"><p><a href="https://tpaga.co/">Tpaga</a> es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y fácil para usar.</p>
+<div class="entry-content"><p><a href="https://tpaga.co/">Tpaga</a> es una plataforma que permite recibir pagos electrónicos. Tiene una estructura sencilla para entender y fácil para usar.</p>
 
 <p>Para obtener nuestros claves de acceso y conectarnos con el API de Tpaga, creamos una cuenta en el &ldquo;sandbox&rdquo; de la plataforma: <a href="https://sandbox.tpaga.co/">sandbox.tpaga.co</a>.</p>
 
@@ -110,7 +110,7 @@
 
 <p><img src="/images/tpaga_sandbox_dashboard.png"></p>
 
-<p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjetas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjéta de crédito).</p>
+<p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjetas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjeta de crédito).</p>
 
 <p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permitirá hacer peticiones HTTP.</p>
 
@@ -225,7 +225,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>El método <code>__init__</code> nos va a inicializar nuestor cliente, <code>api_post</code> - mandar peticiones POST a la ruta especificada (<code>path</code>) del API, <code>json_from_response</code> - obtener un objeto JSON de la respuesta de API, <code>fail</code> - imprimir los detalles de la respuesta si la petición no ha terminado con éxito.</p>
+<p>El método <code>__init__</code> nos va a inicializar nuestro cliente, <code>api_post</code> - mandar peticiones POST a la ruta especificada (<code>path</code>) del API, <code>json_from_response</code> - obtener un objeto JSON de la respuesta de API, <code>fail</code> - imprimir los detalles de la respuesta si la petición no ha terminado con éxito.</p>
 
 <h3>Crear un cliente</h3>
 
@@ -277,9 +277,17 @@
 
 <p>Teniendo un token de nuestro cliente, podemos agregarle una tarjeta de crédito.</p>
 
-<h3>Registrar una tarhjeta de crédito y asociarla al cliente</h3>
+<h3>Registrar una tarjeta de crédito y asociarla al cliente</h3>
 
 <p>Creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.</p>
+
+<p>Tpaga <strong>tokenización</strong>, que nos permite registrar las tarjetas de crédito de nuestros clientes de forma segura. Los clientes ingresan los datos en nuestro sitio web, y estos datos los enviamos directamente al API de Tpaga (desde el código JavaScript), allí serán tokenizados y Tpaga nos devuelve un token temporal con el que podemos proceder con el registro de la tarjeta (desde el código Python).</p>
+
+<p>Creamos un formulario HTML para obtener los datos de la tarjeta de crédito:</p>
+
+<p><img src="/images/tpaga_credit_card_form.png"></p>
+
+<p>Para hacer un formulario bonito, usamos <a href="http://bootsnipp.com/snippets/featured/credit-card-payment-with-stripe">la plantilla de Bootstrap</a> y las librerías <a href="https://jquery.com/">jQuery</a>, <a href="https://jqueryvalidation.org/">jQuery Validation Plugin</a> y <a href="https://github.com/stripe/jquery.payment">jQuery.payment</a> para validar los datos.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -301,19 +309,323 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;credit_card_form&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">name=</span><span class="s">&quot;credit_card_form&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-12&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span> <span class="na">id=</span><span class="s">&quot;div_id_primaryAccountNumber&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label requiredField&quot;</span> <span class="na">for=</span><span class="s">&quot;id_primaryAccountNumber&quot;</span><span class="nt">&gt;</span>Número de la tarjeta<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-group&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;textinput textInput form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;id_primaryAccountNumber&quot;</span> <span class="na">name=</span><span class="s">&quot;primaryAccountNumber&quot;</span> <span class="na">required=</span><span class="s">&quot;&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;input-group-addon&quot;</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">&quot;fa fa-credit-card&quot;</span><span class="nt">&gt;&lt;/i&gt;&lt;/span&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-12&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span> <span class="na">id=</span><span class="s">&quot;div_id_cardHolderName&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label requiredField&quot;</span> <span class="na">for=</span><span class="s">&quot;id_cardHolderName&quot;</span><span class="nt">&gt;</span>Nombre del tarjetahabiente<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;textinput textInput form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;id_cardHolderName&quot;</span> <span class="na">name=</span><span class="s">&quot;cardHolderName&quot;</span> <span class="na">required=</span><span class="s">&quot;&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-3&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span> <span class="na">id=</span><span class="s">&quot;div_id_expirationMonth&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label requiredField&quot;</span> <span class="na">for=</span><span class="s">&quot;id_expirationMonth&quot;</span><span class="nt">&gt;</span>Fecha de expiración<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;select form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;id_expirationMonth&quot;</span> <span class="na">name=</span><span class="s">&quot;expirationMonth&quot;</span> <span class="na">required=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;01&quot;</span><span class="nt">&gt;</span>Enero<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;02&quot;</span><span class="nt">&gt;</span>Febrero<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;03&quot;</span><span class="nt">&gt;</span>Marzo<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;04&quot;</span><span class="nt">&gt;</span>Abril<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;05&quot;</span><span class="nt">&gt;</span>Mayo<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;06&quot;</span><span class="nt">&gt;</span>Junio<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;07&quot;</span><span class="nt">&gt;</span>Julio<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;08&quot;</span><span class="nt">&gt;</span>Agosto<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;09&quot;</span><span class="nt">&gt;</span>Septiembre<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>Octubre<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;11&quot;</span><span class="nt">&gt;</span>Noviembre<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;12&quot;</span><span class="nt">&gt;</span>Diciembre<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-3&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span> <span class="na">id=</span><span class="s">&quot;div_id_expirationYear&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label requiredField&quot;</span> <span class="na">for=</span><span class="s">&quot;id_expirationYear&quot;</span><span class="nt">&gt;</span>Año<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;select form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;id_expirationYear&quot;</span> <span class="na">name=</span><span class="s">&quot;expirationYear&quot;</span> <span class="na">required=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2016&quot;</span><span class="nt">&gt;</span>2016<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2017&quot;</span><span class="nt">&gt;</span>2017<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2018&quot;</span><span class="nt">&gt;</span>2018<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2019&quot;</span><span class="nt">&gt;</span>2019<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2020&quot;</span><span class="nt">&gt;</span>2020<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2021&quot;</span><span class="nt">&gt;</span>2021<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2022&quot;</span><span class="nt">&gt;</span>2022<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2023&quot;</span><span class="nt">&gt;</span>2023<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2024&quot;</span><span class="nt">&gt;</span>2024<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2025&quot;</span><span class="nt">&gt;</span>2025<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-3 pull-right&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span> <span class="na">id=</span><span class="s">&quot;div_id_cvc&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label requiredField&quot;</span> <span class="na">for=</span><span class="s">&quot;id_cvc&quot;</span><span class="nt">&gt;</span>CVC<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;textinput textInput form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;id_cvc&quot;</span> <span class="na">maxlength=</span><span class="s">&quot;10&quot;</span> <span class="na">name=</span><span class="s">&quot;cvc&quot;</span> <span class="na">required=</span><span class="s">&quot;&quot;</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;buttonHolder&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary bg-purple&quot;</span> <span class="na">id=</span><span class="s">&quot;submit-id-submit&quot;</span> <span class="na">name=</span><span class="s">&quot;submit&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Guardar&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Al final, tenemos un formulario con los siguientes campos:</p>
+
+<ul>
+<li><code>primaryAccountNumber</code> para el número de la tarjeta,</li>
+<li><code>cardHolderName</code> para el nombre del tarjetahabiente,</li>
+<li><code>expirationMonth</code> para el mes de expiación,</li>
+<li><code>expirationYear</code> para el año de expiación,</li>
+<li><code>cvc</code> para el código CVC.</li>
+</ul>
+
+
+<p>Creamos otro formulario oculto que mandaría el token temporal a nuestro servidor:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;associate_customer_cc_form&quot;</span> <span class="na">action=</span><span class="s">&quot;/asociar-cliente-tarjeta-credito&quot;</span> <span class="na">method=</span><span class="s">&quot;POST&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;tmp_cc_token&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">PAGE_DATA</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">serializeObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">serializeArray</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">if</span> <span class="p">(</span><span class="nx">o</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">o</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">].</span><span class="nx">push</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="nx">o</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">o</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">]];</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>              <span class="nx">o</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">o</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">associate_customer_cc</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">text_status</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[name=&quot;tmp_cc_token&quot;]&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">token</span><span class="p">);</span>
+</span><span class='line'>      <span class="c1">// Enviar el token temporal a nuestro servidor</span>
+</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#associate_customer_cc_form&#39;</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">show_errors</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">text_status</span><span class="p">,</span> <span class="nx">error_thrown</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Mostrar errores de validación</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">401</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.payment-errors&#39;</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;.row&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+</span><span class='line'>          <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.payment-errors&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Error de autenticación a la plataforma de pagos.&#39;</span><span class="p">);</span>
+</span><span class='line'>          <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">422</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.payment-errors&#39;</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;.row&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+</span><span class='line'>          <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.payment-errors&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Datos erróneos en el campo &#39;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form label[for=&quot;id_&#39;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">field</span> <span class="o">+</span> <span class="s1">&#39;&quot;]&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()));</span>
+</span><span class='line'>          <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">tokenize_credit_card</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.payment-errors&#39;</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;.row&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.payment-errors&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">tpaga_public_key</span> <span class="o">=</span> <span class="nx">PAGE_DATA</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;tpaga-public-key&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Enviar los datos de la tarjeta directamente a Tpaga y obtener el token temporal</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">PAGE_DATA</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;tpaga-api-url&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;tokenize/credit_card&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">beforeSend</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s2">&quot;Basic &quot;</span> <span class="o">+</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">tpaga_public_key</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span><span class="p">));</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">username</span><span class="o">:</span> <span class="nx">tpaga_public_key</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">password</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form&#39;</span><span class="p">).</span><span class="nx">serializeObject</span><span class="p">()),</span>
+</span><span class='line'>      <span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">success</span><span class="o">:</span> <span class="nx">associate_customer_cc</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">error</span><span class="o">:</span> <span class="nx">show_errors</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#credit_card_form&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span> <span class="nx">tokenize_credit_card</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>donde <code>tpaga_public_key</code> es <strong>la llave PÚBLICA</strong> que copiamos desde el dashboard de Tpaga.</p>
+
+<p>Ahora usando el token temporal de la tarjeta (<code>tmp_cc_token</code>) podemos asociarla al cliente:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">TpagaTestClient</span><span class="p">:</span>
 </span><span class='line'>    <span class="c"># ...</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">tokenize_cc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cc_name</span><span class="p">,</span> <span class="n">expiry_month</span><span class="p">,</span> <span class="n">expiry_year</span><span class="p">,</span> <span class="n">cc_num</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">ccdata</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>            <span class="s">&#39;primaryAccountNumber&#39;</span><span class="p">:</span> <span class="n">cc_num</span><span class="p">,</span>
-</span><span class='line'>            <span class="s">&#39;expirationMonth&#39;</span><span class="p">:</span> <span class="n">expiry_month</span><span class="p">,</span>
-</span><span class='line'>            <span class="s">&#39;expirationYear&#39;</span><span class="p">:</span> <span class="n">expiry_year</span><span class="p">,</span>
-</span><span class='line'>            <span class="s">&#39;cardHolderName&#39;</span><span class="p">:</span> <span class="n">cc_name</span><span class="p">,</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_post</span><span class="p">(</span><span class="s">&#39;tokenize/credit_card&#39;</span><span class="p">,</span> <span class="n">ccdata</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">public_token</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">json_from_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">assoc_cc_to_customer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_token</span><span class="p">,</span> <span class="n">cc_temp_token</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 </span><span class='line'>        <span class="n">cdata</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;token&#39;</span><span class="p">:</span> <span class="n">cc_temp_token</span> <span class="p">}</span>
@@ -334,19 +646,7 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;</span> <span class="n">tokenized_credit_card</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">tokenize_cc</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">cc_name</span><span class="o">=</span><span class="s">&#39;Pepito Perez&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">expiry_month</span><span class="o">=</span><span class="s">&quot;08&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">expiry_year</span><span class="o">=</span><span class="s">&quot;2020&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">cc_num</span><span class="o">=</span><span class="s">&#39;4111111111111111&#39;</span><span class="p">,</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">cc_temp_token</span> <span class="o">=</span> <span class="n">tokenized_credit_card</span><span class="p">[</span><span class="s">&#39;token&#39;</span><span class="p">]</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;</span> <span class="n">cc_temp_token</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s">&#39;tmp_cc_token&#39;</span><span class="p">]</span>
 </span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">credit_card</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">assoc_cc_to_customer</span><span class="p">(</span>
 </span><span class='line'>    <span class="n">customer_token</span><span class="o">=</span><span class="n">customer_token</span><span class="p">,</span>
 </span><span class='line'>    <span class="n">cc_temp_token</span><span class="o">=</span><span class="n">cc_temp_token</span><span class="p">,</span>
@@ -560,8 +860,9 @@
 
 <ul>
 <li>Documentación de Tpaga: <a href="https://tpaga.co/docs/swaggers/v2">tpaga.co/docs/swaggers/v2</a></li>
-<li>Tpaga FAQ <a href="https://tpaga.zendesk.com/hc/es">tpaga.zendesk.com/hc/es</a></li>
+<li>Tpaga FAQ: <a href="https://tpaga.zendesk.com/hc/es">tpaga.zendesk.com/hc/es</a></li>
 <li>Documentación para la librería <a href="http://docs.python-requests.org/en/master/">Requests: HTTP for Humans</a></li>
+<li>Un ejemplo de integración con Tpaga usando PHP/JavaScript: <a href="https://github.com/Tpaga/tpaga-php-example-backend/">Tpaga/tpaga-php-example-backend</a></li>
 </ul>
 
 
