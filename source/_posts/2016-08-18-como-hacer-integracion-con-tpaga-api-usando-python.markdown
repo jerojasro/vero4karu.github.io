@@ -6,7 +6,7 @@ comments: true
 categories: [Python, Tpaga, API, requests]
 ---
 
-[Tpaga](https://tpaga.co/) es una plataforma que permite recibir pagos electrónicos. Tiene una esctuctura sencilla para entender y fácil para usar.
+[Tpaga](https://tpaga.co/) es una plataforma que permite recibir pagos electrónicos. Tiene una estructura sencilla para entender y fácil para usar.
 
 Para obtener nuestros claves de acceso y conectarnos con el API de Tpaga, creamos una cuenta en el "sandbox" de la plataforma: [sandbox.tpaga.co](https://sandbox.tpaga.co/).
 
@@ -16,7 +16,7 @@ Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para l
 
 {% img /images/tpaga_sandbox_dashboard.png %}
 
-Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjetas de crédito) asociados a los Clientes y **Charges** (Transacciónes o cobros por tarjéta de crédito).
+Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjetas de crédito) asociados a los Clientes y **Charges** (Transacciónes o cobros por tarjeta de crédito).
 
 Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería `requests` que nos permitirá hacer peticiones HTTP.
 
@@ -83,7 +83,7 @@ class TpagaTestClient:
 
 ```
 
-El método `__init__` nos va a inicializar nuestor cliente, `api_post` - mandar peticiones POST a la ruta especificada (`path`) del API, `json_from_response` - obtener un objeto JSON de la respuesta de API, `fail` - imprimir los detalles de la respuesta si la petición no ha terminado con éxito.
+El método `__init__` nos va a inicializar nuestro cliente, `api_post` - mandar peticiones POST a la ruta especificada (`path`) del API, `json_from_response` - obtener un objeto JSON de la respuesta de API, `fail` - imprimir los detalles de la respuesta si la petición no ha terminado con éxito.
 
 ### Crear un cliente
 
@@ -118,24 +118,193 @@ En el dashboard de Tpaga podemos asegurarnos de que el ciente ["Horns and Hoofs"
 
 Teniendo un token de nuestro cliente, podemos agregarle una tarjeta de crédito.
 
-### Registrar una tarhjeta de crédito y asociarla al cliente
+### Registrar una tarjeta de crédito y asociarla al cliente
 
 Creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.
+
+Tpaga **tokenización**, que nos permite registrar las tarjetas de crédito de nuestros clientes de forma segura. Los clientes ingresan los datos en nuestro sitio web, y estos datos los enviamos directamente al API de Tpaga (desde el código JavaScript), allí serán tokenizados y Tpaga nos devuelve un token temporal con el que podemos proceder con el registro de la tarjeta (desde el código Python).
+
+Creamos un formulario HTML para obtener los datos de la tarjeta de crédito:
+
+{% img /images/tpaga_credit_card_form.png %}
+
+Para hacer un formulario bonito, usamos [la plantilla de Bootstrap](http://bootsnipp.com/snippets/featured/credit-card-payment-with-stripe) y las librerías [jQuery](https://jquery.com/), [jQuery Validation Plugin](https://jqueryvalidation.org/) y [jQuery.payment](https://github.com/stripe/jquery.payment) para validar los datos.
+
+```html
+<form id="credit_card_form" method="post" name="credit_card_form">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group" id="div_id_primaryAccountNumber">
+          <label class="control-label requiredField" for="id_primaryAccountNumber">Número de la tarjeta</label>
+          <div class="controls">
+            <div class="input-group">
+              <input class="textinput textInput form-control" id="id_primaryAccountNumber" name="primaryAccountNumber" required="" type="text"> <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group" id="div_id_cardHolderName">
+          <label class="control-label requiredField" for="id_cardHolderName">Nombre del tarjetahabiente</label>
+          <div class="controls">
+            <input class="textinput textInput form-control" id="id_cardHolderName" name="cardHolderName" required="" type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="form-group" id="div_id_expirationMonth">
+          <label class="control-label requiredField" for="id_expirationMonth">Fecha de expiración</label>
+          <div class="controls">
+            <select class="select form-control" id="id_expirationMonth" name="expirationMonth" required="">
+              <option value="01">Enero</option>
+              <option value="02">Febrero</option>
+              <option value="03">Marzo</option>
+              <option value="04">Abril</option>
+              <option value="05">Mayo</option>
+              <option value="06">Junio</option>
+              <option value="07">Julio</option>
+              <option value="08">Agosto</option>
+              <option value="09">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="form-group" id="div_id_expirationYear">
+          <label class="control-label requiredField" for="id_expirationYear">Año</label>
+          <div class="controls">
+            <select class="select form-control" id="id_expirationYear" name="expirationYear" required="">
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-3 pull-right">
+        <div class="form-group" id="div_id_cvc">
+          <label class="control-label requiredField" for="id_cvc">CVC</label>
+          <div class="controls">
+            <input class="textinput textInput form-control" id="id_cvc" maxlength="10" name="cvc" required="" type="password">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buttonHolder">
+      <input class="btn btn-primary bg-purple" id="submit-id-submit" name="submit" type="submit" value="Guardar"> 
+    </div>
+</form>
+```
+
+Al final, tenemos un formulario con los siguientes campos:
+
+* `primaryAccountNumber` para el número de la tarjeta,
+* `cardHolderName` para el nombre del tarjetahabiente,
+* `expirationMonth` para el mes de expiación,
+* `expirationYear` para el año de expiación,
+* `cvc` para el código CVC.
+
+Creamos otro formulario oculto que mandaría el token temporal a nuestro servidor:
+
+```html
+<form id="associate_customer_cc_form" action="/asociar-cliente-tarjeta-credito" method="POST">
+  <input type="hidden" name="tmp_cc_token">
+</form>
+```
+
+```javascript
+$(function () {
+  'use strict';
+
+  var PAGE_DATA = $('#credit_card');
+
+  $.fn.serializeObject = function() {
+      var o = {};
+      var a = this.serializeArray();
+      $.each(a, function() {
+          if (o[this.name] !== undefined) {
+              if (!o[this.name].push) {
+                  o[this.name] = [o[this.name]];
+              }
+              o[this.name].push(this.value || '');
+          } else {
+              o[this.name] = this.value || '';
+          }
+      });
+      return o;
+  };
+
+  function associate_customer_cc(data, text_status, request) {
+      $('[name="tmp_cc_token"]').val(data.token);
+      // Enviar el token temporal a nuestro servidor
+      $('#associate_customer_cc_form').submit();
+  }
+
+  function show_errors(request, text_status, error_thrown) {
+      // Mostrar errores de validación
+      if (request.status == 401) {
+          $('#credit_card_form').find('.payment-errors').closest('.row').show();
+          $('#credit_card_form').find('.payment-errors').text('Error de autenticación a la plataforma de pagos.');
+          return;
+      }
+      if (request.status == 422) {
+          var data = JSON.parse(request.responseText);
+          console.log(data);
+          $('#credit_card_form').find('.payment-errors').closest('.row').show();
+          $('#credit_card_form').find('.payment-errors').text('Datos erróneos en el campo ' + $.trim($('#credit_card_form label[for="id_' + data.errors[0].field + '"]').text()));
+          return;
+      }
+  }
+
+  function tokenize_credit_card() {
+    $('#credit_card_form').find('.payment-errors').closest('.row').hide();
+    $('#credit_card_form').find('.payment-errors').text('');
+
+    var tpaga_public_key = PAGE_DATA.data('tpaga-public-key');
+    
+    // Enviar los datos de la tarjeta directamente a Tpaga y obtener el token temporal
+    $.ajax(PAGE_DATA.data('tpaga-api-url') + 'tokenize/credit_card', {
+      method: 'POST',
+      beforeSend: function (xhr) {
+          xhr.setRequestHeader("Authorization", "Basic " + btoa(tpaga_public_key + ":"));
+      },
+      username: tpaga_public_key,
+      password: '',
+      data: JSON.stringify($('#credit_card_form').serializeObject()),
+      contentType: 'application/json',
+      dataType: 'json',
+      success: associate_customer_cc,
+      error: show_errors
+    });
+    return false;
+  }
+
+  $('#credit_card_form').on('submit', tokenize_credit_card);
+
+});
+```
+
+donde `tpaga_public_key` es **la llave PÚBLICA** que copiamos desde el dashboard de Tpaga.
+
+Ahora usando el token temporal de la tarjeta (`tmp_cc_token`) podemos asociarla al cliente:
 
 ```python
 class TpagaTestClient:
     # ...
-
-    def tokenize_cc(self, cc_name, expiry_month, expiry_year, cc_num):
-        ccdata = {
-            'primaryAccountNumber': cc_num,
-            'expirationMonth': expiry_month,
-            'expirationYear': expiry_year,
-            'cardHolderName': cc_name,
-        }
-        response = self.api_post('tokenize/credit_card', ccdata, token=self.public_token)
-        return self.json_from_response(response)
-
 
     def assoc_cc_to_customer(self, customer_token, cc_temp_token=None):
         cdata = {'token': cc_temp_token }
@@ -146,13 +315,7 @@ class TpagaTestClient:
 ```
 
 ```python
->> tokenized_credit_card = client.tokenize_cc(
-    cc_name='Pepito Perez', 
-    expiry_month="08", 
-    expiry_year="2020", 
-    cc_num='4111111111111111',
-)
->> cc_temp_token = tokenized_credit_card['token']
+>> cc_temp_token = request.POST['tmp_cc_token']
 >> credit_card = client.assoc_cc_to_customer(
     customer_token=customer_token, 
     cc_temp_token=cc_temp_token,
@@ -279,8 +442,9 @@ El JSON que nos devolvió Tpaga `transactionInfo.status` aparece como `voided` y
 Enlaces:
 
 * Documentación de Tpaga: [tpaga.co/docs/swaggers/v2](https://tpaga.co/docs/swaggers/v2)
-* Tpaga FAQ [tpaga.zendesk.com/hc/es](https://tpaga.zendesk.com/hc/es)
+* Tpaga FAQ: [tpaga.zendesk.com/hc/es](https://tpaga.zendesk.com/hc/es)
 * Documentación para la librería [Requests: HTTP for Humans](http://docs.python-requests.org/en/master/)
+* Un ejemplo de integración con Tpaga usando PHP/JavaScript: [Tpaga/tpaga-php-example-backend](https://github.com/Tpaga/tpaga-php-example-backend/)
 
 Muchas gracias a [@jerojasro](https://twitter.com/jerojasro) por su ayuda y paciencia.
 
