@@ -28,7 +28,7 @@ Tpaga, como muchos otros sitios web, acepta la autenticación mediante HTTP Basi
 
 ```python
 >>> import requests
->>> TPAGA_PRIVATE_TOKEN = 'pk_test_qvbvuthlvqpijnr0elmtg5jh'
+>>> TPAGA_PRIVATE_TOKEN = 'd13fr8n7vhvkuch3lq2ds5qhjnd2pdd2'
 >>> tpaga_url = 'https://sandbox.tpaga.co/api/customer'
 >>> requests.post(tpaga_url, json={}, auth=(TPAGA_PRIVATE_TOKEN, ''))
 <Response [201]>
@@ -40,21 +40,17 @@ Escribimos un cliente sencillo que nos permitirá conectarse al API de Tpaga y m
 from urllib import parse as urlparse
 import requests
 
-TPAGA_PRIVATE_TOKEN = 'pk_test_qvbvuthlvqpijnr0elmtg5jh'
-TPAGA_PUBLIC_TOKEN = 'd13fr8n7vhvkuch3lq2ds5qhjnd2pdd2'
+TPAGA_PRIVATE_TOKEN = 'd13fr8n7vhvkuch3lq2ds5qhjnd2pdd2'
 TPAGA_API_URL = 'https://sandbox.tpaga.co/api/'
 
 class TpagaTestClient:
     def __init__(
             self,
             private_token=TPAGA_PRIVATE_TOKEN,
-            public_token=TPAGA_PUBLIC_TOKEN,
             base_url=TPAGA_API_URL,
     ):
         self.base_url = base_url
         self.private_token = private_token
-        self.public_token = public_token
-
 
     def api_post(self, path, data, token=None):
         if not token:
