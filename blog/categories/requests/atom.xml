@@ -4,7 +4,7 @@
   <title><![CDATA[Category: requests | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/requests/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-07T11:45:24-05:00</updated>
+  <updated>2016-12-07T11:47:50-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -233,7 +233,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 &lt;/form&gt;
 </code></pre>
 
-<p>En el código JavaScript obtenemos los datos de la tarjeta de crédito y los enviamos al endpoint de Tpaga <code>tokenize/credit_card</code>. Este endpoint convierte los datos sensibles de la tarjeta en un token, el cual será empleado para ejecutar el procesamiento de las transacciones sin necesidad que los datos sensibles del tarjetahabiente pasen por nuestro servidor. SI la información de la tarjeta tiene errores</p>
+<p>En el código JavaScript obtenemos los datos de la tarjeta de crédito y los enviamos al endpoint de Tpaga <code>tokenize/credit_card</code>. Este endpoint convierte los datos sensibles de la tarjeta en un token, el cual será empleado para ejecutar el procesamiento de las transacciones sin necesidad que los datos sensibles del tarjetahabiente pasen por nuestro servidor. Si la información de la tarjeta tiene errores, Tpaga nos devuelve un JSON con el nombre de campo y el mensaje de error, y en el caso contrario - token temporal de la tarjeta.</p>
 
 <pre><code class="javascript">$(function () {
   'use strict';
