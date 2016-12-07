@@ -127,7 +127,7 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">TPAGA_PRIVATE_TOKEN</span> <span class="o">=</span> <span class="s">&#39;pk_test_qvbvuthlvqpijnr0elmtg5jh&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">TPAGA_PRIVATE_TOKEN</span> <span class="o">=</span> <span class="s">&#39;d13fr8n7vhvkuch3lq2ds5qhjnd2pdd2&#39;</span>
 </span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">tpaga_url</span> <span class="o">=</span> <span class="s">&#39;https://sandbox.tpaga.co/api/customer&#39;</span>
 </span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">tpaga_url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{},</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">TPAGA_PRIVATE_TOKEN</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">))</span>
 </span><span class='line'><span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">201</span><span class="p">]</span><span class="o">&gt;</span>
@@ -175,28 +175,20 @@
 <span class='line-number'>37</span>
 <span class='line-number'>38</span>
 <span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">parse</span> <span class="k">as</span> <span class="n">urlparse</span>
 </span><span class='line'><span class="kn">import</span> <span class="nn">requests</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">TPAGA_PRIVATE_TOKEN</span> <span class="o">=</span> <span class="s">&#39;pk_test_qvbvuthlvqpijnr0elmtg5jh&#39;</span>
-</span><span class='line'><span class="n">TPAGA_PUBLIC_TOKEN</span> <span class="o">=</span> <span class="s">&#39;d13fr8n7vhvkuch3lq2ds5qhjnd2pdd2&#39;</span>
+</span><span class='line'><span class="n">TPAGA_PRIVATE_TOKEN</span> <span class="o">=</span> <span class="s">&#39;d13fr8n7vhvkuch3lq2ds5qhjnd2pdd2&#39;</span>
 </span><span class='line'><span class="n">TPAGA_API_URL</span> <span class="o">=</span> <span class="s">&#39;https://sandbox.tpaga.co/api/&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">class</span> <span class="nc">TpagaTestClient</span><span class="p">:</span>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
 </span><span class='line'>            <span class="bp">self</span><span class="p">,</span>
 </span><span class='line'>            <span class="n">private_token</span><span class="o">=</span><span class="n">TPAGA_PRIVATE_TOKEN</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">public_token</span><span class="o">=</span><span class="n">TPAGA_PUBLIC_TOKEN</span><span class="p">,</span>
 </span><span class='line'>            <span class="n">base_url</span><span class="o">=</span><span class="n">TPAGA_API_URL</span><span class="p">,</span>
 </span><span class='line'>    <span class="p">):</span>
 </span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">base_url</span>
 </span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">private_token</span> <span class="o">=</span> <span class="n">private_token</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">public_token</span> <span class="o">=</span> <span class="n">public_token</span>
-</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">api_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 </span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span>
