@@ -4,7 +4,7 @@
   <title><![CDATA[Category: requests | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/requests/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-07T14:18:14-05:00</updated>
+  <updated>2016-12-07T14:49:18-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -30,7 +30,7 @@
 
 <p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjetas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjeta de crédito).</p>
 
-<p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería <code>requests</code> que nos permitirá hacer peticiones HTTP.</p>
+<p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro programa en Python. Primero instalamos la librería <code>requests</code> que nos permitirá hacer peticiones HTTP.</p>
 
 <pre><code class="bash">$ pip install requests
 </code></pre>
@@ -44,7 +44,7 @@
 &lt;Response [201]&gt;
 </code></pre>
 
-<p>Escribimos un cliente sencillo que nos permitirá conectarse al API de Tpaga y mandar peticiones:</p>
+<p>Escribimos un código sencillo que nos permitirá conectarse al API de Tpaga y mandar peticiones:</p>
 
 <pre><code class="python">from urllib import parse as urlparse
 import requests
@@ -91,7 +91,7 @@ class TpagaTestClient:
 
 <h3>Crear un cliente</h3>
 
-<p>Para crear nuestor cliente, vamos a enviar una petición POST al endpoint <code>/customer</code>:</p>
+<p>Para crear nuestro cliente, vamos a enviar una petición POST al endpoint <code>/customer</code>:</p>
 
 <pre><code class="python">class TpagaTestClient:
     # ...
