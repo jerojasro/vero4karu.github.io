@@ -232,8 +232,6 @@ En el código JavaScript obtenemos los datos de la tarjeta de crédito y los env
 $(function () {
   'use strict';
 
-  var PAGE_DATA = $('#credit_card');
-
   $.fn.serializeObject = function() {
       var o = {};
       var a = this.serializeArray();
@@ -276,10 +274,10 @@ $(function () {
     $('#credit_card_form').find('.payment-errors').closest('.row').hide();
     $('#credit_card_form').find('.payment-errors').text('');
 
-    var tpaga_public_key = PAGE_DATA.data('tpaga-public-key');
+    var tpaga_public_key = 'pk_test_qvbvuthlvqpijnr0elmtg5jh';
     
     // Enviar los datos de la tarjeta directamente a Tpaga y obtener el token temporal
-    $.ajax(PAGE_DATA.data('tpaga-api-url') + 'tokenize/credit_card', {
+    $.ajax('https://sandbox.tpaga.co/api/tokenize/credit_card', {
       method: 'POST',
       beforeSend: function (xhr) {
           xhr.setRequestHeader('Authorization', 'Basic ' + btoa(tpaga_public_key + ':'));
