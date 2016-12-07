@@ -263,7 +263,6 @@ $(function () {
       }
       if (request.status == 422) {
           var data = JSON.parse(request.responseText);
-          console.log(data);
           $('#credit_card_form').find('.payment-errors').closest('.row').show();
           $('#credit_card_form').find('.payment-errors').text('Datos erróneos en el campo ' + $.trim($('#credit_card_form label[for="id_' + data.errors[0].field + '"]').text()));
           return;
