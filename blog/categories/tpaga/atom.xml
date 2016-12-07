@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tpaga | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/tpaga/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-07T14:49:18-05:00</updated>
+  <updated>2016-12-07T15:08:01-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -104,6 +104,7 @@ class TpagaTestClient:
 <pre><code class="python">&gt;&gt; client = TpagaTestClient()
 &gt;&gt; customer = client.create_customer({
     'firstName': 'Horns and Hoofs',
+    'lastName': 'Perez',
     'email': 'hornsandhoofs@example.com',
     'phone': '012345678'
 })
@@ -122,7 +123,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 
 <h3>Registrar una tarjeta de crédito y asociarla al cliente</h3>
 
-<p>Creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.</p>
+<p>La creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.</p>
 
 <p>Tpaga usa <strong>tokenización</strong>, que nos permite registrar las tarjetas de crédito de nuestros clientes de forma segura. Los clientes ingresan los datos en nuestro sitio web, y estos datos los enviamos directamente al API de Tpaga (desde el código JavaScript), allí serán tokenizados y Tpaga nos devuelve un token temporal con el que podemos proceder con el registro de la tarjeta (desde el código Python).</p>
 
@@ -216,13 +217,13 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 <ul>
 <li><code>primaryAccountNumber</code> para el número de la tarjeta,</li>
 <li><code>cardHolderName</code> para el nombre del tarjetahabiente,</li>
-<li><code>expirationMonth</code> para el mes de expiación,</li>
-<li><code>expirationYear</code> para el año de expiación,</li>
+<li><code>expirationMonth</code> para el mes de expiración,</li>
+<li><code>expirationYear</code> para el año de expiración,</li>
 <li><code>cvc</code> para el código CVC.</li>
 </ul>
 
 
-<p>Creamos otro formulario oculto que mandaría el token temporal a nuestro servidor:</p>
+<p>Creamos otro formulario oculto que usaremos para enviar el token temporal de la tarjeta de crédito a nuestro servidor:</p>
 
 <pre><code class="html">&lt;form id="associate_customer_cc_form" action="/asociar-cliente-tarjeta-credito" method="POST"&gt;
   &lt;input type="hidden" name="tmp_cc_token"&gt;

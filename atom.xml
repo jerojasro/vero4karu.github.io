@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-07T14:49:18-05:00</updated>
+  <updated>2016-12-07T15:08:01-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -959,9 +959,11 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
+<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">TpagaTestClient</span><span class="p">()</span>
 </span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">customer</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_customer</span><span class="p">({</span>
 </span><span class='line'>    <span class="s">&#39;firstName&#39;</span><span class="p">:</span> <span class="s">&#39;Horns and Hoofs&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;lastName&#39;</span><span class="p">:</span> <span class="s">&#39;Perez&#39;</span><span class="p">,</span>
 </span><span class='line'>    <span class="s">&#39;email&#39;</span><span class="p">:</span> <span class="s">&#39;hornsandhoofs@example.com&#39;</span><span class="p">,</span>
 </span><span class='line'>    <span class="s">&#39;phone&#39;</span><span class="p">:</span> <span class="s">&#39;012345678&#39;</span>
 </span><span class='line'><span class="p">})</span>
@@ -981,7 +983,7 @@
 
 <h3>Registrar una tarjeta de crédito y asociarla al cliente</h3>
 
-<p>Creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.</p>
+<p>La creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.</p>
 
 <p>Tpaga usa <strong>tokenización</strong>, que nos permite registrar las tarjetas de crédito de nuestros clientes de forma segura. Los clientes ingresan los datos en nuestro sitio web, y estos datos los enviamos directamente al API de Tpaga (desde el código JavaScript), allí serán tokenizados y Tpaga nos devuelve un token temporal con el que podemos proceder con el registro de la tarjeta (desde el código Python).</p>
 
@@ -1153,13 +1155,13 @@
 <ul>
 <li><code>primaryAccountNumber</code> para el número de la tarjeta,</li>
 <li><code>cardHolderName</code> para el nombre del tarjetahabiente,</li>
-<li><code>expirationMonth</code> para el mes de expiación,</li>
-<li><code>expirationYear</code> para el año de expiación,</li>
+<li><code>expirationMonth</code> para el mes de expiración,</li>
+<li><code>expirationYear</code> para el año de expiración,</li>
 <li><code>cvc</code> para el código CVC.</li>
 </ul>
 
 
-<p>Creamos otro formulario oculto que mandaría el token temporal a nuestro servidor:</p>
+<p>Creamos otro formulario oculto que usaremos para enviar el token temporal de la tarjeta de crédito a nuestro servidor:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
