@@ -98,6 +98,7 @@ class TpagaTestClient:
 >> client = TpagaTestClient()
 >> customer = client.create_customer({
     'firstName': 'Horns and Hoofs',
+    'lastName': 'Perez',
     'email': 'hornsandhoofs@example.com',
     'phone': '012345678'
 })
@@ -116,7 +117,7 @@ Teniendo un token de nuestro cliente, podemos agregarle una tarjeta de crédito.
 
 ### Registrar una tarjeta de crédito y asociarla al cliente
 
-Creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.
+La creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.
 
 Tpaga usa **tokenización**, que nos permite registrar las tarjetas de crédito de nuestros clientes de forma segura. Los clientes ingresan los datos en nuestro sitio web, y estos datos los enviamos directamente al API de Tpaga (desde el código JavaScript), allí serán tokenizados y Tpaga nos devuelve un token temporal con el que podemos proceder con el registro de la tarjeta (desde el código Python).
 
@@ -210,11 +211,11 @@ Al final, tenemos un formulario con los siguientes campos:
 
 * `primaryAccountNumber` para el número de la tarjeta,
 * `cardHolderName` para el nombre del tarjetahabiente,
-* `expirationMonth` para el mes de expiación,
-* `expirationYear` para el año de expiación,
+* `expirationMonth` para el mes de expiración,
+* `expirationYear` para el año de expiración,
 * `cvc` para el código CVC.
 
-Creamos otro formulario oculto que mandaría el token temporal a nuestro servidor:
+Creamos otro formulario oculto que usaremos para enviar el token temporal de la tarjeta de crédito a nuestro servidor:
 
 ```html
 <form id="associate_customer_cc_form" action="/asociar-cliente-tarjeta-credito" method="POST">
