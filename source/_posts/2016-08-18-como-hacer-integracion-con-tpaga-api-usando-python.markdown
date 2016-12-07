@@ -282,7 +282,7 @@ $(function () {
     $.ajax(PAGE_DATA.data('tpaga-api-url') + 'tokenize/credit_card', {
       method: 'POST',
       beforeSend: function (xhr) {
-          xhr.setRequestHeader("Authorization", "Basic " + btoa(tpaga_public_key + ":"));
+          xhr.setRequestHeader('Authorization', 'Basic ' + btoa(tpaga_public_key + ':'));
       },
       username: tpaga_public_key,
       password: '',
