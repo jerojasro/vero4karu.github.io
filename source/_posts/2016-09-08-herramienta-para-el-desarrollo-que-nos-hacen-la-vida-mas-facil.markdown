@@ -59,3 +59,4 @@ Para llamar [Package Control](https://packagecontrol.io/installation) desde Subl
 
 * [Font Awesome](http://fontawesome.io/)
 * [PerfectPixel](https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi?hl=es): ayuda comparar el diseño de la página web (visuales) con el resultado del mismo en el navegador.
+* [Color Brewer 2.0](http://colorbrewer2.org/): color advice for cartography
