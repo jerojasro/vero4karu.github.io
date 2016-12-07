@@ -122,7 +122,7 @@ Teniendo un token de nuestro cliente, podemos agregarle una tarjeta de crédito.
 
 Creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.
 
-Tpaga **tokenización**, que nos permite registrar las tarjetas de crédito de nuestros clientes de forma segura. Los clientes ingresan los datos en nuestro sitio web, y estos datos los enviamos directamente al API de Tpaga (desde el código JavaScript), allí serán tokenizados y Tpaga nos devuelve un token temporal con el que podemos proceder con el registro de la tarjeta (desde el código Python).
+Tpaga usa **tokenización**, que nos permite registrar las tarjetas de crédito de nuestros clientes de forma segura. Los clientes ingresan los datos en nuestro sitio web, y estos datos los enviamos directamente al API de Tpaga (desde el código JavaScript), allí serán tokenizados y Tpaga nos devuelve un token temporal con el que podemos proceder con el registro de la tarjeta (desde el código Python).
 
 Creamos un formulario HTML para obtener los datos de la tarjeta de crédito:
 
@@ -225,6 +225,8 @@ Creamos otro formulario oculto que mandaría el token temporal a nuestro servido
   <input type="hidden" name="tmp_cc_token">
 </form>
 ```
+
+En el código JavaScript obtenemos los datos de la tarjeta de crédito y los enviamos al endpoint de Tpaga `tokenize/credit_card`. Este endpoint convierte los datos sensibles de la tarjeta en un token, el cual será empleado para ejecutar el procesamiento de las transacciones sin necesidad que los datos sensibles del tarjetahabiente pasen por nuestro servidor. SI la información de la tarjeta tiene errores 
 
 ```javascript
 $(function () {
