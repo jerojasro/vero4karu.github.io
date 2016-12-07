@@ -18,7 +18,7 @@ Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para l
 
 Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjetas de crédito) asociados a los Clientes y **Charges** (Transacciónes o cobros por tarjeta de crédito).
 
-Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro cliente en Python. Primero instalamos la librería `requests` que nos permitirá hacer peticiones HTTP.
+Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro programa en Python. Primero instalamos la librería `requests` que nos permitirá hacer peticiones HTTP.
 
 ```bash
 $ pip install requests
@@ -34,7 +34,7 @@ Tpaga, como muchos otros sitios web, acepta la autenticación mediante HTTP Basi
 <Response [201]>
 ```
 
-Escribimos un cliente sencillo que nos permitirá conectarse al API de Tpaga y mandar peticiones:
+Escribimos un código sencillo que nos permitirá conectarse al API de Tpaga y mandar peticiones:
 
 ```python
 from urllib import parse as urlparse
@@ -83,7 +83,7 @@ El método `__init__` nos va a inicializar nuestro cliente, `api_post` - mandar 
 
 ### Crear un cliente
 
-Para crear nuestor cliente, vamos a enviar una petición POST al endpoint `/customer`:
+Para crear nuestro cliente, vamos a enviar una petición POST al endpoint `/customer`:
 
 ```python
 class TpagaTestClient:
