@@ -226,7 +226,7 @@ Creamos otro formulario oculto que mandaría el token temporal a nuestro servido
 </form>
 ```
 
-En el código JavaScript obtenemos los datos de la tarjeta de crédito y los enviamos al endpoint de Tpaga `tokenize/credit_card`. Este endpoint convierte los datos sensibles de la tarjeta en un token, el cual será empleado para ejecutar el procesamiento de las transacciones sin necesidad que los datos sensibles del tarjetahabiente pasen por nuestro servidor. SI la información de la tarjeta tiene errores 
+En el código JavaScript obtenemos los datos de la tarjeta de crédito y los enviamos al endpoint de Tpaga `tokenize/credit_card`. Este endpoint convierte los datos sensibles de la tarjeta en un token, el cual será empleado para ejecutar el procesamiento de las transacciones sin necesidad que los datos sensibles del tarjetahabiente pasen por nuestro servidor. Si la información de la tarjeta tiene errores, Tpaga nos devuelve un JSON con el nombre de campo y el mensaje de error, y en el caso contrario - token temporal de la tarjeta.
 
 ```javascript
 $(function () {
