@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-07T14:09:25-05:00</updated>
+  <updated>2016-12-07T14:10:59-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -451,7 +451,6 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
       }
       if (request.status == 422) {
           var data = JSON.parse(request.responseText);
-          console.log(data);
           $('#credit_card_form').find('.payment-errors').closest('.row').show();
           $('#credit_card_form').find('.payment-errors').text('Datos erróneos en el campo ' + $.trim($('#credit_card_form label[for="id_' + data.errors[0].field + '"]').text()));
           return;
