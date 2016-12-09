@@ -647,6 +647,47 @@
 
 <p>Mirando la tabla de <a href="https://sandbox.tpaga.co/merchantDashboard/cards">sandbox.tpaga.co/merchantDashboard/cards</a> vemos que nuestra tarjeta quedó registrada con Tpaga.</p>
 
+<p>Opcionalmente, dependiendo de la configuración de nuestra cuenta en Tpaga, Tpaga puede hacer un cargo de prueba a la tarjeta de crédito al crearla, automáticamente. En este caso, el valor la respuesta <code>response['validationCharge']['successful']</code> nos indica si el pago fue exisoto, y <code>response['validationCharge']['errorCode']</code> tiene el código de error. Por ejemplo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="s">&#39;r6ae7t2u7dmt7injv5c2bg9sqbh0krtr&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;addressLine2&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;addressCountry&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;addressState&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;expirationMonth&#39;</span><span class="p">:</span> <span class="s">&#39;03&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;lastFour&#39;</span><span class="p">:</span> <span class="s">&#39;0004&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;bin&#39;</span><span class="p">:</span> <span class="s">&#39;404000&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;fingerprint&#39;</span><span class="p">:</span> <span class="s">&#39;812a1abf6c03db89bdf91025687fe5a77e24065a652860445e45e62fce3a2858&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;addressCity&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;addressPostalCode&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;VISA&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;cardHolderName&#39;</span><span class="p">:</span> <span class="s">&#39;Иван Иваныч&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;customer&#39;</span><span class="p">:</span> <span class="s">&#39;qoodmh04sh7ghpp58opn5g0hssg4slq0&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;validationCharge&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;successful&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;errorCode&#39;</span><span class="p">:</span> <span class="s">&#39;04&#39;</span><span class="p">},</span>
+</span><span class='line'>    <span class="s">&#39;addressLine1&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;expirationYear&#39;</span><span class="p">:</span> <span class="s">&#39;2018&#39;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>Realizar el pago por la tarjeta de crédito</h3>
 
 <p>Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al <a href="https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge">addCreditCardCharge</a> endpoint con los siguientes parametros:</p>
