@@ -323,6 +323,29 @@ credit_card_token 2k54foql0hki0ot7avrg9nhpvbpqam55
 
 Mirando la tabla de [sandbox.tpaga.co/merchantDashboard/cards](https://sandbox.tpaga.co/merchantDashboard/cards) vemos que nuestra tarjeta quedó registrada con Tpaga.
 
+Opcionalmente, dependiendo de la configuración de nuestra cuenta en Tpaga, Tpaga puede hacer un cargo de prueba a la tarjeta de crédito al crearla, automáticamente. En este caso, el valor la respuesta `response['validationCharge']['successful']` nos indica si el pago fue exisoto, y `response['validationCharge']['errorCode']` tiene el código de error. Por ejemplo:
+
+```python
+{
+    'id': 'r6ae7t2u7dmt7injv5c2bg9sqbh0krtr',
+    'addressLine2': None,
+    'addressCountry': None,
+    'addressState': None,
+    'expirationMonth': '03',
+    'lastFour': '0004',
+    'bin': '404000',
+    'fingerprint': '812a1abf6c03db89bdf91025687fe5a77e24065a652860445e45e62fce3a2858',
+    'addressCity': None,
+    'addressPostalCode': None,
+    'type': 'VISA',
+    'cardHolderName': 'Иван Иваныч',
+    'customer': 'qoodmh04sh7ghpp58opn5g0hssg4slq0',
+    'validationCharge': {'successful': False, 'errorCode': '04'},
+    'addressLine1': None,
+    'expirationYear': '2018'
+}
+```
+
 ### Realizar el pago por la tarjeta de crédito
 
 Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al [addCreditCardCharge](https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge) endpoint con los siguientes parametros:
