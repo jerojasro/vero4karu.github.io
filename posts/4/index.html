@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: moscú - Cansada de ser feliz</title>
+  <title>Cansada de ser feliz</title>
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Category: moscú">
+  <meta name="description" content="Sometimes there is a need to pass a variable (parameter) from a FormView (for example, CreateView, UpdateView) to a form (for example, ModelForm). &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.vero4ka.info/blog/categories/moscu/">
+  <link rel="canonical" href="http://blog.vero4ka.info/posts/4/">
 
   <link href="/favicon.ico" rel="icon">
 
@@ -83,40 +83,60 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
-    <h1 class="entry-title">Category: moscú</h1>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">How to pass a variable from form to view in Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T11:09:20-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>11:09 am</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+  <div class="entry-content"><p>Sometimes there is a need to pass a variable (parameter) from a <code>FormView</code> (for example, <code>CreateView</code>,  <code>UpdateView</code>) to a form (for example, <code>ModelForm</code>).</p>
 
-  
-  <h2>2016</h2>
+<p>Let&rsquo;s suppose that we want to use a value of <code>other_variable</code> from a view <code>MyCreateView</code> in <code>MyForm</code>:</p>
 
-<article>
-  
-<h1><a href="/blog/2016/03/23/hipsters-en-rusia/">Hipsters en Rusia</a></h1>
-<time datetime="2016-03-23T13:00:35-05:00" pubdate><span class='month'>Mar</span> <span class='day'>23</span> <span class='year'>2016</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/ciudad/'>ciudad</a>, <a class='category' href='/blog/categories/cultura/'>cultura</a>, <a class='category' href='/blog/categories/moscu/'>moscú</a>, <a class='category' href='/blog/categories/parques/'>parques</a>, <a class='category' href='/blog/categories/popularizacion-de-la-ciencia/'>popularización de la ciencia</a>, <a class='category' href='/blog/categories/rusia/'>rusia</a>, <a class='category' href='/blog/categories/urbanismo/'>urbanismo</a></span>
-</footer>
-
-
-</article>
+<div><script src='https://gist.github.com/ec0f82bb3d302961503d.js'></script>
+<noscript><pre><code>class MyForm(forms.ModelForm):
+    requested_asset = None
+    
+    def __init__(self, *args, **kwargs):
+        other_variable = kwargs.pop(&#39;other_variable&#39;)
+        super(MyForm, self).__init__(*args, **kwargs)</code></pre></noscript></div>
 
 </div>
-
   
-</article>
+  
 
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/3">Newer &rarr;</a>
+    
+  </div>
 </div>
-
 <aside class="sidebar">
   
     <section>
@@ -491,7 +511,6 @@
 
   
 </aside>
-
 
     </div>
   </div>

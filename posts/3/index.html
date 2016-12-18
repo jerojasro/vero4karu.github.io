@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="python-social-auth Autentificación de usuarios con los redes sociales en Django. django-recaptcha Integración de reCAPTCHA en los formularios de &hellip;">
+  <meta name="description" content="&lt;input type=&quot;checkbox&quot; value=&quot;UN&quot; name=&quot;airlines&quot; checked&gt; &lt;input type=&quot;checkbox&quot; value=&quot;IB& &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,42 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/">Get an array of checked checkboxes values using jQuery</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T19:17:42-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:17 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div><script src='https://gist.github.com/9772283.js'></script>
+<noscript><pre><code>&lt;input type=&quot;checkbox&quot; value=&quot;UN&quot; name=&quot;airlines&quot; checked&gt;       
+&lt;input type=&quot;checkbox&quot; value=&quot;IB&quot; name=&quot;airlines&quot;&gt;      
+&lt;input type=&quot;checkbox&quot; value=&quot;SU&quot; name=&quot;airlines&quot; checked&gt;</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -651,50 +687,9 @@ class ContractUpdateView(UpdateView):
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">How to pass a variable from form to view in Django</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-21T11:09:20-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>11:09 am</span></time>
-        
-           | <a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometimes there is a need to pass a variable (parameter) from a <code>FormView</code> (for example, <code>CreateView</code>,  <code>UpdateView</code>) to a form (for example, <code>ModelForm</code>).</p>
-
-<p>Let&rsquo;s suppose that we want to use a value of <code>other_variable</code> from a view <code>MyCreateView</code> in <code>MyForm</code>:</p>
-
-<div><script src='https://gist.github.com/ec0f82bb3d302961503d.js'></script>
-<noscript><pre><code>class MyForm(forms.ModelForm):
-    requested_asset = None
-    
-    def __init__(self, *args, **kwargs):
-        other_variable = kwargs.pop(&#39;other_variable&#39;)
-        super(MyForm, self).__init__(*args, **kwargs)</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/4">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -774,6 +769,8 @@ class ContractUpdateView(UpdateView):
         <li class="post">
           <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
         </li>
+      
+    
       
     
       
