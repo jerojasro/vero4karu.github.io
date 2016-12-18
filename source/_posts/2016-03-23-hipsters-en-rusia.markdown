@@ -65,7 +65,7 @@ y compartir conocimiento, y divulga la información acerca de las conferencias
 publicas que tienen lugar en los bares, clubs, cafés,  galerías,
 salas de conferencias y parques de Moscú y San Petersburgo.
 
-{% img center /images/public_lectures.jpg 'Parque Gorky' 'Parque Gorky' %}
+{% img center /images/public_lectures.jpg 'Conferencias públicas' %}
 
 Desde ese momento en su tiempo libre los hipsters iban a escuchar los
 discursos acerca de microbiología, física, historia, lingüística y arte.
