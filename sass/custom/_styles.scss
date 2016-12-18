@@ -16,6 +16,10 @@ body>header h1, body>header h2 {
   font-family: "Cherry Swash", "PT Serif","Georgia","Helvetica Neue",Arial,sans-serif;
 }
 
+body>nav a {
+  font-family: "Ubuntu",sans-serif;
+}
+
 figure.code {
   figcaption {
     background: lighten($sidebar-bg, 18);
