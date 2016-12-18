@@ -4,7 +4,7 @@
 
 url: http://blog.vero4ka.info
 title: Cansada de ser feliz
-subtitle: tech notes
+subtitle: Bienvenidos a mi flujo de conciencia
 author: vero4ka
 simple_search: https://www.google.com/search
 description:
@@ -32,13 +32,17 @@ source: source
 destination: public
 plugins: plugins
 code_dir: downloads/code
+
 category_dir: blog/categories
+category_title_prefix: "Category: "
+
 markdown: rdiscount
 rdiscount:
   extensions:
     - autolink
     - footnotes
     - smart
+
 highlighter: pygments # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index

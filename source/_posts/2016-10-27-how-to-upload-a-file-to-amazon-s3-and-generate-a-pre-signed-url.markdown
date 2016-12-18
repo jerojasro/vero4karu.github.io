@@ -4,6 +4,7 @@ title: "How to upload a file to Amazon S3 and generate a pre-signed URL"
 date: 2016-10-27 09:32:43 -0500
 comments: true
 categories: Python Amazon S3
+Category: Development
 ---
 
 ```python
