@@ -20,6 +20,12 @@ body>nav a {
   font-family: "Ubuntu",sans-serif;
 }
 
+article blockquote footer {
+  margin-top: -1em;
+  font-size: 0.8em;
+  text-align: right;
+}
+
 figure.code {
   figcaption {
     background: lighten($sidebar-bg, 18);
