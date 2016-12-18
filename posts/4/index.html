@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Sometimes there is a need to pass a variable (parameter) from a FormView (for example, CreateView, UpdateView) to a form (for example, ModelForm). &hellip;">
+  <meta name="description" content="class BasicAdmin(admin.ModelAdmin): # ... def get_urls(self): urls = super(BasicAdmin, self).get_urls() my_urls = patterns( &#39;&#39;, (r&#39;^ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,115 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">How to add a custom button to admin change list view id Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T17:35:44-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:35 pm</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div><script src='https://gist.github.com/12fb4de2726c6ef563f3.js'></script>
+<noscript><pre><code>class BasicAdmin(admin.ModelAdmin):
+    # ...
+
+    def get_urls(self):
+        urls = super(BasicAdmin, self).get_urls()
+        my_urls = patterns(
+            &#39;&#39;,
+            (r&#39;^download_as_xls/$&#39;, self.download_as_xls_view)
+        )
+        return my_urls + urls
+
+    def download_as_xls_view(self, request):
+        &quot;&quot;&quot;Generates an xls file
+        &quot;&quot;&quot;
+
+        response = HttpResponse(mimetype=&#39;application/ms-excel&#39;)
+        response[&#39;Content-Disposition&#39;] = \
+            &#39;attachment; filename=Report.xls&#39;
+        # do something
+        return response</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T17:34:58-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:34 pm</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code></p>
+
+<div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
+<noscript><pre><code>from django.forms.util import ErrorList
+from django import forms
+
+class ContractUpdateView(UpdateView):
+    model = Contract
+    template_name = &#39;contract/contract_form.html&#39;
+    form_class = ContractForm
+
+    def form_valid(self, form):
+        if self.request.POST.get(&#39;finish&#39;):
+            if (
+                not form.cleaned_data[&#39;number&#39;] or
+                not self.object.images.count()
+            ):
+                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList([
+                    u&#39;You have to add images and a contract number&#39;
+                ])
+                return self.form_invalid(form)
+            self.object.is_submitted = True
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -191,6 +300,11 @@
     
     
       
+        
+        <li class="post">
+          <a href="/blog/2016/12/18/libros-que-leen-los-ninos-rusos/">Libros que leen los niños rusos</a>
+        </li>
+      
     
       
     
@@ -257,38 +371,12 @@
     
       
     
+      
+    
+      
+    
   </ul>
 </section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/vero4karu">@vero4karu</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'vero4karu',
-            count: 5,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
 <a href="https://twitter.com/vero4ka_ru" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @vero4ka_ru</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script><script src="//blockr.io/js_external/coinwidget/coin.js"></script>
         <script>
@@ -498,17 +586,6 @@
       </div>
 </section>
 <script src="https://www.goodreads.com/review/custom_widget/3165514.Vera's%20bookshelf:%20read?cover_position=left&cover_size=small&num_books=7&order=d&shelf=read&show_author=1&show_cover=1&show_rating=1&show_review=1&show_tags=1&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_id=1425777029&widget_text_color=000000&widget_title_size=medium&widget_width=medium" type="text/javascript" charset="utf-8"></script>
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/+VeraMazhuga?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
   
 </aside>
 
