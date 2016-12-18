@@ -97,3 +97,7 @@ Lassie es un perro Collie que vive con la familia de un minero de Yorkshire, Sam
 ## Jack London, La llamada de lo salvaje
 
 Es una novela corta del escritor estadounidense Jack London. El argumento trata de un perro llamado Buck, cuyos instintos primitivos vuelven tras una serie de sucesos que le ocurren cuando lo ponen a tirar de un trineo en el Yukón, durante la fiebre del oro que tuvo lugar en el siglo XX en el Klondike, durante la cual los perros de tiro se compraban a precios elevados.
+
+
+
+Les agradecería mucho si me pudieron recomendar algunos libros que les han impactado en su infancia.
