@@ -7,6 +7,8 @@ categories:
 - Rusia
 ---
 
+{% img center /images/espias.jpg 'Espías rusos' %}
+
 La pareja de los agentes de los servicios de inteligencia nacidos en Rusia –
 **Andrey Bezrukov** y **Elena Vavilova** – llegaron a Canada para cumplir
 su misión bajo los nombres de **Donald Heathfield** y **Tracey Foley**
@@ -88,7 +90,7 @@ Prácticamente, esa persona empieza su vida desde ceros. Se puede decir,
 que te sientes como una persona diferente. Nosotros con mi esposa nos fuimos
 a la comisión de servicio sólo con una maleta. Tuvimos que graduarnos de nuevo
 de universidad, buscar trabajo, crear el negocio y no solo uno.
-Y todo sin ninguna ayuda y con los recursos mínimos – tú entiendas 
+Y todo sin ninguna ayuda y con los recursos mínimos – tú entiendas
 la situación en la que estaba nuestro país en esa época. Y a pesar de eso,
 teníamos que cumplir nuestra misión – realizar el trabajo que nos dieron.
 
