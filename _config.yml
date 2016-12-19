@@ -62,7 +62,8 @@ default_asides: [
   asides/twitter.html,
   asides/bitcoin.html,
   asides/delicious.html,
-  asides/goodreads.html
+  asides/goodreads.html,
+  asides/stats.html
 ]
 
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
