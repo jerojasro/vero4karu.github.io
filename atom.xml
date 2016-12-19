@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-18T22:01:33-05:00</updated>
+  <updated>2016-12-18T22:34:41-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Think like I do]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/12/18/think-like-i-do/"/>
+    <updated>2016-12-18T22:09:26-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/12/18/think-like-i-do</id>
+    <content type="html"><![CDATA[<blockquote><p>A she-wolf teaches her cubs: "Bite like I do," and that's enough.<br/>A she-rabbit teaches her offspring: "Run like I do," and that's also enough.<br/>But when a man teaches his children: "Think like I do," and that's a crime.</p><footer><strong>Strugatsky Brothers</strong></footer></blockquote>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Libros que leen los niños rusos]]></title>
@@ -2962,45 +2974,6 @@ de Cine de Moscú. En la revisa &ldquo;Luces de Siberi&rdquo; fue publicada su p
 <li><a href="http://factoryboy.readthedocs.org/">Factory Boy</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cómo configurar PyCharm para compilar los archivos SASS]]></title>
-    <link href="http://blog.vero4ka.info/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass/"/>
-    <updated>2015-06-29T03:10:03-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2015/06/29/como-configurar-pycharm-para-compilar-los-archivos-sass</id>
-    <content type="html"><![CDATA[<p>Suponemos que tenemos un proyecto con las siguientes carpetas:</p>
-
-<pre><code>app/
-   static/
-        css/
-        sass/
-            main.sass
-            home.sass
-            variables.sass
-</code></pre>
-
-<p>y queremos que cada vez cuando editemos alguno de los archivos <code>.sass</code>, PyCharm lo compile y ponga en la carpeta <code>app/static/css/</code>:</p>
-
-<pre><code>app/
-   static/
-        css/
-            main.css
-            home.css
-        sass/
-            main.sass
-            home.sass
-            variables.sass
-</code></pre>
-
-<p>Para esto debemos ir a <code>File -&gt; Settings -&gt; File Watchers</code> y agregar un nuevo watcher, escogiendo la opción <code>SASS</code></p>
-
-<p><img src="http://blog.vero4ka.info/images/pycharm_file_watchers.png"></p>
-
-<p>y editar las configuraciones:</p>
-
-<p><img src="http://blog.vero4ka.info/images/pycharm_file_watchers_settings.png"></p>
 ]]></content>
   </entry>
   

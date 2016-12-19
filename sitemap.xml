@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2016/12/18/think-like-i-do/</loc>
+<lastmod>2016-12-18T22:09:26-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2016/12/18/libros-que-leen-los-ninos-rusos/</loc>
 <lastmod>2016-12-18T11:49:57-05:00</lastmod>
 </url>
@@ -141,6 +145,14 @@
 <lastmod>2015-02-21T11:09:20-05:00</lastmod>
 </url>
 <url>
+<loc>http://blog.vero4ka.info/blog/2014/10/04/ascensores/</loc>
+<lastmod>2014-10-04T22:19:29-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/2014/04/30/tienda-rusa-en-holanda/</loc>
+<lastmod>2014-04-30T22:28:30-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/archives/</loc>
 </url>
 <url>
@@ -151,6 +163,27 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/comments/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/ninez/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/rusia/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/holanda/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/comida/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/aventuras/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/recuerdos/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/suenos/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/django/</loc>
@@ -184,12 +217,6 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/libros/</loc>
-</url>
-<url>
-<loc>http://blog.vero4ka.info/blog/categories/rusia/</loc>
-</url>
-<url>
-<loc>http://blog.vero4ka.info/blog/categories/aventuras/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/cultura/</loc>
