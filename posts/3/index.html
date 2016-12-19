@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Let&rsquo;s suppose that we have a field is_active in our model. It is a boolean field, but in a template we want to show it as a radio select. In &hellip;">
+  <meta name="description" content="How to raise form invalid inside form_valid method of a FormView (CreateView/UpdateView) and add an error message to non_field_errors: from django. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T19:35:52-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:35 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code>:</p>
+
+<div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
+<noscript><pre><code>from django.forms.util import ErrorList
+from django import forms
+
+class ContractUpdateView(UpdateView):
+    model = Contract
+    template_name = &#39;contract/contract_form.html&#39;
+    form_class = ContractForm
+
+    def form_valid(self, form):
+        if self.request.POST.get(&#39;finish&#39;):
+            if (
+                not form.cleaned_data[&#39;number&#39;] or
+                not self.object.images.count()
+            ):
+                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList([
+                    u&#39;You have to add images and a contract number&#39;
+                ])
+                return self.form_invalid(form)
+            self.object.is_submitted = True
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -679,64 +735,6 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/01/useful-chorme-extentions/">Useful Chorme extentions</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-01T18:41:53-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:41 pm</span></time>
-        
-           | <a href="/blog/2015/03/01/useful-chorme-extentions/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>JSONView</h4>
-
-<p>Validate and view JSON documents.
-<a href="https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc">https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc</a></p>
-
-<h4>Postman - REST Client</h4>
-
-<p><a href="https://chrome.google.com/webstore/detail/fdmmgilgnpjigdojojpjoooidkmcomcm">https://chrome.google.com/webstore/detail/fdmmgilgnpjigdojojpjoooidkmcomcm</a></p>
-
-<h4>Evernote Web Clipper</h4>
-
-<p>Use the Evernote extension to save things you see on the web into your Evernote account.
-<a href="https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc">https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc</a></p>
-
-<h4>GistBox Clipper</h4>
-
-<p>Save code snippets from anywhere on the web. Companion extension to GistBoxApp.com.
-<a href="https://chrome.google.com/webstore/detail/cejmhmbmafamjegaebkjhnckhepgmido">https://chrome.google.com/webstore/detail/cejmhmbmafamjegaebkjhnckhepgmido</a></p>
-
-<h4>XV — XML Viewer</h4>
-
-<p>Powerful XML viewer for Google Chrome
-<a href="https://chrome.google.com/webstore/detail/eeocglpgjdpaefaedpblffpeebgmgddk">https://chrome.google.com/webstore/detail/eeocglpgjdpaefaedpblffpeebgmgddk</a></p>
-
-<h4>LiveReload</h4>
-
-<p><a href="https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei">https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -824,6 +822,8 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
         <li class="post">
           <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
         </li>
+      
+    
       
     
       
