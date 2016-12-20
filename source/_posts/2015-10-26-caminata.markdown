@@ -69,4 +69,4 @@ de los otros pasajeros, miro por la ventana y veo las montañas tan majestuosas
 y tan bellas, y así, al llegar a Suba pasa todo: el estrés, el mal genio y
 otras tonterías.
 
-{% img right /images/caminata.jpg 'Caminata' %}
+{% img center /images/caminata.png 'Caminata' %}
