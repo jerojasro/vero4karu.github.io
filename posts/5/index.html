@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Sometimes there is a need to pass a variable (parameter) from a FormView (for example, CreateView, UpdateView) to a form (for example, ModelForm). &hellip;">
+  <meta name="description" content="class BasicAdmin(admin.ModelAdmin): # ... def get_urls(self): urls = super(BasicAdmin, self).get_urls() my_urls = patterns( &#39;&#39;, (r&#39;^ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,115 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">How to add a custom button to admin change list view id Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T17:35:44-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:35 pm</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div><script src='https://gist.github.com/12fb4de2726c6ef563f3.js'></script>
+<noscript><pre><code>class BasicAdmin(admin.ModelAdmin):
+    # ...
+
+    def get_urls(self):
+        urls = super(BasicAdmin, self).get_urls()
+        my_urls = patterns(
+            &#39;&#39;,
+            (r&#39;^download_as_xls/$&#39;, self.download_as_xls_view)
+        )
+        return my_urls + urls
+
+    def download_as_xls_view(self, request):
+        &quot;&quot;&quot;Generates an xls file
+        &quot;&quot;&quot;
+
+        response = HttpResponse(mimetype=&#39;application/ms-excel&#39;)
+        response[&#39;Content-Disposition&#39;] = \
+            &#39;attachment; filename=Report.xls&#39;
+        # do something
+        return response</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T17:34:58-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:34 pm</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code></p>
+
+<div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
+<noscript><pre><code>from django.forms.util import ErrorList
+from django import forms
+
+class ContractUpdateView(UpdateView):
+    model = Contract
+    template_name = &#39;contract/contract_form.html&#39;
+    form_class = ContractForm
+
+    def form_valid(self, form):
+        if self.request.POST.get(&#39;finish&#39;):
+            if (
+                not form.cleaned_data[&#39;number&#39;] or
+                not self.object.images.count()
+            ):
+                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList([
+                    u&#39;You have to add images and a contract number&#39;
+                ])
+                return self.form_invalid(form)
+            self.object.is_submitted = True
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -675,92 +784,6 @@ o no y por qué.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/26/el-viaje-en-avion/">El viaje en avión</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-07-26T18:08:14-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:08 pm</span></time>
-        
-           | <a href="/blog/2013/07/26/el-viaje-en-avion/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2013/07/26/el-viaje-en-avion/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Lo que más me gusta de viajar en avión es la altura. Me fascina estar
-tan lejos de la tierra y poder mirar todo desde la ventana: las casas
-chiquiticas, las carreteras, los barcos en el océano, etc. También
-me gusta sentir la expectativa del lugar nuevo, pensar cómo voy a llegar
-y sentirme por allí, después de estar por mucho tiempo en el mismo lugar,
-ir a la misma oficina cada día, luego al supermercado de al lado, ir casa…
-el viaje es una gran impresión.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/24/el-patio/">El patio</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-07-24T18:10:02-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:10 pm</span></time>
-        
-           | <a href="/blog/2013/07/24/el-patio/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2013/07/24/el-patio/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ya empieza a atardecer. El sol se está poniendo, dejando la luz tenue y
-suave que produce las sombras largas. Un viejo está sentado en una banca
-debajo del árbol. Está muy concentrado sobre la apretura de ajedrez.
-Sus manos y su rostro están cubiertos de arrugas, se ve simiesco,
-por eso a primera vista parece que es poco amistoso.</p>
-
-<p>En la fuente al lado el agua murmura y llama a los pájaros que quieren
-calmar su sed. El ruido que hacen atrae la atención del viejo y
-él empieza a mirarlos. Él saca la botella de limonada para tomar
-un trago, y su mirada fija en el columpio que está en el otro rincón
-del patio. Aquí se estaba columpiando cuando era niño. Ya pasaron
-casi 50 años desde cuando le cogieron y metieron en la cárcel, hace 50 años
-no ha visto estos columpios. El viejo atraviesa el patio y se sume en
-las memorias. Ya le parece que vive de nuevo, y solo las cicatrices en
-su espalda recuadran de los tiempos oscuros. Por fin el siente como encontró
-su origen, el comienzo de todo, desde que ahora puede empezarlo de nuevo y
-pintarlo de otros colores.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -854,6 +877,10 @@ pintarlo de otros colores.</p>
         <li class="post">
           <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
         </li>
+      
+    
+      
+    
       
     
       
