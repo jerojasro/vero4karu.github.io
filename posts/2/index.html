@@ -9,16 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Aplicación básica
-Blueprints
-URLs
-Vistas
-Plantillas (Jinja2)
-Procesadores de contexto
-Modelos (SQLAlchemy, CRUD)
-Formularios
-Autenticación
-Múltiples &hellip;">
+  <meta name="description" content="Suponemos que en nuestro proyecto de Flask hay un modelo Client definidao usando Flask-SQLAlchemy y queremos monetorear los cambios que se realizan &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +85,186 @@ Múltiples &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Monitoreo de acciones de usuarios en Flask (SQLAlchemy)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-22T08:23:58-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>8:23 am</span></time>
+        
+           | <a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suponemos que en nuestro proyecto de Flask hay un modelo <code>Client</code> definidao usando <a href="http://flask-sqlalchemy.pocoo.org/">Flask-SQLAlchemy</a> y queremos monetorear los cambios que se realizan sobre los objetos de ese modelo.</p>
+
+<p>Para esto agregamos tres señales:</p>
+
+<figure class='code'><figcaption><span>models.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">event</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">main.signals</span> <span class="kn">import</span> <span class="n">receive_before_update</span><span class="p">,</span> <span class="n">receive_before_insert</span><span class="p">,</span> <span class="n">receive_before_delete</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">email</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">phone</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="s">&#39;before_insert&#39;</span><span class="p">,</span> <span class="n">receive_before_insert</span><span class="p">)</span>
+</span><span class='line'><span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="s">&#39;before_update&#39;</span><span class="p">,</span> <span class="n">receive_before_update</span><span class="p">)</span>
+</span><span class='line'><span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="s">&#39;before_delete&#39;</span><span class="p">,</span> <span class="n">receive_before_delete</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>EN el gódigo de cada señal llamamos los métodos <code>inspect()</code> y <code>get_history()</code> para detectar los cambios sobre el objeto:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">state</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">client_object</span><span class="p">)</span>
+</span><span class='line'><span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+</span><span class='line'>     <span class="n">hist</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get_history</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Por ejemplo, para el atributo <code>name</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="err">&#39;added&#39;:</span> <span class="err">[&#39;Company</span> <span class="err">A&#39;],</span>
+</span><span class='line'>    <span class="err">&#39;deleted&#39;:</span> <span class="err">[&#39;Company</span> <span class="err">B&#39;],</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>El mégoto <code>get_history()</code> nos devuelve un objeto <code>sqlalchemy.orm.attributes.History</code> que tiene los siguientes atributos:</p>
+
+<ul>
+<li><code>added</code> - listado de valores agregados al atributo de nuestro objeto</li>
+<li><code>deleted</code> - listado de valores eliminados del atributo de nuestro objeto</li>
+<li><code>unchanged</code> - listado de valores del atributo de nuestro objeto que se quedaron intactos</li>
+<li><code>has_changes()</code> - método que retorna <code>True</code> si no habían ningunos cambios de valor de nuestro atributo.</li>
+</ul>
+
+
+<p>Ahora, usando la variable <code>current_user</code> de la biblioteca <a href="https://flask-login.readthedocs.io/">Flask-Login</a>, podemos guargar el usuario que realizó los cambios:</p>
+
+<figure class='code'><figcaption><span>signals.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">current_user</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">save_changes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">state</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">changes</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">hist</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get_history</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">if</span> <span class="ow">not</span> <span class="n">hist</span><span class="o">.</span><span class="n">has_changes</span><span class="p">():</span>
+</span><span class='line'>                <span class="k">continue</span>
+</span><span class='line'>            <span class="n">added</span> <span class="o">=</span> <span class="n">format_changes_value</span><span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">added</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">deleted</span> <span class="o">=</span> <span class="n">format_changes_value</span><span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">deleted</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">added</span> <span class="o">!=</span> <span class="n">deleted</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">changes</span><span class="p">[</span><span class="n">attr</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>                    <span class="s">&#39;added&#39;</span><span class="p">:</span> <span class="n">added</span><span class="p">,</span>
+</span><span class='line'>                    <span class="s">&#39;deleted&#39;</span><span class="p">:</span> <span class="n">deleted</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">}</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">changes</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">mongo</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">user_logs</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+</span><span class='line'>                <span class="n">current_user_id</span><span class="o">=</span><span class="n">current_user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">table_name</span><span class="o">=</span><span class="n">target</span><span class="o">.</span><span class="n">__tablename__</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">object_id</span><span class="o">=</span><span class="n">target</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">changes</span><span class="o">=</span><span class="n">changes</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span>
+</span><span class='line'>            <span class="p">))</span>
+</span><span class='line'>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">pass</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">receive_before_insert</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">save_changes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="s">&#39;create&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">receive_before_update</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">save_changes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="s">&#39;update&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">receive_before_delete</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">save_changes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="s">&#39;delete&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -791,6 +962,76 @@ semillas de una finca orgánica en Egipcio. Según la OMS se enfermaron
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/">Caperucita roja en los diferentes países</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-16T19:08:32-05:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:08 pm</span></time>
+        
+           | <a href="/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/caperucita2.jpg" title="'Caperucita roja'" ></p>
+
+<p>Desde la niñez conocemos la historia de Caperucita roja, gracias al escritor
+francés Charles Perrault. Pero es simplemente una elaboración literaria de un
+cuento folclórico.</p>
+
+<p>En distintos países cuentan la historia de la muchacha, que fue a visitar
+a su abuelita, de forma diferente. En un lugar el personaje no es una ñina
+sino un niño (por ejemplo, en Irán, donde las niñas pequeñas no andas sólas),
+o en el otro, como en Asia Suroriental, no es un lobo sino un tigre.
+Pero la idea se mantiene igual.</p>
+
+<p><img class="right" src="/images/caperucita.jpg" width="250" title="'Caperucita roja'" ></p>
+
+<p>Un antropólogo británico llamado Jamshid J. Tehrani decidió aclarar de dónde
+es Caperucita roja, usando un método filogenético, con el que normalmente se
+reconstruyen los enlaces entre los organismos vivos. El científico analizó 58
+versiones de la historia en todo el mundo según 72 criterios – la apariencia,
+el sexo de los protagonistas, los trucos con los cuales el malvado engaña
+a sus víctimas. Según el sistema de Aarne-Thompson-Uther, el cuento
+de Caperucita roja corresponde a la categoría de los tramas,
+en los cuales el protagonista tiene superpoderes, y tiene un código ATU-333.</p>
+
+<p>Según los cálculos de Tehrani, aproximadamente en el siglo I esa historia
+se derivó de otro cuento popular de Oriente Próximo del lobo y
+siete cabritos (ATU-123). llegando a Asia y África, el cuento se mezcló
+con las versiones locales del lobo y siete cabritos y obtuvo sus rasgos únicos.
+En Europa el cuento también se transformó dependiendo de la región.
+Por ejemplo, en Italia en la cesta de la niña había un pescado fresco,
+y en Suiza – una bola de queso. La caperucita francesa llevaba a sua abuela
+un pote de mantequilla y un pastel relleno. También vaía la edad de
+la protagonista: en unas partes es una niña pequeña, y en otras
+– una muchacha joven.</p>
+
+<p>¿Y qué lleva caperucita roja a su abuelita en el país de usted?</p>
+
+<p>Imágenes tomadas de:
+<a href="http://pikabu.ru/story/art_krasnaya_shapochka_790068">http://pikabu.ru/story/art_krasnaya_shapochka_790068</a>,
+<a href="http://pikabu.ru/story/krasnaya_shapochka_1666502">http://pikabu.ru/story/krasnaya_shapochka_1666502</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2016/04/02/los-programas-de-radio-y-television-rusas-que-me-gusta-escuchar/">Los programas de radio y televisión rusas que me gusta escuchar</a></h1>
     
     
@@ -1027,380 +1268,6 @@ de televisión por cable y cierra algunos de los clubs preferidos por los hipste
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/">Zuleijá abre los ojos por Guzél Yájina</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-01-11T15:26:29-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:26 pm</span></time>
-        
-           | <a href="/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img class="center" src="/images/guzel.jpg" title="'Guzél Yájina'" ></p>
-
-<p>La novela empieza en el año 1930. La protagonista es una mujer tártara de 30 años
-llamada Zuleijá, que vivía en una aldea apartada con su esposo, que era 30 años
-mayor que ella, y con la suegra cuyo apodo era Upirija (Vampira).
-La vida de Zuleijá era muy difícil: ella trabajaba día a día, atendiendo
-a su esposo Murtazá y a su mamá, pero nunca se había quejado, porque así había
-sido educada por sus padres: aguantar todas los insultos, las humillaciones y
-las palizas de su esposo y obedecerle en todo.</p>
-
-<p>En el primer capítulo nos familiarizamos con la vida diaria de Zuleijá:
-cuáles eran sus deberes de la casa, qué pasaba durante su día habitual,
-qué pasaba durante su día habitual, qué había pasado en su vida durante
-sus últimos 15 años de matrimonio. Nosotros conocemos su cosmovisión,
-sus creencias y supersticiones, que Zuleijá tuvo cuatro hijas, pero
-todas habían muerto cuando todavía eran bebés. Vemos cómo ella hablaba
-con los duendes y les llevaba comida.</p>
-
-<p>Pero su vida mesurada se interrumpió cuando los soldados del Ejército Rojo
-(o de &ldquo;Horda Roja&rdquo;, como los llamaban por allá) llegaron a su aldea para
-realizar la campaña de
-<a href="https://es.wikipedia.org/wiki/Deskulakizaci%C3%B3n">deskulakización</a>,
-es decir, quitar los bienes de los
-campesinos más ricos (kuláks) y deportarles para &ldquo;desarrollar las tierras
-lejanas del país&rdquo;. Murtazá puso resistencia y fue asesinado por el soldado
-Ignatov. A Zuleijá la enviaron a Siberia a las orillas del río Angará junto
-con otros campesinos, algunos intelectuales de Leningrado y unos criminales,
-escoltados por Ignatov.</p>
-
-<p>Durante el viaje Zuleijá se dio cuanta de que había quedado embarazada de
-su esposo ya hace unos meces, pero a pesar de eso, ella logró soportar
-la deportación, y al llegar a Siberia dio luz a su hijo Josep.</p>
-
-<p><img class="center" src="/images/taiga.jpg" title="'Siberia'" ></p>
-
-<p>En Siberia a Ignatov y sus tutelados les dejaron en un área inhabitada
-del bosque sólo con una escopeta, la bolsa llena de balas y un saco de sal.
-Así el soldado, Zuleijá, Josep, el pintor Ikonnikov, el doctor Leibe,
-enloquecido por ver los cambios tan radicales en el país, el pescador Lukká,
-la anciana intelectual Isabella, que con orgullo llevaba su sombrero de moda
-y hablaba francés, y los demás compañeros tenían que aprender a construir
-las casas, armar la estufa y cazar para poder sobrevivir sólos en el bosque.
-Pero esa experiencia ayudó a Zuleijá a abrir sus ojos verdes y ver el mundo
-de una forma distinta, le permitió cambiar sus costumbres y creencias
-(ya no le parecía que Alá la podía ver en un lugar tan lejano), su carácter
-(porque se convirtió en una mujer fuerte y decidida). Todo lo que entes le
-parecía imposible o vergonzoso, como sentarse tan cerca a un hombre desconocido
-en el vagón del tren, ó hacer sus necesidades frente a los demás en el
-mismo vagón), formó parte de su vida.</p>
-
-<p>La oficina de prensa de Pospechat informó que la novela de Guzél Yájina será
-traducida a 16 idiomas.</p>
-
-<hr />
-
-<p><strong>Guezel Yájina</strong> nació en Kazán, se graduó del Instituto Pedagógico Estatal de
-Kazán de la facultad de idiomas extranjeros, y desde el año 1999 vive en Moscú.
-Ella ha trabajado en el cambo de las relaciones públicas, publicidad y mercadeo.
-En 2015 Guzel se graduó de la facultad de esritura de guiones de la Escuela
-de Cine de Moscú. En la revisa &ldquo;Luces de Siberi&rdquo; fue publicada su primera novela
-&ldquo;Zuleijá abre los ojos&rdquo;, que ha ganado los premios del &ldquo;Libro Grande&rdquo; y &ldquo;Yasnaya Polyana&rdquo;.</p>
-
-<p>Enlaces:</p>
-
-<ul>
-<li><a href="http://es.rbth.com/cultura/literatura/2015/12/22/las-tres-grandes-novelas-rusas-del-2015_553705">Las tres grandes novelas rusas del 2015</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/09/30/pruebas-para-formularios-en-django/">Pruebas para formularios en Django</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-30T04:49:19-05:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:49 am</span></time>
-        
-           | <a href="/blog/2015/09/30/pruebas-para-formularios-en-django/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>En esta entrada de blog quiero compartir la forma en la que escribo ruebas para formularios en un proyecto de Django.</p>
-
-<p>Primero vamos a instalar los paquetes necesarios:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ pip install django-webtest
-</span><span class='line'>$ pip install factory-boy</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://webtest.pythonpaste.org/en/latest/WebTest">WebTest</a> es una biblioteca que nos ayuda a escribir pruebas para las aplicaciones wsgi. Es mucho más poderosa comparando con <code>django.test.Client</code> que viene con Django.</p>
-
-<p>En el archivo de configuración especificamos que vamos a usar la base de datos SQLite para correr nuestras pruebas:</p>
-
-<figure class='code'><figcaption><span>test_settings.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.sqlite3&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Suponemos que queremos escribir una prueba unitaria para una vista que crea un objeto del modelo <code>Event</code>:</p>
-
-<figure class='code'><figcaption><span>models.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">start_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">end_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">people</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="s">&#39;history.Person&#39;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;events&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Aquí está la vista que maneja el formulario para crear un evento:</p>
-
-<figure class='code'><figcaption><span>views.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">EventCreateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">CreateView</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">model</span> <span class="o">=</span> <span class="n">Event</span>
-</span><span class='line'>    <span class="n">form_class</span> <span class="o">=</span> <span class="n">EventForm</span>
-</span><span class='line'>    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s">&#39;history:timeline&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora escribimos nuestra prueba. Vamos a extender la clase <code>django_webtest.WebTest</code>, que en su lugar extiende <code>django.test.TestCase</code> de Django, y crear a un usuario:</p>
-
-<figure class='code'><figcaption><span>tests.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">django_webtest</span> <span class="kn">import</span> <span class="n">WebTest</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">email</span><span class="o">=</span><span class="s">&#39;superuser@example.com&#39;</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">username</span><span class="o">=</span><span class="s">&#39;superuser&#39;</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">password</span><span class="o">=</span><span class="s">&#39;secret&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="p">)</span>
-</span><span class='line'>        <span class="nb">super</span><span class="p">(</span><span class="n">HistoryViewsTests</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">test_create_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="c"># código para nuestra prueba</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora podemos probar que cuando un usuario trata de acceder nuestra página, se redirige al formulario de acceso (el códigos de estado HTTP es 302):</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&#39;history:event_create&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">302</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora vamos a acceder la vista como superusuario:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">superuser</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Como tenemos solo un formulario en la página, podemos obtenerlo por una de tres formas: por el atributo <code>.form</code>: <code>response.form</code>, por índice <code>response.forms[0]</code> o por <code>id</code> del formulario (artibuto HTML)<code>response.forms['event_form']</code>.</p>
-
-<p>Para facilitar la depuración de nuestras pruebas, podemos pedir a mostrar el <code>response</code> en navegador predeterminado:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">response</span><span class="o">.</span><span class="n">showbrowser</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora podemos diligenciar nuestro formulario con los datos de prueba:</p>
-
-<figure class='code'><figcaption><span>tests.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
-</span><span class='line'>    <span class="c"># ...</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">test_create_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">person1</span><span class="p">,</span> <span class="n">person2</span><span class="p">,</span> <span class="n">person3</span> <span class="o">=</span> <span class="n">PersonFactory</span><span class="o">.</span><span class="n">create_batch</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">superuser</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">form</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">forms</span><span class="p">[</span><span class="s">&#39;event_form&#39;</span><span class="p">]</span>
-</span><span class='line'>        <span class="n">form</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&#39;Título del evento&#39;</span>
-</span><span class='line'>        <span class="n">form</span><span class="p">[</span><span class="s">&#39;start_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-</span><span class='line'>        <span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">person1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">person2</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
-</span><span class='line'>        <span class="n">form</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span><span class="o">.</span><span class="n">follow</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="s">u&#39;Título del evento&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">people</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">person1</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">person2</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">(</span><span class="n">person3</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Para generar objetos del modelo <code>Person</code> usamos la biblioteca <a href="http://factoryboy.readthedocs.org/">Factory Boy</a>:</p>
-
-<figure class='code'><figcaption><span>factories.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">Person</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">factory</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">factory.fuzzy</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">PersonFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">django</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">fuzzy</span><span class="o">.</span><span class="n">FuzzyText</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">model</span> <span class="o">=</span> <span class="n">Person</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Así podemos acceder los opciones de una selección o selección múltiple:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='pycon'><span class='line'><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">options</span>
-</span><span class='line'><span class="go">[(u&#39;1&#39;, False, u&#39;GLUZLvZfyjdZEmjNtnAJvsIVljodQjZpzLRDKrqJtYGiDLmSrN&#39;), (u&#39;2&#39;, False, u&#39;vOxDBbmLaUXxJkJzcqYgLQpBieSoLtXJcpHCEPUpYUIzybhsAh&#39;), (u&#39;3&#39;, False, u&#39;tfXSXCTIQICDwVPYvxZGSXgclFTnHbeYSQaMntxJNcgUJjzAwX&#39;)]</span>
-</span><span class='line'><span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">person1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">person2</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
-</span><span class='line'><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-</span><span class='line'><span class="go">[u&#39;1&#39;, u&#39;2&#39;]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora corremos nuestras pruebas y voilà:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./manage.py test
-</span><span class='line'>Creating test database for alias 'default'...
-</span><span class='line'>..
-</span><span class='line'>----------------------------------------------------------------------
-</span><span class='line'>Ran 1 test in 0.463s
-</span><span class='line'>
-</span><span class='line'>OK
-</span><span class='line'>Destroying test database for alias 'default'...</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Enlaces:</p>
-
-<ul>
-<li><a href="https://github.com/django-webtest/django-webtest">WebTest</a></li>
-<li><a href="http://webtest.pythonpaste.org/en/latest/forms.html">Manejo de formularios con WebTest</a></li>
-<li><a href="http://factoryboy.readthedocs.org/">Factory Boy</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -1446,15 +1313,15 @@ de Cine de Moscú. En la revisa &ldquo;Luces de Siberi&rdquo; fue publicada su p
       </li>
     
       <li class="post">
+        <a href="/blog/2016/09/04/las-series-que-marcaron-los-anos-noventa-en-rusia/">Las series que marcaron los años noventa en Rusia</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Monitoreo de acciones de usuarios en Flask (SQLAlchemy)</a>
       </li>
     
   </ul>
@@ -1486,10 +1353,28 @@ de Cine de Moscú. En la revisa &ldquo;Luces de Siberi&rdquo; fue publicada su p
       
     
       
+    
+      
         
         <li class="post">
           <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
         </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
       
     
       

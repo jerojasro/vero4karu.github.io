@@ -9,7 +9,8 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="python-social-auth configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django. def &hellip;">
+  <meta name="description" content="from django.contrib import admin from product.forms import EquipmentForm @admin.register(Equipment)
+class EquipmentAdmin(admin.ModelAdmin): form = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +86,115 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">How to validate a Django form with inline formsets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T18:57:47-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:57 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div><script src='https://gist.github.com/1c065cb54baef2da79c2.js'></script>
+<noscript><pre><code>from django.contrib import admin
+
+from product.forms import EquipmentForm
+
+@admin.register(Equipment)
+class EquipmentAdmin(admin.ModelAdmin):
+    form = EquipmentForm
+    
+    inlines = [
+        EquipmentGalleryInline,
+    ]</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/generate-zip-file-in-django/">Generate .zip file in Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T18:47:58-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:47 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/generate-zip-file-in-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/generate-zip-file-in-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A view that creates a .ZIP file of multiple files and returns it in response:</p>
+
+<div><script src='https://gist.github.com/3b1768a1cb13f7e457d4.js'></script>
+<noscript><pre><code>import os
+import zipfile
+import cStringIO as StringIO
+
+class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
+    model = Contract
+
+    def render_to_response(self, context, **httpresponse_kwargs):
+        contract = self.object
+
+        if not contract.images.exists():
+            return HttpResponseRedirect(
+                reverse(&#39;contract:contract_detail&#39;, args=(contract.id,)),
+            )
+
+        dirname = u&#39;imagenes_contrato_{0}&#39;.format(contract.number)
+        filename = u&#39;{0}.zip&#39;.format(dirname)
+
+        buffer = StringIO.StringIO()
+        z = zipfile.ZipFile(buffer, &#39;w&#39;)
+        for contract_image in contract.images.all():
+            z.write(contract_image.image.path, os.path.join(dirname, os.path.basename(contract_image.image.path)))
+        z.close()
+        buffer.seek(0)
+        response = HttpResponse(buffer.read())
+        response[&#39;Content-Disposition&#39;] = u&#39;attachment; filename={0}&#39;.format(filename)
+        response[&#39;Content-Type&#39;] = &#39;application/x-zip&#39;
+        return response</code></pre></noscript></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -569,73 +679,9 @@ las paredes de vidrio.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/21/soy-podstakannik/">Soy podstakannik</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-04-21T22:35:45-05:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>10:35 pm</span></time>
-        
-           | <a href="/blog/2014/04/21/soy-podstakannik/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2014/04/21/soy-podstakannik/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Soy un <a href="http://en.wikipedia.org/wiki/Podstakannik">podstakannik</a> y estoy
-cansado de ser feliz. ¿Por qué? Porque mi vida es simplemente asombrosa.
-Todo el tiempo estoy de viaje. Ah, olvidé decirles que trabajo en el
-ferrocarril ruso. Ustedes van a preguntarme: &ldquo;¿Y cómo te reconocimos
-si te vemos por allá?&rdquo; Pues, estoy hecho de metal tallado y sirvo para
-sostener los vasos de té, porque esos vasos están hechos de vidrio y no
-tienen orejas, entonces cuando un vaso está lleno de té recién preparado,
-un ser humano no puede sostener algo tan caliente sin ayuda mía.</p>
-
-<p>Cada día me paso en una mesilla del compartimiento del tren,
-sosteniendo el vaso, oliendo el té y mirando por la ventana.</p>
-
-<p>Me gusta mirar cómo cambia el paisaje. A veces me imagino corriendo
-o yendo en bici al lado del tren (con la misma velocidad, por supuesto)
-y pienso cómo supero todos los obstáculos en mi vía: las cunetas, las matas
-intransitables, los ríos&hellip; Los momentos más fascinantes son cuando el tren
-pasa por la estación. Así primero tengo que encontrar muy rápido el lugar dónde
-pueda subir a la plataforma. Como la gente trata de proteger las entradas de
-los colados, a veces es bastante complicado, que lo hace aún más interesante.
-Lo mismo pasa en la salida. Normalmente busco algún agujero o subo a un árbol
-y luego salto sobre el muro de la estación y estoy de nuevo libre y enfrentando
-las peculiaridades del relieve.</p>
-
-<p>Cuando me canso, puedo escuchar de qué hablan los pasajeros.
-Normalmente, uno se comporta como un viajero-experto y da consejos a los demás:
-qué lugares visitar, dónde es mejor acomodarse. A veces unos se ponen a
-hablar sobre política o a discutir sobre algunos programas de televisión.
-En este caso me aburro pronto y entonces me pongo a escuchar el ritmo
-que dan las ruedas y a soñar&hellip; soñar que estoy en una casa del campo al lado
-de pechka (horno de leña) esperando a que comience a hervir el agua en
-el <a href="http://es.wikipedia.org/wiki/Samovar">samovar</a>&hellip;</p>
-
-<p><img class="center" src="/images/podstakannik.jpg" title="'Tvorog'" ></p>
-
-<p><em>Podstakannik con el té (en un tren). La imagen tomada de <a href="http://vahvarh.terra-cognita.ru/text-25/">http://vahvarh.terra-cognita.ru/text-25/</a></em></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/5">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -678,15 +724,15 @@ el <a href="http://es.wikipedia.org/wiki/Samovar">samovar</a>&hellip;</p>
       </li>
     
       <li class="post">
+        <a href="/blog/2016/09/04/las-series-que-marcaron-los-anos-noventa-en-rusia/">Las series que marcaron los años noventa en Rusia</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Monitoreo de acciones de usuarios en Flask (SQLAlchemy)</a>
       </li>
     
   </ul>
@@ -718,10 +764,28 @@ el <a href="http://es.wikipedia.org/wiki/Samovar">samovar</a>&hellip;</p>
       
     
       
+    
+      
         
         <li class="post">
           <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
         </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
       
     
       
