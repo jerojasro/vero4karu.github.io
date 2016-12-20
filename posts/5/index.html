@@ -9,9 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Cuando era pequeña me encantaba leer los cuentos rusos folclóricos,
-seguir el destino de sus personajes, imaginarme en su lugar y pensar
-en nuevas &hellip;">
+  <meta name="description" content="Sometimes there is a need to pass a variable (parameter) from a FormView (for example, CreateView, UpdateView) to a form (for example, ModelForm). &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +85,201 @@ en nuevas &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">How to pass a variable from form to view in Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-21T11:09:20-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>11:09 am</span></time>
+        
+           | <a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sometimes there is a need to pass a variable (parameter) from a <code>FormView</code> (for example, <code>CreateView</code>,  <code>UpdateView</code>) to a form (for example, <code>ModelForm</code>).</p>
+
+<p>Let&rsquo;s suppose that we want to use a value of <code>other_variable</code> from a view <code>MyCreateView</code> in <code>MyForm</code>:</p>
+
+<div><script src='https://gist.github.com/ec0f82bb3d302961503d.js'></script>
+<noscript><pre><code>class MyForm(forms.ModelForm):
+    requested_asset = None
+    
+    def __init__(self, *args, **kwargs):
+        other_variable = kwargs.pop(&#39;other_variable&#39;)
+        super(MyForm, self).__init__(*args, **kwargs)</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/01/calle-13-con-6/">Calle 13 con 6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-01T18:05:51-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>6:05 pm</span></time>
+        
+           | <a href="/blog/2014/12/01/calle-13-con-6/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2014/12/01/calle-13-con-6/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/calle.jpg" title="'Calle 13 con 6'" ></p>
+
+<h5>Cra 6 #13-23</h5>
+
+<p>El administrador del banco está en su oficina tirando nerviosamente de
+su barba. Parece que como siempre tuvo mucha lengua y perdió la cliente de hoy.
+Él mira por la ventana y está dando vueltas en la memoria tratando de recordar
+los sucesos de hoy.</p>
+
+<p>Por la mañana a la sucursal del banco llamó un señor, que se presentó como
+representante de la esposa del embajador austriaco, diciendo que la señora
+iba a visitar a su sucursal para considerar las posibilidades de abrir por
+allá la caja de depósito seguro. El administrador se puso emocionado: no cada
+día le visitan familiares de altos funcionarios y además de unos extranjeros,
+y decidió a toda la costa causar buena impresión.</p>
+
+<p>Al mediodía al banco entró una dama vestida de traje, tacones altos y el pelo
+recogido en un moño. Era bastante joven, pero su forma de portarse con los
+demás revelaba su posición. Ella miraba con frialdad y sólo un lunar en la
+mejilla derecha a daba a su rostro algo vivaz y juguetón. El administrador
+personalmente recibió a la cliente y le dio la excursión por el edificio
+jactándose del sistema de seguridad, haciendo bromas tontas y contando tal
+como en un anuncio publicitario que era el primer edificio de esa red
+bancaria y que estaba construido en 1892 y para esa época sus clientes
+eran las personas más poderosas del país y etc.</p>
+
+<p>“No tuve que ser tan latoso, a esos europeos les molesta eso”, - dijo en la
+voz alta mirando por la ventana a un colegio al frente del banco. - “Pero ya qué.”</p>
+
+<h5>Cra 6 #13-24</h5>
+
+<p>El colegio con un nombre pretencioso “Cambridge school” está ubicado en
+el centro histórico de la ciudad y a primera vista se parece a una cárcel:
+un muro alto de ladrillo, los cables de la tensión y un vigilante en la entrada.
+Cada lunes los estudiantes del sexto grado tienen la clase de ruso.
+A los niños les gusta mucho ese curso - la profesora es muy joven
+a comparación con los otros maestros-”dinosaurios” del colegio y cada
+clase cuenta algún hecho curioso sobre Rusia. Y, que es lo más importante,
+durante las evaluaciones, sin importar las consecuencias vuelve la espalda
+y mira por la ventana, a pesar de que no haya nada interesante por allá:
+sólo un banco, una fila de carros en un trancón permanente y una publicidad
+en el edificio al lado del banco, que ya durante un mes está prometiendo
+que pronto en ese lugar se abrirá un local de las “Empanadas Bacanas”.</p>
+
+<h5>Cra 6 #13-21</h5>
+
+<p>Desde que los dueños de la casa en la 13 con 6ta se fueron vivir a la costa y
+lo arrendaron para un local de empanadas, los vecinos sufren del ruido por
+las noches. No parece que la reconstrucción avanza mucho, y todavía nadie
+ha visto al arrendatario, pero todos se ponen de acuerdo que sería bueno
+tener por allá un sitio de comida rápida y barata.</p>
+
+<h5>Cra 6. Entre #13-21 y #13-23</h5>
+
+<p>El túnel es frío y oscuro. Por dentro está una muchacha con una máscara y gafas.
+La máquina perforadora avanza lentamente: un disco de acero se mete a presión
+al terreno, saca la tierra y la manda por medio de una banda transportadora
+hacía afuera. A pesar de la máscara, a la muchacha le da mareo de olor de las
+vigas y un poco podridas de la humedad y el cemento que sirven para reforzar
+la parte construida del túnel. El gran problema son las aguas subterráneas,
+por eso le toca usar el método que inventaron en Leningrado cuando tenían que
+cavar el segmento entre las estaciones Lesnaya y Ploshad Muzhestva del metro,
+y enfriaron la tierra con nitrógeno líquido.</p>
+
+<p>Pero ya falta un poco y esto le levanta el ánimo.</p>
+
+<h5>Cra 6 #13-24</h5>
+
+<p>Comenzó la época de los exámenes. La profesora según es costumbre está mirando
+por la ventana, esperando cuando el último estudiante que se quedó le entregue
+el papel con las respuestas de la evaluación. No se puede decir que no le gusta
+su trabajo, pero ese día se siente algo de alivio. Ya ha decidido que es su
+último año en el colegio y llegó el momento para cambiar algo en su vida, o
+simplemente para viajar y conocer algo nuevo.</p>
+
+<p>Sus pensamientos se interrumpen por la alarma. Por el altavoz el director
+avisa que alguien llamó al colegio y dijo que había puesto una bomba, y a pesar
+de que él está seguro de que era algún estudiante que quiere aplazar el día
+de un examen, las normas de la seguridad exigen hacer la evacuación.</p>
+
+<p>En unos minutos todo se cubre con el humo. No se ve el fuego, pero el humo
+se extendió tan rápido que, junto al sonido histérico de la sirena, provoca
+el pánico entre los estudiantes y profesores. En el pánico nadie se da cuenta
+de que la profesora de ruso entra a una aula y en tres minutos sale vestida
+como una empleada del banco, cruza la calle y entra a la sucursal al frente
+del colegio.</p>
+
+<h5>Cra 6 #13-23</h5>
+
+<p>El humo ya es tan fuerte que invade los otros edificios en el barrio.
+La profesora se pone una careta antigás portátil y entra a la parte privada
+del banco. Todos al rededor salen corriendo y nadie le presta atención.
+En unos segundos funciona el sistema del desbloqueo de las puertas contra
+incendio. La muchacha sabe perfectamente la ruta y va a paso firme hacía
+su destino. A las 2:30 pm en punto a lado del muro del colegio se escucha
+una explosión. No se ven ningunos signos de destrucción, pero el sonido
+agrava el pánico aún más y nadie nota que por dentro del banco en el cuarto
+con las cajas de depósito seguro se explotó una bomba real y abrió
+un hueco a un túnel.</p>
+
+<h5>Cra 6 #13-21</h5>
+
+<p>Detrás de la publicidad de las &ldquo;Empanadas Bacanas&rdquo; sale una chica en un vestido
+corto abigarrado, sandalias y una de esas bolsas grandes que se pusieron de moda.
+Se para por un momento en la calle, levanta la cabeza, mira el sol que trata
+de resplanderse a través del humo, y sigue derecho. En la calle 5 con 17 se
+encuentra con un muchacho:</p>
+
+<p>&mdash; ¿Qué más? - le pregunta.</p>
+
+<p>&mdash; Bien, acabo de darles el examen final.</p>
+
+<p>&mdash; Qué bien. Entonces ya no tienes excusas de estar perdida por las noches.</p>
+
+<p>La chica sonrió y el muchacho la beso en el lunar de la mejilla derecha:</p>
+
+<p>&mdash; Vamos a comer algo, ¿te parece?</p>
+
+<p>&mdash; Ok.</p>
+
+<p>&mdash; Perfecto. Conozco un buen sitio en par de cuadras de aquí. Creo que ya te lo había mencionado&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -568,88 +761,6 @@ pintarlo de otros colores.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/23/tren/">Tren</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-07-23T18:15:21-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>6:15 pm</span></time>
-        
-           | <a href="/blog/2013/07/23/tren/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2013/07/23/tren/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Me encantan los trenes! Me parece que es un medio de transporte mágico.
-El encanto empieza cuando la persona sube en el vagón y siente este olor
-del nuevo viaje fascinante. Se sienta en el diván de la ventana se sumerge
-en esta atmósfera del camino. Y cuando el tren empieza a ir, se puede
-escuchar el ruido de las ruedas, monótono y tranquilizante. Me encanta
-leer algo en el tren, o escuchar la música country,… o simplemente mirar
-desde la ventana los paisajes e imaginar como sería mi vida en la ciudad
-que pasamos si viviera por allí.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/21/dentista/">Dentista</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-07-21T18:23:13-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>6:23 pm</span></time>
-        
-           | <a href="/blog/2013/07/21/dentista/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2013/07/21/dentista/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ahora los dentistas no me asustan, pero antes me daban  mucho miedo.
-Siempre lloraba en el consultorio dental. Pero no creo que fuera por
-el dolor o lo incomodo. Mayormente lloré porque los adultos me decían
-que no iban a hacerme nada, sólo mirar. Pero después me metían el torno
-en la boca o las pinzas de extracción. Entonces empezaba a llorar
-de ofensa porque ya no podía creer a nadie y ni a mi propia madre,
-porque todos me mentían. Y después de salir del consultorio lloraba
-aún más porque siempre me preguntaban por qué lloraba si no había
-pasado nada. Por eso pienso que es mejor decir la verdad a los niños,
-para darles así la oportunidad de prepararse psicológicamente y
-para que luego se sintieran orgullosos de haber superado el dolor,
-en lugar de llorar pensando que los adultos son unos mentirosos.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -672,6 +783,10 @@ en lugar de llorar pensando que los adultos son unos mentirosos.</p>
     
       <li class="post">
         <a href="/blog/2016/12/18/libros-que-leen-los-ninos-rusos/">Libros que leen los niños rusos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/30/sistema-de-riego-por-capilaridad/">Sistema de riego por capilaridad</a>
       </li>
     
       <li class="post">
@@ -700,10 +815,6 @@ en lugar de llorar pensando que los adultos son unos mentirosos.</p>
     
       <li class="post">
         <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
       </li>
     
   </ul>
@@ -737,10 +848,14 @@ en lugar de llorar pensando que los adultos son unos mentirosos.</p>
       
     
       
+    
+      
         
         <li class="post">
           <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
         </li>
+      
+    
       
     
       
