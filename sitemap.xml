@@ -89,6 +89,10 @@
 <lastmod>2016-01-11T15:26:29-05:00</lastmod>
 </url>
 <url>
+<loc>http://blog.vero4ka.info/blog/2015/10/26/caminata/</loc>
+<lastmod>2015-10-26T17:45:30-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django/</loc>
 <lastmod>2015-09-30T04:49:19-05:00</lastmod>
 </url>
@@ -267,6 +271,15 @@
 <loc>http://blog.vero4ka.info/blog/categories/tdd/</loc>
 </url>
 <url>
+<loc>http://blog.vero4ka.info/blog/categories/bogota/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/ciudad/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/colombia/</loc>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/categories/libros/</loc>
 </url>
 <url>
@@ -280,9 +293,6 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/urbanismo/</loc>
-</url>
-<url>
-<loc>http://blog.vero4ka.info/blog/categories/ciudad/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/popularizacion-de-la-ciencia/</loc>
@@ -343,5 +353,8 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/posts/5/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/posts/6/</loc>
 </url>
 </urlset>
