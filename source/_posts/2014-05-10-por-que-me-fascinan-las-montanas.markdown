@@ -1,0 +1,21 @@
+---
+layout: post
+title: "Por qué me fascinan las montañas"
+date: 2014-05-10 18:56:15 -0500
+comments: true
+categories:
+- Colombia
+- Montañas
+---
+
+Desde que era pequeña me fascinaban las montañas. Primero las miraba sólo en las fotos y me parecían ilusorias, como algo de un mundo de cuentos.
+
+En parte por eso en el colegio me gustaba la geografía. En las clases nos daban los croquis y tuvimos que dibujar con colores las cadenas montañosas del mundo. Me encantaba dibujar en el mapa blanco, que tenía sólo los contornos de los continentes, dibujar los relieves con el color marrón (saludos a Javiercito-cafecito) y los picos cubiertos de nieve con el blanco, y después con el verde y amarillo indicar los valles y desiertos.
+
+En el libro de historia natural tuvimos unos dibujos de los pueblos pequeños dispuestos en la montaña. Esas casitas se perecían a unos juguetes. Y realmente eran así. Unas clases después nos contaron sobre los volcanes y así conocimos la fuerza encubierta que está por dentro de unas montañas.
+
+Cuando tuve 19 años, por primera vez me enfrenté con las montañas reales, y no defraudaron mis expectativas – eran fantásticas. Estuve en el sur de Rusia al lado del mar Negro. La cordillera se llama caucásea. No es tan grande, pero es muy bonita: está cubierta con los bosques de coníferos y entrelazada con ríos y senderos pequeños, y el olor a pino les agrega la frescura. Me quedé muy impresionada…
+
+Pero realmente entablé conocimiento con las montañas hace unos años en Colombia. Cuando por primera vez llegué a Bogotá, me asombraron tremendamente, y debidamente sentí toda su imponencia. Sentí escalofríos en la espalda cuando me puse a imaginar por cuántos siglos han estado par acá esos gigantes que nacieron desde las entraños de la Tierra. Eran testigos de tantos eventos y cambios. Unas con el tiempo se volvieron inaccesibles debido a roca y peñas escarpadas. Otros son más hospitalarias, invadidas con árboles y matas, y desde lejos se ven afelpadas, como cubiertas con lana verde. Pero a todas les une que nos recuerdan la paciencia y longanimidad. Nos hacen acordarnos que somos sólo unas hormigas pequeñas inexpertas.
+
+Para mi mirar a las montañas es equiparable a contemplar al cielo estelado y ya no imagino mi vida sin ellas.
