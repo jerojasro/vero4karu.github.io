@@ -70,7 +70,7 @@ las estrofas de Tiútchev:
 
 Люблю грозу в начале мая (Me gustan las tormentas a principios de mayo) /
 Когда весенний первый гром (Cuando el primer trueno primaveral) /
-Как бы резвяся и играя (Como haciendo travesuras y jugando) / 
+Как бы резвяся и играя (Como haciendo travesuras y jugando) /
 Грохочет в небе голубом (Trona en el cielo azul).
 
 

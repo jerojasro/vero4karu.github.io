@@ -4,6 +4,8 @@ title: "Piotr I"
 date: 2014-05-03 18:57:37 -0500
 comments: true
 categories:
+- Rusia
+- Historia
 ---
 
 En el año 1700 los suecos empezaron la Gran Guerra del Norte contra Rusia.
