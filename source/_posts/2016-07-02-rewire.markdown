@@ -1,0 +1,39 @@
+---
+layout: post
+title: "“Rewire”"
+date: 2016-07-02 08:19:37 -0500
+comments: true
+categories:
+---
+
+{% img center /images/rewire.jpg 'Rewire' %}
+
+Hace unos meses me di cuenta de que casi no leía noticias de Colombia,
+y era bastante difícil empezar a hacerlo, a pesar de que ya vivía aquí por
+un tiempo significativo. En Rusia, empezando desde el bachillerato,
+me demoré varios años leyendo toda la basura que publicaban en la prensa y
+en Internet para al fin formar mi lista de periódicos favoritos y periodistas
+que escribían textos interesantes y relativamente objetivos. Mientras que aquí
+en Colombia todo era desconocido: los artículos que encontraba al principio
+me parecían muy secos, llenos de descripciones de los hechos y casi sin
+análisis. No los disfrutaba ni siquiera desde el punto de vista literario y
+al final, después de torturarme con varios textos de la revista Semana,
+pasaba a mi mundo cómodo y organizado de mis fuentes de noticias rusas
+preseleccionadas.
+
+Claro que me demoré tanto en empezar a leer las noticias locales en
+parte por la falta de perspectiva: sin conocer los nombres de los políticos y sus pareceres, sin conocer bien la historia y la mentalidad de la gente, es bastante difícil percibir la nueva información que proviene de ese contexto histórico y cultural.
+
+Analizando esa situación, me puse a reflexionar acerca del cosmopolitismo general, y qué tantas noticias recibimos acerca de los otros países. Así, encontré el libro de Ethan Zuckerman, llamado “Rewire”: Cosmopolitas Digitales en la Era de la Conexión.
+
+Ethan Zuckerman es director del MIT Center for Civic Media, blogger y activista de Internet. En su libro él escribe acerca de cómo las redes sociales y las nuevas tecnologías cambian nuestras vidas. Ahora, cuando tanta gente tiene acceso a Internet, parece que estamos rodeados de textos y noticias de todo el mundo, pero en realidad, todas esas herramientas nos ayudan a encontrar lo que buscamos y ya queremos saber, pero no la información que debemos conocer y que sería útil para nosotros.
+
+En estos días, prestamos más la atención a las noticias de nuestro barrio, a lo qué ha pasado con nuestros amigos de Facebook, y no a lo que está pasando al otro lado del océano. Zuckerman escribe: “La vida de nuestros amigos nos interesa más que la vida de algunos desconocidos.” Y eso se refleja en las fuentes de información que usamos desde los periódicos hasta las redes sociales: ellos no nos ayudan a encontrar lo que necesitamos saber, sino lo que queremos saber. Zuckerman hizo un análisis de los periódicos de del pasado, comparando con los de hoy y se dió cuenta de que a pesar de que tenemos televisión satelital e Internet, que nos permiten transmitir la información desde cualquier parte del mundo, nos enfrentamos con una imagen del mundo más limitada que antes. Ahora el problema no está en la disponibilidad de la información, sino en la atención que estamos dispuestos a darla. Y ese problema se ve agravado por nuestro deseo natural de prestar más atención a lo que está pasando en el nuestro entorno y lo que tiene impacto directo sobre nosotros, nuestros amigos y familiares.
+
+Zuckerman dice que debemos empezar a vernos no sólo como a los ciudadanos de un país en particular, sino también como los ciudadanos del mundo. Pero aunque uno de los mayores logros de Internet es la posibilidad de encontrar en la red las cosas más inesperadas, en la práctica lo que encontramos más a menudo, es algo que ya está cerca a nuestra casa. Al leer demasiados artículos de los autores que comparten nuestras opiniones, y al comunicarnos exclusivamente con las personas de ideas afines corremos el riesgo de radicalizarlos.
+
+
+El proyecto de Ethan Zuckerman Global Voices: [es.globalvoices.org](https://es.globalvoices.org/) <br />
+El libro Rewire: [www.goodreads.com/book/show/16233761-rewire](https://www.goodreads.com/book/show/16233761-rewire)
+
+*Imagen: [www.flickr.com/photos/brewbooks/)(https://www.flickr.com/photos/brewbooks/7780990192/in/photolist-cRzBij-K4paU-7UY3HD-9ABvuD-7FKgVs-rShcaP-5WwbN7-ccehiL-9nFnhH-neVHmM-5c5DxS-9nFncg-7iQDGs-7jPhyd-21JVDJ-bxc88V-brP5Hn-neVccP-2SVjky-5WrUBi-rScq2r-qprHWm-5UATws-3pcHxt-kFnpQn-7Bf9z-ngYzuZ-3KWeLU-7LFVGn-poVcLj-neXcse-bGywMv-Km4B5-5j3uR2-rQT3gb-4QQbk8-aD8nhY-7eJRHD-6H8qEM-c69PU-nQ4sdZ-aRnQ9t-4HrqXc-6LBwWq-8Bk663-n232UD-7RFJky-itGLmk-aExg9q-cG5jK)*
