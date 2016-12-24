@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Un chiste"
+date: 2014-10-01 08:31:51 -0500
+comments: true
+categories:
+- Chiste
+---
+
+— ¿Dónde usted trabaja? <br />
+— En un instituto… <br />
+— ¿Y a qué se dedica? <br />
+— Ecuaciones de Fredholm de primera especie. <br />
+— ¿Y cuál es su hobby (pasatiempo)? <br />
+— Ecuaciones de Fredholm de segunda especie <br />
