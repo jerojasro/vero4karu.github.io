@@ -1,0 +1,27 @@
+---
+layout: post
+title: "El destino"
+date: 2014-06-28 08:43:30 -0500
+comments: true
+categories:
+- Ensayo
+- Tarea
+---
+
+*Tarea: convertir el cómic a un relato.*
+
+{% img right /images/comic1.jpg 'El destino' %}
+
+El señor Felipe vivía solo en su habitación pequeña en el centro de una ciudad grande. Como él trabajaba en un laboratorio dónde realizaban las pruebas de las máquinas diferentes, todo su trabajo se reducía a buscar errores de los demás. La vida le parecía aburrida y monótona, y un día Felipe decidió suicidarse. Él navegó por todo Internet buscando las formas de darse de baja. Primero pensó en ahogarse, pero desde la infancia odiaba el sentido de cómo el agua se mete en su nariz. Luego a Felipe se le ocurrió que sería mejor lanzarse de un edificio suficientemente alto. Pero ese escenario tampoco le convenía: no le gustaba la idea de que se reuniría mucha gente para mirar ese espectáculo y nuestro protagonista no quería la publicidad. Después de pensar  un poco Felipe se acordó que se podría cortar las venas en las muñecas. Pero en el mismo momento rechazó esa opción que se veía demasiado histérica y un hombre tan serio como nuestro Felipe no quería parecer a una muchacha adolescente. “¿Cuál sería la forma más apropiada?” – pensaba él. – “¿Puede se ahorcarse?.. ¡No! Sería demasiado demorado… y ¿qué haría si no se rompiera mi cuello?”
+
+¿Qué entonces? ¿Saltarse frente de un tren? ¿Autoquemarse? ¿Harakiri? ¿Dejar de comer y esperar la muerte por hambre o deshidratación?
+
+Al final Felipe decidió pegarse un tiro. Él compró una pistola , se puso en el centro de la habitación y arrimó el arma en su sien. Se preguntó: “¿Cerré el gas?” Claro, si no le había cerrado, se podría ocurrir una explosión. Después de asegurarse que la llave del gas estuvo bien cerrada, otro pensamiento llegó a la cabeza de Felipe: si habría regado las plantas; después vino la otra: “¿Cargué la pistola?” Pero Felipe estuvo tan agotado con todos estos pensamientos que ésta vez no escuchó a la voz del raciocinio y disparó.
+
+Su pistola erró el tiro. Se impuso el silencio y una idea  aterrizó a los mientes de Felipe. ¿Cómo algo tan sencillo no le ocurrió antes? ¡Un veneno! Felipe se emocionó mucho. De nuevo de dirigió a Internet para averiguar el recetario de la ponzoña, anotó el listado de ingredientes y muy feliz se fue al supermercado. Pero todavía no sabía que por allá lo estaba esperando su destino.
+
+{% img right /images/comic2.jpg 'El destino' %}
+
+El destino llegó con la encarnación del muchacho Carlos que trabajaba en ese supermercado como marcador de precios de la mercancía. Cada día andaba con su máquina por los pasillos y entre los estantes pegando los papelitos. A Carlos le gustaba mucho su trabajo: él pudo siempre estar con personas – clientes del supermercado – y mirar a las mujeres. Precisamente con esto estaba ocupado cuando pegó un papelito con el precio en la espalda de nuestro Felipe, que estaba tan entusiasmado con sus compras que no se dio cuenta. Así, gracias a Carlos, Sara, la mujer solterona con 30 gatos en su apartamento, se fijó en Felipe. El precio le convino y la calidad del articulo también, y después de seguirlo por un rato, Sara decidió invertir su dinero en éste hombre. Lo cogió y lo llevó al la caja.
+
+De ésta manera Sara encontró al hombre que buscaba por años y Felipe la forma más lenta y dolorosa del suicidio.
