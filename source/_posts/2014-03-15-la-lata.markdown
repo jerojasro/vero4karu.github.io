@@ -1,0 +1,51 @@
+---
+layout: post
+title: "La lata"
+date: 2014-03-15 08:28:20 -0500
+comments: true
+categories:
+---
+
+Antes con bastante frecuencia llevaba al trabajo una lata pequeña de maíz.
+Me servía mucho para tomar un bocado a por la tarde antes de irme a la casa.
+
+{% img right /images/cincel.jpg 'Cincel' %}
+
+Estando en Colombia, por nostalgia, un día decidí comprar una lata de esas.
+Pero cómo fue mi desengaño, cuando llegando a la casa descubrí que la lata
+no tenía la palanca y, por supuesto, no tuve el abrelatas.
+¿Cómo abrirla entonces? La primera opción fue usar la fuerza física y tratar
+de hacer un agujero usando u cuchillo y algo para clavarlo en la tapa de la lata.
+Pero es bastante peligros porque el cuchillo puede resbalarse y lastimar
+la mano o la mesa.
+
+…Las primeras conservas surgieron en Francia hace 200 años. Las hacían para
+los militares. Era la única forma de conservar la carne en las campañas largas.
+Antes las latas eran muy resistentes y las abrían con un martillo y cincel.
+Ahora el grosor de las láminas no supera 0.2 mm.
+
+Primero esas hojas se cubren con una laca especial, para que el metal
+no se oxide. Luego las cortan en unos pedazos rectangulares y después
+los encorvan para hacer cilindros, y cuecen los bordes.
+
+{% img center /images/lata.png %}
+
+Del mismo material tallan los fondos y las tapas. Luego con una máquina
+juntan el fondo de la lata y las paredes a un todo único. Después en las
+latas ponen algo que quieren conservar, por ejemplo, la carne, dejando el
+espacio para libre, porque durante la preparación la carne va a hervir y
+puede explotar. Vamos a verlo más detallado: la tapa presionada en el interior
+de de la lata y la “abraza” (se dobla y se une a la pared de la lata) por fuera.
+Arriba de la lata aparece un saliente que es su parte débil.
+
+La carne está cociéndose por una hora con un temperatura de 200°C y
+la presión de 2 atmósferas.
+
+Ahora con la lima se afila la parte superior de la lata y se abre.
+En las condiciones extremas se puede hacer con una piedra rugosa.
+
+la otra forma de abrir la es crear la diferencia de presión por dentro
+de la lata y afuera, calentándola en una cacerola llena de agua.
+Pero creo que la masa de maíz sea muy apetitosa.
+
+*(Por si a alguien le interesa, al final la abrí con mi navaja suiza)*
