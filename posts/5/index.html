@@ -9,8 +9,8 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="JSONView Validate and view JSON documents.
-https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc Postman - REST Client https:// &hellip;">
+  <meta name="description" content="from django.contrib import admin from product.forms import EquipmentForm @admin.register(Equipment)
+class EquipmentAdmin(admin.ModelAdmin): form = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,216 @@ https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc Postm
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">How to validate a Django form with inline formsets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T18:57:47-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:57 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div><script src='https://gist.github.com/1c065cb54baef2da79c2.js'></script>
+<noscript><pre><code>from django.contrib import admin
+
+from product.forms import EquipmentForm
+
+@admin.register(Equipment)
+class EquipmentAdmin(admin.ModelAdmin):
+    form = EquipmentForm
+    
+    inlines = [
+        EquipmentGalleryInline,
+    ]</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/generate-zip-file-in-django/">Generate .zip file in Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T18:47:58-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:47 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/generate-zip-file-in-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/generate-zip-file-in-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A view that creates a .ZIP file of multiple files and returns it in response:</p>
+
+<div><script src='https://gist.github.com/3b1768a1cb13f7e457d4.js'></script>
+<noscript><pre><code>import os
+import zipfile
+import cStringIO as StringIO
+
+class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
+    model = Contract
+
+    def render_to_response(self, context, **httpresponse_kwargs):
+        contract = self.object
+
+        if not contract.images.exists():
+            return HttpResponseRedirect(
+                reverse(&#39;contract:contract_detail&#39;, args=(contract.id,)),
+            )
+
+        dirname = u&#39;imagenes_contrato_{0}&#39;.format(contract.number)
+        filename = u&#39;{0}.zip&#39;.format(dirname)
+
+        buffer = StringIO.StringIO()
+        z = zipfile.ZipFile(buffer, &#39;w&#39;)
+        for contract_image in contract.images.all():
+            z.write(contract_image.image.path, os.path.join(dirname, os.path.basename(contract_image.image.path)))
+        z.close()
+        buffer.seek(0)
+        response = HttpResponse(buffer.read())
+        response[&#39;Content-Disposition&#39;] = u&#39;attachment; filename={0}&#39;.format(filename)
+        response[&#39;Content-Type&#39;] = &#39;application/x-zip&#39;
+        return response</code></pre></noscript></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/">Django: python-social-auth configuration and pipeline to get users information</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T18:45:21-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:45 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>python-social-auth</code> configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django.</p>
+
+<div><script src='https://gist.github.com/9899590.js'></script>
+<noscript><pre><code>def update_user_social_data(strategy, *args, **kwargs):
+    &quot;&quot;&quot;Set the name and avatar for a user only if is new.
+    &quot;&quot;&quot;
+    print &#39;update_user_social_data ::&#39;, strategy
+    if not kwargs[&#39;is_new&#39;]:
+        return
+
+    full_name = &#39;&#39;
+    backend = kwargs[&#39;backend&#39;]
+
+    user = kwargs[&#39;user&#39;]
+
+    if (
+        isinstance(backend, GoogleOAuth2)
+        or isinstance(backend, FacebookOAuth2)
+    ):
+        full_name = kwargs[&#39;response&#39;].get(&#39;name&#39;)
+    elif (
+        isinstance(backend, LinkedinOAuth)
+        or isinstance(backend, TwitterOAuth)
+    ):
+        if kwargs.get(&#39;details&#39;):
+            full_name = kwargs[&#39;details&#39;].get(&#39;fullname&#39;)
+
+    user.full_name = full_name
+
+    if isinstance(backend, GoogleOAuth2):
+        if response.get(&#39;image&#39;) and response[&#39;image&#39;].get(&#39;url&#39;):
+            url = response[&#39;image&#39;].get(&#39;url&#39;)
+            ext = url.split(&#39;.&#39;)[-1]
+            user.avatar.save(
+               &#39;{0}.{1}&#39;.format(&#39;avatar&#39;, ext),
+               ContentFile(urllib2.urlopen(url).read()),
+               save=False
+            )
+    elif isinstance(backend, FacebookOAuth2):
+        fbuid = kwargs[&#39;response&#39;][&#39;id&#39;]
+        image_name = &#39;fb_avatar_%s.jpg&#39; % fbuid
+        image_url = &#39;http://graph.facebook.com/%s/picture?type=large&#39; % fbuid
+        image_stream = urlopen(image_url)
+
+        user.avatar.save(
+            image_name,
+            ContentFile(image_stream.read()),
+        )
+    elif isinstance(backend, TwitterOAuth):
+        if kwargs[&#39;response&#39;].get(&#39;profile_image_url&#39;):
+            image_name = &#39;tw_avatar_%s.jpg&#39; % full_name
+            image_url = kwargs[&#39;response&#39;].get[&#39;profile_image_url&#39;]
+            image_stream = urlopen(image_url)
+
+            user.avatar.save(
+                image_name,
+                ContentFile(image_stream.read()),
+            )
+    elif isinstance(backend, LinkedinOAuth):
+        if kwargs[&#39;response&#39;].get(&#39;pictureUrl&#39;):
+            image_name = &#39;linked_avatar_%s.jpg&#39; % full_name
+            image_url = kwargs[&#39;response&#39;].get[&#39;pictureUrl&#39;]
+            image_stream = urlopen(image_url)
+
+            user.avatar.save(
+                image_name,
+                ContentFile(image_stream.read()),
+            )
+    user.save()</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -569,215 +779,6 @@ van a examinar cada hoja buscando tachaduras o rupturas del papel.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/08/el-mundo-de-los-cuentos-rusos/">El mundo de los cuentos rusos</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-08T19:47:23-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:47 pm</span></time>
-        
-           | <a href="/blog/2014/11/08/el-mundo-de-los-cuentos-rusos/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2014/11/08/el-mundo-de-los-cuentos-rusos/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Cuando era pequeña me encantaba leer los cuentos rusos folclóricos,
-seguir el destino de sus personajes, imaginarme en su lugar y pensar
-en nuevas historias que pudieran pasar con ellos.</p>
-
-<p><img class="right" src="/images/zmei_gorinich.jpg" title="'Zmey Gorynych, por Viktor Vasnetsov'" ></p>
-
-<p>Me parece que nuestros cuentos reflejan perfectamente nuestra cultura,
-nuestras esperanzas y sueños. Me gusta que tienen muchos personajes
-mágicos y los dioses de mitología eslava: Perun - el dios principal
-que apoya al ejército, Veles - el dios del otro mundo o el dios del ganado,
-Yarilo - el ídolo del Sol, felicidad y fertilidad de primavera.</p>
-
-<p>Me gusta leer sobre <strong>Zmey Gorynych</strong> (dragón eslavo) que vive en las montañas
-o cerca del río de fuego y que vigila el <strong>Puente de Kalinov</strong>, que es
-la frontera entre los reinos de los vivos y los muertos. Es el puente
-por el que pasan los almas después de morir. También existía un dicho:
-&ldquo;verse con alguien en el Puente de Kalinov&rdquo;, que significaba
-&ldquo;enamorarse de alguien&rdquo;, porque el casamiento para una muchacha significaba
-la muerte y el renacimiento en un estado nuevo.</p>
-
-<p><img class="center" src="/images/viktor_vasnetsov_kashchey_the_immortal.jpg" title="'Koschéi el inmortal, por Viktor Vasnetsov'" ></p>
-
-<p>El dragón puede tener de 3 a 12 cabezas que escupen fuego, tiene una cola
-muy larga con una pica al final y las paras con garras. En su tiempo
-libre el dragón secuestra las muchachas más bonitas, simplemente para
-comerlas después. Zmey Gorynych sirve a otro personaje que se llama
-<strong>Koschéi el Inmortal</strong>.</p>
-
-<p><img class="right" src="/images/kashey.jpg" title="'Koschéi el inmortal'" ></p>
-
-<p>Es un mago maligno que guarda el reino subterráneo. Su vida está escondida en
-una isla en un mar, donde está un roble. Bajo del roble está enterrado un cofre,
-en él hay un conejo, y dentro del conejo un pato, y dentro del pato un huevo,
-y dentro del huevo una aguja y en la punta de la aguja está su muerte.</p>
-
-<p><img class="left" src="/images/yaga.jpg" width="250" title="'Baba Yagá, por Viktor Vasnetsov'" ></p>
-
-<p>Es un viejo muy flaco, que parece a un esqueleto ambulante, y avaro.
-En los cuentos él normalmente secuestra la prometida del protagonista.
-El gran enemigo de Koschéi es <strong>Baba Yagá</strong> - una vieja que vive en el bosque
-en una casa con las patas de gallina y vuela sobre su almirez.</p>
-
-<p><img class="right" src="/images/firebird.jpg" width="250" title="'Ivan Tsarevich y Zhar-Ptitsa'" ></p>
-
-<p>En los cuentos ella ayuda al personaje principal: le cuenta dónde encontrar
-la muerte de Koschéi y cómo salvar a su novia. Le regala un nudo de hilos
-que le muestra el camino.</p>
-
-<p><img class="left" src="/images/vasilisa.jpg" width="200" title="'Ivan Tsarevich'" ></p>
-
-<p>El muchacho que perdió su novia es <strong>Ivan Tsarevich</strong>. Es el hijo menor del zar
-entre sus tres hijos, entonces no puede pretender a su corona. Después de
-ser adulto viaja mucho cumpliendo los deseos tontos de su padre, y en uno
-de sus viajes le consigue al padre <strong>Zhar-Ptitsa</strong> - el pájaro de fuego
-(que es el Fénix eslavo).</p>
-
-<p>Ivan se enamora de la hija de Koschéi - <strong>Vasilisa la Sábia</strong>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/19/el-escape/">El escape</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-19T08:30:30-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:30 am</span></time>
-        
-           | <a href="/blog/2014/10/19/el-escape/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2014/10/19/el-escape/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>No hay nada peor que vivir esperando algo. Así uno no vive, sino existe, constantemente pensando en cómo será su vida en el futuro en ese mundo cuando se cumplan sus expectativas. En lugar de disfrutar cada momento del día, uno lo rechaza como algo indeseable y temporal y sigue pensando en los sueños sobre esa vida imaginaria, haciendo planes por allá, pensando en qué va a hacer y qué va a sentir en esas circunstancias.</p>
-
-<p>Ya es medianoche y está muy oscuro. Un muchacho está sentado en una cama pequeña mirando frustradamente a la pared frene a sí. Su cuarto es bastante humilde: aparte de la cama hay una mesita, una silla y un estante de libros. Él ha estado encarcelado por allá por tanto tiempo que ya no recuerde cómo era vivir en condiciones diferentes. El mundo exterior le parece hostil y peligroso. En los primeros años de encarcelamiento había una esperanza de que le iban a liberar pronto, pero después de ese sentimiento se disminuyó y se reemplazó con una frustración constante. La única ventana al mundo real eran los libros. Con libros él pudo viajar a países diferentes, conocer a otras personas, tener aventuras, enamorarse y decepcionarse – en una palabra, tener una vida completa. Por varios años eso le ayudaba a olvidar que estaba encerrado, pero después con más y más frecuencia le llegaba la idea que los libros eran un sucedáneo que le sustituía la vida real. Él se sentía como una marioneta, la que manipulaban los autores de libros que leía. Le mostraban sólo las partes que querían y ocultaban el resto, entonces él no pudo apreciar las situaciones y las emociones de los personajes de forma objetiva y tuvo que fiarse de los juicios del autor.</p>
-
-<p>Un día el muchacho se dio cuenta que no era tan difícil escaparse de su cárcel. Después de todos esos años ya le miraban con la vista gorda, porque estaban seguros de que su voluntad había sido reprimida y que simplemente no podría encontrar fuerzas para la fuga. Y en parte era verdad, le inculcaron muy bien la idea de que él ya no puede cuidarse a sí mismo y que el mundo exterior es aún más cruel que su cárcel que ya es familiar.</p>
-
-<p>Y ahora el muchacho está mirando a la pared y dibujando las ensenas de su escape, de su vida futura, está imaginando los personajes que va a encontrar por allá, los lugares a cuales va a viajar y las aventuras que va a tener.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/04/ascensores/">Ascensores</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-04T22:19:29-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:19 pm</span></time>
-        
-           | <a href="/blog/2014/10/04/ascensores/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2014/10/04/ascensores/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mi historia con los ascensores comenzó cuando yo era muy pequeña y todavía
-estaba en el jardín. Tenía una cabra amarilla hecha de plástico,
-que tenía ruedas en lugar de patas. Entonces le llevaba por todos los
-lados con una cuerda. La cabra era hueca y sus cachos negros se atornillaban
-en su cabeza.</p>
-
-<p>Un día, cuando me devolvía a la casa después de un paseo, en el momento en
-el que estábamos franqueando las puertas del ascensor, el cacho se me cayó
-al hueco. No me di cuenta cuándo pasó esto (o simplemente ya no lo recuerdo),
-me lo contaron después. Pero hasta ahora para mi ese accidente está envuelto
-en un misterio: pasaron las horas y horas y yo estaba imaginando qué hubiera
-podido pasar con el caco perdido y cómo se enredó su destino.</p>
-
-<p>A partir de ese momento empecé a ver las pesadillas sobre el ascensor de mi
-edificio. Soñaba que me perseguían unos hombres y trataba de escaparme de
-ellos corriendo por las escaleras. Cuando llegaba al primer piso, me daba
-cuenta que uno de ellos se me había adelantado en el ascensor y me estaba
-esperando allá. Entonces seguía bajándome hasta el sótano (que en realidad
-no existía en la casa) y llegaba a un cuarto oscuro y lleno de polvo.
-En una pared se veía un hueco. Me acerqué al hueco y - ¡qué horrores! -
-vi que era el pozo de ascensor. Uno podía ver cómo se movían los cables
-llevando el contrapeso. Ese hueco era muy oscuro con un bombillo amarillo
-marcando cada piso. Y debajo, cubierto del polvo, estaba el cacho de mi cabra&hellip;
-En ese momento me desperté con sudor frío.</p>
-
-<p><img class="center" src="/images/lift.jpg" title="'Ascensor'" ></p>
-
-<p>Tuve otra experiencia con un ascensor cuando fuimos a una casa vieja en el
-centro de Moscú. En esa casa había un ascensor muy antiguo
-(creo que de los primeros), que era instalado al redor de escaleras.
-El ascensor se movía en un pozo hecho de una red metálica, por eso se veía
-completamente el mecanismo, y cuando llegaba al piso, uno tuvo tenía que
-abrir manualmente dos puertas: una del pozo y la otra del ascensor.
-Me asusté mucho al ver todo el mecanismo de la forma tan transparente,
-y no puede creer que los cables tan delgados pueden sostener una cabina
-tan pesada.</p>
-
-<p>Después empecé a ver unas pesadillas de otro tipo: estaba llamando al
-ascensor y cundo llegaba y se abrían las puertas, me daba cuenta que por
-dentro no habían ni el piso, ni las paredes. Llegaba un marco de metal,
-sólo con una tabla de madera al fondo para poder quedarse.</p>
-
-<p>Entonces mi relación con los ascensores empezó con pesadillas, pero
-las películas gringas cambiaron todo. EN ellas mostraban un ascensor
-como la parte de una aventura: los protagonistas se metían al pozo,
-o hacían un hueco en el techo de la cabina para escaparse con los diamantes
-robados. El hueco del ascensor se convirtió en una ruta de escape para los
-aventureros que roban los bancos o museos.</p>
-
-<p>Ahora me encanta montar en los ascensores. Me gusta oprimir el botón y
-sentir el poder que ejersco sobre la máquina. O montar en un ascensor con
-las paredes de vidrio.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -793,6 +794,10 @@ las paredes de vidrio.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/12/25/el-bombillo/">El Bombillo</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/12/18/think-like-i-do/">Think like I do</a>
@@ -819,19 +824,15 @@ las paredes de vidrio.</p>
       </li>
     
       <li class="post">
+        <a href="/blog/2016/10/17/albondigas-de-lentejas/">Albóndigas de lentejas</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/10/07/mierdero-de-las-semanas/">Mierdero de las semanas</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/">Herramientas para el desarrollo que nos hacen la vida más fácil</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/09/04/las-series-que-marcaron-los-anos-noventa-en-rusia/">Las series que marcaron los años noventa en Rusia</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a>
       </li>
     
   </ul>
@@ -840,6 +841,8 @@ las paredes de vidrio.</p>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
     
       
         
@@ -872,10 +875,18 @@ las paredes de vidrio.</p>
       
     
       
+    
+      
         
         <li class="post">
           <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
         </li>
+      
+    
+      
+    
+      
+    
       
     
       

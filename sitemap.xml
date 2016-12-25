@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2016/12/25/el-bombillo/</loc>
+<lastmod>2016-12-25T08:32:16-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2016/12/18/think-like-i-do/</loc>
 <lastmod>2016-12-18T22:09:26-05:00</lastmod>
 </url>
@@ -23,6 +27,10 @@
 <url>
 <loc>http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/</loc>
 <lastmod>2016-10-21T14:07:56-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/2016/10/17/albondigas-de-lentejas/</loc>
+<lastmod>2016-10-17T07:38:52-05:00</lastmod>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/2016/10/07/mierdero-de-las-semanas/</loc>
@@ -103,6 +111,10 @@
 <url>
 <loc>http://blog.vero4ka.info/blog/2016/03/23/hipsters-en-rusia/</loc>
 <lastmod>2016-03-23T13:00:35-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/2016/01/16/classic-dutch-ladies-bicycle-for-sale/</loc>
+<lastmod>2016-01-16T07:57:44-05:00</lastmod>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/</loc>
@@ -233,12 +245,20 @@
 <lastmod>2014-04-30T22:28:30-05:00</lastmod>
 </url>
 <url>
+<loc>http://blog.vero4ka.info/blog/2014/04/26/el-viaje-aventurero/</loc>
+<lastmod>2014-04-26T08:15:42-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2014/04/21/soy-podstakannik/</loc>
 <lastmod>2014-04-21T22:35:45-05:00</lastmod>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/2014/04/05/la-caza-del-oso/</loc>
 <lastmod>2014-04-05T08:48:49-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/2014/03/15/la-lata/</loc>
+<lastmod>2014-03-15T08:28:20-05:00</lastmod>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/2014/02/10/groserias/</loc>
@@ -490,6 +510,9 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/requests/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/cocina/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/amazon/</loc>
