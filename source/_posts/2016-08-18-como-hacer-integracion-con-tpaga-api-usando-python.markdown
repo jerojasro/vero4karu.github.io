@@ -3,6 +3,7 @@ layout: post
 title: "Cómo hacer integración con Tpaga API usando Python"
 date: 2016-08-18 08:53:45 -0500
 comments: true
+featured: true
 categories: [Python, Tpaga, API, requests]
 ---
 

@@ -1,0 +1,11 @@
+---
+layout: post
+title: "El volcán"
+date: 2013-12-12 09:06:32 -0500
+comments: true
+categories:
+---
+
+Volcán es una formación plutónica en la superficie de la Tierra. Los volcanes son las válvulas naturales. Para entender por qué estallan, hay que mirar el proceso de desgasificación en una botella de gaseosa. Si abrimos una botella con cuidado, podemos escuchar un golpe, y de la botella va a salir humo y a veces la espuma. Pero sabemos qué pasará si antes de abrir la botella la sacudimos o la calentamos. Por analogía ocurre la erupción a causa de desgasificación del magma (que es también un líquido). En un lugar dónde la corteza terrestre no está “bien cerrada”, el magma puede salir. Subiendo, el magma pierde los gases y el vapor del agua y se convierte en lava.
+
+Durante toda mi juventud, estaba relacionando la erupción volcánica con el cuadro de Karl Brulov “El último día de Pompeya”. También existe la película italiana con el mismo nombre que me asustaba mucho. Tenía muchas pesadillas en las que trataba de salvarme de esa ciudad italiana, pero la ceniza volcánica caía tan intensiva que casi no fue tiempo para correr hasta el barco en el mar Mediterráneo. El momento clave en que me despertaba finalmente fue cuando llegaba a la orilla y no podía encontrar un asiento libre en nungún barco.

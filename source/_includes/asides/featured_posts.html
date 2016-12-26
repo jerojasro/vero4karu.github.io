@@ -1,0 +1,14 @@
+<section>
+  <h1>Featured Posts</h1>
+  <ul id="recent_posts">
+    {% assign featured_count = '' %}
+    {% for post in site.posts %}
+      {% if post.featured and featured_count.size < site.featured_posts %}
+        {% capture featured_count %}{{ featured_count }}*{% endcapture %}
+        <li class="post">
+          <a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
