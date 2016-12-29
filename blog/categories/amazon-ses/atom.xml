@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: amazon | Cansada de ser feliz]]></title>
-  <link href="http://blog.vero4ka.info/blog/categories/amazon/atom.xml" rel="self"/>
+  <title><![CDATA[Category: amazon ses | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info/blog/categories/amazon-ses/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-26T10:44:28-05:00</updated>
+  <updated>2016-12-29T15:16:30-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,64 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[How to upload a file to Amazon S3 and generate a pre-signed URL]]></title>
-    <link href="http://blog.vero4ka.info/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/"/>
-    <updated>2016-10-27T09:32:43-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url</id>
-    <content type="html"><![CDATA[<pre><code class="python">import datetime
-import StringIO
-import xlwt
-
-from boto3.session import Session
-from boto3 import client
-
-# Create a file, for example, an Excel document.
-xls = xlwt.Workbook()
-ws = xls.add_sheet('A Test Sheet')
-ws.write(0, 0, 1234.56)
-
-file_name = 'example.xls'
-output = StringIO.StringIO()
-xls.save(output)
-
-# Save the file to S3
-session = Session(
-    aws_access_key_id=config['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key=config['AWS_SECRET_ACCESS_KEY'],
-)
-s3 = session.resource('s3')
-s3_bucket_name = 'YourBucket'
-s3_file_key = 'dir1/dir2/{}'.format(file_name)
-
-result = s3.Bucket(s3_bucket_name).put_object(
-    Key=s3_file_key,
-    Body=output.getvalue()
-)
-
-# Generate a pre-signed URL
-s3_client = client(
-    's3',
-    region_name='us-east-1',
-    aws_access_key_id=config['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key=config['AWS_SECRET_ACCESS_KEY'],
-)
-
-url = s3_client.generate_presigned_url(
-    ClientMethod='get_object',
-    Params={
-        'Bucket': s3_bucket_name,
-        'Key': s3_file_key,
-    },
-    ExpiresIn=60 * 60 * 24,  # Default: 3600
-)
-
-print(url)
-# https://s3.amazonaws.com/YourBucket/dir1/dir2/example.xls?AWSAccessKeyId=ATPAJNUDN3ENT2I4S6EF&amp;Expires=1477582080&amp;Signature=POvreXScdYNES98SPFeAN3y12DL%3D
-</code></pre>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to send an email with attachment via Amazon SES in Python]]></title>
