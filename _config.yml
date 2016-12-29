@@ -63,6 +63,7 @@ default_asides: [
   asides/bitcoin.html,
   asides/delicious.html,
   asides/goodreads.html,
+  custom/asides/tag_cloud.html,
   asides/stats.html
 ]
 
