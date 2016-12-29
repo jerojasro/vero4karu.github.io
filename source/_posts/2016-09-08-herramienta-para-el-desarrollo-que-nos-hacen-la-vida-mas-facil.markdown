@@ -4,6 +4,7 @@ title: "Herramientas para el desarrollo que nos hacen la vida más fácil"
 date: 2016-09-08 08:48:12 -0500
 comments: true
 categories: 
+- Desarrollo
 ---
 
 ## Editores

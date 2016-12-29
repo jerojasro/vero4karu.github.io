@@ -3,7 +3,9 @@ layout: post
 title: "Cómo pasar variable desde una vista a formulario en Django"
 date: 2016-10-21 14:07:56 -0500
 comments: true
-categories: Django
+categories: 
+- Django
+- Python
 ---
 
 ```python views.py

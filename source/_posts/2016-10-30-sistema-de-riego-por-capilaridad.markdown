@@ -4,6 +4,7 @@ title: "Sistema de riego por capilaridad"
 date: 2016-10-30 17:55:06 -0500
 comments: true
 categories:
+- Jardinería
 ---
 
 {% img right /images/riego1.jpg 'Sistema de riego por capilaridad' %}

@@ -3,7 +3,8 @@ layout: post
 title: "How to show a BooleanField of a ModelForm as radio select (yes/no) in Django"
 date: 2015-03-01 19:26:52 -0500
 comments: true
-categories: [Django]
+categories: 
+- Django
 ---
 
 Let's suppose that we have a field ``is_active`` in our model. It is a boolean field, but in a template we want to show it as a radio select.

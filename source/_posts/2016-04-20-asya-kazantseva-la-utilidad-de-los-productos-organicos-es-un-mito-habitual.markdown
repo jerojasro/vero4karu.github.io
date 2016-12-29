@@ -6,6 +6,7 @@ comments: true
 categories:
 - Ciencia
 - Traducción
+- Libros
 ---
 
 {% img center /images/asya.jpg 'Asya Kazantseva' %}

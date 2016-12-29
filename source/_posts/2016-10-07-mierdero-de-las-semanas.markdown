@@ -4,6 +4,7 @@ title: "Mierdero de las semanas"
 date: 2016-10-07 11:53:05 -0500
 comments: true
 categories: 
+- Desarrollo
 ---
 
 

@@ -3,7 +3,9 @@ layout: post
 title: "Monitoreo de acciones de usuarios en Flask (SQLAlchemy)"
 date: 2016-07-22 08:23:58 -0500
 comments: true
-categories: [Flask, SQLAlchemy]
+categories: 
+- Flask
+- SQLAlchemy
 ---
 
 Suponemos que en nuestro proyecto de Flask hay un modelo `Client` definidao usando [Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org/) y queremos monetorear los cambios que se realizan sobre los objetos de ese modelo.

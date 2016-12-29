@@ -4,6 +4,7 @@ title: "“Rewire”"
 date: 2016-07-02 08:19:37 -0500
 comments: true
 categories:
+- Libros
 ---
 
 {% img center /images/rewire.jpg 'Rewire' %}

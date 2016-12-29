@@ -4,6 +4,7 @@ title: "Somos de una sangre por Roman Super"
 date: 2016-05-29 14:10:22 -0500
 comments: true
 categories:
+- Libros
 ---
 
 {% blockquote Rudyard Kipling, El libro de la selva %}

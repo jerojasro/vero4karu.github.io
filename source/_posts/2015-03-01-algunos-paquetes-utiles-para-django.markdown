@@ -3,7 +3,8 @@ layout: post
 title: "Algunos paquetes útiles para Django"
 date: 2015-03-01 19:16:24 -0500
 comments: true
-categories: [Django]
+categories: 
+- Django
 ---
 
 #### [python-social-auth](https://github.com/omab/python-social-auth)

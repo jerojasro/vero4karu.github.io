@@ -3,7 +3,8 @@ layout: post
 title: "Múltiples bases de datos en Django"
 date: 2016-08-31 11:15:01 -0500
 comments: true
-categories: [Django]
+categories: 
+- Django
 ---
 
 Tenemos dos tablas con esquemas iguales dos en bases de datos diferentes: `production` y `history`. 

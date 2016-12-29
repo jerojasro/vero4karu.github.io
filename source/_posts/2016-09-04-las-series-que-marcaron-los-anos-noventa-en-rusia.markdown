@@ -4,6 +4,7 @@ title: "Las series que marcaron los años noventa en Rusia"
 date: 2016-09-04 18:29:40 -0500
 comments: true
 categories:
+- Rusia
 ---
 
 ###### «Hélène et les garçons» (Francia)

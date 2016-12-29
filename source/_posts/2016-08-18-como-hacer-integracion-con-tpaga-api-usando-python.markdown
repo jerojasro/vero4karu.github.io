@@ -4,7 +4,11 @@ title: "Cómo hacer integración con Tpaga API usando Python"
 date: 2016-08-18 08:53:45 -0500
 comments: true
 featured: true
-categories: [Python, Tpaga, API, requests]
+categories: 
+- Python
+- Tpaga
+- API
+- requests
 ---
 
 [Tpaga](https://tpaga.co/) es una plataforma que permite recibir pagos electrónicos. Tiene una estructura sencilla para entender y fácil para usar.
