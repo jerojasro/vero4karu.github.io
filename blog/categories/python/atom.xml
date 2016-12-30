@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-09T11:36:25-05:00</updated>
+  <updated>2016-12-29T21:12:51-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -196,6 +196,36 @@ msg.attach(part)
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Cómo pasar variable desde una vista a formulario en Django]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/"/>
+    <updated>2016-10-21T14:07:56-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django</id>
+    <content type="html"><![CDATA[<pre><code class="python views.py">class MyCreateView(CreateView):
+    model = MyModel
+    template_name = 'myapp/my_form.html'
+    form_class = MyForm
+
+    def get_form_kwargs(self):
+        kwargs = super(MyCreateView, self).get_form_kwargs()
+
+        # La variable que queremos pasar al formulario
+        kwargs.update({'current_user': self.request.user})
+
+        return kwargs
+</code></pre>
+
+<pre><code class="python forms.py">class MyForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        # Recibir la variable y borrarla del listado de argumentos.
+        current_user = kwargs.pop('current_user')
+
+        super(MyForm, self).__init__(*args, **kwargs)
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Cómo hacer integración con Tpaga API usando Python]]></title>
     <link href="http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/"/>
     <updated>2016-08-18T08:53:45-05:00</updated>
@@ -209,6 +239,9 @@ msg.attach(part)
 <p>Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para la autenticación: <strong>Private Api Key</strong> y <strong>Public Api Key</strong>:</p>
 
 <p><img src="/images/tpaga_sandbox_dashboard.png"></p>
+
+<!-- more -->
+
 
 <p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjetas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjeta de crédito).</p>
 
@@ -254,8 +287,8 @@ class TpagaTestClient:
     def fail(self, response):
         raise Exception(
             'Whoops, got\n\nSTATUS: {}\n\nHEADERS: {}\n\nCONTENT: {}'.format(
-                response.status_code, 
-                response.headers, 
+                response.status_code,
+                response.headers,
                 response.content,
             ))
 
@@ -389,7 +422,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="buttonHolder"&gt;
-      &lt;input class="btn btn-primary bg-purple" id="submit-id-submit" name="submit" type="submit" value="Guardar"&gt; 
+      &lt;input class="btn btn-primary bg-purple" id="submit-id-submit" name="submit" type="submit" value="Guardar"&gt;
     &lt;/div&gt;
 &lt;/form&gt;
 </code></pre>
@@ -499,7 +532,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 
 <pre><code class="python">&gt;&gt; cc_temp_token = request.POST['tmp_cc_token']
 &gt;&gt; credit_card = client.assoc_cc_to_customer(
-    customer_token=customer_token, 
+    customer_token=customer_token,
     cc_temp_token=cc_temp_token,
 )
 &gt;&gt; credit_card_token = credit_card['id']
@@ -571,32 +604,32 @@ credit_card_token 2k54foql0hki0ot7avrg9nhpvbpqam55
 &gt;&gt; cc_charge_id = charge_cc_response['id']
 print('charge_cc_response', charge_cc_response)
 charge_cc_response {
-    'id': '1rnfu463258eph0mlqli4105mjb85kut', 
-    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu', 
-    'thirdPartyId': None, 
-    'installments': 1, 
-    'tpagaFeeAmount': '868.00', 
-    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
-    'iacAmount': '0.00', 
+    'id': '1rnfu463258eph0mlqli4105mjb85kut',
+    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu',
+    'thirdPartyId': None,
+    'installments': 1,
+    'tpagaFeeAmount': '868.00',
+    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh',
+    'iacAmount': '0.00',
     'transactionInfo': {
         'authorizationCode': '723045',  # código de transacción del banco
-        'status': 'authorized',  # Posibles valores: created, fraudulent, 
+        'status': 'authorized',  # Posibles valores: created, fraudulent,
                                  # settled, processor_declined, authorized,
                                  # voided
     },
-    'netAmount': '3545.00', 
-    'tipAmount': '0.00', 
-    'reteIvaAmount': '0.00', 
-    'reteIcaAmount': '19.00', 
-    'paid': True, 
-    'reteRentaAmount': '68.00', 
-    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP', 
-    'orderId': 'BRG-2', 
-    'description': 'One bridge in good condition.', 
-    'currency': 'COP', 
-    'errorMessage': 'Approved', 
-    'taxAmount': '0.00', 
-    'errorCode': '00', 
+    'netAmount': '3545.00',
+    'tipAmount': '0.00',
+    'reteIvaAmount': '0.00',
+    'reteIcaAmount': '19.00',
+    'paid': True,
+    'reteRentaAmount': '68.00',
+    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP',
+    'orderId': 'BRG-2',
+    'description': 'One bridge in good condition.',
+    'currency': 'COP',
+    'errorMessage': 'Approved',
+    'taxAmount': '0.00',
+    'errorCode': '00',
     'amount': '4500.00'
 }
 </code></pre>
@@ -614,27 +647,27 @@ charge_cc_response {
 <pre><code class="python">&gt;&gt; refund_cc_response = client.refund_cc(cc_charge_id)
 &gt;&gt; print('refund_cc_response', refund_cc_response)
 refund_cc_response {
-    'id': '1rnfu463258eph0mlqli4105mjb85kut', 
-    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu', 
-    'thirdPartyId': None, 
-    'installments': 1, 
-    'tpagaFeeAmount': '868.00', 
-    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
-    'iacAmount': '0.00', 
-    'transactionInfo': {'authorizationCode': '723045', 'status': 'voided'}, 
-    'netAmount': '3545.00', 
-    'tipAmount': '0.00', 
-    'reteIvaAmount': '0.00', 
-    'reteIcaAmount': '19.00', 
-    'paid': False, 
-    'reteRentaAmount': '68.00', 
-    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP', 
-    'orderId': 'BRG-2', 
-    'description': 'One bridge in good condition.', 
-    'currency': 'COP', 
-    'errorMessage': 'Approved', 
-    'taxAmount': '0.00', 
-    'errorCode': '00', 
+    'id': '1rnfu463258eph0mlqli4105mjb85kut',
+    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu',
+    'thirdPartyId': None,
+    'installments': 1,
+    'tpagaFeeAmount': '868.00',
+    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh',
+    'iacAmount': '0.00',
+    'transactionInfo': {'authorizationCode': '723045', 'status': 'voided'},
+    'netAmount': '3545.00',
+    'tipAmount': '0.00',
+    'reteIvaAmount': '0.00',
+    'reteIcaAmount': '19.00',
+    'paid': False,
+    'reteRentaAmount': '68.00',
+    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP',
+    'orderId': 'BRG-2',
+    'description': 'One bridge in good condition.',
+    'currency': 'COP',
+    'errorMessage': 'Approved',
+    'taxAmount': '0.00',
+    'errorCode': '00',
     'amount': '4500.00'
 }
 </code></pre>
@@ -686,41 +719,6 @@ refund_cc_response {
 <li>Examples: <a href="https://github.com/vero4karu/flask-examples">https://github.com/vero4karu/flask-examples</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cómo obtener el nombre del día de la semana en Python]]></title>
-    <link href="http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/"/>
-    <updated>2016-05-26T09:02:36-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python</id>
-    <content type="html"><![CDATA[<pre><code class="python">&gt; import calendar
-&gt; calendar.day_name[0]
-'Monday'
-&gt; calendar.day_name[1]
-'Tuesday'
-&gt; calendar.day_name[2]
-'Wednesday'
-&gt; calendar.day_name[3]
-'Thursday'
-&gt; calendar.day_name[4]
-'Friday'
-&gt; calendar.day_name[5]
-'Saturday'
-&gt; calendar.day_name[6]
-'Sunday'
-</code></pre>
-
-<p>Si para nosotros la semana empieza el Domindo, podemos escribirlo de la siguiente forma:</p>
-
-<pre><code class="python">&gt; sunday = 0
-&gt; calendar.day_name[sunday - 1 % 7]
-'Sunday'
-
-&gt; tuesday = 2
-&gt; calendar.day_name[tuesday - 1 % 7]
-'Tuesday'
-</code></pre>
 ]]></content>
   </entry>
   

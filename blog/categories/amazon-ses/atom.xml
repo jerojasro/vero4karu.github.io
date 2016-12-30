@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: amazon ses | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info/blog/categories/amazon-ses/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-12-29T21:12:51-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
+  <author>
+    <name><![CDATA[vero4ka]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to send an email with attachment via Amazon SES in Python]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/"/>
+    <updated>2016-10-26T14:19:26-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python</id>
+    <content type="html"><![CDATA[<pre><code class="python">import xlwt
+from boto3 import client
+
+email_from = 'from@example.com'
+email_to = 'to@example.com'
+
+# Create a workbook
+xls = xlwt.Workbook()
+# Create a sheet
+sheet = xls.add_sheet('Sheet name')
+# Set styles for headers and dates
+header_style = xlwt.easyxf('font: bold True;')
+date_format = xlwt.XFStyle()
+date_format.num_format_str = 'dd/mm/yyyy hh:mm:ss'
+
+# Header
+labels = [
+    u'Title 1',
+    u'Title 2',
+]
+content = [labels]
+
+# Get data for other rows
+for row in get_rows_with_content():
+    content.append(list(row))
+
+# Write it down
+for row in range(len(content)):
+    for col in range(len(content[row])):
+        data = content[row][col]
+        # If it's a header
+        if row == 0:
+            sheet.write(row, col, data, header_style)
+            continue
+        # If it's a date
+        if type(data) == datetime.datetime:
+            sheet.write(row, col, data, date_format)
+        else:
+            sheet.write(row, col, data)
+
+# Set filename
+today = datetime.date.today()
+file_name = 'my_file_{}.xls'.format(today.strftime("%Y-%m-%d"))
+
+# Save the file
+output = StringIO.StringIO()
+xls.save(output)
+
+# Build an email
+msg = MIMEMultipart()
+msg['Subject'] = 'Hi, here is your file'
+msg['From'] = email_from
+msg['To'] = email_to
+# What a recipient sees if they don't use an email reader
+msg.preamble = 'Multipart message.\n'
+
+# The attachment
+part = MIMEApplication(output.getvalue())
+part.add_header('Content-Disposition', 'attachment', filename=file_name)
+part.add_header('Content-Type', 'application/vnd.ms-excel; charset=UTF-8')
+msg.attach(part)
+
+# Connect to Amazon SES
+ses = client(
+    'ses',
+    region_name='us-east-1',
+    aws_access_key_id=config['AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key=config['AWS_SECRET_ACCESS_KEY'],
+)
+# And finally, send the email
+ses.send_raw_email(
+    Source=email_from,
+    Destinations=[email_to],
+    RawMessage={
+        'Data': msg.as_string(),
+    }
+)
+</code></pre>
+
+<p>If we need to create a ZIP archive first:</p>
+
+<pre><code class="python">import zipfile
+import tempfile
+from email import encoders
+from email.mime.multipart import MIMEMultipart, MIMEBase
+
+# ....
+output = StringIO.StringIO()
+xls.save(output)
+
+# Create zip file
+zf = tempfile.TemporaryFile(prefix='fileprefix', suffix='.zip')
+zip = zipfile.ZipFile(zf, 'w')
+zip.writestr(file_name, output.getvalue())
+zip.close()
+zf.seek(0)
+
+msg = MIMEMultipart()
+msg['Subject'] = 'Hi, here is your file'
+msg['From'] = email_from
+msg['To'] = email_to
+
+# What a recipient sees if they don't use an email reader
+msg.preamble = 'Multipart message.\n'
+
+# the attachment
+part = MIMEBase('application', 'zip')
+part.set_payload(zf.read())
+encoders.encode_base64(part)
+part.add_header(
+    'Content-Disposition', 'attachment', 
+    filename=u'{}.zip'.format(file_name),
+)
+msg.attach(part)
+# ....
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

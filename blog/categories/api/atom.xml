@@ -4,7 +4,7 @@
   <title><![CDATA[Category: api | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/api/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-09T11:36:25-05:00</updated>
+  <updated>2016-12-29T21:12:51-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -27,6 +27,9 @@
 <p>Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para la autenticación: <strong>Private Api Key</strong> y <strong>Public Api Key</strong>:</p>
 
 <p><img src="/images/tpaga_sandbox_dashboard.png"></p>
+
+<!-- more -->
+
 
 <p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjetas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjeta de crédito).</p>
 
@@ -72,8 +75,8 @@ class TpagaTestClient:
     def fail(self, response):
         raise Exception(
             'Whoops, got\n\nSTATUS: {}\n\nHEADERS: {}\n\nCONTENT: {}'.format(
-                response.status_code, 
-                response.headers, 
+                response.status_code,
+                response.headers,
                 response.content,
             ))
 
@@ -207,7 +210,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="buttonHolder"&gt;
-      &lt;input class="btn btn-primary bg-purple" id="submit-id-submit" name="submit" type="submit" value="Guardar"&gt; 
+      &lt;input class="btn btn-primary bg-purple" id="submit-id-submit" name="submit" type="submit" value="Guardar"&gt;
     &lt;/div&gt;
 &lt;/form&gt;
 </code></pre>
@@ -317,7 +320,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 
 <pre><code class="python">&gt;&gt; cc_temp_token = request.POST['tmp_cc_token']
 &gt;&gt; credit_card = client.assoc_cc_to_customer(
-    customer_token=customer_token, 
+    customer_token=customer_token,
     cc_temp_token=cc_temp_token,
 )
 &gt;&gt; credit_card_token = credit_card['id']
@@ -389,32 +392,32 @@ credit_card_token 2k54foql0hki0ot7avrg9nhpvbpqam55
 &gt;&gt; cc_charge_id = charge_cc_response['id']
 print('charge_cc_response', charge_cc_response)
 charge_cc_response {
-    'id': '1rnfu463258eph0mlqli4105mjb85kut', 
-    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu', 
-    'thirdPartyId': None, 
-    'installments': 1, 
-    'tpagaFeeAmount': '868.00', 
-    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
-    'iacAmount': '0.00', 
+    'id': '1rnfu463258eph0mlqli4105mjb85kut',
+    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu',
+    'thirdPartyId': None,
+    'installments': 1,
+    'tpagaFeeAmount': '868.00',
+    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh',
+    'iacAmount': '0.00',
     'transactionInfo': {
         'authorizationCode': '723045',  # código de transacción del banco
-        'status': 'authorized',  # Posibles valores: created, fraudulent, 
+        'status': 'authorized',  # Posibles valores: created, fraudulent,
                                  # settled, processor_declined, authorized,
                                  # voided
     },
-    'netAmount': '3545.00', 
-    'tipAmount': '0.00', 
-    'reteIvaAmount': '0.00', 
-    'reteIcaAmount': '19.00', 
-    'paid': True, 
-    'reteRentaAmount': '68.00', 
-    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP', 
-    'orderId': 'BRG-2', 
-    'description': 'One bridge in good condition.', 
-    'currency': 'COP', 
-    'errorMessage': 'Approved', 
-    'taxAmount': '0.00', 
-    'errorCode': '00', 
+    'netAmount': '3545.00',
+    'tipAmount': '0.00',
+    'reteIvaAmount': '0.00',
+    'reteIcaAmount': '19.00',
+    'paid': True,
+    'reteRentaAmount': '68.00',
+    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP',
+    'orderId': 'BRG-2',
+    'description': 'One bridge in good condition.',
+    'currency': 'COP',
+    'errorMessage': 'Approved',
+    'taxAmount': '0.00',
+    'errorCode': '00',
     'amount': '4500.00'
 }
 </code></pre>
@@ -432,27 +435,27 @@ charge_cc_response {
 <pre><code class="python">&gt;&gt; refund_cc_response = client.refund_cc(cc_charge_id)
 &gt;&gt; print('refund_cc_response', refund_cc_response)
 refund_cc_response {
-    'id': '1rnfu463258eph0mlqli4105mjb85kut', 
-    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu', 
-    'thirdPartyId': None, 
-    'installments': 1, 
-    'tpagaFeeAmount': '868.00', 
-    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
-    'iacAmount': '0.00', 
-    'transactionInfo': {'authorizationCode': '723045', 'status': 'voided'}, 
-    'netAmount': '3545.00', 
-    'tipAmount': '0.00', 
-    'reteIvaAmount': '0.00', 
-    'reteIcaAmount': '19.00', 
-    'paid': False, 
-    'reteRentaAmount': '68.00', 
-    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP', 
-    'orderId': 'BRG-2', 
-    'description': 'One bridge in good condition.', 
-    'currency': 'COP', 
-    'errorMessage': 'Approved', 
-    'taxAmount': '0.00', 
-    'errorCode': '00', 
+    'id': '1rnfu463258eph0mlqli4105mjb85kut',
+    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu',
+    'thirdPartyId': None,
+    'installments': 1,
+    'tpagaFeeAmount': '868.00',
+    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh',
+    'iacAmount': '0.00',
+    'transactionInfo': {'authorizationCode': '723045', 'status': 'voided'},
+    'netAmount': '3545.00',
+    'tipAmount': '0.00',
+    'reteIvaAmount': '0.00',
+    'reteIcaAmount': '19.00',
+    'paid': False,
+    'reteRentaAmount': '68.00',
+    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP',
+    'orderId': 'BRG-2',
+    'description': 'One bridge in good condition.',
+    'currency': 'COP',
+    'errorMessage': 'Approved',
+    'taxAmount': '0.00',
+    'errorCode': '00',
     'amount': '4500.00'
 }
 </code></pre>
