@@ -4,7 +4,7 @@ title: "Cómo hacer integración con Tpaga API usando Python"
 date: 2016-08-18 08:53:45 -0500
 comments: true
 featured: true
-categories: 
+categories:
 - Python
 - Tpaga
 - API
@@ -20,6 +20,8 @@ Para obtener nuestros claves de acceso y conectarnos con el API de Tpaga, creamo
 Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para la autenticación: **Private Api Key** y **Public Api Key**:
 
 {% img /images/tpaga_sandbox_dashboard.png %}
+
+<!-- more -->
 
 Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: **Customers** (Clientes), **Credit Cards** (Tarjetas de crédito) asociados a los Clientes y **Charges** (Transacciónes o cobros por tarjeta de crédito).
 
@@ -68,8 +70,8 @@ class TpagaTestClient:
     def fail(self, response):
         raise Exception(
             'Whoops, got\n\nSTATUS: {}\n\nHEADERS: {}\n\nCONTENT: {}'.format(
-                response.status_code, 
-                response.headers, 
+                response.status_code,
+                response.headers,
                 response.content,
             ))
 
@@ -207,7 +209,7 @@ Para hacer un formulario bonito, usamos [la plantilla de Bootstrap](http://boots
       </div>
     </div>
     <div class="buttonHolder">
-      <input class="btn btn-primary bg-purple" id="submit-id-submit" name="submit" type="submit" value="Guardar"> 
+      <input class="btn btn-primary bg-purple" id="submit-id-submit" name="submit" type="submit" value="Guardar">
     </div>
 </form>
 ```
@@ -276,7 +278,7 @@ $(function () {
     $('#credit_card_form').find('.payment-errors').text('');
 
     var tpaga_public_key = 'pk_test_qvbvuthlvqpijnr0elmtg5jh';
-    
+
     // Enviar los datos de la tarjeta directamente a Tpaga y obtener el token temporal
     $.ajax('https://sandbox.tpaga.co/api/tokenize/credit_card', {
       method: 'POST',
@@ -318,7 +320,7 @@ class TpagaTestClient:
 ```python
 >> cc_temp_token = request.POST['tmp_cc_token']
 >> credit_card = client.assoc_cc_to_customer(
-    customer_token=customer_token, 
+    customer_token=customer_token,
     cc_temp_token=cc_temp_token,
 )
 >> credit_card_token = credit_card['id']
@@ -390,32 +392,32 @@ class TpagaTestClient:
 >> cc_charge_id = charge_cc_response['id']
 print('charge_cc_response', charge_cc_response)
 charge_cc_response {
-    'id': '1rnfu463258eph0mlqli4105mjb85kut', 
-    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu', 
-    'thirdPartyId': None, 
-    'installments': 1, 
-    'tpagaFeeAmount': '868.00', 
-    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
-    'iacAmount': '0.00', 
+    'id': '1rnfu463258eph0mlqli4105mjb85kut',
+    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu',
+    'thirdPartyId': None,
+    'installments': 1,
+    'tpagaFeeAmount': '868.00',
+    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh',
+    'iacAmount': '0.00',
     'transactionInfo': {
         'authorizationCode': '723045',  # código de transacción del banco
-        'status': 'authorized',  # Posibles valores: created, fraudulent, 
+        'status': 'authorized',  # Posibles valores: created, fraudulent,
                                  # settled, processor_declined, authorized,
                                  # voided
     },
-    'netAmount': '3545.00', 
-    'tipAmount': '0.00', 
-    'reteIvaAmount': '0.00', 
-    'reteIcaAmount': '19.00', 
-    'paid': True, 
-    'reteRentaAmount': '68.00', 
-    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP', 
-    'orderId': 'BRG-2', 
-    'description': 'One bridge in good condition.', 
-    'currency': 'COP', 
-    'errorMessage': 'Approved', 
-    'taxAmount': '0.00', 
-    'errorCode': '00', 
+    'netAmount': '3545.00',
+    'tipAmount': '0.00',
+    'reteIvaAmount': '0.00',
+    'reteIcaAmount': '19.00',
+    'paid': True,
+    'reteRentaAmount': '68.00',
+    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP',
+    'orderId': 'BRG-2',
+    'description': 'One bridge in good condition.',
+    'currency': 'COP',
+    'errorMessage': 'Approved',
+    'taxAmount': '0.00',
+    'errorCode': '00',
     'amount': '4500.00'
 }
 ```
@@ -424,7 +426,7 @@ Si el pago fue exitoso, el código de respuesta es `201` y en el JSON podemos ve
 
 En el caso cuando el código de respuesta es `402`, tendríamos fijarnos en los valores de `errorCode` y `errorMessage` para entender qué pasó con la transacción. Por ejemplo, el código de error `43` significa que el dueño de la tarjeta la reportó como robada, y `61` - que el monto máximo de tarjeta fue excedido.
 
-En otros casos necesitaremos verificar que los datos que pasamos en la petición sean válidos y tengan todos los valores necesarios. 
+En otros casos necesitaremos verificar que los datos que pasamos en la petición sean válidos y tengan todos los valores necesarios.
 
 ### Revertir el pago
 
@@ -434,27 +436,27 @@ Los bancos nos permiten revertir el pago dentro de 24 horas después de la trans
 >> refund_cc_response = client.refund_cc(cc_charge_id)
 >> print('refund_cc_response', refund_cc_response)
 refund_cc_response {
-    'id': '1rnfu463258eph0mlqli4105mjb85kut', 
-    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu', 
-    'thirdPartyId': None, 
-    'installments': 1, 
-    'tpagaFeeAmount': '868.00', 
-    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh', 
-    'iacAmount': '0.00', 
-    'transactionInfo': {'authorizationCode': '723045', 'status': 'voided'}, 
-    'netAmount': '3545.00', 
-    'tipAmount': '0.00', 
-    'reteIvaAmount': '0.00', 
-    'reteIcaAmount': '19.00', 
-    'paid': False, 
-    'reteRentaAmount': '68.00', 
-    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP', 
-    'orderId': 'BRG-2', 
-    'description': 'One bridge in good condition.', 
-    'currency': 'COP', 
-    'errorMessage': 'Approved', 
-    'taxAmount': '0.00', 
-    'errorCode': '00', 
+    'id': '1rnfu463258eph0mlqli4105mjb85kut',
+    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu',
+    'thirdPartyId': None,
+    'installments': 1,
+    'tpagaFeeAmount': '868.00',
+    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh',
+    'iacAmount': '0.00',
+    'transactionInfo': {'authorizationCode': '723045', 'status': 'voided'},
+    'netAmount': '3545.00',
+    'tipAmount': '0.00',
+    'reteIvaAmount': '0.00',
+    'reteIcaAmount': '19.00',
+    'paid': False,
+    'reteRentaAmount': '68.00',
+    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP',
+    'orderId': 'BRG-2',
+    'description': 'One bridge in good condition.',
+    'currency': 'COP',
+    'errorMessage': 'Approved',
+    'taxAmount': '0.00',
+    'errorCode': '00',
     'amount': '4500.00'
 }
 ```

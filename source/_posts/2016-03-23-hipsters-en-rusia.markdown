@@ -10,7 +10,7 @@ categories:
 - Urbanismo
 - Ciudad
 - Rusia
-- Popularización de la ciencia
+- Ciencia
 ---
 
 Los hipsters aparecieron en los EEUU en los años 40.

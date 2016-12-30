@@ -3,11 +3,11 @@ layout: post
 title: "El colegio"
 date: 2016-07-30 18:40:16 -0500
 comments: true
+featured: true
 categories:
 - Colegio
 - Rusia
 ---
-
 
 Nunca me gustaba ir al colegio y siempre he contado cuánto falta hasta el
 último día de encarcelamiento.

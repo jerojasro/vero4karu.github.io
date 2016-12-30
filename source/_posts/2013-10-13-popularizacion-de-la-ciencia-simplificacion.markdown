@@ -4,7 +4,7 @@ title: "Popularización de la ciencia. Simplificación"
 date: 2013-10-13 08:54:20 -0500
 comments: true
 categories:
-- Popularización de la ciencia
+- Ciencia
 ---
 
 Como dice el cofundador del portal

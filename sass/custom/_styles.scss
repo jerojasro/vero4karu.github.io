@@ -50,6 +50,12 @@ article .entry-content a:visited {
   color: #f78769;
 }
 
+#content .blog-index a[rel=full-article]:hover {
+    background: #f78769;
+    text-shadow: none;
+    color: #f8f8f8;
+}
+
 figure.code {
   figcaption {
     background: lighten($sidebar-bg, 18);

@@ -18,6 +18,8 @@ categories:
 * Balde con agua
 * Silicona
 
+<!-- more -->
+
 {% img right /images/riego3.jpg 'Sistema de riego por capilaridad' %}
 {% img right /images/riego4.jpg 'Sistema de riego por capilaridad' %}
 

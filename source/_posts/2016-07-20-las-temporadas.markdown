@@ -3,9 +3,9 @@ layout: post
 title: "Las temporadas"
 date: 2016-07-20 18:34:10 -0500
 comments: true
+featured: true
 categories:
 - Colegio
-- Rusia
 - Estaciones
 - Invierno
 - Nieve

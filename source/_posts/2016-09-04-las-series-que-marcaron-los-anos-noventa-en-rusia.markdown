@@ -15,6 +15,8 @@ Una seria francesa acerca de un grupo de estudiantes: Helena y sus amigos.
 
 [https://www.youtube.com/watch?v=tndeSnIQ1Wk](https://www.youtube.com/watch?v=tndeSnIQ1Wk)
 
+<!-- more -->
+
 ##### «Farmacia de guardia» (España)
 
 {% img center /images/farmacia.jpg 500 'Farmacia de guardia' %}

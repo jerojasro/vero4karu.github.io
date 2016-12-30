@@ -21,6 +21,8 @@ contra la injusticia, defendiendo a los ciudadanos del los ricos de la ciudad,
 del señor Tomate y el príncipe Limón (el gobernador del país).
 Todos los personajes del cuento son frutas y verduras.
 
+<!-- more -->
+
 ## Nikolay Nósov, Aventuras de Nosabenada y sus Amigos
 
 Aventuras de un niño travieso, curioso, siempre activo y permanentemente

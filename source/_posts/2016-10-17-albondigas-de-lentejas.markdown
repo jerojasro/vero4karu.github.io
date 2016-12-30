@@ -9,6 +9,8 @@ categories:
 
 {% img center /images/lentejas/lentejas1.jpg %}
 
+<!-- more -->
+
 Cocinar lentejas con cebolla y sal
 
 {% img center /images/lentejas/lentejas2.jpg 300 %}
