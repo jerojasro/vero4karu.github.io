@@ -9,8 +9,11 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="from django.contrib import admin from product.forms import EquipmentForm @admin.register(Equipment)
-class EquipmentAdmin(admin.ModelAdmin): form = &hellip;">
+  <meta name="description" content="Some examples on how to convert raw SQL to SQLAlchemy query: Select all 1
+SELECT COUNT(*) 1
+2
+&gt; from sqlalchemy import text, func
+&gt; db.session. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,9 +23,16 @@ class EquipmentAdmin(admin.ModelAdmin): form = &hellip;">
 
   
   <link rel="canonical" href="http://blog.vero4ka.info/posts/3/">
+
   <link href="/favicon.ico" rel="icon">
+
+  <!--Fonts from Google's Web font directory -->
+  <link href="https://fonts.googleapis.com/css?family=Cherry+Swash" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Cansada de ser feliz" type="application/atom+xml">
+
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -51,7 +61,7 @@ class EquipmentAdmin(admin.ModelAdmin): form = &hellip;">
   <header role="banner"><hgroup>
   <h1><a href="/">Cansada de ser feliz</a></h1>
   
-    <h2>tech notes</h2>
+    <h2>Bienvenidos a mi flujo de conciencia</h2>
   
 </hgroup>
 
@@ -85,7 +95,7 @@ class EquipmentAdmin(admin.ModelAdmin): form = &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">How to validate a Django form with inline formsets</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/">SQL to SQLAlquemy conversions</a></h1>
     
     
       <p class="meta">
@@ -94,28 +104,176 @@ class EquipmentAdmin(admin.ModelAdmin): form = &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-03-01T18:57:47-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:57 pm</span></time>
+<time class='entry-date' datetime='2016-05-04T21:15:39-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:15 pm</span></time>
         
-           | <a href="/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-validate-a-django-form-with-inline-formsets/">Comments</a>
+           | <a href="/blog/2016/05/04/sql-to-sqlalquemy-conversions/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div><script src='https://gist.github.com/1c065cb54baef2da79c2.js'></script>
-<noscript><pre><code>from django.contrib import admin
+  <div class="entry-content"><p>Some examples on how to convert raw SQL to SQLAlchemy query:</p>
 
-from product.forms import EquipmentForm
+<h3>Select all</h3>
 
-@admin.register(Equipment)
-class EquipmentAdmin(admin.ModelAdmin):
-    form = EquipmentForm
-    
-    inlines = [
-        EquipmentGalleryInline,
-    ]</code></pre></noscript></div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">text</span><span class="p">,</span> <span class="n">func</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Add labels</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">requiests</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;requests&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">requests</span>
+</span><span class='line'><span class="mi">12</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Sum</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="k">as</span> <span class="n">rides</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;books&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">books</span>
+</span><span class='line'><span class="mi">12</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Return a count of rows and distinct</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="p">(</span><span class="n">author_id</span><span class="p">))</span> <span class="k">as</span> <span class="n">authors</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">distinct</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">distinct</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">author_id</span><span class="p">))</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;authors&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Query a date range</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">b</span><span class="p">.</span><span class="n">created_at</span> <span class="o">&gt;</span> <span class="k">current_timestamp</span> <span class="o">-</span> <span class="p">(</span><span class="k">current_timestamp</span> <span class="o">-</span> <span class="nb">interval</span> <span class="s1">&#39;5 hours&#39;</span><span class="p">)::</span><span class="n">time</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">now</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Conditional sum</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(((</span><span class="n">status</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">))::</span><span class="nb">int</span><span class="p">))</span> <span class="k">as</span> <span class="n">books</span> <span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy.sql.expression</span> <span class="kn">import</span> <span class="n">case</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">case</span><span class="p">([(</span><span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">in_</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">else_</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;books&#39;</span><span class="p">),</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="c"># ...</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>In</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">Book</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">in_</span><span class="p">((</span>
+</span><span class='line'>        <span class="n">BOOK_CONFIRMED</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">BOOK_FINISHED</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)),</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Other examples</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+</span><span class='line'><span class="n">six_months_ago</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">books</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">author_id</span> <span class="o">==</span> <span class="n">author</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>  <span class="c"># Filter books by author</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">six_months_ago_min</span><span class="p">,</span> <span class="n">today_max</span><span class="p">)</span>  <span class="c"># Get all books created in last six months</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
@@ -129,7 +287,7 @@ class EquipmentAdmin(admin.ModelAdmin):
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/03/01/generate-zip-file-in-django/">Generate .zip file in Django</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/05/01/rap-tecnico-ruso/">Rap técnico ruso</a></h1>
     
     
       <p class="meta">
@@ -138,49 +296,65 @@ class EquipmentAdmin(admin.ModelAdmin):
 
 
 
-<time class='entry-date' datetime='2015-03-01T18:47:58-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:47 pm</span></time>
+<time class='entry-date' datetime='2016-05-01T08:10:36-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>8:10 am</span></time>
         
-           | <a href="/blog/2015/03/01/generate-zip-file-in-django/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/generate-zip-file-in-django/">Comments</a>
+           | <a href="/blog/2016/05/01/rap-tecnico-ruso/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/01/rap-tecnico-ruso/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>A view that creates a .ZIP file of multiple files and returns it in response:</p>
+  <div class="entry-content"><p>Banda: <a href="http://vk.com/nii_rap">Rap tecnológico</a></p>
 
-<div><script src='https://gist.github.com/3b1768a1cb13f7e457d4.js'></script>
-<noscript><pre><code>import os
-import zipfile
-import cStringIO as StringIO
+<p>Canción: <a href="https://soundcloud.com/mopo3-2/wrz0alii1fbp">Pero eres Programador</a></p>
 
-class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
-    model = Contract
-
-    def render_to_response(self, context, **httpresponse_kwargs):
-        contract = self.object
-
-        if not contract.images.exists():
-            return HttpResponseRedirect(
-                reverse(&#39;contract:contract_detail&#39;, args=(contract.id,)),
-            )
-
-        dirname = u&#39;imagenes_contrato_{0}&#39;.format(contract.number)
-        filename = u&#39;{0}.zip&#39;.format(dirname)
-
-        buffer = StringIO.StringIO()
-        z = zipfile.ZipFile(buffer, &#39;w&#39;)
-        for contract_image in contract.images.all():
-            z.write(contract_image.image.path, os.path.join(dirname, os.path.basename(contract_image.image.path)))
-        z.close()
-        buffer.seek(0)
-        response = HttpResponse(buffer.read())
-        response[&#39;Content-Disposition&#39;] = u&#39;attachment; filename={0}&#39;.format(filename)
-        response[&#39;Content-Type&#39;] = &#39;application/x-zip&#39;
-        return response</code></pre></noscript></div>
+<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/197785918&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 
 
+<p>En una vida soy simplemente un peón: no soy ni fuerte, ni ancho de espalda, <br />
+Pero en la otra soy un superhéroe  – Pero eres Programador. <br />
+Si a alguna chica se le cayó Windows, <br />
+Yo dejo todo y vuelo hacía allá. <br />
+¿Su esposo/esposa ya hace mucho que tiene un ataque de histería? <br />
+¡No hay problema! Yo fácilmente ajusto los canales en su televisor, <br />
+Reinstalo Xbox, la plancha de carbón y la lavadora. <br />
+No, hermano, no necesito dinero, no tengo problema. <br /></p>
+
+<p><em>Coro:</em> <br />
+Pero eres Programador –  es protector del planeta, <br />
+Repara todo desde la nevara hasta los esquís. <br />
+¿El procesador no se prende? ¿No hay internet? <br />
+Envía al espacio la señal Pero eres… <br />
+Pero eres Programador <br />
+Pero eres Programador <br />
+Pero eres Programador <br /></p>
+
+<p>Soy un superhéroe y tengo una supermano, <br />
+Con esa supermano jaqueo las cuentas de correo y las contraseñas de <a href="https://es.wikipedia.org/wiki/Vkontakte">VK</a>, <br />
+Borro enlaces de la red. <br />
+Sí, y además tengo superhabilidades de telepatía. <br />
+Apenas usted piensa – ¡qué demonios! – y dentro de un minuto me puede esperar. <br />
+Voy a repararlo con la garantía por un año, <br />
+Y si algo se daña – envía la señal Pero eres… y Pero eres… va a venir. <br /></p>
+
+<p>Coro.</p>
+
+<p>¿Hacer una página? Con mucho gusto. Rápido, cualitativamente, y para usted siempre gratis. <br />
+¿Promocionar un blog? Con mucho gusto. Rápido, cualitativamente, y para usted siempre gratis. <br />
+¿Hacer un avatar? Con mucho gusto. Rápido, cualitativamente, y para usted siempre gratis. <br />
+¿Grabar un track? Con mucho gusto. Rápido, cualitativamente, y para usted siempre gratis. <br /></p>
+
+<p>Otras canciones:</p>
+
+<ul>
+<li><a href="https://soundcloud.com/dambpot/z8vmcjtpaqcq">Regla de l’Hôpital</a></li>
+<li><a href="https://soundcloud.com/dambpot/kglyvxnetbo7">Suma de términos de una progresión geométrica convergente</a></li>
+<li><a href="https://soundcloud.com/dambpot/elprn2gfp6an">Nabla</a></li>
+<li><a href="https://soundcloud.com/mopo3-2/aljlmlq95xgc?in=mopo3-2/sets/aslf2gs6xdgv">Haz un backup</a></li>
+<li><a href="https://soundcloud.com/mopo3-2/hello-world?in=mopo3-2/sets/aslf2gs6xdgv">Hello World</a></li>
+</ul>
 
 </div>
   
@@ -194,7 +368,7 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/">Django: python-social-auth configuration and pipeline to get users information</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual/">Asya Kazantseva: “La utilidad de los productos orgánicos es un mito habitual”</a></h1>
     
     
       <p class="meta">
@@ -203,85 +377,368 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
 
 
 
-<time class='entry-date' datetime='2015-03-01T18:45:21-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:45 pm</span></time>
+<time class='entry-date' datetime='2016-04-20T21:08:04-05:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:08 pm</span></time>
         
-           | <a href="/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/">Comments</a>
+           | <a href="/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><code>python-social-auth</code> configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django.</p>
+  <div class="entry-content"><p><img class="center" src="/images/asya.jpg" title="'Asya Kazantseva'" ></p>
 
-<div><script src='https://gist.github.com/9899590.js'></script>
-<noscript><pre><code>def update_user_social_data(strategy, *args, **kwargs):
-    &quot;&quot;&quot;Set the name and avatar for a user only if is new.
-    &quot;&quot;&quot;
-    print &#39;update_user_social_data ::&#39;, strategy
-    if not kwargs[&#39;is_new&#39;]:
-        return
+<p><em>Asya Kazantseva es una periodista científica y divulgadora de ciencia.</em></p>
 
-    full_name = &#39;&#39;
-    backend = kwargs[&#39;backend&#39;]
+<p>Un comprador estadístico medio ruso está desinformado.
+Él recela los productos geneticamente modificados y piensa que la comida
+orgánica es es a priori saludable y segura para el medio ambiente,
+a pesar de que no se confirman ni el daño, ni un beneficio significativo de
+los productos orgánicos en ninguna investigación científica.
+Durante toda la historia de la humanidad, no eramos muchos,
+y la mayoría de la gente se ocupaba de la agricultura y sembraba
+la comida para sí misma, y esto acababa con todas sus fuerzas y
+habilidades creativos. La invención de los antibióticos y
+la vacunación redujo la mortalidad infantil de la forma radical,
+y durante los últimos cien años la población creció significativamente.
+Eso significa, que ahora necesitamos métodos de intensificación de la agricultura,
+que permitan plantar muchos alimentos con el mínimo de los recursos humanos
+y naturales. El desarrollo de los abonos modernos y las plantas genéticamente
+modificadas ayuda a reolver ese problema.</p>
 
-    user = kwargs[&#39;user&#39;]
+<p>Muchas investigaciones demuestran que comida orgánica contiene más bacterias,
+y en el caso de la carne, además, gusanos parásitos. Y no es algo extraño:
+si usted no les da medicinas a los animales, y además les permite pasear
+donde ellos quieran, y comer lo que deseen, ellos van a enfermarse de algo.
+Si usted abona las plantas con estiércol, en ese estiércol incluso después
+de un tiempo se conservan unos microorganismos interesantes.
+En principio, para la prevención de las enfermedades intestinales,
+es mejor someter la comida al tratamiento térmico o al menos lavarla
+bien antes de consumirla. En mayoría de los casos los microorganismos
+mueren en nuestros estómagos o se eliminan rápidamente con nuestro sistema
+immune, pero a veces aparecen nuevas cepas frente a las cuales las personas
+se encuentran indefensas. Así pasó en Alemania y Francia durante la
+explosión de una <a href="https://es.wikipedia.org/wiki/Brote_del_s%C3%ADndrome_ur%C3%A9mico_hemol%C3%ADtico_de_2011#cite_note-3">infección intestinal en 2011</a>.
+El agente microbífico era E. coli, que tomó de la otra bacteria del estiércol
+un gen del toxin que provoca la disentería.  La investigación epidemiológica
+demostró que la gente que se infectó en la nueva cepa de E. coli consumían
+semillas de una finca orgánica en Egipcio. Según la OMS se enfermaron
+4075 personas y murieron 50.</p>
 
-    if (
-        isinstance(backend, GoogleOAuth2)
-        or isinstance(backend, FacebookOAuth2)
-    ):
-        full_name = kwargs[&#39;response&#39;].get(&#39;name&#39;)
-    elif (
-        isinstance(backend, LinkedinOAuth)
-        or isinstance(backend, TwitterOAuth)
-    ):
-        if kwargs.get(&#39;details&#39;):
-            full_name = kwargs[&#39;details&#39;].get(&#39;fullname&#39;)
+<p>Enlaces:</p>
 
-    user.full_name = full_name
+<ul>
+<li>El libro de Asya Kazantseva <a href="https://play.google.com/store/books/details?id=1IiqCwAAQBAJ">“В интернете кто-то неправ! Научные исследования спорных вопросов”</a></li>
+<li>[Entrevista con Asya Kazantseva](<a href="http://www.psychologies.ru/wellbeing/food/asya-kazantseva-polza-organicheskih-produktov-ocherednoy-mif/">http://www.psychologies.ru/wellbeing/food/asya-kazantseva-polza-organicheskih-produktov-ocherednoy-mif/</a></li>
+</ul>
 
-    if isinstance(backend, GoogleOAuth2):
-        if response.get(&#39;image&#39;) and response[&#39;image&#39;].get(&#39;url&#39;):
-            url = response[&#39;image&#39;].get(&#39;url&#39;)
-            ext = url.split(&#39;.&#39;)[-1]
-            user.avatar.save(
-               &#39;{0}.{1}&#39;.format(&#39;avatar&#39;, ext),
-               ContentFile(urllib2.urlopen(url).read()),
-               save=False
-            )
-    elif isinstance(backend, FacebookOAuth2):
-        fbuid = kwargs[&#39;response&#39;][&#39;id&#39;]
-        image_name = &#39;fb_avatar_%s.jpg&#39; % fbuid
-        image_url = &#39;http://graph.facebook.com/%s/picture?type=large&#39; % fbuid
-        image_stream = urlopen(image_url)
 
-        user.avatar.save(
-            image_name,
-            ContentFile(image_stream.read()),
-        )
-    elif isinstance(backend, TwitterOAuth):
-        if kwargs[&#39;response&#39;].get(&#39;profile_image_url&#39;):
-            image_name = &#39;tw_avatar_%s.jpg&#39; % full_name
-            image_url = kwargs[&#39;response&#39;].get[&#39;profile_image_url&#39;]
-            image_stream = urlopen(image_url)
+<p><em>Imagen tomada de: <a href="https://daily.afisha.ru/brain/533-moya-zadacha-ne-v-tom-chtoby-mne-poverili/">https://daily.afisha.ru/brain/533-moya-zadacha-ne-v-tom-chtoby-mne-poverili/</a></em></p>
+</div>
+  
+  
 
-            user.avatar.save(
-                image_name,
-                ContentFile(image_stream.read()),
-            )
-    elif isinstance(backend, LinkedinOAuth):
-        if kwargs[&#39;response&#39;].get(&#39;pictureUrl&#39;):
-            image_name = &#39;linked_avatar_%s.jpg&#39; % full_name
-            image_url = kwargs[&#39;response&#39;].get[&#39;pictureUrl&#39;]
-            image_stream = urlopen(image_url)
 
-            user.avatar.save(
-                image_name,
-                ContentFile(image_stream.read()),
-            )
-    user.save()</code></pre></noscript></div>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/">Caperucita roja en los diferentes países</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-16T19:08:32-05:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:08 pm</span></time>
+        
+           | <a href="/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/caperucita2.jpg" title="'Caperucita roja'" ></p>
+
+<p>Desde la niñez conocemos la historia de Caperucita roja, gracias al escritor
+francés Charles Perrault. Pero es simplemente una elaboración literaria de un
+cuento folclórico.</p>
+
+<p>En distintos países cuentan la historia de la muchacha, que fue a visitar
+a su abuelita, de forma diferente. En un lugar el personaje no es una ñina
+sino un niño (por ejemplo, en Irán, donde las niñas pequeñas no andas sólas),
+o en el otro, como en Asia Suroriental, no es un lobo sino un tigre.
+Pero la idea se mantiene igual.</p>
+
+<p><img class="right" src="/images/caperucita.jpg" width="250" title="'Caperucita roja'" ></p>
+
+<p>Un antropólogo británico llamado Jamshid J. Tehrani decidió aclarar de dónde
+es Caperucita roja, usando un método filogenético, con el que normalmente se
+reconstruyen los enlaces entre los organismos vivos. El científico analizó 58
+versiones de la historia en todo el mundo según 72 criterios – la apariencia,
+el sexo de los protagonistas, los trucos con los cuales el malvado engaña
+a sus víctimas. Según el sistema de Aarne-Thompson-Uther, el cuento
+de Caperucita roja corresponde a la categoría de los tramas,
+en los cuales el protagonista tiene superpoderes, y tiene un código ATU-333.</p>
+
+<p>Según los cálculos de Tehrani, aproximadamente en el siglo I esa historia
+se derivó de otro cuento popular de Oriente Próximo del lobo y
+siete cabritos (ATU-123). llegando a Asia y África, el cuento se mezcló
+con las versiones locales del lobo y siete cabritos y obtuvo sus rasgos únicos.
+En Europa el cuento también se transformó dependiendo de la región.
+Por ejemplo, en Italia en la cesta de la niña había un pescado fresco,
+y en Suiza – una bola de queso. La caperucita francesa llevaba a sua abuela
+un pote de mantequilla y un pastel relleno. También vaía la edad de
+la protagonista: en unas partes es una niña pequeña, y en otras
+– una muchacha joven.</p>
+
+<p>¿Y qué lleva caperucita roja a su abuelita en el país de usted?</p>
+
+<p>Imágenes tomadas de:
+<a href="http://pikabu.ru/story/art_krasnaya_shapochka_790068">http://pikabu.ru/story/art_krasnaya_shapochka_790068</a>,
+<a href="http://pikabu.ru/story/krasnaya_shapochka_1666502">http://pikabu.ru/story/krasnaya_shapochka_1666502</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/04/02/los-programas-de-radio-y-television-rusas-que-me-gusta-escuchar/">Los programas de radio y televisión rusas que me gusta escuchar</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-02T21:54:07-05:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>9:54 pm</span></time>
+        
+           | <a href="/blog/2016/04/02/los-programas-de-radio-y-television-rusas-que-me-gusta-escuchar/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/04/02/los-programas-de-radio-y-television-rusas-que-me-gusta-escuchar/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h5>Opinión especial. Radio Echo de Moscú.</h5>
+
+<p>Es un programa que sale al aire cada día entre semana.
+Los invitados responden a las preguntas, que les envían los oyentes
+de la radio por medio de la página web, mensajes de texto, o el teléfono.
+Normalmente al programa invitan a los políticos, politólogos,  periodistas,
+escritores y otras personas inteligentes cuya opinión es importante para
+el público. El presentador les hace preguntas, escogidas para el programa
+actual. Habitualmente están relacionadas con los eventos recientes:
+la salida de la nueva ley, las noticias que tuvieron gran resonancia.
+El presentador trata de intervenir en nombre del oponente, con el fin
+de promover discusiones y para que la conversación sea más dinámica e
+interesante.</p>
+
+<p><img class="center" src="/images/special_opinion.jpg" title="'Opinión especial'" ></p>
+
+<h5>Reunión de padres. Radio Echo de Moscú.</h5>
+
+<p>Es un programa semanal para los padres, en el que los invitados
+(entre ellos funcionarios, ministros, profesores y directores de colegios,
+pediatras , psicólogos y otros padres) en una mesa redonda deliberan las
+cuestiones de la educación, la enseñanza, la crianza y el bienestar de los
+niños y adolescentes. Por ejemplo, los últimos temas eran acerca de</p>
+
+<ul>
+<li>el ambiente del odio en los colegios y cómo enmendarlo;</li>
+<li>la iglesia y el colegio: ¿es posible la colaboración?</li>
+<li>la educación sexual en el colegio: ¿es una propaganda del libertinaje o es parte del desarrollo de la personalidad del individuo?</li>
+<li>¿cómo estudiar los sucesos trágicos de la historia?</li>
+<li>Noche de Brujas y el día de San Valentin: ¿necesitamos las celebraciones extranjeras en el colegio?</li>
+<li>las vacaciones: ¿son un descanso o son para el trabajo de corrección de los errores?</li>
+</ul>
+
+
+<h5>Cien conferencias con Dmitry Bykov. TV Rain.</h5>
+
+<p>Dmitry Bykov es un escritor ruso, poeta, publicista, crítico literario y
+profesor de literatura en un colegio. En cada programa
+(de los cuales serán 100 en total) él dicta conferencias acerca de la
+literatura rusa del siglo XX, y por lo tanto resulta una historia de ese
+siglo contada por medio de 100 obras maestras de literatura rusa:
+para casa año del siglo – una conferencia. Y así cien veces desde el año
+1900 hasta 1999.</p>
+
+<h5>En el jardín, en el huerto. Radio Echo de Moscú.</h5>
+
+<p>Es un programa de autor, en el que la periodista Elena Sitnikova da los consejos
+prácticos acerca de cómo cultivar, cuidar las plantas, cosechar y hacer
+conservas durante el invierno. Ella cuanta acerca de las exposiciones agrícolas,
+las propiedades útiles de las plantas, las recetas culinarias y el diseño
+del paisaje y el jardín.</p>
+
+<p><img class="center" src="/images/larina.jpg" title="'Radio Echo de Moscú'" ></p>
+
+<h5>Dilentantes. Radio Echo de Moscú.</h5>
+
+<p>Es un programa acerca de las relaciones entre unos eventos en el pasado y
+la actualidad. El presentador del programa es un editor jefe de la revista
+histórica Dilentan, y básicamente, en cada programa leen y discuten acerca
+de la nueva edición de esa revista.</p>
+
+<h5>Hablamos en ruso. Radio Echo de Moscú.</h5>
+
+<p>Es un programa dedicada a la lengua rusa y sus particularidades.
+En cada edición la presentadora junto al filólogo hablan acerca de
+la gramática rusa, los errores comunes de ortografía y puntuación.
+También mencionan las palabras en las cuales los rusos tienden a poner
+el acento en la sílaba  equivocada.La presentadora y los expertos contestan
+a las preguntas de los radioyentes acerca de cómo pronunciar o escribir
+una o otra palabra, cuentan acerca del origen de éstas palabras, explican
+el significado de términos extranjeros que fueron adoptados por la lengua rusa.
+A los oyentes, a su vez, les ofrecen responder preguntas de los concursos y
+ejercitarse con las trabalenguas. Los ganadores reciben como premios
+diccionarios o libros.</p>
+
+<h5>Choque cultural. Radio Echo de Moscú.</h5>
+
+<p>En este programa la presentadora Ksenia Larina, gracias a sus invitados –
+personalidades eméritas del arte – trata de orientarse en los cambios y
+noticias de la vida cultural. Por ejemplo:</p>
+
+<ul>
+<li>la imagen de Rusia en el cine moderno de oeste;</li>
+<li>el renacimiento del mecenazgo en Rusia;</li>
+<li>nuevos criterios para evaluación de la eficiencia de los museos;</li>
+<li>el desarrollo de las rutas turísticas en Rusia;</li>
+<li>el cine documentas como el testimonio de la época actual: ¿qué van a saber nuestros descendientes acerca de nosotros?</li>
+<li>la cultura como un rehén de la política.</li>
+</ul>
+
+
+<h5>No es así. Radio echo de Moscú.</h5>
+
+<p>EL presentador y sus invitados historiadores rusos hablan acerca de los periodos
+de la historia rusa, que no fueron bien estudiados o aclarados durante el curso
+de la historia en los colegios. Eso explica el nombre del programa: nuestra
+historia “no es así” como se está acostumbrado a contarla.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/03/31/bajo-el-hongo/">Bajo el hongo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-03-31T17:33:28-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>5:33 pm</span></time>
+        
+           | <a href="/blog/2016/03/31/bajo-el-hongo/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/03/31/bajo-el-hongo/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>La traducción del cuento de Vladimir Suteev <del>acerca del Ttransmilenio</del>.</em></p>
+
+<p>Un día la lluvia fuerte tomó por sorpresa a una hormiga.
+¿En dónde escaparse?
+La hormiga vió que en el claro había un hongo pequeño. Ella se acercó al hondo y escampó debajo de su sombrero.</p>
+
+<p><img class="right" src="/images/hongo.jpg" title="'Bajo el hongo'" ></p>
+
+<p>La hormiga estaba sentada bajo el hongo, esperando a que cesara la lluvia. Pero la lluvia caía cada vez más y más fuerte.</p>
+
+<p>Una mariposa mojada se arrastró lentamente hacía el hongo.</p>
+
+<p>&mdash; Hormiga, hormiga, déjame entrar bajo el hongo. Estoy muy mojada y no puedo volar.</p>
+
+<p>&mdash; ¿Por dónde te dejo pasar? - contestó la hormiga. - Aún para mí no fue fácil caber aquí sola.</p>
+
+<p>&mdash; ¡No hay problema! Apretados, pero contentos.</p>
+
+<p>La hormiga dejó a la mariposa pasar bajo el hongo. Mientras tanto la lluvia se puso mas fuerte&hellip; Entonces un ratón pasó corriendo:</p>
+
+<p>&mdash; Por favor, déjenme entrar bajo el hongo. El agua chorrea sobre mí.</p>
+
+<p>&mdash; ¿Por dónde te dejamos entrar? Aquí no hay espacio.</p>
+
+<p>&mdash; Córranse un poco.</p>
+
+<p>Se corrieron un poco y dejaron pasar al ratón bajo el hongo.
+&hellip;Mientras tanto la lluvia caía sin parar. Un gorrión estaba corriendo frente el hongo y lloraba:</p>
+
+<p>&mdash; Se mojaron mis plumitas, se cansaron mis alitas. Déjenme entrar bajo el hongo para secarme, descansar y escampar de la lluvia.</p>
+
+<p>&mdash; Aquí no hay espacio.</p>
+
+<p>&mdash; Córranse, por favor.</p>
+
+<p>&mdash; Vale.</p>
+
+<p>Se corrieron, y se encontró un espacio para el gorrión.</p>
+
+<p>En el claro apareció una liebre:</p>
+
+<p>&mdash; ¡Escóndanme! - gritó. - ¡Sálvenme! ¡Me persigue una zorra!</p>
+
+<p>&mdash; Me da pena la liebre, - dijo la hormiga. - Corrámonos un poco más.</p>
+
+<p>Apenas escondieron a la liebre, llegó la zorra:</p>
+
+<p>&mdash; ¿Han visto a una liebre? - preguntó.</p>
+
+<p>&mdash; No, no la hemos visto.</p>
+
+<p>La zorra se les acercó, olfateó:</p>
+
+<p>&mdash; ¿No se escondió aquí?</p>
+
+<p>&mdash; ¿Por dónde? ¡Aquí no hay espacio!</p>
+
+<p>La zorra batió la cola y se fue.</p>
+
+<p>Al momento la lluvia terminó y salió el sol. Todos se asomaron desde debajo del hongo y se alegraron. Sólo la hormiga se quedó pensativa y dijo:</p>
+
+<p>&mdash; ¿Cómo así? Antes yo sola estaba apretada, ¡pero ahora se encontró espacio para todos los cinco!</p>
+
+<p>&mdash; ¡Croak-croak!.. ¡Croak-croak! - se rió alguien.</p>
+
+<p>Todos miraron: en el sombrero del hongo había una rana y se reía a carcajadas:</p>
+
+<p>&mdash; ¡Eh, ustedes! El hongo&hellip;</p>
+
+<p>Pero no terminó su frase u se fue.
+Todos miraron al hongo y se dieron cuenta por qué al comienzo sólo uno estaba apretado, y al final cupieron todos.</p>
+
+<p>¿Y ustedes adivinaron por qué?</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AREFhsUFrnE" frameborder="0" allowfullscreen></iframe>
 
 </div>
   
@@ -295,7 +752,7 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/03/01/useful-chorme-extentions/">Useful Chorme extentions</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/03/23/hipsters-en-rusia/">Hipsters en Rusia</a></h1>
     
     
       <p class="meta">
@@ -304,43 +761,98 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
 
 
 
-<time class='entry-date' datetime='2015-03-01T18:41:53-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:41 pm</span></time>
+<time class='entry-date' datetime='2016-03-23T13:00:35-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>1:00 pm</span></time>
         
-           | <a href="/blog/2015/03/01/useful-chorme-extentions/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/useful-chorme-extentions/">Comments</a>
+           | <a href="/blog/2016/03/23/hipsters-en-rusia/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/03/23/hipsters-en-rusia/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h4>JSONView</h4>
+  <div class="entry-content"><p>Los hipsters aparecieron en los EEUU en los años 40.
+El nombre viene de la expresión “to be hip” que significa estar al día.
+Originalmente eso denotaba a un representante de una subcultura,
+que se formó entre los admiradores de la musica jazz,
+pero hoy en día son los jóvenes acomodados habitantes de la ciudad,
+a quienes les interesa la cultura y el arte elitista, la moda,
+la música alternativa, el indi-rock, el cine independiente y
+la literatura contemporánea.
+¿Pero por qué ahora a esos dandies frívolos les llaman la amenaza al régimen de Putin?</p>
 
-<p>Validate and view JSON documents.
-<a href="https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc">https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc</a></p>
+<p>En Rusia los hipsters pronto se convertieron de ser personas,
+que ciegamente seguían la moda, en gente que ahora llamamos “la clase creativa” –
+la intelectualidad burguesa liberal, que no resultó tan apolítica, como parecía al principio.</p>
 
-<h4>Postman - REST Client</h4>
+<p>Es cierto, que al principio ellos asperaban sólo al mejoramiento de su estatus material, pero después, en consecuencia, cada uno comprando un Moleskine, un portátil y una posibilidad de sentarse en algún lugar con wifi, empezaron a reflexionar y pedir algo más que simplemente un consumo material. Se dieron cuenta de que la sociedad no estaba completamente bien, y eso les despertó el sentido de protesta y el deseo de cambios.</p>
 
-<p><a href="https://chrome.google.com/webstore/detail/fdmmgilgnpjigdojojpjoooidkmcomcm">https://chrome.google.com/webstore/detail/fdmmgilgnpjigdojojpjoooidkmcomcm</a></p>
+<p>…Todo empezó en 2004 cuando se puso de moda vestirse con unas camisetas,
+unos vestidos, unos tenis y unas chaquetas envejecidos, junto con una cámara análoga,
+que los hipsters acaparaban por unos centavos en los mercados de pulgas. El mismo año
+en Moscú tuvo lugar un “verano de tolerancia” con conciertos de las bandas Moloko
+y Scissor Sisters, con la idea de que la música gay disco es para los heterosexuales también.</p>
 
-<h4>Evernote Web Clipper</h4>
+<p>En 2005 una revista llamada Afisha (La Cartelera) organiza el primer “picnic”:
+durante un día en un parque grande en Moscú hay música, frisbee, hamacas, perros calientes
+y – no van a creer – sin alcohol…</p>
 
-<p>Use the Evernote extension to save things you see on the web into your Evernote account.
-<a href="https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc">https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc</a></p>
+<p>La ignorancia informatica definitivamente deja de ser <em>comme il faut</em>.
+El publico que comúnmente no mira televisión, ahora descubre que las serias pueden
+ser distintas y empieza a bajar los torrents con capítulos de Dr House.
+Se abren muchos clubs para los nuevos melómanos, donde ponen la música indie,
+electrónica, post-metal. La banda escocesa Franz Ferdinand da su primer
+concierto en el club B2. Se abre una tienda del diseñador Denis Simachev y
+el canal de televisión 2×2,que muestra los dibujos animados
+(estilo South Park y los Simpsons) 24 horas al día par los kidults
+(abreviación de kid – niño, y adult – adulto). En paralelo se abre la revista
+electrónica Look at me, que se vuelve de culto muy rápido.
+La primera versión de la revista se veía como un blog con las fotos de “looks”
+que subían los usuarios, mostrando que alguien puede verse bien sin necesidad
+de comprar ropa cara o de marcas famosas. Después esa revista se volvió un
+portal dedicado a las noticias sobre moda, arte y cine. También en esa época
+se abrieron las galerías de arte moderno Vinzavod y Garazh, y a Moscú llegó
+la exposición de la cultura “skeaker” Faces &amp; Laces.</p>
 
-<h4>GistBox Clipper</h4>
+<p><img class="center" src="/images/park_gorky.jpg" title="Parque Gorky" alt="Parque Gorky"></p>
 
-<p>Save code snippets from anywhere on the web. Companion extension to GistBoxApp.com.
-<a href="https://chrome.google.com/webstore/detail/cejmhmbmafamjegaebkjhnckhepgmido">https://chrome.google.com/webstore/detail/cejmhmbmafamjegaebkjhnckhepgmido</a></p>
+<p>Al mismo tiempo la autoenseñanza y el concepto de edutainment
+(educación + diversión) se pusieron de moda y se abrió una página llamada
+Teorías y Prácticas. Este proyecto unió a las personas que querían aprender
+y compartir conocimiento, y divulga la información acerca de las conferencias
+publicas que tienen lugar en los bares, clubs, cafés,  galerías,
+salas de conferencias y parques de Moscú y San Petersburgo.</p>
 
-<h4>XV — XML Viewer</h4>
+<p><img class="center" src="/images/public_lectures.jpg" title="'Conferencias públicas'" ></p>
 
-<p>Powerful XML viewer for Google Chrome
-<a href="https://chrome.google.com/webstore/detail/eeocglpgjdpaefaedpblffpeebgmgddk">https://chrome.google.com/webstore/detail/eeocglpgjdpaefaedpblffpeebgmgddk</a></p>
+<p>Desde ese momento en su tiempo libre los hipsters iban a escuchar los
+discursos acerca de microbiología, física, historia, lingüística y arte.
+Los libros de divulgación científica empezaron a venderse en ediciones numerosas,
+y los nombres de los científicos se volvieron conocidos.</p>
 
-<h4>LiveReload</h4>
+<p>En 2010 se abrió un instituto de arquitectura llamado Strelka y la urbanística
+invadió las mentes de los moscovitas jóvenes, tanto que todos
+los que deseaban escuchar los discursos públicos no cabían en las salas del instituto.</p>
 
-<p><a href="https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei">https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei</a></p>
+<p>En ese periodo los hipsters (la clase creativa) obtienen su nueva ideología
+de “las acciones pequeñas”. La idea es que hay que asumir una tarea pequeña,
+por ejemplo, no te qyejes con los servicios públicos, sino siembre un árbol frente a tu casa.</p>
+
+<p>Los hipsters ya no son vistos como unos perezosos, y las fundaciones benéficas
+y los grupos de iniciativa crecen como hongos después de la lluvia.
+En 2011 Moscú recibe su nuevo ministro de cultura – Sergey Kapkov –
+que transforma completamente los espacios públicos. La culminación de
+su actividad fue el acondicionamiento del parque soviético de Gorky,
+que se convirtió en un espacio agradable con teatros al aire libre, festivales,
+bibliotecas, zonas verdes con wifi, discursos gratuitos, riberas con sillas
+reclinables de madera – una reserva para hipsters. En Rusia aparece un canal
+de televisión de nuevo formato – para la gente que desprecia la televisión,
+y en 2012 empieza la ola de protestas contra el poder actual.
+El mismo año el gobierno abre un proceso contra las muchachas de Pussy Riot.
+Todas las protestas fueron reprimidas con crueldad. El cenado sale con una ley
+que prohibe la propaganda de homosexualismo, y el gobierno se vuelve mucho
+más represivo con la clase creativa, excluye el canal liberal del paquete
+de televisión por cable y cierra algunos de los clubs preferidos por los hipsters.</p>
 </div>
   
   
@@ -353,7 +865,7 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/">MEL Script (Autodesk Maya): Go through hierarchy</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/01/16/classic-dutch-ladies-bicycle-for-sale/">Classic Dutch ladies bicycle for Sale</a></h1>
     
     
       <p class="meta">
@@ -362,27 +874,130 @@ class ContractDownloadGalleryDetailView(LoginRequiredMixin, DetailView):
 
 
 
-<time class='entry-date' datetime='2015-02-21T21:43:47-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:43 pm</span></time>
+<time class='entry-date' datetime='2016-01-16T07:57:44-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:57 am</span></time>
         
-           | <a href="/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy/">Comments</a>
+           | <a href="/blog/2016/01/16/classic-dutch-ladies-bicycle-for-sale/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/01/16/classic-dutch-ladies-bicycle-for-sale/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Add a prefix <code>myPrefix_</code> to all child elements of the joint <code>joint1</code>:</p>
+  <div class="entry-content"><p>Condition: I bought it on the 11th of November 2015, so it’s almost new
+(I have an invoice from the shop where I bought it as a proof that it’s not stolen).<br />
+Color: Black <br />
+Model: <strong>Avalon Oma 26 Inch Damesfiets</strong> <br />
+Speeds: No <br />
+Lighting: Front and rear battery lighting <br />
+Brakes: Coaster brake <br />
+Accessories: Metal basket, chain lock <br />
+Price: <strong><span style="color:red;">SOLD</span></strong></p>
 
-<div><script src='https://gist.github.com/11099336.js'></script>
-<noscript><pre><code>string $stat_element = &quot;joint1&quot;;
-select -r $stat_element;
-string $nodes[] = `ls -sl -dag`;
-for($node in $nodes){
-    rename -ignoreShape $node (&quot;myPrefix_&quot; + $node);
-}</code></pre></noscript></div>
+<p><img class="center" src="/images/bike/bike1.jpg">
+<img class="center" src="/images/bike/bike2.jpg">
+<img class="center" src="/images/bike/bike3.jpg">
+<img class="center" src="/images/bike/bike4.jpg">
+<img class="center" src="/images/bike/bike5.jpg">
+<img class="center" src="/images/bike/bike6.jpg" width="250"></p>
+</div>
+  
+  
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/">Zuleijá abre los ojos por Guzél Yájina</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-11T15:26:29-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:26 pm</span></time>
+        
+           | <a href="/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/guzel.jpg" title="'Guzél Yájina'" ></p>
+
+<p>La novela empieza en el año 1930. La protagonista es una mujer tártara de 30 años
+llamada Zuleijá, que vivía en una aldea apartada con su esposo, que era 30 años
+mayor que ella, y con la suegra cuyo apodo era Upirija (Vampira).
+La vida de Zuleijá era muy difícil: ella trabajaba día a día, atendiendo
+a su esposo Murtazá y a su mamá, pero nunca se había quejado, porque así había
+sido educada por sus padres: aguantar todas los insultos, las humillaciones y
+las palizas de su esposo y obedecerle en todo.</p>
+
+<p>En el primer capítulo nos familiarizamos con la vida diaria de Zuleijá:
+cuáles eran sus deberes de la casa, qué pasaba durante su día habitual,
+qué pasaba durante su día habitual, qué había pasado en su vida durante
+sus últimos 15 años de matrimonio. Nosotros conocemos su cosmovisión,
+sus creencias y supersticiones, que Zuleijá tuvo cuatro hijas, pero
+todas habían muerto cuando todavía eran bebés. Vemos cómo ella hablaba
+con los duendes y les llevaba comida.</p>
+
+<p>Pero su vida mesurada se interrumpió cuando los soldados del Ejército Rojo
+(o de &ldquo;Horda Roja&rdquo;, como los llamaban por allá) llegaron a su aldea para
+realizar la campaña de
+<a href="https://es.wikipedia.org/wiki/Deskulakizaci%C3%B3n">deskulakización</a>,
+es decir, quitar los bienes de los
+campesinos más ricos (kuláks) y deportarles para &ldquo;desarrollar las tierras
+lejanas del país&rdquo;. Murtazá puso resistencia y fue asesinado por el soldado
+Ignatov. A Zuleijá la enviaron a Siberia a las orillas del río Angará junto
+con otros campesinos, algunos intelectuales de Leningrado y unos criminales,
+escoltados por Ignatov.</p>
+
+<p>Durante el viaje Zuleijá se dio cuanta de que había quedado embarazada de
+su esposo ya hace unos meces, pero a pesar de eso, ella logró soportar
+la deportación, y al llegar a Siberia dio luz a su hijo Josep.</p>
+
+<p><img class="center" src="/images/taiga.jpg" title="'Siberia'" ></p>
+
+<p>En Siberia a Ignatov y sus tutelados les dejaron en un área inhabitada
+del bosque sólo con una escopeta, la bolsa llena de balas y un saco de sal.
+Así el soldado, Zuleijá, Josep, el pintor Ikonnikov, el doctor Leibe,
+enloquecido por ver los cambios tan radicales en el país, el pescador Lukká,
+la anciana intelectual Isabella, que con orgullo llevaba su sombrero de moda
+y hablaba francés, y los demás compañeros tenían que aprender a construir
+las casas, armar la estufa y cazar para poder sobrevivir sólos en el bosque.
+Pero esa experiencia ayudó a Zuleijá a abrir sus ojos verdes y ver el mundo
+de una forma distinta, le permitió cambiar sus costumbres y creencias
+(ya no le parecía que Alá la podía ver en un lugar tan lejano), su carácter
+(porque se convirtió en una mujer fuerte y decidida). Todo lo que entes le
+parecía imposible o vergonzoso, como sentarse tan cerca a un hombre desconocido
+en el vagón del tren, ó hacer sus necesidades frente a los demás en el
+mismo vagón), formó parte de su vida.</p>
+
+<p>La oficina de prensa de Pospechat informó que la novela de Guzél Yájina será
+traducida a 16 idiomas.</p>
+
+<hr />
+
+<p><strong>Guezel Yájina</strong> nació en Kazán, se graduó del Instituto Pedagógico Estatal de
+Kazán de la facultad de idiomas extranjeros, y desde el año 1999 vive en Moscú.
+Ella ha trabajado en el cambo de las relaciones públicas, publicidad y mercadeo.
+En 2015 Guzel se graduó de la facultad de esritura de guiones de la Escuela
+de Cine de Moscú. En la revisa &ldquo;Luces de Siberi&rdquo; fue publicada su primera novela
+&ldquo;Zuleijá abre los ojos&rdquo;, que ha ganado los premios del &ldquo;Libro Grande&rdquo; y &ldquo;Yasnaya Polyana&rdquo;.</p>
+
+<p>Enlaces:</p>
+
+<ul>
+<li><a href="http://es.rbth.com/cultura/literatura/2015/12/22/las-tres-grandes-novelas-rusas-del-2015_553705">Las tres grandes novelas rusas del 2015</a></li>
+</ul>
 
 </div>
   
@@ -396,7 +1011,7 @@ for($node in $nodes){
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">How to add a custom button to admin change list view id Django</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/10/26/caminata/">Caminata</a></h1>
     
     
       <p class="meta">
@@ -405,137 +1020,76 @@ for($node in $nodes){
 
 
 
-<time class='entry-date' datetime='2015-02-21T17:35:44-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:35 pm</span></time>
+<time class='entry-date' datetime='2015-10-26T17:45:30-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:45 pm</span></time>
         
-           | <a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><script src='https://gist.github.com/12fb4de2726c6ef563f3.js'></script>
-<noscript><pre><code>class BasicAdmin(admin.ModelAdmin):
-    # ...
-
-    def get_urls(self):
-        urls = super(BasicAdmin, self).get_urls()
-        my_urls = patterns(
-            &#39;&#39;,
-            (r&#39;^download_as_xls/$&#39;, self.download_as_xls_view)
-        )
-        return my_urls + urls
-
-    def download_as_xls_view(self, request):
-        &quot;&quot;&quot;Generates an xls file
-        &quot;&quot;&quot;
-
-        response = HttpResponse(mimetype=&#39;application/ms-excel&#39;)
-        response[&#39;Content-Disposition&#39;] = \
-            &#39;attachment; filename=Report.xls&#39;
-        # do something
-        return response</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">How to raise a form invalid event inside form_valid method of a FormView</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-21T17:34:58-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:34 pm</span></time>
-        
-           | <a href="/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/">Comments</a>
+           | <a href="/blog/2015/10/26/caminata/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/10/26/caminata/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code></p>
+  <div class="entry-content"><p>Normalmente cuando me siento mal o muy estresada me pongo a caminar.
+Cojo ritmo y esto me ayuda a concentrarme en mis pensamientos, cobrar ánimo y relajarme.</p>
 
-<div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
-<noscript><pre><code>from django.forms.util import ErrorList
-from django import forms
+<p>&hellip;Son la cinco y media de la tarde, salgo del edificio en la 100 con 14 y
+giro a la derecha. No me gusta mucho ese pedazo porque hay mucha gente
+caminando al encuentro y formando multitudes. A mi izquierda hay una
+peluquería donde hay clientes a cualquier hora (¡incluso a las 6 de la mañana!),
+una cafetería nueva en la que nunca he entrado (pero siempre he querido) y
+una farmacia donde te dan un caramelo cuando compras algo. Además siempre
+hay varios carros saliendo de un parqueadero para entrar a la glorieta.</p>
 
-class ContractUpdateView(UpdateView):
-    model = Contract
-    template_name = &#39;contract/contract_form.html&#39;
-    form_class = ContractForm
+<p>Llego al semáforo en la 100 con 15, que nunca me sale en verde, y espero
+un rato mientras pasan los colectivos y buses del SITP. Luego cruzo rápido,
+porque el verde no dura mucho, y paso por un pedazo con el asfalto todo
+roto y variso vendedores callejeros. Paso frente un tipo curioso que tiene
+rastas y vende cactuses pequeños o jugos naturales por las mañanas, y miro
+hacía la izquierda porque por allá siempre salen las motos y camiones de
+la novena y no hay un semáforo que les detenga. Si sobrevivo ese pedazo,
+enfrento mi siguiente reto: cruzar el otro carril de la novena, y tomo a
+la izquierda para seguir por el barrio y evitar la muchedumbre de la 100.</p>
 
-    def form_valid(self, form):
-        if self.request.POST.get(&#39;finish&#39;):
-            if (
-                not form.cleaned_data[&#39;number&#39;] or
-                not self.object.images.count()
-            ):
-                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList([
-                    u&#39;You have to add images and a contract number&#39;
-                ])
-                return self.form_invalid(form)
-            self.object.is_submitted = True
-        self.object = form.save()
-        return HttpResponseRedirect(self.get_success_url())</code></pre></noscript></div>
+<p>Paso por un sendero en el pasto cubierto de unos bloques cuadrados de cemento,
+y llego al puente peatonal. Este puente me parece muy chistoso. Primero,
+tiene sólo una caneca con un aviso encima diciendo que a la basura hay que
+separarla en tres canecas diferentes. Segundo, tiene unas señales interesantes
+diciendo que está prohibido subir el puente con armas y también detenerse
+en el puente. Y tercero, en unos de postes del puente hay una silla amarrada y
+colgada de un gancho.</p>
 
-</div>
-  
-  
+<p>Después del puente paso por Carulla, intento de resistir la tentación de
+entrar y comprar un paquete de rosquitas o maizitos y entro a una plaza con
+una iglesia a mi izquierda ya mi derecha una sala donde, como me lo dijeron,
+toman tinto con los muertos. Siempre me sorprende la escultura de Jesús en
+una de las paredes de la iglesia: en Rusia a Jesús o a los santos siempre
+les pintan muy flacos y con la cara de infelicidad y sufrimiento.</p>
 
+<p>Luego cruzo la 19 y voy por una calle con edificios bonitos y llego hasta
+el puente de Transmilenio de la autopista. Me acuerdo del señor con la cara
+del presidente de Colombia de mis fantasías que vende sánduches por las mañanas.
+Cruzo el puente y trato de no entrar en pánico por la vibración que hace tanta
+gente caminando al tiempo.</p>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">How to pass a variable from form to view in Django</a></h1>
-    
-    
-      <p class="meta">
-        
+<p>Me meto otra vez en los barrios y ya de forma automática busco la casa con el
+loro para mirar si salió a gritar o no.</p>
 
+<p>Después de cruzar varias calles de forma salvaje (o #comonosgusta) me acerco a
+la panadería con roscones y siento cómo mi solitaria se despierta, pero tomo
+la decisión de comprar uno en otra ocasión, cuando esté con compañía, porque
+sólo de esta forma realmente puedo disfrutar de un roscón.</p>
 
+<p>El siguiente paso es tratar de meterse en un bus de Transmilenio en la estación
+&ldquo;Calle 100&rdquo; y durante 15 minutos reflexionar acerca del sistema de transporte
+y la urbanística en general: los pensamientos que me llegan en los momentos
+cuando me aprietan por todos lados y además tratan de sacarme en una estación
+que no me sirve. Luego, después de acomodarme bien entre las rodillas y codos
+de los otros pasajeros, miro por la ventana y veo las montañas tan majestuosas
+y tan bellas, y así, al llegar a Suba pasa todo: el estrés, el mal genio y
+otras tonterías.</p>
 
-
-<time class='entry-date' datetime='2015-02-21T11:09:20-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>11:09 am</span></time>
-        
-           | <a href="/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-pass-a-variable-from-form-to-view-in-django/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometimes there is a need to pass a variable (parameter) from a <code>FormView</code> (for example, <code>CreateView</code>,  <code>UpdateView</code>) to a form (for example, <code>ModelForm</code>).</p>
-
-<p>Let&rsquo;s suppose that we want to use a value of <code>other_variable</code> from a view <code>MyCreateView</code> in <code>MyForm</code>:</p>
-
-<div><script src='https://gist.github.com/ec0f82bb3d302961503d.js'></script>
-<noscript><pre><code>class MyForm(forms.ModelForm):
-    requested_asset = None
-    
-    def __init__(self, *args, **kwargs):
-        other_variable = kwargs.pop(&#39;other_variable&#39;)
-        super(MyForm, self).__init__(*args, **kwargs)</code></pre></noscript></div>
-
+<p><img class="center" src="/images/caminata.png" title="'Caminata'" ></p>
 </div>
   
   
@@ -544,6 +1098,8 @@ class ContractUpdateView(UpdateView):
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/posts/4">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -558,6 +1114,18 @@ class ContractUpdateView(UpdateView):
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/18/think-like-i-do/">Think like I do</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/18/libros-que-leen-los-ninos-rusos/">Libros que leen los niños rusos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/30/sistema-de-riego-por-capilaridad/">Sistema de riego por capilaridad</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">How to upload a file to Amazon S3 and generate a pre-signed URL</a>
       </li>
     
@@ -570,6 +1138,10 @@ class ContractUpdateView(UpdateView):
       </li>
     
       <li class="post">
+        <a href="/blog/2016/10/17/albondigas-de-lentejas/">Albóndigas de lentejas</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/10/07/mierdero-de-las-semanas/">Mierdero de las semanas</a>
       </li>
     
@@ -578,57 +1150,216 @@ class ContractUpdateView(UpdateView):
       </li>
     
       <li class="post">
-        <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/07/22/monitoreo-de-acciones-de-usuarios-en-flask-sqlalchemy/">Monitoreo de acciones de usuarios en Flask (SQLAlchemy)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/07/22/flask-for-django-developers/">Flask for Django developers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo obtener el nombre del día de la semana en Python</a>
+        <a href="/blog/2016/09/04/las-series-que-marcaron-los-anos-noventa-en-rusia/">Las series que marcaron los años noventa en Rusia</a>
       </li>
     
   </ul>
 </section>
-
 <section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+  <h1>Featured Posts</h1>
+  <ul id="recent_posts">
+    
+    
+      
+        
+        <li class="post">
+          <a href="/blog/2016/12/18/think-like-i-do/">Think like I do</a>
+        </li>
+      
+    
+      
+        
+        <li class="post">
+          <a href="/blog/2016/12/18/libros-que-leen-los-ninos-rusos/">Libros que leen los niños rusos</a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+        <li class="post">
+          <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+        <li class="post">
+          <a href="/blog/2014/01/05/mi-tierra-abundante-a-pesar-del-frio/">Mi tierra abundante (a pesar del frío)</a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </ul>
-  
-  <a href="https://github.com/vero4karu">@vero4karu</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'vero4karu',
-            count: 5,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
-
 <a href="https://twitter.com/vero4ka_ru" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @vero4ka_ru</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script><script src="//blockr.io/js_external/coinwidget/coin.js"></script>
         <script>
@@ -837,16 +1568,17 @@ class ContractUpdateView(UpdateView):
   </div>
       </div>
 </section>
-<script src="https://www.goodreads.com/review/custom_widget/3165514.Vera's%20bookshelf:%20read?cover_position=left&cover_size=small&num_books=7&order=d&shelf=read&show_author=1&show_cover=1&show_rating=1&show_review=1&show_tags=1&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_id=1425777029&widget_text_color=000000&widget_title_size=medium&widget_width=medium" type="text/javascript" charset="utf-8"></script>
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/+VeraMazhuga?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
+<script src="https://www.goodreads.com/review/custom_widget/3165514.Vera's%20bookshelf:%20read?cover_position=left&cover_size=small&num_books=7&order=d&shelf=read&show_author=1&show_cover=1&show_rating=1&show_review=1&show_tags=1&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_id=1425777029&widget_text_color=000000&widget_title_size=medium&widget_width=medium" type="text/javascript" charset="utf-8"></script><section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 103.52941176470588%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 103.52941176470588%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 103.52941176470588%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 103.52941176470588%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 107.05882352941177%'>aventuras</a> <a href='/blog/categories/bogota' style='font-size: 103.52941176470588%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 103.52941176470588%'>bootstrap</a> <a href='/blog/categories/chiste' style='font-size: 107.05882352941177%'>chiste</a> <a href='/blog/categories/chistes' style='font-size: 103.52941176470588%'>chistes</a> <a href='/blog/categories/chrome' style='font-size: 103.52941176470588%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 103.52941176470588%'>ciencia</a> <a href='/blog/categories/cita' style='font-size: 103.52941176470588%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 107.05882352941177%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 103.52941176470588%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 110.58823529411765%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 107.05882352941177%'>colombia</a> <a href='/blog/categories/comida' style='font-size: 103.52941176470588%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 103.52941176470588%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 107.05882352941177%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 156.47058823529412%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 103.52941176470588%'>ensayo</a> <a href='/blog/categories/estaciones' style='font-size: 103.52941176470588%'>estaciones</a> <a href='/blog/categories/flask' style='font-size: 107.05882352941177%'>flask</a> <a href='/blog/categories/historia' style='font-size: 103.52941176470588%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 103.52941176470588%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 103.52941176470588%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 103.52941176470588%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 103.52941176470588%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 121.17647058823529%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 103.52941176470588%'>mel script</a> <a href='/blog/categories/montanas' style='font-size: 103.52941176470588%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 110.58823529411765%'>moscú</a> <a href='/blog/categories/nieve' style='font-size: 103.52941176470588%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 107.05882352941177%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 103.52941176470588%'>niños</a> <a href='/blog/categories/parques' style='font-size: 103.52941176470588%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 103.52941176470588%'>plantas</a> <a href='/blog/categories/popularizacion-de-la-ciencia' style='font-size: 107.05882352941177%'>popularización de la ciencia</a> <a href='/blog/categories/pycharm' style='font-size: 103.52941176470588%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 124.70588235294117%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 107.05882352941177%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 103.52941176470588%'>requests</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 103.52941176470588%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 103.52941176470588%'>sqlalchemy</a> <a href='/blog/categories/sqlalquemy' style='font-size: 103.52941176470588%'>sqlalquemy</a> <a href='/blog/categories/suenos' style='font-size: 103.52941176470588%'>sueños</a> <a href='/blog/categories/tarea' style='font-size: 103.52941176470588%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 103.52941176470588%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 103.52941176470588%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 103.52941176470588%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 103.52941176470588%'>traducción</a> <a href='/blog/categories/trenes' style='font-size: 103.52941176470588%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 103.52941176470588%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 103.52941176470588%'>urbanismo</a> </span>
+</section><section>
+  <h1>Stats</h1>
+  <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img
+      src="//rc.revolvermaps.com/h/m/a/0/ff007e/128/15/2m8hggs9gk4.png"
+      width="256" height="128" alt="Map" style="border:0; background-color: #93c7e0"></a>
 
+  <a href="http://info.flagcounter.com/Nk91"><img src="http://s10.flagcounter.com/count2/Nk91/bg_ffffff/txt_9E9E9E/border_ffffff/columns_2/maxflags_50/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" border="0" alt="Flag Counter"></a>
+</section>
 
 
   
@@ -890,7 +1622,6 @@ class ContractUpdateView(UpdateView):
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
-
 
 
 

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: desarrollo | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info/blog/categories/desarrollo/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-12-29T15:16:30-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
+  <author>
+    <name><![CDATA[vero4ka]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mierdero de las semanas]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/10/07/mierdero-de-las-semanas/"/>
+    <updated>2016-10-07T11:53:05-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/10/07/mierdero-de-las-semanas</id>
+    <content type="html"><![CDATA[<p>Bienvenidos al mierdero de las semanas:</p>
+
+<table>
+<thead>
+<tr>
+<th>Lenguaje                       </th>
+<th>Sun  </th>
+<th> Mon </th>
+<th> Tue </th>
+<th> Wed </th>
+<th> Thu </th>
+<th> Fri </th>
+<th> Sat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>postgresql: <code>EXTRACT(DOW...)</code>  </td>
+<td>  0  </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6</td>
+</tr>
+<tr>
+<td>ruby: <code>time.wday</code>              </td>
+<td>  0  </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6</td>
+</tr>
+<tr>
+<td>Python: <code>isoweekday()</code>         </td>
+<td>  7  </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6</td>
+</tr>
+<tr>
+<td>Python: <code>weekday()</code>            </td>
+<td>  6  </td>
+<td>  0  </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5</td>
+</tr>
+<tr>
+<td>mysql: <code>DAYOFWEEK(...)</code>        </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6  </td>
+<td>  7</td>
+</tr>
+<tr>
+<td>Java: <code>DayOfWeek(...)</code>         </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6  </td>
+<td>  7</td>
+</tr>
+<tr>
+<td>Erlang: <code>day_of_the_week(...)</code> </td>
+<td>  1  </td>
+<td>  2  </td>
+<td>  3  </td>
+<td>  4  </td>
+<td>  5  </td>
+<td>  6  </td>
+<td>  7</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Enlaces:</p>
+
+<ul>
+<li><a href="https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_dayofweek">mysql: function dayofweek</a></li>
+<li><a href="https://www.postgresql.org/docs/current/static/functions-datetime.html">postgresql: function datetime</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/DayOfWeek.html">java: function DayOfWeek</a></li>
+<li><a href="http://erlang.org/doc/man/calendar.html">erlang calendar</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Herramientas para el desarrollo que nos hacen la vida más fácil]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/"/>
+    <updated>2016-09-08T08:48:12-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil</id>
+    <content type="html"><![CDATA[<h2>Editores</h2>
+
+<ul>
+<li><a href="https://www.jetbrains.com/pycharm/">PyCharm</a>: editor para Python.</li>
+<li><a href="https://www.sublimetext.com/">Sublime Text</a></li>
+</ul>
+
+
+<h3>Plugins para Sublime Text</h3>
+
+<p>Para llamar <a href="https://packagecontrol.io/installation">Package Control</a> desde Sublime Text: <code>Control+Shift+P</code>, escribe &ldquo;install&rdquo; y selecciona <code>Package Control: Install Package</code> en Command Palette.</p>
+
+<ul>
+<li><a href="https://github.com/kemayo/sublime-text-git">Git</a></li>
+<li><a href="https://github.com/jisaacks/GitGutter">GitGutter</a></li>
+<li><a href="https://packagecontrol.io/packages/Color%20Highlighter">Color Highlighter</a></li>
+<li><a href="https://packagecontrol.io/packages/SublimeLinter">SublimeLinter</a></li>
+<li>EditorConfig</li>
+<li><a href="https://packagecontrol.io/packages/AngularJS">AngularJS</a></li>
+<li>Markdown Extended</li>
+<li><a href="https://habrahabr.ru/post/235901/">Лучшие плагины для Sublime Text</a></li>
+<li><a href="https://habrahabr.ru/post/244681/">Sublime Text для фронтэнд-разработчика</a></li>
+<li><a href="http://aslanbakan.com/en/blog/33-essential-sublime-text-plugins-for-all-developers/">33 Essential Sublime Text plugins for all developers</a></li>
+</ul>
+
+
+<h2>Editar y compartir código en línea</h2>
+
+<ul>
+<li><a href="http://codepen.io/">CodePen</a>: editor de código HTML/JS/CSS en línea.</li>
+<li><a href="https://repl.it/languages/python3">repl.it</a>: editor de Python 3 que permite compartir el código.</li>
+<li><a href="http://dillinger.io/">Dillinger</a>: editor de Markdown.</li>
+</ul>
+
+
+<h2>Bases de datos</h2>
+
+<ul>
+<li><a href="https://www.pgadmin.org/">pgAdmin</a>: administrador de base de datos PostgreSQL.</li>
+<li><a href="https://sqlectron.github.io/">Sqlectron</a></li>
+</ul>
+
+
+<h2>Git</h2>
+
+<ul>
+<li><a href="https://www.gitkraken.com/">GitKraken</a></li>
+<li><a href="https://github.com/Axiacore/axiacore_utils/tree/master/git-bash-prompt">Bash prompt</a> para mostrar mostrar información de un repositorio Git.</li>
+</ul>
+
+
+<h2>Screenshots</h2>
+
+<ul>
+<li><a href="http://shutter-project.org/">Shutter</a>: aplicación para tomar y editar screetshots en Linux.</li>
+</ul>
+
+
+<h2>REST</h2>
+
+<ul>
+<li><a href="https://www.getpostman.com/">PostMan</a>: es una extensión del Google Chrome, que permite el envío de peticiones HTTP.</li>
+</ul>
+
+
+<h2>Diff y validación</h2>
+
+<ul>
+<li><a href="https://www.diffchecker.com">Diffchecker</a>: comparar dos textos en línea.</li>
+<li><a href="https://jsonformatter.curiousconcept.com/">JSON Formatter</a>: validar y formatear objetos JSON.</li>
+</ul>
+
+
+<h2>CSS/Iconos</h2>
+
+<ul>
+<li><a href="http://fontawesome.io/">Font Awesome</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi?hl=es">PerfectPixel</a>: ayuda comparar el diseño de la página web (visuales) con el resultado del mismo en el navegador.</li>
+<li><a href="http://colorbrewer2.org/">Color Brewer 2.0</a>: color advice for cartography</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

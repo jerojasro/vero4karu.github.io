@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: chiste | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info/blog/categories/chiste/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2016-12-29T15:16:30-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
+  <author>
+    <name><![CDATA[vero4ka]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Un chiste]]></title>
+    <link href="http://blog.vero4ka.info/blog/2014/10/01/un-chiste/"/>
+    <updated>2014-10-01T08:31:51-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2014/10/01/un-chiste</id>
+    <content type="html"><![CDATA[<p>— ¿Dónde usted trabaja? <br />
+— En un instituto… <br />
+— ¿Y a qué se dedica? <br />
+— Ecuaciones de Fredholm de primera especie. <br />
+— ¿Y cuál es su hobby (pasatiempo)? <br />
+— Ecuaciones de Fredholm de segunda especie <br /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[La ardilla]]></title>
+    <link href="http://blog.vero4ka.info/blog/2013/12/14/la-ardilla/"/>
+    <updated>2013-12-14T08:51:19-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2013/12/14/la-ardilla</id>
+    <content type="html"><![CDATA[<ul>
+<li>Solucionamos un problema: La barra está colgada de un hilo. La bala
+la dispara y va de lado a lado de la barra y sigue volando, perdiendo la mitad
+de su velocidad. Encuentren el ángulo phi, en que se declinó la barra.</li>
+</ul>
+
+
+<p>La chica de la primera fila:</p>
+
+<ul>
+<li>¿Profe, tiene un problema conlas ardillas y las nueces?</li>
+</ul>
+
+
+<p>El profesor:</p>
+
+<ul>
+<li>¡Por supuesto! La ardilla está colganda de un hilo &hellip;</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

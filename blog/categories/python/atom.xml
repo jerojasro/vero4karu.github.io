@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2016-12-09T11:36:25-05:00</updated>
+  <updated>2016-12-29T15:16:30-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -191,6 +191,36 @@ part.add_header(
 )
 msg.attach(part)
 # ....
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo pasar variable desde una vista a formulario en Django]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django/"/>
+    <updated>2016-10-21T14:07:56-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2016/10/21/como-pasar-variable-desde-una-vista-a-formulario-en-django</id>
+    <content type="html"><![CDATA[<pre><code class="python views.py">class MyCreateView(CreateView):
+    model = MyModel
+    template_name = 'myapp/my_form.html'
+    form_class = MyForm
+
+    def get_form_kwargs(self):
+        kwargs = super(MyCreateView, self).get_form_kwargs()
+
+        # La variable que queremos pasar al formulario
+        kwargs.update({'current_user': self.request.user})
+
+        return kwargs
+</code></pre>
+
+<pre><code class="python forms.py">class MyForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        # Recibir la variable y borrarla del listado de argumentos.
+        current_user = kwargs.pop('current_user')
+
+        super(MyForm, self).__init__(*args, **kwargs)
 </code></pre>
 ]]></content>
   </entry>
@@ -686,41 +716,6 @@ refund_cc_response {
 <li>Examples: <a href="https://github.com/vero4karu/flask-examples">https://github.com/vero4karu/flask-examples</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cómo obtener el nombre del día de la semana en Python]]></title>
-    <link href="http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/"/>
-    <updated>2016-05-26T09:02:36-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python</id>
-    <content type="html"><![CDATA[<pre><code class="python">&gt; import calendar
-&gt; calendar.day_name[0]
-'Monday'
-&gt; calendar.day_name[1]
-'Tuesday'
-&gt; calendar.day_name[2]
-'Wednesday'
-&gt; calendar.day_name[3]
-'Thursday'
-&gt; calendar.day_name[4]
-'Friday'
-&gt; calendar.day_name[5]
-'Saturday'
-&gt; calendar.day_name[6]
-'Sunday'
-</code></pre>
-
-<p>Si para nosotros la semana empieza el Domindo, podemos escribirlo de la siguiente forma:</p>
-
-<pre><code class="python">&gt; sunday = 0
-&gt; calendar.day_name[sunday - 1 % 7]
-'Sunday'
-
-&gt; tuesday = 2
-&gt; calendar.day_name[tuesday - 1 % 7]
-'Tuesday'
-</code></pre>
 ]]></content>
   </entry>
   
