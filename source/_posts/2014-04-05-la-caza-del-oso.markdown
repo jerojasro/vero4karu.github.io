@@ -4,7 +4,7 @@ title: "La caza del oso"
 date: 2014-04-05 08:48:49 -0500
 comments: true
 categories:
-- Chistes
+- Chiste
 ---
 
 Un ruso sale para cazar con un [chukcha](http://es.wikipedia.org/wiki/Chukchi).
