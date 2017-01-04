@@ -337,7 +337,7 @@ categories:
 Ссылки:
 
 * [«След войны». База данных участников Великой Отечественной Войны на территории Северной Осетии](http://war15.ru/people/471/)
-* [«Открытый список». Салбиева Ксения Ивановна](https://ru.openlist.wiki/%D0%A1%D0%B0%D0%BB%D0%B1%D0%B8%D0%B5%D0%B2%D0%B0_%D0%9A%D1%81%D0%B5%D0%BD%D0%B8%D1%8F_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%BD%D0%B0_(1905))
+* [«Открытый список». Салбиева Ксения Ивановна](https://goo.gl/Mnb1hh)
 * [Героиня без Звезды](http://region15.ru/articles/4390/)
 * [Храбрейшая из храбрых](http://ossetians.com/rus/news.php?newsid=1231)
 * [«Осетинская Жанна д’Арк»](http://sevosetia.ru/news_full/Obshestvo/Osetinskaya-ZHanna-d-Ark/?page_13=40)
