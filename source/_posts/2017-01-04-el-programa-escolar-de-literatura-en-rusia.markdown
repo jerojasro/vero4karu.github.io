@@ -9,7 +9,7 @@ categories:
 - Rusia
 ---
 
-Según los estándares del minusterio de enucación los esturiantes de colegio
+Según los estándares del ministerio de educación los estudiantes de colegio
 rusos deben leer...
 
 ## Literatura rusa
