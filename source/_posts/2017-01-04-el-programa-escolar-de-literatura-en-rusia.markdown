@@ -52,6 +52,8 @@ rusos deben leer...
 
 ### Literatura rusa del siglo XIX
 
+{% img right /images/pushkin.jpg 150 'Aleksandr Pushkin' %}
+
 * Fábulas de [Iván Krylov](https://es.wikipedia.org/wiki/Iv%C3%A1n_Krylov)
 * Poesía de [Vasili Zhukovski](https://es.wikipedia.org/wiki/Vasili_Zhukovski)
   * "Svetlana" (Баллада «Светлана»)
@@ -178,8 +180,21 @@ rusos deben leer...
   * "La vieja Izerguíl" («Старуха Изергиль»)
   * "Makar Chudrá" («Макар Чудра»)
   * "Chelkash" («Челкаш»)
-
-
+* Poesía de [Aleksandr Blok](https://es.wikipedia.org/wiki/Aleksandr_Blok) (А. А. Блок)
+* Poesía de [Vladímir Mayakovski](https://es.wikipedia.org/wiki/Vlad%C3%ADmir_Mayakovski) (В. В. Маяковский)
+* Poesía de [Serguéi Yesenin](https://es.wikipedia.org/wiki/Sergu%C3%A9i_Yesenin) (А. А. Блок)
+* Mijaíl Prishvin (Михаил Пришвин)
+  * «Кладовая солнца»
+* [Leonid Andréiev](https://es.wikipedia.org/wiki/Leonid_Andr%C3%A9iev) (Леонид Андреев)
+  * "Kusaka" («Кусака»)
+* [Aleksandr Serafimóvich](https://es.wikipedia.org/wiki/Aleksandr_Serafim%C3%B3vich) (А. Серафимович)
+  * "El torrente de hierro" («Железный поток»)
+* Vsévolod Ivánov (Вс. Иванов)
+  * "El tren blindado 14-69" «Бронепоезд 14-69»
+* [Isaak Bábel](https://es.wikipedia.org/wiki/Isaak_B%C3%A1bel) (Исаак Бабель)
+  * "Primer Ejército de Caballería" («Конармия»)
+* [Aleksandr Fadéyev](https://es.wikipedia.org/wiki/Aleksandr_Fad%C3%A9yev) (Александр Фадеев)
+  * "La derrota" («Разгром») - 1926
 
 ## Literatura mundial
 
