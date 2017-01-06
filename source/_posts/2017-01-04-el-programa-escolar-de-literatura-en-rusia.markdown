@@ -55,128 +55,132 @@ rusos deben leer...
 * Fábulas de [Iván Krylov](https://es.wikipedia.org/wiki/Iv%C3%A1n_Krylov)
 * Poesía de [Vasili Zhukovski](https://es.wikipedia.org/wiki/Vasili_Zhukovski)
   * "Svetlana" (Баллада «Светлана»)
-* [Aleksandr Griboyédov](https://es.wikipedia.org/wiki/Aleksandr_Griboy%C3%A9dov)
+* [Aleksandr Griboyédov](https://es.wikipedia.org/wiki/Aleksandr_Griboy%C3%A9dov) (А. С. Грибоедов)
   * ["Woe from Wit"](https://en.wikipedia.org/wiki/Woe_from_Wit) (Комедия «Горе от ума»)
+* Poesía de [Kondrati Ryléyev](https://es.wikipedia.org/wiki/Kondrati_Ryl%C3%A9yev) (К. Ф. Рылеев)
+* Poesía de [Konstantín Bátiushkov](https://es.wikipedia.org/wiki/Konstant%C3%ADn_B%C3%A1tiushkov) (К. Н. Батюшков)
+* [Aleksandr Pushkin](https://es.wikipedia.org/wiki/Aleksandr_Pushkin) (А. С. Пушкин)
+  * Poesía
+  * "Los relatos de Belkin" («Повести Белкина»)
+  * "Dubrovski" («Дубровский»)
+  * ["La hija del capitán"](https://goo.gl/UvGqrX) («Капитанская дочка»)
+  * ["Ruslán y Liudmila"](https://es.wikipedia.org/wiki/Rusl%C3%A1n_y_Liudmila) («Руслан и Людмила»)
+  * "Poltava" («Полтава»)
+  * "El caballero de bronce" («Медный всадник»)
+  * ["Eugenio Oneguin"](https://es.wikipedia.org/wiki/Eugenio_Oneguin) («Евгений Онегин»)
+  * ["Borís Godunov"](https://es.wikipedia.org/wiki/Bor%C3%ADs_Godunov) («Борис Годуновc)
+* [Mijaíl Lérmontov](https://es.wikipedia.org/wiki/Mija%C3%ADl_L%C3%A9rmontov) (М. Ю. Лермонтов)
+  * Poesía
+  * [Un héroe de nuestro tiempo](https://es.wikipedia.org/wiki/Un_h%C3%A9roe_de_nuestro_tiempo) («Герой нашего времени»)
+  * "El novicio" («Мцыри»)
+  * "El canto del zar Iván Vasílievich, del joven opríchnik y del gallardo mercader Kaláshnikov" («Песня про купца Калашникова»)
+* [Nikolái Gógol](https://es.wikipedia.org/wiki/Nikol%C3%A1i_G%C3%B3gol) (Н. В. Гоголь)
+  * ["Veladas en un caserío de Dikanka"](https://es.wikipedia.org/wiki/Veladas_en_un_caser%C3%ADo_de_Dikanka) («Вечера на хуторе близ Диканьки»)
+  * ["Tarás Bulba"](https://es.wikipedia.org/wiki/Tar%C3%A1s_Bulba) (Повесть «Тарас Бульба»)
+  * ["El capote"](https://es.wikipedia.org/wiki/El_capote) (Повесть «Шинель»)
+  * ["El inspector"](https://goo.gl/koI7YD) (Комедия «Ревизор»)
+  * ["Almas muertas"](https://es.wikipedia.org/wiki/Almas_muertas) (Поэма «Мёртвые души»)
+* [Aleksandr Ostrovski](https://es.wikipedia.org/wiki/Aleksandr_Ostrovski) (А. Н. Островский)
+  * "La pobreza no es afrenta" («Бедность не порок»)
+  * "La novia sin dote " («Бесприданница»)
+  * "La Tormenta" («Гроза»)
+  * "El dineral" («Доходное место»)
+  * "La niña de las nieves" («Снегурочка»)
+  * "Entre propios anda el juego" («Свои люди — сочтёмся»)
+* [Iván Turguénev](https://es.wikipedia.org/wiki/Iv%C3%A1n_Turgu%C3%A9nev) (И. С. Тургенев)
+  * "Padres e hijos" («Отцы и дети»)
+  * "Rudin" («Рудин»)
+  * "Memorias de un cazador" («Записки охотника»)
+  * "Mumu" («Муму»)
+  * "Ásya" («Ася»)
+  * "Primer amor" («Первая любовь»)
+* Poesía de [Fyodor Tyutchev](https://en.wikipedia.org/wiki/Fyodor_Tyutchev) (Ф. И. Тютчев)
+* Poesía de [Afanasy Fet]("https://en.wikipedia.org/wiki/Afanasy_Fet") (А. А. Фет)
+* Poesía de [Apolón Máikov](https://es.wikipedia.org/wiki/Apol%C3%B3n_M%C3%A1ikov) (А. Н. Майков)
+* [Leo Tolstoy](https://en.wikipedia.org/wiki/Leo_Tolstoy) (Л. Н. Толстой)
+  * "Infancia" («Детство»)
+  * "Adolescencia" («Отрочество»)
+  * "Juventud" («Юность»)
+  * "El prisionero del Cáucaso" («Кавказский пленник»)
+  * "Después del baile" («После бала»)
+  * [Guerra y paz](https://es.wikipedia.org/wiki/Guerra_y_Paz) («Война и мир»)
+* [Nikolái Nekrásov](https://es.wikipedia.org/wiki/Nikol%C3%A1i_Nekr%C3%A1sov) (Н. А. Некрасов)
+  * "¿Quién es feliz en Rusia?" («Кому на Руси жить хорошо»)
+  * Poesía
+* Poesía de Nikolay Yazykov (Н. М. Языков)
+* Nikolái_Leskov
+  * "Lady Macbeth de Mtsensk" («Леди Макбет Мценского уезда»)
+  * "Relato sobre el zurdo bizco de Tula y la pulga de acero" («Левша»)
+  * "El peregrino encantado" («Очарованный странник»)
+* [Nikolái Chernyshevski](https://es.wikipedia.org/wiki/Nikol%C3%A1i_Chernyshevski)
+  * "¿Qué hacer?" («Что делать?»)
+* [Iván Goncharov](https://es.wikipedia.org/wiki/Iv%C3%A1n_Goncharov) (И. А. Гончаров)
+  * "Una historia corriente" («Обыкновенная история»)
+  * ["Oblómov"](https://es.wikipedia.org/wiki/Obl%C3%B3mov) («Обломов»)
+  * «Обрыв»
+  * "Un millón de dudas" («Мильон терзаний»)
+* Poesía de [Ivan Savvich Nikitin](https://en.wikipedia.org/wiki/Ivan_Savvich_Nikitin) (И. С. Никитин)
+* [Alekséi Nikoláyevich Tolstói](https://es.wikipedia.org/wiki/Aleks%C3%A9i_Nikol%C3%A1yevich_Tolst%C3%B3i) (А. Н. Толстой)
+  * "Pedro I" («Пётр I»)
+* Poesía de [Alekséi Konstantínovich Tolstói](https://es.wikipedia.org/wiki/Aleks%C3%A9i_Konstant%C3%ADnovich_Tolst%C3%B3i) (А. К. Толстой)
+* [Mijaíl Saltykov-Shchedrín](https://es.wikipedia.org/wiki/Mija%C3%ADl_Saltykov-Shchedr%C3%ADn) (М. Е. Салтыков-Щедрин)
+  * "Historia de una ciudad" («История одного города»)
+  * «Вяленая вобла»)
+  * «Повесть о том, как один мужик двух генералов прокормил»
+  * «Дикий помещик»
+  * «Медведь на воеводстве»
+* [Vladímir Korolenko](https://es.wikipedia.org/wiki/Vlad%C3%ADmir_Korolenko) (В. Г. Короленко)
+  * «Чудная»
+  * "Sin lengua" («Без языка»)
+  * «Река играет»
+  * «Парадокс»
+  * «Огоньки»
+  * «В дурном обществе»
+* [Antón Chéjov](https://es.wikipedia.org/wiki/Ant%C3%B3n_Ch%C3%A9jov) (А. П. Чехов)
+  * "Tío Vania" («Дядя Ваня»)
+  * ["El jardín de los cerezos"](https://es.wikipedia.org/wiki/El_jard%C3%ADn_de_los_cerezos) («Вишнёвый сад»)
+  * "El apellido caballuno" («Лошадиная фамилия»)
+  * «Хамелеон»
+  * "El gordo y el flaco" («Толстый и тонкий»)
+  * "A Malefactor" («Злоумышленник»)
+  * "The Death of a Government Clerk" («Смерть чиновника»)
+  * «Хирургия»
+  * "The Huntsman" («Егерь»)
+  * "Misery" («Тоска»)
+  * «В аптеке»
+  * "An Artist's Story [The House with the Mezzanine]" («Дом с мезонином»)
+  * "Anna on the Neck" («Анна на шее»)
+  * "El oso" («Медведь»)
+
+### Literatura rusa del siglo XX (la primera mitad)
+
+* [Iván Bunin](https://es.wikipedia.org/wiki/Iv%C3%A1n_Bunin) (И. А. Бунин)
+  * ["The Gentleman from San Francisco"](https://en.wikipedia.org/wiki/The_Gentleman_from_San_Francisco) («Господин из Сан-Франциско»)
+* Poesía de [Konstantín Balmont](https://es.wikipedia.org/wiki/Konstant%C3%ADn_Balmont) (К. Д. Бальмонт)
+* Poesía de Innokienti Ánnienski
+* Poesía de Nikolái Gumiliov
+* Konstantín Paustovski
+  * "Warm Bread" («Тёплый хлеб»)
+  * "Telegram" («Телеграмма»)
+* Poesía de [Ígor Severyanin](https://es.wikipedia.org/wiki/Futurismo_ruso) (И. Северянин)
+* Alekséi Rémizov (А. М. Ремизов)
+  * «Змей»
+* [Yevgueni Zamiatin](https://es.wikipedia.org/wiki/Yevgueni_Zamiatin) (Е. И. Замятин)
+  * ["Nosotros"]("https://es.wikipedia.org/wiki/Nosotros_(novela)") («Мы»)
+* [Aleksandr Kuprín](https://es.wikipedia.org/wiki/Aleksandr_Kupr%C3%ADn) (А. И. Куприн)
+  * "Móloj" («Молох»)
+  * "Olesia" («Олеся»)
+  * "El brazalete de rubíes" («Гранатовый браслет»)
+  * "El desafio" («Поединок»)
+* [Máximo Gorki](https://es.wikipedia.org/wiki/M%C3%A1ximo_Gorki) (М. Горький)
+  * "La madre" («Мать»)
+  * "Los bajos fondos" («На дне»)
+  * "La vieja Izerguíl" («Старуха Изергиль»)
+  * "Makar Chudrá" («Макар Чудра»)
+  * "Chelkash" («Челкаш»)
+
+
 
 ## Literatura mundial
 
-
--------------------
-
-
-## Primaria
-
-*  sobre
-
-* Cuentos de Hans Christian Andersen
-* Cuentos de Astrid Lindgren
-* Cuentos de Charles Perrault
-* Serguéi Aksákov "La Flor escarlata"
-* Poesía de Aleksandr Pushkin
-
-### 5° grado
-
-* "Crónica de Néstor" («Повесть временных лет»)
-* Pável Bazhov "La flor de piedra" (П. Бажов «Каменный цветок»)
-* Mijaíl Lérmontov "Borodinó" (Лермонтов М.Ю. «Бородино»)
-* Iván Turguénev "Mumu" (Тургенев И.С. «Му-му»)
-* Aleksandr Pushkin "Ruslán y Liudmila" (А. Пушкин «Руслан и Людмила»)
-* Fábulas de Esopo (Эзоп «Рыбак и рыбка», «Лев и Мышь», «Лисица и виноград»)
-* León Tolstói "El prisionero del Cáucaso" (Л. Толстой «Кавказский пленник»)
-* В. Гаршин «Сигнал»
-* Л. Андреев «Кусака»
-* А. Куприн «Белый пудель»
-* А. Пушкин «Обвал»
-* К. Паустовский «Мещёрская сторона»
-* Е. Носов «Тридцать зёрен», «Как ворона на крыше заблудилась»
-* В. Шукшин «Жатва»
-* Ю. Казаков «Тихое утро»
-* В. Солоухин «Мститель»
-* Р. Брэдбери «Мальчик-невидимка»
-* В. Жуковский «Лесной царь»
-* А.Чехов «Каштанка»
-* М. Салтыков-Щедрин Сказки («Богатырь», «Карась-идеалист», «Коняга», «Медведь на воеводстве»)
-* М. Твен «Приключения Тома Сойера и Гекльбери Финна»
-* А.Линдгрен «Приключения Калле Блюмквиста», «Пеппи Длинный чулок»
-* Д.Лондон «Любовь к жизни»
-* Э.С. Томпсон Рассказы о животных
-
-
-## Bachillerato
-
-### 6° grado
-
-А. Пушкин « Дубровский», «Барышня-крестьянка»
-Н. Гоголь «Вечера на хуторе близ Диканьки»
-И. Тургенев «Бежин луг»
-А. Чехов Рассказы «Толстый и тонкий», «Жалобная книга»,  «Налим», «Злоумышленник», «Смерть чиновника» и др.
-А. Куприн «Изумруд» и другие рассказы
-М. Пришвин « Кладовая солнца»
-А.Платонов «В прекрасном и яростном мире»
-В. Распутин « Уроки французского»
-В. Драгунский «Денискины рассказы»
-Д. Даррелл «Моя семья и другие звери»
-Э. По "Золотой жук"
-
-### 7° grado
-
-### 8° grado
-
-«Слово о полку Игореве»
-А. Данте «Божественная комедия» (перевод М.Лозинского)
-Ф. Петрарка Сонеты.
-Д. Боккаччо «Декамерон» (перевод Н. Любимова)
-У. Шекспир «Ромео и Джульетта», Сонеты.
-М. де Сервантес «Хитроумный идальго Дон-Кихот Ламанчский» (в сокращении)
-Ж.-Б.Мольер «Мещанин во дворянстве»
-Н. Карамзин «Бедная Лиза»
-Д. Фонвизин «Недоросль»
-М. Лермонтов «Мцыри», лирика
-А. Пушкин «Капитанская дочка», «Пиковая дама»
-Н. Гоголь «Ревизор»
-И. Тургенев «Ася»
-М. Горький «Челкаш»
-А. Твардовский «Василий Тёркин»
-В. Шукшин Рассказы
-Б. Васильев «А зори здесь тихие…»
-Б. Васильев «Завтра была война», «В списках не значился», «Утоли мои печали»
-А. Пушкин «Полтава»
-А. Чехов  «Душечка», «Дом с мезонином» и др. рассказы
-М. Зощенко. Рассказы
-Ф. Рабле «Гаргантюа и Пантагрюэль»
-Лопе де Вега «Собака на сене»
-
-### 9° grado
-
-### 10° grado
-
-### 11° grado
-
-Поэзия «Серебряного Века» (В.Я. Брюсов, К.Д. Бальмонт, Андрей Белый, Н.С.Гумилёв, И. Северянин и другие)
-Лирика А. Ахматовой, В. Маяковского, М. Цветаевой, С. Есенина, И. Бунина, Б. Пастернака
-А.П. Чехов «Человек в футляре», «Крыжовник», «О любви», «Ионыч», «Вишневый сад», «Чайка»
-И.А. Бунин «Антоновские яблоки», «Темные аллеи»
-А.И. Куприн  «Гранатовый браслет», «Олеся», «Суламифь»
-Л.Н. Андреев «Иуда Искариот»
-М. Горький «Мать», «Старуха Изергиль», «На дне»
-А. Блок «Двенадцать»
-С. Есенин «Анна Снегина»
-Е. Замятин «Мы»
-И. Бабель «Конармия»
-А. Платонов «Котлован»
-М. Шолохов «Тихий Дон»
-М.А. Булгаков «Мастер и Маргарита»
-Б. Пастернак «Доктор Живаго»
-А.Т. Твардовский «Василий Теркин»
-А.И. Солженицин «Матренин двор», «Один день Ивана Денисовича»
-В.В. Маяковский «Облако в штанах», «Во весь голос»
-А.Н. Толстой «Пётр Первый»
-А.А. Ахматова «Реквием»
-В.П. Астафьев «Царь-рыба»
-Ф. Абрамов «Поездка в прошлое»
-А. Вампилов «Старший сын»
-В. Кондратьев «Сашка»
-В. Быков «Черный обелиск»
-В. Распутин «Прощание с Матерой»
-Ю. Трифонов «Обмен», «Старик»
-Ч. Айтматов «Пегий пес, бегущий краем моря»
+to be continued ...
