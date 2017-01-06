@@ -27,6 +27,8 @@ rusos deben leer...
 * [Cantar de las huestes de Ígor](https://es.wikipedia.org/wiki/Cantar_de_las_huestes_de_%C3%8Dgor) («Слово о полку Игореве»)
 * [Crónica de Néstor](https://es.wikipedia.org/wiki/Cr%C3%B3nica_de_N%C3%A9stor) («Повесть временных лет»)
 
+<!-- more -->
+
 ### Literatura rusa del siglo XVIII
 
 * Poesía de [Mijaíl Lomonósov](https://es.wikipedia.org/wiki/Mija%C3%ADl_Lomon%C3%B3sov) (М. В. Ломоносов)
