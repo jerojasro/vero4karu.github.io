@@ -197,6 +197,70 @@ rusos deben leer...
   * "Primer Ejército de Caballería" («Конармия»)
 * [Aleksandr Fadéyev](https://es.wikipedia.org/wiki/Aleksandr_Fad%C3%A9yev) (Александр Фадеев)
   * "La derrota" («Разгром») - 1926
+* Borís Pilniak (Б. Пильняк)
+  * "Ciudad desnuda" («Голый год»)
+* Boris Lavrenyov (Б. Лавренев)
+  * "Viento" («Ветер»)
+* Dmitry Furmanov (Дмитрий Фурманов)
+  * "Chapayev" («Чапаев»)
+* Vikenty Veresaev (Викентий Вересаев)
+  * "Without a Road" («В тупике»)
+* Ilf y Petrov (Илья Ильф и Евгений Петров)
+  * ["Las Doce Sillas"]("https://es.wikipedia.org/wiki/Las_doce_sillas_(novela)") («Двенадцать стульев»)
+* Teffi (Надежда Тэффи)
+  * "Nostalgia" («Ностальгия»)
+* Cuentos de Vitaly Bianki (Виталий Бианки)
+* Poesía de Nikolay Zabolotsky (Николай Заболоцкий)
+* Mikhail Zoshchenko (Михаил Зощенко)
+  * «Великие путешественники»
+  * "The Galosh" («Галоша»)
+  * «Встреча»
+  * «Монтёр»
+* [Arkadi Avérchenko](https://es.wikipedia.org/wiki/Arkadi_Av%C3%A9rchenko) (Аркадий Аверченко)
+  * "Una docena de cuchillos en la parte posterior de la Revolución" («Дюжина ножей в спину революции»)
+  * «Смерть африканского охотника»
+* Poesía de [Anna Ajmátova](https://es.wikipedia.org/wiki/Anna_Ajm%C3%A1tova) (Анна Ахматова)
+* Poesía de [Marina Tsvetáyeva](https://es.wikipedia.org/wiki/Marina_Tsvet%C3%A1yeva) (М. И. Цветаева)
+* Poesía de [Ósip Mandelshtam](https://es.wikipedia.org/wiki/%C3%93sip_Mandelshtam) (О. Э. Мандельштам)
+* [Andréi Platónov](https://es.wikipedia.org/wiki/Andr%C3%A9i_Plat%C3%B3nov) (А. П. Платонов)
+  * ["Chevengur"](https://es.wikipedia.org/wiki/Chevengur) «Чевенгур»
+  * «Котлован»
+  * «Волшебное кольцо»
+  * «Неизвестный цветок»
+  * «На заре туманной юности»
+  * "The Cow" («Корова»)
+  * «Юшка»
+  * «Сокровенный человек»
+  * «Шарманка»
+  * «Впрок»
+* Aleksandr Grin (А. С. Грин)
+  * "Velas rojas" («Алые паруса»)
+  * "La lámpara verde" («Зелёная лампа»)
+* [Mijaíl Bulgákov](https://es.wikipedia.org/wiki/Mija%C3%ADl_Bulg%C3%A1kov) (М. А. Булгаков)
+  * «Кабала святош»
+  * «Бег»
+  * ["La Guardia Blanca"](https://es.wikipedia.org/wiki/La_Guardia_Blanca) «Белая гвардия»
+  * "Corazón de perro" («Собачье сердце»)
+  * ["El maestro y Margarita"](https://es.wikipedia.org/wiki/El_maestro_y_Margarita) «Мастер и Маргарита»
+  * «Похождения Чичикова»
+* Poesía de [Aleksándr Tvardovski](https://en.wikipedia.org/wiki/Aleksandr_Tvardovsky) (А. Т. Твардовский)
+  * "Vasili Tyorkin" («Василий Тёркин»)
+* Yuri Tyniánov (Ю. Тынянов)
+  * "La muerte de Vazir-Mujtar" («Смерть Вазир-Мухтара»)
+* Poesía de Alexey Surkov (А. Сурков)
+* [Borís Pasternak](https://es.wikipedia.org/wiki/Bor%C3%ADs_Pasternak) (Б. Л. Пастернак)
+  * Poesía
+  * ["Doctor Zhivago"](https://es.wikipedia.org/wiki/Doctor_Zhivago) («Доктор Живаго»)
+* Poesía de [Nikolái Semiónovich Tíjonov](https://es.wikipedia.org/wiki/Nikol%C3%A1i_Semi%C3%B3novich_T%C3%ADjonov) (Н. Тихонов)
+* Poesía de Konstantín Símonov (К. М. Симонов)
+  * «Ты помнишь, Алёша, дороги Смоленщины…» 
+  * «Жди меня» 
+* [Mijaíl Shólojov](https://es.wikipedia.org/wiki/Mija%C3%ADl_Sh%C3%B3lojov) (М. А. Шолохов)
+  * ["El Don apacible"](https://es.wikipedia.org/wiki/El_Don_apacible) («Тихий Дон»)
+  * "Campos roturados" («Поднятая целина»)
+  * "El destino de un hombre" («Судьба человека»)
+
+### Literatura rusa del siglo XX (la segunda mitad)
 
 ## Literatura mundial
 
