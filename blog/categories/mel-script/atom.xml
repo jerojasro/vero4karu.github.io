@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mel script | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/mel-script/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-05T21:37:24-05:00</updated>
+  <updated>2017-01-07T11:31:34-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -20,14 +20,7 @@
     <id>http://blog.vero4ka.info/blog/2015/02/21/mel-script-autodesk-maya-go-through-hierarchy</id>
     <content type="html"><![CDATA[<p>Add a prefix <code>myPrefix_</code> to all child elements of the joint <code>joint1</code>:</p>
 
-<p><div><script src='https://gist.github.com/11099336.js'></script>
-<noscript><pre><code>string $stat_element = &quot;joint1&quot;;
-select -r $stat_element;
-string $nodes[] = `ls -sl -dag`;
-for($node in $nodes){
-    rename -ignoreShape $node (&quot;myPrefix_&quot; + $node);
-}</code></pre></noscript></div>
-</p>
+<p>{% gist 11099336 %}</p>
 ]]></content>
   </entry>
   
