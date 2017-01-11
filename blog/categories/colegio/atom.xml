@@ -4,7 +4,7 @@
   <title><![CDATA[Category: colegio | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/colegio/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-07T11:31:34-05:00</updated>
+  <updated>2017-01-10T21:08:57-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -97,7 +97,7 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa del siglo XIX</h3>
 
-<p>{% img right /images/pushkin.jpg 150 &lsquo;Aleksandr Pushkin&rsquo; %}</p>
+<p><img class="right" src="/images/pushkin.jpg" width="150" title="&lsquo;Aleksandr Pushkin&rsquo;" ></p>
 
 <ul>
 <li>Fábulas de <a href="https://es.wikipedia.org/wiki/Iv%C3%A1n_Krylov">Iván Krylov</a></li>
@@ -487,77 +487,151 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa del siglo XX (la segunda mitad)</h3>
 
-<p>Л. Леонов[править]
-«Нашествие»</p>
+<ul>
+<li>Leonid Leonov (Л. Леонов)
 
-<p>О. Берггольц[править]
-Стихи</p>
+<ul>
+<li>«Нашествие»</li>
+</ul>
+</li>
+<li>Poesía de Olga Bergholz (О. Берггольц)</li>
+<li>Evgueni Vinokourov (Е. Винокуров)
 
-<p>Е. Винокуров[править]
-«Москвичи»</p>
+<ul>
+<li>&ldquo;Moscovitas&rdquo; («Москвичи»)</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Yevgueni_Shvarts">Yevgueni Shvarts</a> (Е. Шварц)
 
-<p>Е. Шварц[править]
-«Дракон»</p>
+<ul>
+<li>&ldquo;Dragón&rdquo; («Дракон»)</li>
+</ul>
+</li>
+<li>Fyodor Abramov (Ф. А. Абрамов)
 
-<p>Ф. А. Абрамов[править]
-«О чём плачут лошади»
-Тетралогия «Пряслины»:
-«Две зимы и три лета»
-«Братья и сестры»
-«Пути-перепутья»
-«Дом»
-«Поездка в прошлое»
-Чингиз Айтматов[править]
-«И дольше века длится день…»
-«Плаха»
-В. Быков[править]
-«Обелиск»
-«Сотников»
-В. П. Астафьев[править]
-«Вам продолжать эту жизнь» (письмо, адресованное юной читательнице)
-«Васюткино озеро»
-«Игры»
-«Конь с розовой гривой»
-«Фотография, на которой меня нет»
-«Царь-рыба»
-«Печальный детектив»
-В. И. Белов[править]
-«Скворцы»</p>
+<ul>
+<li>«О чём плачут лошади»</li>
+<li>Тетралогия «Пряслины»</li>
+<li>«Поездка в прошлое»</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Chinguiz_Aitm%C3%A1tov">Chinguiz Aitmátov</a> (Чингиз Айтматов)
 
-<p>К. Булычёв[править]
-«Заповедник сказок»
-«Когда мне было 12 лет»
-Д. Б. Кедрин[править]
-А. Фатьянов[править]
-Тексты песен к кинофильмам</p>
+<ul>
+<li>&ldquo;Más de un siglo dura el día&rdquo; («И дольше века длится день…»)</li>
+<li>&ldquo;El patíbulo&rdquo; («Плаха»)</li>
+</ul>
+</li>
+<li>Vasil Býkov (В. Быков)
 
-<p>Р. Гамзатов[править]
-Стихи</p>
+<ul>
+<li>&ldquo;El obelisco&rdquo; («Обелиск») - 1970</li>
+<li>&ldquo;Sótnikov&rdquo; («Сотников») - 1971</li>
+</ul>
+</li>
+<li>Víktor Astáfiev (В. П. Астафьев)
 
-<p>В. Г. Распутин[править]
-«Уроки французского»
-«Последний срок»
-«Прощание с Матерой»
-«Живи и помни»
-Р. П. Погодин[править]
-«Тишина»
-«Дубравка»
-Ф. Искандер[править]
-«Тринадцатый подвиг Геракла»</p>
+<ul>
+<li>«Вам продолжать эту жизнь» (письмо, адресованное юной читательнице)</li>
+<li>«Васюткино озеро»</li>
+<li>«Игры»</li>
+<li>&ldquo;The Horse with the Pink Mane, and Other Siberian Stories&rdquo; («Конь с розовой гривой»)</li>
+<li>«Фотография, на которой меня нет»</li>
+<li>&ldquo;El pez rey&rdquo; («Царь-рыба») - 1976</li>
+<li>&ldquo;Sad Detective&rdquo; («Печальный детектив») - 1986</li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Vasily_Belov">Vasily Belov</a> (В. И. Белов)
 
-<p>Е. И. Носов[править]
-«Кукла» («Акимыч») «Живое пламя»</p>
+<ul>
+<li>«Скворцы»</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Kir_Bulychov">Kir Bulychov</a> (К. Булычёв)
 
-<p>А. М. Володин[править]
-«Старшая сестра» «Пять вечеров»</p>
+<ul>
+<li>«Заповедник сказок»</li>
+<li>«Когда мне было 12 лет»</li>
+</ul>
+</li>
+<li>Poesía de Dmitri Kedrin (Д. Б. Кедрин)</li>
+<li><a href="https://es.wikipedia.org/wiki/Valent%C3%ADn_Rasputin">Valentín Rasputin</a> (В. Г. Распутин)
 
-<p>А. В. Вампилов[править]
-«Свидание»
-«Прошлым летом в Чулимске»
-«Старший сын»
-В. М. Шукшин</p>
+<ul>
+<li>&ldquo;Clases de francés&rdquo; («Уроки французского»)</li>
+<li>&ldquo;Último plazo&rdquo; («Последний срок»)</li>
+<li>&ldquo;El adiós a Matiora&rdquo; («Прощание с Матерой»)</li>
+<li>&ldquo;Vive y recuerda&rdquo; («Живи и помни»)</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Fazil_Iskander">Fazil Iskander</a> (Ф. Искандер)
+
+<ul>
+<li>&ldquo;The Thirteenth Labour of Hercules&rdquo; («Тринадцатый подвиг Геракла»)</li>
+</ul>
+</li>
+<li>Yevgeni Nosov (Е. И. Носов)
+
+<ul>
+<li>«Кукла» («Акимыч») «Живое пламя»</li>
+</ul>
+</li>
+<li>Cuentos de <a href="https://es.wikipedia.org/wiki/Vasili_Shuksh%C3%ADn">Vasili Shukshín</a> (В. М. Шукшин)</li>
+<li><a href="https://es.wikipedia.org/wiki/Varlam_Shal%C3%A1mov">Varlam Shalámov</a> (В. Т. Шаламов)
+
+<ul>
+<li>&ldquo;Relatos de Kolymá&rdquo; («Колымские рассказы»)</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Aleksandr_Solzhenitsyn">Aleksandr Solzhenitsyn</a> (А. И. Солженицын)
+
+<ul>
+<li><a href="https://es.wikipedia.org/wiki/Un_d%C3%ADa_en_la_vida_de_Iv%C3%A1n_Den%C3%ADsovich">&ldquo;Un día en la vida de Iván Denísovich&rdquo;</a> («Один день Ивана Денисовича») - 1962</li>
+<li>&ldquo;La casa de Matriona&rdquo; («Матрёнин двор») - 1963</li>
+<li><a href="https://es.wikipedia.org/wiki/Archipi%C3%A9lago_Gulag">&ldquo;Archipiélago Gulag&rdquo;</a> («Архипелаг ГУЛАГ») - 1973</li>
+<li>&ldquo;Cómo reorganizar Rusia&rdquo; («Как нам обустроить Россию») - 1990</li>
+</ul>
+</li>
+<li>Poesía de <a href="https://en.wikipedia.org/wiki/Robert_Rozhdestvensky">Robert Rozhdestvensky</a> (Р. И. Рождественский)</li>
+</ul>
+
 
 <h2>Literatura mundial</h2>
+
+<ul>
+<li>Refranes, proverbios y dichos populares de Mundo</li>
+<li><a href="https://es.wikipedia.org/wiki/Las_mil_y_una_noches">Las mil y una noches</a> («Тысяча и одна ночь»)</li>
+<li>(«Путешествие Синдбада-морехода»)</li>
+<li>Mitos
+
+<ul>
+<li>Mitología Griega</li>
+<li>Mitos de la India</li>
+<li>Mitología escandinava
+
+<ul>
+<li>&ldquo;Thor&rsquo;s Journey to Utgard&rdquo; (<a href="http://www.litra.ru/fullwork/get/woid/00902971224610246393/">«Сказание о путешествии Тора в Утгард»</a>)</li>
+</ul>
+</li>
+<li>Mitología de los Indios Norteamericanos
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/The_Song_of_Hiawatha">&ldquo;The Song of Hiawatha&rdquo;</a> (<a href="http://www.lib.ru/POEZIQ/LONGFELLO/hayavata.txt">«Песнь о Гайавате»</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>La Biblia (Библия)</li>
+<li><a href="https://es.wikipedia.org/wiki/Homero">Homero</a> (Гомер)
+
+<ul>
+<li>Odisea («Одиссея»)</li>
+<li>Ilíada («Илиада»)</li>
+</ul>
+</li>
+<li><a href="" title="https://es.wikipedia.org/wiki/Poes%C3%ADa_l%C3%ADrica#Historia_de_la_poes.C3.ADa_l.C3.ADrica">La poesía lírica antigua</a> (Античная лирика)</li>
+</ul>
+
 
 <p>to be continued &hellip;</p>
 ]]></content>
@@ -679,7 +753,7 @@ preparado. Creo que es porque todos tienen muy por dentro una pequeña esperanza
 de que puede ser éste año el invierno no llegue. Los árboles se vuelven
 completamente siniestros y se ven como muertos.</p>
 
-<p>{% img center /images/winter.jpg &lsquo;Mi colegio (de primaria) en Moscú en invierno&rsquo; %}</p>
+<p><img class="center" src="/images/winter.jpg" title="&lsquo;Mi colegio (de primaria) en Moscú en invierno&rsquo;" ></p>
 
 <p>El diciembre el mundo se queda sumido en la oscuridad. Lo más doloroso era
 despertarse por la mañana para ir al colegio:</p>
@@ -694,11 +768,11 @@ uno desayuna, se viste y sale de la casa a la oscuridad para patullar por la nie
 Claro que el barrendero también tuvo pereza y lo había limpiado las calles,
 entonces tocaba de nuevo abrir el camino hasta el colegio.</p>
 
-<p>{% img center /images/colegio.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
+<p><img class="center" src="/images/colegio.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
 
-<p>{% img center /images/colegio3.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
+<p><img class="center" src="/images/colegio3.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
 
-<p>{% img center /images/colegio4.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
+<p><img class="center" src="/images/colegio4.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
 
 <p>Las imágenes tomadas de
 <a href="https://ssl.panoramio.com/user/2301915">https://ssl.panoramio.com/user/2301915</a>.</p>

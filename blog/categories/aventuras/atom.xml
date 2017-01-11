@@ -4,7 +4,7 @@
   <title><![CDATA[Category: aventuras | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/aventuras/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-07T11:31:34-05:00</updated>
+  <updated>2017-01-10T21:08:57-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.vero4ka.info/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/"/>
     <updated>2016-01-11T15:26:29-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina</id>
-    <content type="html"><![CDATA[<p>{% img center /images/guzel.jpg &lsquo;Guzél Yájina&rsquo; %}</p>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/guzel.jpg" title="&lsquo;Guzél Yájina&rsquo;" ></p>
 
 <p>La novela empieza en el año 1930. La protagonista es una mujer tártara de 30 años
 llamada Zuleijá, que vivía en una aldea apartada con su esposo, que era 30 años
@@ -51,7 +51,7 @@ escoltados por Ignatov.</p>
 su esposo ya hace unos meces, pero a pesar de eso, ella logró soportar
 la deportación, y al llegar a Siberia dio luz a su hijo Josep.</p>
 
-<p>{% img center /images/taiga.jpg &lsquo;Siberia&rsquo; %}</p>
+<p><img class="center" src="/images/taiga.jpg" title="&lsquo;Siberia&rsquo;" ></p>
 
 <p>En Siberia a Ignatov y sus tutelados les dejaron en un área inhabitada
 del bosque sólo con una escopeta, la bolsa llena de balas y un saco de sal.
@@ -119,7 +119,7 @@ llevando el contrapeso. Ese hueco era muy oscuro con un bombillo amarillo
 marcando cada piso. Y debajo, cubierto del polvo, estaba el cacho de mi cabra&hellip;
 En ese momento me desperté con sudor frío.</p>
 
-<p>{% img center /images/lift.jpg &lsquo;Ascensor&rsquo; %}</p>
+<p><img class="center" src="/images/lift.jpg" title="&lsquo;Ascensor&rsquo;" ></p>
 
 <p>Tuve otra experiencia con un ascensor cuando fuimos a una casa vieja en el
 centro de Moscú. En esa casa había un ascensor muy antiguo

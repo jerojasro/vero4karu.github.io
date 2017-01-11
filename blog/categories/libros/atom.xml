@@ -4,7 +4,7 @@
   <title><![CDATA[Category: libros | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/libros/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-07T11:31:34-05:00</updated>
+  <updated>2017-01-10T21:08:57-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -97,7 +97,7 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa del siglo XIX</h3>
 
-<p>{% img right /images/pushkin.jpg 150 &lsquo;Aleksandr Pushkin&rsquo; %}</p>
+<p><img class="right" src="/images/pushkin.jpg" width="150" title="&lsquo;Aleksandr Pushkin&rsquo;" ></p>
 
 <ul>
 <li>Fábulas de <a href="https://es.wikipedia.org/wiki/Iv%C3%A1n_Krylov">Iván Krylov</a></li>
@@ -487,77 +487,151 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa del siglo XX (la segunda mitad)</h3>
 
-<p>Л. Леонов[править]
-«Нашествие»</p>
+<ul>
+<li>Leonid Leonov (Л. Леонов)
 
-<p>О. Берггольц[править]
-Стихи</p>
+<ul>
+<li>«Нашествие»</li>
+</ul>
+</li>
+<li>Poesía de Olga Bergholz (О. Берггольц)</li>
+<li>Evgueni Vinokourov (Е. Винокуров)
 
-<p>Е. Винокуров[править]
-«Москвичи»</p>
+<ul>
+<li>&ldquo;Moscovitas&rdquo; («Москвичи»)</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Yevgueni_Shvarts">Yevgueni Shvarts</a> (Е. Шварц)
 
-<p>Е. Шварц[править]
-«Дракон»</p>
+<ul>
+<li>&ldquo;Dragón&rdquo; («Дракон»)</li>
+</ul>
+</li>
+<li>Fyodor Abramov (Ф. А. Абрамов)
 
-<p>Ф. А. Абрамов[править]
-«О чём плачут лошади»
-Тетралогия «Пряслины»:
-«Две зимы и три лета»
-«Братья и сестры»
-«Пути-перепутья»
-«Дом»
-«Поездка в прошлое»
-Чингиз Айтматов[править]
-«И дольше века длится день…»
-«Плаха»
-В. Быков[править]
-«Обелиск»
-«Сотников»
-В. П. Астафьев[править]
-«Вам продолжать эту жизнь» (письмо, адресованное юной читательнице)
-«Васюткино озеро»
-«Игры»
-«Конь с розовой гривой»
-«Фотография, на которой меня нет»
-«Царь-рыба»
-«Печальный детектив»
-В. И. Белов[править]
-«Скворцы»</p>
+<ul>
+<li>«О чём плачут лошади»</li>
+<li>Тетралогия «Пряслины»</li>
+<li>«Поездка в прошлое»</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Chinguiz_Aitm%C3%A1tov">Chinguiz Aitmátov</a> (Чингиз Айтматов)
 
-<p>К. Булычёв[править]
-«Заповедник сказок»
-«Когда мне было 12 лет»
-Д. Б. Кедрин[править]
-А. Фатьянов[править]
-Тексты песен к кинофильмам</p>
+<ul>
+<li>&ldquo;Más de un siglo dura el día&rdquo; («И дольше века длится день…»)</li>
+<li>&ldquo;El patíbulo&rdquo; («Плаха»)</li>
+</ul>
+</li>
+<li>Vasil Býkov (В. Быков)
 
-<p>Р. Гамзатов[править]
-Стихи</p>
+<ul>
+<li>&ldquo;El obelisco&rdquo; («Обелиск») - 1970</li>
+<li>&ldquo;Sótnikov&rdquo; («Сотников») - 1971</li>
+</ul>
+</li>
+<li>Víktor Astáfiev (В. П. Астафьев)
 
-<p>В. Г. Распутин[править]
-«Уроки французского»
-«Последний срок»
-«Прощание с Матерой»
-«Живи и помни»
-Р. П. Погодин[править]
-«Тишина»
-«Дубравка»
-Ф. Искандер[править]
-«Тринадцатый подвиг Геракла»</p>
+<ul>
+<li>«Вам продолжать эту жизнь» (письмо, адресованное юной читательнице)</li>
+<li>«Васюткино озеро»</li>
+<li>«Игры»</li>
+<li>&ldquo;The Horse with the Pink Mane, and Other Siberian Stories&rdquo; («Конь с розовой гривой»)</li>
+<li>«Фотография, на которой меня нет»</li>
+<li>&ldquo;El pez rey&rdquo; («Царь-рыба») - 1976</li>
+<li>&ldquo;Sad Detective&rdquo; («Печальный детектив») - 1986</li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Vasily_Belov">Vasily Belov</a> (В. И. Белов)
 
-<p>Е. И. Носов[править]
-«Кукла» («Акимыч») «Живое пламя»</p>
+<ul>
+<li>«Скворцы»</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Kir_Bulychov">Kir Bulychov</a> (К. Булычёв)
 
-<p>А. М. Володин[править]
-«Старшая сестра» «Пять вечеров»</p>
+<ul>
+<li>«Заповедник сказок»</li>
+<li>«Когда мне было 12 лет»</li>
+</ul>
+</li>
+<li>Poesía de Dmitri Kedrin (Д. Б. Кедрин)</li>
+<li><a href="https://es.wikipedia.org/wiki/Valent%C3%ADn_Rasputin">Valentín Rasputin</a> (В. Г. Распутин)
 
-<p>А. В. Вампилов[править]
-«Свидание»
-«Прошлым летом в Чулимске»
-«Старший сын»
-В. М. Шукшин</p>
+<ul>
+<li>&ldquo;Clases de francés&rdquo; («Уроки французского»)</li>
+<li>&ldquo;Último plazo&rdquo; («Последний срок»)</li>
+<li>&ldquo;El adiós a Matiora&rdquo; («Прощание с Матерой»)</li>
+<li>&ldquo;Vive y recuerda&rdquo; («Живи и помни»)</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Fazil_Iskander">Fazil Iskander</a> (Ф. Искандер)
+
+<ul>
+<li>&ldquo;The Thirteenth Labour of Hercules&rdquo; («Тринадцатый подвиг Геракла»)</li>
+</ul>
+</li>
+<li>Yevgeni Nosov (Е. И. Носов)
+
+<ul>
+<li>«Кукла» («Акимыч») «Живое пламя»</li>
+</ul>
+</li>
+<li>Cuentos de <a href="https://es.wikipedia.org/wiki/Vasili_Shuksh%C3%ADn">Vasili Shukshín</a> (В. М. Шукшин)</li>
+<li><a href="https://es.wikipedia.org/wiki/Varlam_Shal%C3%A1mov">Varlam Shalámov</a> (В. Т. Шаламов)
+
+<ul>
+<li>&ldquo;Relatos de Kolymá&rdquo; («Колымские рассказы»)</li>
+</ul>
+</li>
+<li><a href="https://es.wikipedia.org/wiki/Aleksandr_Solzhenitsyn">Aleksandr Solzhenitsyn</a> (А. И. Солженицын)
+
+<ul>
+<li><a href="https://es.wikipedia.org/wiki/Un_d%C3%ADa_en_la_vida_de_Iv%C3%A1n_Den%C3%ADsovich">&ldquo;Un día en la vida de Iván Denísovich&rdquo;</a> («Один день Ивана Денисовича») - 1962</li>
+<li>&ldquo;La casa de Matriona&rdquo; («Матрёнин двор») - 1963</li>
+<li><a href="https://es.wikipedia.org/wiki/Archipi%C3%A9lago_Gulag">&ldquo;Archipiélago Gulag&rdquo;</a> («Архипелаг ГУЛАГ») - 1973</li>
+<li>&ldquo;Cómo reorganizar Rusia&rdquo; («Как нам обустроить Россию») - 1990</li>
+</ul>
+</li>
+<li>Poesía de <a href="https://en.wikipedia.org/wiki/Robert_Rozhdestvensky">Robert Rozhdestvensky</a> (Р. И. Рождественский)</li>
+</ul>
+
 
 <h2>Literatura mundial</h2>
+
+<ul>
+<li>Refranes, proverbios y dichos populares de Mundo</li>
+<li><a href="https://es.wikipedia.org/wiki/Las_mil_y_una_noches">Las mil y una noches</a> («Тысяча и одна ночь»)</li>
+<li>(«Путешествие Синдбада-морехода»)</li>
+<li>Mitos
+
+<ul>
+<li>Mitología Griega</li>
+<li>Mitos de la India</li>
+<li>Mitología escandinava
+
+<ul>
+<li>&ldquo;Thor&rsquo;s Journey to Utgard&rdquo; (<a href="http://www.litra.ru/fullwork/get/woid/00902971224610246393/">«Сказание о путешествии Тора в Утгард»</a>)</li>
+</ul>
+</li>
+<li>Mitología de los Indios Norteamericanos
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/The_Song_of_Hiawatha">&ldquo;The Song of Hiawatha&rdquo;</a> (<a href="http://www.lib.ru/POEZIQ/LONGFELLO/hayavata.txt">«Песнь о Гайавате»</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>La Biblia (Библия)</li>
+<li><a href="https://es.wikipedia.org/wiki/Homero">Homero</a> (Гомер)
+
+<ul>
+<li>Odisea («Одиссея»)</li>
+<li>Ilíada («Илиада»)</li>
+</ul>
+</li>
+<li><a href="" title="https://es.wikipedia.org/wiki/Poes%C3%ADa_l%C3%ADrica#Historia_de_la_poes.C3.ADa_l.C3.ADrica">La poesía lírica antigua</a> (Античная лирика)</li>
+</ul>
+
 
 <p>to be continued &hellip;</p>
 ]]></content>
@@ -568,7 +642,7 @@ rusos deben leer&hellip;</p>
     <link href="http://blog.vero4ka.info/blog/2016/12/18/libros-que-leen-los-ninos-rusos/"/>
     <updated>2016-12-18T11:49:57-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/12/18/libros-que-leen-los-ninos-rusos</id>
-    <content type="html"><![CDATA[<p>{% img right /images/Cipollino.jpg 150 &lsquo;Cipollino&rsquo; %}</p>
+    <content type="html"><![CDATA[<p><img class="right" src="/images/Cipollino.jpg" width="150" title="&lsquo;Cipollino&rsquo;" ></p>
 
 <h2>Gianni Rodari, Cipollino</h2>
 
@@ -586,7 +660,7 @@ Todos los personajes del cuento son frutas y verduras.</p>
 <p>Aventuras de un niño travieso, curioso, siempre activo y permanentemente
 enredado en situaciones poco habituales y con frecuencia cómicas.</p>
 
-<p>{% img right /images/la_isla_del_tesoro.jpg 150 &lsquo;La isla del tesoro&rsquo; %}</p>
+<p><img class="right" src="/images/la_isla_del_tesoro.jpg" width="150" title="&lsquo;La isla del tesoro&rsquo;" ></p>
 
 <h2>Mark Twain, Las aventuras de Tom Sawyer</h2>
 
@@ -599,7 +673,7 @@ el antebellum del Sur de los Estados Unidos en “St. Petersburg”.</p>
 las aventuras relacionadas con la búsqueda de los tesoros escondidos por el
 pirata Capitán J. Flint en una isla desierta.</p>
 
-<p>{% img right /images/el_caballito_jorobadito.jpg 150 &lsquo;El caballito jorobado&rsquo; %}</p>
+<p><img class="right" src="/images/el_caballito_jorobadito.jpg" width="150" title="&lsquo;El caballito jorobado&rsquo;" ></p>
 
 <h2>Piotr Yershóv,  El caballito jorobado</h2>
 
@@ -611,7 +685,7 @@ son el hijo de un campesino, llamado Iván el Loco, y un caballito mágico jorob
 <p>Son cuentos folclóricos recopilados por dos escritores alemanes: Los músicos
 de Bremen, El lobo y las siete cabritillas, El pescador y su esposa.</p>
 
-<p>{% img right /images/pulgarcita.jpg 150 &lsquo;Pulgarcita&rsquo; %}</p>
+<p><img class="right" src="/images/pulgarcita.jpg" width="150" title="&lsquo;Pulgarcita&rsquo;" ></p>
 
 <h2>Los libros del escritor danés Hans Christian Andersen</h2>
 
@@ -622,7 +696,7 @@ El patito feo, La reina de las nieves, El yesquero.</p>
 
 <p>La trama recuerda a la de La Bella y la Bestia, pero se desarrolla en un ambiente ruso.</p>
 
-<p>{% img right /images/momo.jpg 150 &lsquo;Momo&rsquo; %}</p>
+<p><img class="right" src="/images/momo.jpg" width="150" title="&lsquo;Momo&rsquo;" ></p>
 
 <h2>Los cuentos de Charles Perrault</h2>
 
@@ -637,7 +711,7 @@ chica increíble llamada Momo. Ella tenía un talento muy raro – saber escucha
 a los demás, y por lo tanto tenía muchos amigos. Pero una vez en la ciudad,
 donde vivía Momo, aparecieron los caballeros grises – los ladrones de tiempo …</p>
 
-<p>{% img right /images/Matilda.jpg 150 &lsquo;Matilda&rsquo; %}</p>
+<p><img class="right" src="/images/Matilda.jpg" width="150" title="&lsquo;Matilda&rsquo;" ></p>
 
 <h2>Roald Dahl, Matilda</h2>
 
@@ -649,7 +723,7 @@ que sus padres son tontos, y sólo piensan en sí mismos y no se preocupan por
 su propia hija. Entonces Matilda decide volver a educar a sus padres negligentes,
 junto con la viciosa directora de su colegio.</p>
 
-<p>{% img right /images/karlson.jpg 150 &lsquo;Karlsson-on-the-Roof&rsquo; %}</p>
+<p><img class="right" src="/images/karlson.jpg" width="150" title="&lsquo;Karlsson-on-the-Roof&rsquo;" ></p>
 
 <h2>Libros de Astrid Lindgren</h2>
 
@@ -662,7 +736,7 @@ y sentimientos de los niños y así muestra respeto a ellos.</p>
 <p>Sus libros: Karlsson-on-the-Roof, Pipi Calzaslargas, Ronja, la hija del
 bandolero y muchos otros.</p>
 
-<p>{% img right /images/Finn_Family.png 150 &lsquo;Finn Family&rsquo; %}</p>
+<p><img class="right" src="/images/Finn_Family.png" width="150" title="&lsquo;Finn Family&rsquo;" ></p>
 
 <h2>Tove Jansson, Mumintroll</h2>
 
@@ -681,7 +755,7 @@ El príncipe Guidón y la bella princesa Cisne y El gallito de oro.</p>
 influyó directamente en las concepciones pedagógicas de Lord Baden-Powell
 al crear el Movimiento de los Boy Scouts.</p>
 
-<p>{% img right /images/pipi.jpg 150 &lsquo;Pipi Calzaslargas&rsquo; %}</p>
+<p><img class="right" src="/images/pipi.jpg" width="150" title="&lsquo;Pipi Calzaslargas&rsquo;" ></p>
 
 <h2>Alan Alexander Milne, Winnie de Pooh</h2>
 
@@ -693,7 +767,7 @@ al crear el Movimiento de los Boy Scouts.</p>
 
 <h2>L. Frank Baum, El maravilloso mago de Oz</h2>
 
-<p>{% img right /images/bremen.jpg 150 &lsquo;Los músicos de Bremen&rsquo; %}</p>
+<p><img class="right" src="/images/bremen.jpg" width="150" title="&lsquo;Los músicos de Bremen&rsquo;" ></p>
 
 <h2>Rudyard Kipling, El libro de la selva</h2>
 
@@ -735,7 +809,7 @@ que les han impactado en su infancia.</p>
     <link href="http://blog.vero4ka.info/blog/2016/07/02/rewire/"/>
     <updated>2016-07-02T08:19:37-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/07/02/rewire</id>
-    <content type="html"><![CDATA[<p>{% img center /images/rewire.jpg &lsquo;Rewire&rsquo; %}</p>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/rewire.jpg" title="&lsquo;Rewire&rsquo;" ></p>
 
 <p>Hace unos meses me di cuenta de que casi no leía noticias de Colombia,
 y era bastante difícil empezar a hacerlo, a pesar de que ya vivía aquí por
@@ -773,11 +847,9 @@ El libro Rewire: <a href="https://www.goodreads.com/book/show/16233761-rewire">w
     <link href="http://blog.vero4ka.info/blog/2016/05/29/somos-de-una-sangre-por-roman-super/"/>
     <updated>2016-05-29T14:10:22-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/05/29/somos-de-una-sangre-por-roman-super</id>
-    <content type="html"><![CDATA[<p>{% blockquote Rudyard Kipling, El libro de la selva %}
-Somos de una sangre, tú y yo" - dijo Mowgli&hellip;
-{% endblockquote %}</p>
+    <content type="html"><![CDATA[<p><blockquote><p>Somos de una sangre, tú y yo" - dijo Mowgli&hellip;</p><footer><strong>Rudyard Kipling</strong> <cite>El Libro De La Selva</cite></footer></blockquote></p>
 
-<p>{% img center /images/de_una_sangre.jpg &lsquo;Somos de una sangre&rsquo; %}</p>
+<p><img class="center" src="/images/de_una_sangre.jpg" title="&lsquo;Somos de una sangre&rsquo;" ></p>
 
 <p><a href="https://daily.afisha.ru/archive/gorod/people/esli-est-ad-na-zemle-eto-kashirka-roman-super-o-tom-kak-perezhit-rak-zheny/">La entrevista</a>
 con Roman Super y la periodista Elena Vanina para
@@ -903,7 +975,7 @@ cada segundo libre con mi familia, simplemente siempre queremos estar juntos.
 Antes no era así. Ésta visa es muy correcta. Ella da origen a muchos sensaciones
 agradables, de las cuales nos estamos privando. Puede ser que para eso.</p>
 
-<p>{% img center /images/super_book.jpg &lsquo;Roman Super&rsquo; %}</p>
+<p><img class="center" src="/images/super_book.jpg" title="&lsquo;Roman Super&rsquo;" ></p>
 
 <p>El libro de Roman Super en Bookmate:
 <a href="https://bookmate.com/books/IRInDaCY">https://bookmate.com/books/IRInDaCY</a></p>
@@ -915,7 +987,7 @@ agradables, de las cuales nos estamos privando. Puede ser que para eso.</p>
     <link href="http://blog.vero4ka.info/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual/"/>
     <updated>2016-04-20T21:08:04-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual</id>
-    <content type="html"><![CDATA[<p>{% img center /images/asya.jpg &lsquo;Asya Kazantseva&rsquo; %}</p>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/asya.jpg" title="&lsquo;Asya Kazantseva&rsquo;" ></p>
 
 <p><em>Asya Kazantseva es una periodista científica y divulgadora de ciencia.</em></p>
 

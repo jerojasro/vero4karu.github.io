@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tpaga | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/tpaga/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-07T11:31:34-05:00</updated>
+  <updated>2017-01-10T21:08:57-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -22,11 +22,11 @@
 
 <p>Para obtener nuestros claves de acceso y conectarnos con el API de Tpaga, creamos una cuenta en el &ldquo;sandbox&rdquo; de la plataforma: <a href="https://sandbox.tpaga.co/">sandbox.tpaga.co</a>.</p>
 
-<p>{% img /images/tpaga_sandbox_login.png %}</p>
+<p><img src="/images/tpaga_sandbox_login.png"></p>
 
 <p>Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para la autenticación: <strong>Private Api Key</strong> y <strong>Public Api Key</strong>:</p>
 
-<p>{% img /images/tpaga_sandbox_dashboard.png %}</p>
+<p><img src="/images/tpaga_sandbox_dashboard.png"></p>
 
 <!-- more -->
 
@@ -120,7 +120,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 
 <p>En el dashboard de Tpaga podemos asegurarnos de que el ciente <a href="https://en.wikipedia.org/wiki/The_Little_Golden_Calf#Cultural_influence">&ldquo;Horns and Hoofs&rdquo;</a> fue creado exitosamente:</p>
 
-<p>{% img /images/tpaga_dashboard_customers.png %}</p>
+<p><img src="/images/tpaga_dashboard_customers.png"></p>
 
 <p>Teniendo un token de nuestro cliente, podemos agregarle una tarjeta de crédito.</p>
 
@@ -132,7 +132,7 @@ customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
 
 <p>Creamos un formulario HTML para obtener los datos de la tarjeta de crédito:</p>
 
-<p>{% img /images/tpaga_credit_card_form.png %}</p>
+<p><img src="/images/tpaga_credit_card_form.png"></p>
 
 <p>Para hacer un formulario bonito, usamos <a href="http://bootsnipp.com/snippets/featured/credit-card-payment-with-stripe">la plantilla de Bootstrap</a> y las librerías <a href="https://jquery.com/">jQuery</a>, <a href="https://jqueryvalidation.org/">jQuery Validation Plugin</a> y <a href="https://github.com/stripe/jquery.payment">jQuery.payment</a> para validar los datos.</p>
 
@@ -462,7 +462,7 @@ refund_cc_response {
 
 <p>El JSON que nos devolvió Tpaga <code>transactionInfo.status</code> aparece como <code>voided</code> y el valor de <code>paid</code> ahora es falso:</p>
 
-<p>{% img /images/tpaga_dashboard_refund.png %}</p>
+<p><img src="/images/tpaga_dashboard_refund.png"></p>
 
 <p>Enlaces:</p>
 
