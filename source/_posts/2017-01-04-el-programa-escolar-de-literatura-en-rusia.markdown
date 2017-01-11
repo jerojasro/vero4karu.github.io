@@ -292,36 +292,42 @@ rusos deben leer...
 * [Kir Bulychov](https://es.wikipedia.org/wiki/Kir_Bulychov) (К. Булычёв)
   * «Заповедник сказок»
   * «Когда мне было 12 лет»
-Д. Б. Кедрин[править]
-А. Фатьянов[править]
-Тексты песен к кинофильмам
-
-Р. Гамзатов[править]
-Стихи
-
-В. Г. Распутин[править]
-«Уроки французского»
-«Последний срок»
-«Прощание с Матерой»
-«Живи и помни»
-Р. П. Погодин[править]
-«Тишина»
-«Дубравка»
-Ф. Искандер[править]
-«Тринадцатый подвиг Геракла»
-
-Е. И. Носов[править]
-«Кукла» («Акимыч») «Живое пламя»
-
-А. М. Володин[править]
-«Старшая сестра» «Пять вечеров»
-
-А. В. Вампилов[править]
-«Свидание»
-«Прошлым летом в Чулимске»
-«Старший сын»
-В. М. Шукшин
+* Poesía de Dmitri Kedrin (Д. Б. Кедрин)
+* [Valentín Rasputin](https://es.wikipedia.org/wiki/Valent%C3%ADn_Rasputin) (В. Г. Распутин)
+  * "Clases de francés" («Уроки французского»)
+  * "Último plazo" («Последний срок»)
+  * "El adiós a Matiora" («Прощание с Матерой»)
+  * "Vive y recuerda" («Живи и помни»)
+* [Fazil Iskander](https://es.wikipedia.org/wiki/Fazil_Iskander) (Ф. Искандер)
+  * "The Thirteenth Labour of Hercules" («Тринадцатый подвиг Геракла»)
+* Yevgeni Nosov (Е. И. Носов)
+  * «Кукла» («Акимыч») «Живое пламя»
+* Cuentos de [Vasili Shukshín](https://es.wikipedia.org/wiki/Vasili_Shuksh%C3%ADn) (В. М. Шукшин)
+* [Varlam Shalámov](https://es.wikipedia.org/wiki/Varlam_Shal%C3%A1mov) (В. Т. Шаламов)
+  * "Relatos de Kolymá" («Колымские рассказы»)
+* [Aleksandr Solzhenitsyn](https://es.wikipedia.org/wiki/Aleksandr_Solzhenitsyn) (А. И. Солженицын)
+  * ["Un día en la vida de Iván Denísovich"](https://es.wikipedia.org/wiki/Un_d%C3%ADa_en_la_vida_de_Iv%C3%A1n_Den%C3%ADsovich) («Один день Ивана Денисовича») - 1962
+  * "La casa de Matriona" («Матрёнин двор») - 1963
+  * ["Archipiélago Gulag"](https://es.wikipedia.org/wiki/Archipi%C3%A9lago_Gulag) («Архипелаг ГУЛАГ») - 1973
+  * "Cómo reorganizar Rusia" («Как нам обустроить Россию») - 1990
+* Poesía de [Robert Rozhdestvensky](https://en.wikipedia.org/wiki/Robert_Rozhdestvensky) (Р. И. Рождественский)
 
 ## Literatura mundial
+
+* Refranes, proverbios y dichos populares de Mundo
+* [Las mil y una noches](https://es.wikipedia.org/wiki/Las_mil_y_una_noches) («Тысяча и одна ночь»)
+* («Путешествие Синдбада-морехода»)
+* Mitos
+  * Mitología Griega
+  * Mitos de la India
+  * Mitología escandinava
+    * "Thor's Journey to Utgard" ([«Сказание о путешествии Тора в Утгард»](http://www.litra.ru/fullwork/get/woid/00902971224610246393/))
+  * Mitología de los Indios Norteamericanos
+    * ["The Song of Hiawatha"](https://en.wikipedia.org/wiki/The_Song_of_Hiawatha) ([«Песнь о Гайавате»](http://www.lib.ru/POEZIQ/LONGFELLO/hayavata.txt))
+* La Biblia (Библия)
+* [Homero](https://es.wikipedia.org/wiki/Homero) (Гомер)
+  * Odisea («Одиссея»)
+  * Ilíada («Илиада»)
+* [La poesía lírica antigua]("https://es.wikipedia.org/wiki/Poes%C3%ADa_l%C3%ADrica#Historia_de_la_poes.C3.ADa_l.C3.ADrica") (Античная лирика)
 
 to be continued ...

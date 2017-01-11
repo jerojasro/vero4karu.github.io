@@ -19,6 +19,8 @@ Primero, toca sobreponerse, ir al supermercado y tratar de aguantar esa muchedum
 * 1 zanahoria grande
 * 3 tomates o pasta de tomate
 
+<!-- more -->
+
 {% img left /images/cooking/borsh_02.jpg %}
 
 Con todo esto hay que llagar a la casa, lavar la papa, pelarla y cortar en cubos. Luego tenemos que desmenuzar el repollo, limpiar la remolacha y rallarla en julianas. Lo mismo hay que hacer con la zanahoria y picar el hinojo.
