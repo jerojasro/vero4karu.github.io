@@ -89,7 +89,7 @@
 <lastmod>2016-05-18T14:56:49-05:00</lastmod>
 </url>
 <url>
-<loc>http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions/</loc>
+<loc>http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalchemy-conversions/</loc>
 <lastmod>2016-05-04T21:15:39-05:00</lastmod>
 </url>
 <url>
@@ -500,7 +500,7 @@
 <loc>http://blog.vero4ka.info/blog/categories/sql/</loc>
 </url>
 <url>
-<loc>http://blog.vero4ka.info/blog/categories/sqlalquemy/</loc>
+<loc>http://blog.vero4ka.info/blog/categories/sqlalchemy/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/python/</loc>
@@ -516,9 +516,6 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/flask/</loc>
-</url>
-<url>
-<loc>http://blog.vero4ka.info/blog/categories/sqlalchemy/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/tpaga/</loc>

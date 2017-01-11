@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sql | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/sql/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-10T21:08:57-05:00</updated>
+  <updated>2017-01-10T21:16:32-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[SQL to SQLAlquemy conversions]]></title>
-    <link href="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions/"/>
+    <title type="html"><![CDATA[SQL to SQLAlchemy conversions]]></title>
+    <link href="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalchemy-conversions/"/>
     <updated>2016-05-04T21:15:39-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalquemy-conversions</id>
+    <id>http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalchemy-conversions</id>
     <content type="html"><![CDATA[<p>Some examples on how to convert raw SQL to SQLAlchemy query:</p>
 
 <h3>Select all</h3>
