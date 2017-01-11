@@ -262,6 +262,66 @@ rusos deben leer...
 
 ### Literatura rusa del siglo XX (la segunda mitad)
 
+* Leonid Leonov (Л. Леонов)
+  * «Нашествие»
+* Poesía de Olga Bergholz (О. Берггольц)
+* Evgueni Vinokourov (Е. Винокуров)
+  * "Moscovitas" («Москвичи»)
+* [Yevgueni Shvarts](https://es.wikipedia.org/wiki/Yevgueni_Shvarts) (Е. Шварц)
+  * "Dragón" («Дракон»)
+* Fyodor Abramov (Ф. А. Абрамов)
+  * «О чём плачут лошади»
+  * Тетралогия «Пряслины»
+  * «Поездка в прошлое»
+* [Chinguiz Aitmátov](https://es.wikipedia.org/wiki/Chinguiz_Aitm%C3%A1tov) (Чингиз Айтматов)
+  * "Más de un siglo dura el día" («И дольше века длится день…»)
+  * "El patíbulo" («Плаха»)
+* Vasil Býkov (В. Быков)
+  * "El obelisco" («Обелиск») - 1970
+  * "Sótnikov" («Сотников») - 1971
+* Víktor Astáfiev (В. П. Астафьев)
+  * «Вам продолжать эту жизнь» (письмо, адресованное юной читательнице)
+  * «Васюткино озеро»
+  * «Игры»
+  * "The Horse with the Pink Mane, and Other Siberian Stories" («Конь с розовой гривой»)
+  * «Фотография, на которой меня нет»
+  * "El pez rey" («Царь-рыба») - 1976
+  * "Sad Detective" («Печальный детектив») - 1986
+* [Vasily Belov](https://en.wikipedia.org/wiki/Vasily_Belov) (В. И. Белов)
+  * «Скворцы»
+* [Kir Bulychov](https://es.wikipedia.org/wiki/Kir_Bulychov) (К. Булычёв)
+  * «Заповедник сказок»
+  * «Когда мне было 12 лет»
+Д. Б. Кедрин[править]
+А. Фатьянов[править]
+Тексты песен к кинофильмам
+
+Р. Гамзатов[править]
+Стихи
+
+В. Г. Распутин[править]
+«Уроки французского»
+«Последний срок»
+«Прощание с Матерой»
+«Живи и помни»
+Р. П. Погодин[править]
+«Тишина»
+«Дубравка»
+Ф. Искандер[править]
+«Тринадцатый подвиг Геракла»
+
+Е. И. Носов[править]
+«Кукла» («Акимыч») «Живое пламя»
+
+А. М. Володин[править]
+«Старшая сестра» «Пять вечеров»
+
+А. В. Вампилов[править]
+«Свидание»
+«Прошлым летом в Чулимске»
+«Старший сын»
+В. М. Шукшин
+
 ## Literatura mundial
 
 to be continued ...
