@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "SQL to SQLAlquemy conversions"
+title: "SQL to SQLAlchemy conversions"
 date: 2016-05-04 21:15:39 -0500
 comments: true
 categories: 
 - SQL
-- SQLAlquemy
+- SQLAlchemy
 - Python
 ---
 
