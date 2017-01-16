@@ -4,7 +4,7 @@
   <title><![CDATA[Category: django | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/django/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-10T21:16:32-05:00</updated>
+  <updated>2017-01-16T18:31:48-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,150 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo desplegar un proyecto de Django con uWSGI + nginx + supervisor]]></title>
+    <link href="http://blog.vero4ka.info/blog/2017/01/16/como-desplegar-un-proyecto-de-django-con-uwsgi-plus-nginx-plus-supervisor/"/>
+    <updated>2017-01-16T17:39:09-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2017/01/16/como-desplegar-un-proyecto-de-django-con-uwsgi-plus-nginx-plus-supervisor</id>
+    <content type="html"><![CDATA[<p>Suponemos que tenemos <a href="https://github.com/vero4karu/sitp_scraper">un proyecto</a> de Django y queremos desplegarlo en un servidor con un sistema operativo Linux.</p>
+
+<p>El stack de los componentes que vamos a usar va a ser el siguiente:</p>
+
+<pre><code>Usuario &lt;-&gt; Servidow web &lt;-&gt; Socket &lt;-&gt; uWSGI &lt;-&gt; Django
+</code></pre>
+
+<p>Decimos que el código del proyecto está en la carpeta <code>/home/deploy/sitp_scraper</code>. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto:</p>
+
+<pre><code>mkvirtualenv stip_scraper
+pip install -r requitements.txt
+</code></pre>
+
+<p>Instalamos uWSGI:</p>
+
+<pre><code>pip install uwsgi
+</code></pre>
+
+<p>Verificamos si podemos correr nuestro proyecto si problema:</p>
+
+<pre><code>./manage.py runserver 0.0.0.0:8000
+</code></pre>
+
+<p>Ahora probamos correrlo usando uWSGI:</p>
+
+<pre><code>uwsgi --http :8000 --module stip_scraper.wsgi
+</code></pre>
+
+<p>Instalamos <a href="https://nginx.org/en/">nginx</a>:</p>
+
+<pre><code>sudo apt-get install nginx
+sudo /etc/init.d/nginx start 
+</code></pre>
+
+<p>Si al visitar <code>nuestroservidor.com:80</code> vemos el mensaje &ldquo;Welcome to nginx&rdquo;, podemos concluir que nginx funciona de la forma correcta.</p>
+
+<p>Configuramos nginx <code>sitp_scraper_nginx.conf</code>:</p>
+
+<pre><code class="nginx">upstream django {
+    server unix:///tmp/sitp_scraper.sock;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name  nuestroservidor.com;  # Nuestro dominio o dirección IP
+    charset      utf-8;
+
+    client_max_body_size 10M;  # Tamaño máximo de archivos subidos al servidor
+
+    location /media  {
+        alias /home/deploy/sitp_scraper/media;
+    }
+
+    location /static {
+        alias /home/deploy/sitp_scraper/static;
+
+    }
+
+    location / {
+        uwsgi_pass  django;
+        include     /home/deploy/sitp_scraper/uwsgi_params;
+    }
+}
+</code></pre>
+
+<p>El archivo <code>uwsgi_params</code> se puede descargar aquí: <a href="https://github.com/nginx/nginx/blob/master/conf/uwsgi_params">github.com/nginx/nginx/blob/master/conf/uwsgi_params</a></p>
+
+<p>Creamos en la carpeta <code>/etc/nginx/sites-enabled</code> un enlace hacía nuestra configuración para que nginx pueda verla:</p>
+
+<pre><code>sudo ln -s ~/path/to/your/sitp_scraper_nginx.conf /etc/nginx/sites-enabled/
+</code></pre>
+
+<p>Verificamos si nuestra configuración está bien:</p>
+
+<pre><code>nginx -t
+</code></pre>
+
+<p>y reiniciamos nginx:</p>
+
+<pre><code>sudo /etc/init.d/nginx restart
+</code></pre>
+
+<p>Ahora creamos un archivo <code>sitp_scraper_uwsgi.ini</code> para guardar las opciones que vamos a pasar a uWSGI:</p>
+
+<pre><code>[uwsgi]
+# Django-related settings
+chdir           = /home/deploy/sitp_scraper
+module          = sitp_scraper.wsgi
+home            = /home/deploy/.virtualenvs/sitp_scraper
+
+# Process-related settings
+master          = true
+processes       = 10
+
+# The socket (use the full path to be safe)
+socket          = /tmp/sitp_scraper.sock
+chmod-socket    = 664
+uid             = www-data
+gid             = www-data
+
+# Clear environment on exit
+vacuum          = true
+</code></pre>
+
+<p>Verificamos que todo funcione bien:</p>
+
+<pre><code>uwsgi --ini sitp_scraper_uwsgi.ini
+</code></pre>
+
+<p>Ahora instalamos supervisor:</p>
+
+<pre><code>apt-get install supervisor
+service supervisor start
+</code></pre>
+
+<p>y creamos un archivo de configuración <code>/etc/supervisor/conf.d/sitp_scraper.conf</code></p>
+
+<pre><code>[program:uwsgi]
+user            = www-data
+command = /home/deploy/.virtualenvs/sitp_scraper/bin/uwsgi --ini=/home/deploy/sitp_scraper/sitp_scraper_uwsgi.ini
+autostart       =true
+autorestart     = true
+stderr_logfile  = /tmp/uwsgi_err.log
+stdout_logfile  = /tmp/uwsgi.log
+stopsignal=INT
+</code></pre>
+
+<p>Reiniciamos supervisor:</p>
+
+<pre><code>$ supervisorctl  
+uwsgi                            RUNNING   pid 2762, uptime 1 day, 2:39:40
+supervisor&gt; restart uwsgi
+</code></pre>
+
+<p>Voilà: <code>nuestroservidor.com:80</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cómo pasar variable desde una vista a formulario en Django]]></title>
@@ -280,7 +424,7 @@ class HistoricBook(Book):
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#108;&amp;#x74;&amp;#x6f;&amp;#x3a;&amp;#x73;&amp;#x75;&amp;#112;&amp;#x65;&amp;#114;&amp;#117;&amp;#x73;&amp;#x65;&amp;#114;&amp;#64;&amp;#x65;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#101;&amp;#46;&amp;#99;&amp;#111;&amp;#x6d;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x73;&amp;#x75;&amp;#112;&amp;#x65;&amp;#x72;&amp;#117;&amp;#115;&amp;#101;&amp;#x72;&amp;#x40;&amp;#x65;&amp;#120;&amp;#x61;&amp;#109;&amp;#112;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#x63;&amp;#111;&amp;#x6d;&lt;/a&gt;&amp;rsquo;,</span>
+</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#115;&amp;#x75;&amp;#x70;&amp;#101;&amp;#x72;&amp;#x75;&amp;#115;&amp;#x65;&amp;#x72;&amp;#x40;&amp;#101;&amp;#x78;&amp;#97;&amp;#109;&amp;#x70;&amp;#108;&amp;#101;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x73;&amp;#117;&amp;#x70;&amp;#x65;&amp;#114;&amp;#x75;&amp;#115;&amp;#x65;&amp;#x72;&amp;#64;&amp;#x65;&amp;#120;&amp;#x61;&amp;#109;&amp;#112;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#x6d;&lt;/a&gt;&amp;rsquo;,</span>
 </span><span class='line'>            <span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">superuser</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>            <span class="n">password</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>        <span class="p">)</span>
@@ -452,39 +596,6 @@ class HistoricBook(Book):
 <li><a href="http://factoryboy.readthedocs.org/">Factory Boy</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to raise a form invalid event inside form_valid method of a FormView]]></title>
-    <link href="http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview/"/>
-    <updated>2015-03-01T19:35:52-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-raise-a-form-invalid-event-inside-form-valid-method-of-a-formview</id>
-    <content type="html"><![CDATA[<p>How to raise form invalid inside <code>form_valid</code> method of a <code>FormView</code> (<code>CreateView</code>/<code>UpdateView</code>) and add an error message to <code>non_field_errors</code>:</p>
-
-<p><div><script src='https://gist.github.com/3b62a13bdce7fe4178ac.js'></script>
-<noscript><pre><code>from django.forms.util import ErrorList
-from django import forms
-
-class ContractUpdateView(UpdateView):
-    model = Contract
-    template_name = &#39;contract/contract_form.html&#39;
-    form_class = ContractForm
-
-    def form_valid(self, form):
-        if self.request.POST.get(&#39;finish&#39;):
-            if (
-                not form.cleaned_data[&#39;number&#39;] or
-                not self.object.images.count()
-            ):
-                form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList([
-                    u&#39;You have to add images and a contract number&#39;
-                ])
-                return self.form_invalid(form)
-            self.object.is_submitted = True
-        self.object = form.save()
-        return HttpResponseRedirect(self.get_success_url())</code></pre></noscript></div>
-</p>
 ]]></content>
   </entry>
   

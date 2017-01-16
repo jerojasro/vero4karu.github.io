@@ -9,8 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Según los estándares del ministerio de educación los estudiantes de colegio
-rusos deben leer&hellip; Literatura rusa Folklore Folklore ruso. Cuentos &hellip;">
+  <meta name="description" content="Suponemos que tenemos un proyecto de Django y queremos desplegarlo en un servidor con un sistema operativo Linux. El stack de los componentes que &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +85,228 @@ rusos deben leer&hellip; Literatura rusa Folklore Folklore ruso. Cuentos &hellip
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/01/16/como-desplegar-un-proyecto-de-django-con-uwsgi-plus-nginx-plus-supervisor/">Cómo desplegar un proyecto de Django con uWSGI + nginx + supervisor</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-01-16T17:39:09-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:39 pm</span></time>
+        
+           | <a href="/blog/2017/01/16/como-desplegar-un-proyecto-de-django-con-uwsgi-plus-nginx-plus-supervisor/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2017/01/16/como-desplegar-un-proyecto-de-django-con-uwsgi-plus-nginx-plus-supervisor/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suponemos que tenemos <a href="https://github.com/vero4karu/sitp_scraper">un proyecto</a> de Django y queremos desplegarlo en un servidor con un sistema operativo Linux.</p>
+
+<p>El stack de los componentes que vamos a usar va a ser el siguiente:</p>
+
+<pre><code>Usuario &lt;-&gt; Servidow web &lt;-&gt; Socket &lt;-&gt; uWSGI &lt;-&gt; Django
+</code></pre>
+
+<p>Decimos que el código del proyecto está en la carpeta <code>/home/deploy/sitp_scraper</code>. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto:</p>
+
+<pre><code>mkvirtualenv stip_scraper
+pip install -r requitements.txt
+</code></pre>
+
+<p>Instalamos uWSGI:</p>
+
+<pre><code>pip install uwsgi
+</code></pre>
+
+<p>Verificamos si podemos correr nuestro proyecto si problema:</p>
+
+<pre><code>./manage.py runserver 0.0.0.0:8000
+</code></pre>
+
+<p>Ahora probamos correrlo usando uWSGI:</p>
+
+<pre><code>uwsgi --http :8000 --module stip_scraper.wsgi
+</code></pre>
+
+<p>Instalamos <a href="https://nginx.org/en/">nginx</a>:</p>
+
+<pre><code>sudo apt-get install nginx
+sudo /etc/init.d/nginx start 
+</code></pre>
+
+<p>Si al visitar <code>nuestroservidor.com:80</code> vemos el mensaje &ldquo;Welcome to nginx&rdquo;, podemos concluir que nginx funciona de la forma correcta.</p>
+
+<p>Configuramos nginx <code>sitp_scraper_nginx.conf</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='nginx'><span class='line'><span class="k">upstream</span> <span class="s">django</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kn">server</span> <span class="s">unix:///tmp/sitp_scraper.sock</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">server</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span><span class='line'>    <span class="kn">listen</span> <span class="s">[::]:80</span><span class="p">;</span>
+</span><span class='line'>    <span class="kn">server_name</span>  <span class="s">nuestroservidor.com</span><span class="p">;</span>  <span class="c1"># Nuestro dominio o dirección IP</span>
+</span><span class='line'>    <span class="kn">charset</span>      <span class="s">utf-8</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kn">client_max_body_size</span> <span class="s">10M</span><span class="p">;</span>  <span class="c1"># Tamaño máximo de archivos subidos al servidor</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kn">location</span> <span class="s">/media</span>  <span class="p">{</span>
+</span><span class='line'>        <span class="kn">alias</span> <span class="s">/home/deploy/sitp_scraper/media</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kn">location</span> <span class="s">/static</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kn">alias</span> <span class="s">/home/deploy/sitp_scraper/static</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kn">uwsgi_pass</span>  <span class="s">django</span><span class="p">;</span>
+</span><span class='line'>        <span class="kn">include</span>     <span class="s">/home/deploy/sitp_scraper/uwsgi_params</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>El archivo <code>uwsgi_params</code> se puede descargar aquí: <a href="https://github.com/nginx/nginx/blob/master/conf/uwsgi_params">github.com/nginx/nginx/blob/master/conf/uwsgi_params</a></p>
+
+<p>Creamos en la carpeta <code>/etc/nginx/sites-enabled</code> un enlace hacía nuestra configuración para que nginx pueda verla:</p>
+
+<pre><code>sudo ln -s ~/path/to/your/sitp_scraper_nginx.conf /etc/nginx/sites-enabled/
+</code></pre>
+
+<p>Verificamos si nuestra configuración está bien:</p>
+
+<pre><code>nginx -t
+</code></pre>
+
+<p>y reiniciamos nginx:</p>
+
+<pre><code>sudo /etc/init.d/nginx restart
+</code></pre>
+
+<p>Ahora creamos un archivo <code>sitp_scraper_uwsgi.ini</code> para guardar las opciones que vamos a pasar a uWSGI:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='nginx'><span class='line'><span class="k">[uwsgi]</span>
+</span><span class='line'><span class="c1"># Django-related settings</span>
+</span><span class='line'><span class="s">chdir</span>           <span class="p">=</span> <span class="s">/home/deploy/sitp_scraper</span>
+</span><span class='line'><span class="s">module</span>          <span class="p">=</span> <span class="s">sitp_scraper.wsgi</span>
+</span><span class='line'><span class="s">home</span>            <span class="p">=</span> <span class="s">/home/deploy/.virtualenvs/sitp_scraper</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Process-related settings</span>
+</span><span class='line'><span class="s">master</span>          <span class="p">=</span> <span class="s">true</span>
+</span><span class='line'><span class="s">processes</span>       <span class="p">=</span> <span class="mi">10</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># The socket (use the full path to be safe)</span>
+</span><span class='line'><span class="s">socket</span>          <span class="p">=</span> <span class="s">/tmp/sitp_scraper.sock</span>
+</span><span class='line'><span class="s">chmod-socket</span>    <span class="p">=</span> <span class="mi">664</span>
+</span><span class='line'><span class="s">uid</span>             <span class="p">=</span> <span class="s">www-data</span>
+</span><span class='line'><span class="s">gid</span>             <span class="p">=</span> <span class="s">www-data</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Clear environment on exit</span>
+</span><span class='line'><span class="s">vacuum</span>          <span class="p">=</span> <span class="s">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Verificamos que todo funcione bien:</p>
+
+<pre><code>uwsgi --ini sitp_scraper_uwsgi.ini
+</code></pre>
+
+<p>Ahora instalamos supervisor:</p>
+
+<pre><code>apt-get install supervisor
+service supervisor start
+</code></pre>
+
+<p>y creamos un archivo de configuración <code>/etc/supervisor/conf.d/sitp_scraper.conf</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='nginx'><span class='line'><span class="k">[program:uwsgi]</span>
+</span><span class='line'><span class="s">user</span>            <span class="p">=</span> <span class="s">www-data</span>
+</span><span class='line'><span class="s">command</span> <span class="p">=</span> <span class="s">/home/deploy/.virtualenvs/sitp_scraper/bin/uwsgi</span> <span class="s">--ini=/home/deploy/sitp_scraper/sitp_scraper_uwsgi.ini</span>
+</span><span class='line'><span class="s">autostart</span>       <span class="p">=</span><span class="s">true</span>
+</span><span class='line'><span class="s">autorestart</span>     <span class="p">=</span> <span class="s">true</span>
+</span><span class='line'><span class="s">stderr_logfile</span>  <span class="p">=</span> <span class="s">/tmp/uwsgi_err.log</span>
+</span><span class='line'><span class="s">stdout_logfile</span>  <span class="p">=</span> <span class="s">/tmp/uwsgi.log</span>
+</span><span class='line'><span class="s">stopsignal=INT</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Reiniciamos supervisor:</p>
+
+<pre><code>$ supervisorctl  
+uwsgi                            RUNNING   pid 2762, uptime 1 day, 2:39:40
+supervisor&gt; restart uwsgi
+</code></pre>
+
+<p>Voilà: <code>nuestroservidor.com:80</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -915,118 +1136,6 @@ Todos los personajes del cuento son frutas y verduras.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/">Herramientas para el desarrollo que nos hacen la vida más fácil</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-09-08T08:48:12-05:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:48 am</span></time>
-        
-           | <a href="/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Editores</h2>
-
-<ul>
-<li><a href="https://www.jetbrains.com/pycharm/">PyCharm</a>: editor para Python.</li>
-<li><a href="https://www.sublimetext.com/">Sublime Text</a></li>
-</ul>
-
-
-<h3>Plugins para Sublime Text</h3>
-
-<p>Para llamar <a href="https://packagecontrol.io/installation">Package Control</a> desde Sublime Text: <code>Control+Shift+P</code>, escribe &ldquo;install&rdquo; y selecciona <code>Package Control: Install Package</code> en Command Palette.</p>
-
-<ul>
-<li><a href="https://github.com/kemayo/sublime-text-git">Git</a></li>
-<li><a href="https://github.com/jisaacks/GitGutter">GitGutter</a></li>
-<li><a href="https://packagecontrol.io/packages/Color%20Highlighter">Color Highlighter</a></li>
-<li><a href="https://packagecontrol.io/packages/SublimeLinter">SublimeLinter</a></li>
-<li>EditorConfig</li>
-<li><a href="https://packagecontrol.io/packages/AngularJS">AngularJS</a></li>
-<li>Markdown Extended</li>
-<li><a href="https://habrahabr.ru/post/235901/">Лучшие плагины для Sublime Text</a></li>
-<li><a href="https://habrahabr.ru/post/244681/">Sublime Text для фронтэнд-разработчика</a></li>
-<li><a href="http://aslanbakan.com/en/blog/33-essential-sublime-text-plugins-for-all-developers/">33 Essential Sublime Text plugins for all developers</a></li>
-</ul>
-
-
-<h2>Editar y compartir código en línea</h2>
-
-<ul>
-<li><a href="http://codepen.io/">CodePen</a>: editor de código HTML/JS/CSS en línea.</li>
-<li><a href="https://repl.it/languages/python3">repl.it</a>: editor de Python 3 que permite compartir el código.</li>
-<li><a href="http://dillinger.io/">Dillinger</a>: editor de Markdown.</li>
-</ul>
-
-
-<h2>Bases de datos</h2>
-
-<ul>
-<li><a href="https://www.pgadmin.org/">pgAdmin</a>: administrador de base de datos PostgreSQL.</li>
-<li><a href="https://sqlectron.github.io/">Sqlectron</a></li>
-</ul>
-
-
-<h2>Git</h2>
-
-<ul>
-<li><a href="https://www.gitkraken.com/">GitKraken</a></li>
-<li><a href="https://github.com/Axiacore/axiacore_utils/tree/master/git-bash-prompt">Bash prompt</a> para mostrar mostrar información de un repositorio Git.</li>
-</ul>
-
-
-<h2>Screenshots</h2>
-
-<ul>
-<li><a href="http://shutter-project.org/">Shutter</a>: aplicación para tomar y editar screetshots en Linux.</li>
-</ul>
-
-
-<h2>REST</h2>
-
-<ul>
-<li><a href="https://www.getpostman.com/">PostMan</a>: es una extensión del Google Chrome, que permite el envío de peticiones HTTP.</li>
-</ul>
-
-
-<h2>Diff y validación</h2>
-
-<ul>
-<li><a href="https://www.diffchecker.com">Diffchecker</a>: comparar dos textos en línea.</li>
-<li><a href="https://jsonformatter.curiousconcept.com/">JSON Formatter</a>: validar y formatear objetos JSON.</li>
-</ul>
-
-
-<h2>CSS/Iconos</h2>
-
-<ul>
-<li><a href="http://fontawesome.io/">Font Awesome</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi?hl=es">PerfectPixel</a>: ayuda comparar el diseño de la página web (visuales) con el resultado del mismo en el navegador.</li>
-<li><a href="http://colorbrewer2.org/">Color Brewer 2.0</a>: color advice for cartography</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1040,6 +1149,10 @@ Todos los personajes del cuento son frutas y verduras.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/16/como-desplegar-un-proyecto-de-django-con-uwsgi-plus-nginx-plus-supervisor/">Cómo desplegar un proyecto de Django con uWSGI + nginx + supervisor</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/04/el-programa-escolar-de-literatura-en-rusia/">El programa escolar de literatura en Rusia</a>
@@ -1077,16 +1190,14 @@ Todos los personajes del cuento son frutas y verduras.</p>
         <a href="/blog/2016/10/07/mierdero-de-las-semanas/">Mierdero de las semanas</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2016/09/08/herramienta-para-el-desarrollo-que-nos-hacen-la-vida-mas-facil/">Herramientas para el desarrollo que nos hacen la vida más fácil</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
     
       
     
@@ -1573,7 +1684,7 @@ Todos los personajes del cuento son frutas y verduras.</p>
 
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 103.15789473684211%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 103.15789473684211%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 103.15789473684211%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 103.15789473684211%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 106.3157894736842%'>aventuras</a> <a href='/blog/categories/bogota' style='font-size: 103.15789473684211%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 103.15789473684211%'>bootstrap</a> <a href='/blog/categories/chiste' style='font-size: 112.63157894736842%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 103.15789473684211%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 109.47368421052632%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 103.15789473684211%'>cine</a> <a href='/blog/categories/cita' style='font-size: 103.15789473684211%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 106.3157894736842%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 103.15789473684211%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 112.63157894736842%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 109.47368421052632%'>colombia</a> <a href='/blog/categories/comida' style='font-size: 103.15789473684211%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 103.15789473684211%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 106.3157894736842%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 150.5263157894737%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 103.15789473684211%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 103.15789473684211%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 103.15789473684211%'>estaciones</a> <a href='/blog/categories/flask' style='font-size: 106.3157894736842%'>flask</a> <a href='/blog/categories/historia' style='font-size: 106.3157894736842%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 103.15789473684211%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 103.15789473684211%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 103.15789473684211%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 103.15789473684211%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 122.10526315789474%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 103.15789473684211%'>mel script</a> <a href='/blog/categories/montanas' style='font-size: 103.15789473684211%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 109.47368421052632%'>moscú</a> <a href='/blog/categories/nieve' style='font-size: 103.15789473684211%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 106.3157894736842%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 103.15789473684211%'>niños</a> <a href='/blog/categories/parques' style='font-size: 103.15789473684211%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 103.15789473684211%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 103.15789473684211%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 122.10526315789474%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 106.3157894736842%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 103.15789473684211%'>requests</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 103.15789473684211%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 106.3157894736842%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 103.15789473684211%'>sueños</a> <a href='/blog/categories/tarea' style='font-size: 103.15789473684211%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 103.15789473684211%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 103.15789473684211%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 103.15789473684211%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 103.15789473684211%'>traducción</a> <a href='/blog/categories/trenes' style='font-size: 103.15789473684211%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 103.15789473684211%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 103.15789473684211%'>urbanismo</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 103.15789473684211%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 103.15789473684211%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 103.15789473684211%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 103.15789473684211%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 106.3157894736842%'>aventuras</a> <a href='/blog/categories/bogota' style='font-size: 103.15789473684211%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 103.15789473684211%'>bootstrap</a> <a href='/blog/categories/chiste' style='font-size: 112.63157894736842%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 103.15789473684211%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 109.47368421052632%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 103.15789473684211%'>cine</a> <a href='/blog/categories/cita' style='font-size: 103.15789473684211%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 106.3157894736842%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 103.15789473684211%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 112.63157894736842%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 109.47368421052632%'>colombia</a> <a href='/blog/categories/comida' style='font-size: 103.15789473684211%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 103.15789473684211%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 106.3157894736842%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 153.68421052631578%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 103.15789473684211%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 103.15789473684211%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 103.15789473684211%'>estaciones</a> <a href='/blog/categories/flask' style='font-size: 106.3157894736842%'>flask</a> <a href='/blog/categories/historia' style='font-size: 106.3157894736842%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 103.15789473684211%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 103.15789473684211%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 103.15789473684211%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 103.15789473684211%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 122.10526315789474%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 103.15789473684211%'>mel script</a> <a href='/blog/categories/montanas' style='font-size: 103.15789473684211%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 109.47368421052632%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 103.15789473684211%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 103.15789473684211%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 106.3157894736842%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 103.15789473684211%'>niños</a> <a href='/blog/categories/parques' style='font-size: 103.15789473684211%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 103.15789473684211%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 103.15789473684211%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 125.26315789473685%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 106.3157894736842%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 103.15789473684211%'>requests</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 103.15789473684211%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 106.3157894736842%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 103.15789473684211%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 103.15789473684211%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 103.15789473684211%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 103.15789473684211%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 103.15789473684211%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 103.15789473684211%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 103.15789473684211%'>traducción</a> <a href='/blog/categories/trenes' style='font-size: 103.15789473684211%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 103.15789473684211%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 103.15789473684211%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 103.15789473684211%'>uwsgi</a> </span>
 </section><section>
   <h1>Stats</h1>
   <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img

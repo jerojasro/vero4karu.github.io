@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2017/01/16/como-desplegar-un-proyecto-de-django-con-uwsgi-plus-nginx-plus-supervisor/</loc>
+<lastmod>2017-01-16T17:39:09-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2017/01/04/el-programa-escolar-de-literatura-en-rusia/</loc>
 <lastmod>2017-01-04T18:50:49-05:00</lastmod>
 </url>
@@ -546,6 +550,15 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/cita/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/uwsgi/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/nginx/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/supervisor/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/posts/2/</loc>
