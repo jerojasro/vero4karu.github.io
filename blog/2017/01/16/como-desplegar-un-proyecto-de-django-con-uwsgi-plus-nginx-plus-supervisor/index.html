@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Suponemos que tenemos un proyecto de Django y queremos desplegarlo en un servidor con un sistema operativo Linux. El stack de los componentes que &hellip;">
+  <meta name="description" content="Suponemos que tenemos un proyecto de Django y queremos desplegarlo en un servidor con un sistema operativo Linux. La idea es que nuestro servidor web &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -109,12 +109,12 @@
 
 <div class="entry-content"><p>Suponemos que tenemos <a href="https://github.com/vero4karu/sitp_scraper">un proyecto</a> de Django y queremos desplegarlo en un servidor con un sistema operativo Linux.</p>
 
-<p>El stack de los componentes que vamos a usar va a ser el siguiente:</p>
+<p>La idea es que nuestro servidor web va a usar una interfaz (WSGI) para &ldquo;hablar&rdquo; con nuestra aplicación de Django. Esa interfaz va a correr la aplicación, pasarle las peticiones de usuario y devolver la respuesta. WSGI (Web Server Gateway Interface) es un estándar y uWSGI es una de sus implementaciones que vamos a usar:</p>
 
 <pre><code>Usuario &lt;-&gt; Servidow web &lt;-&gt; Socket &lt;-&gt; uWSGI &lt;-&gt; Django
 </code></pre>
 
-<p>Decimos que el código del proyecto está en la carpeta <code>/home/deploy/sitp_scraper</code>. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto:</p>
+<p>Decimos que el código del proyecto está en la carpeta <code>/home/deploy/sitp_scraper</code>. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto (en éste ejemplo usamos <a href="https://virtualenvwrapper.readthedocs.io/en/latest/">virtualenvwrapper</a>):</p>
 
 <pre><code>mkvirtualenv stip_scraper
 pip install -r requitements.txt
