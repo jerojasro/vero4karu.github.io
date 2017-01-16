@@ -326,8 +326,13 @@ rusos deben leer...
     * ["The Song of Hiawatha"](https://en.wikipedia.org/wiki/The_Song_of_Hiawatha) ([«Песнь о Гайавате»](http://www.lib.ru/POEZIQ/LONGFELLO/hayavata.txt))
 * La Biblia (Библия)
 * [Homero](https://es.wikipedia.org/wiki/Homero) (Гомер)
-  * Odisea («Одиссея»)
-  * Ilíada («Илиада»)
+  * "Odisea" («Одиссея»)
+  * "Ilíada" («Илиада»)
 * [La poesía lírica antigua]("https://es.wikipedia.org/wiki/Poes%C3%ADa_l%C3%ADrica#Historia_de_la_poes.C3.ADa_l.C3.ADrica") (Античная лирика)
+* Dante Alighieri (Данте Алигьери)
+  * ["Divina comedia"](https://es.wikipedia.org/wiki/Divina_comedia) («Божественная комедия»)
+* [William Shakespeare](https://es.wikipedia.org/wiki/William_Shakespeare) (У. Шекспир)
+  * "Romeo y Julieta" («Ромео и Джульетта») - 1595
+  * "Hamlet" («Гамлет») - 1601
 
 to be continued ...
