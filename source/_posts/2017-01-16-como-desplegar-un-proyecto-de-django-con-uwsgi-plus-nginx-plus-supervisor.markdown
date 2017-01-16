@@ -13,7 +13,7 @@ categories:
 
 Suponemos que tenemos [un proyecto](https://github.com/vero4karu/sitp_scraper) de Django y queremos desplegarlo en un servidor con un sistema operativo Linux.
 
-El stack de los componentes que vamos a usar va a ser el siguiente:
+La idea es que nuestro servidor web va a usar una interfaz (WSGI) para "hablar" con nuestra aplicación de Django. Esa interfaz va a correr la aplicación, pasarle las peticiones de usuario y devolver la respuesta.
 
     Usuario <-> Servidow web <-> Socket <-> uWSGI <-> Django
 
