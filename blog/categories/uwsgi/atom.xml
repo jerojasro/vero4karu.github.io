@@ -4,7 +4,7 @@
   <title><![CDATA[Category: uwsgi | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/uwsgi/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-16T18:52:24-05:00</updated>
+  <updated>2017-01-16T19:00:12-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -123,9 +123,15 @@ gid             = www-data
 vacuum          = true
 </code></pre>
 
-<p>Verificamos que todo funcione bien:</p>
+<p>Agregamos nuestro usuario de Linux al grupo <code>www-data</code> (para no tener problemas con permisos) y verificamos que todo funcione bien:</p>
 
 <pre><code>uwsgi --ini sitp_scraper_uwsgi.ini
+</code></pre>
+
+<p>Podemos ver que se creó un archvo <code>/tmp/sitp_scraper.sock</code>:</p>
+
+<pre><code>ll /tmp/sitp_scraper.sock
+srw-rw-r-- 1 www-data www-data 0 Jan 15 20:46 /tmp/sitp_scraper.sock
 </code></pre>
 
 <p>Ahora instalamos supervisor:</p>
@@ -139,7 +145,7 @@ service supervisor start
 <pre><code>[program:uwsgi]
 user            = www-data
 command = /home/deploy/.virtualenvs/sitp_scraper/bin/uwsgi --ini=/home/deploy/sitp_scraper/sitp_scraper_uwsgi.ini
-autostart       =true
+autostart       = true
 autorestart     = true
 stderr_logfile  = /tmp/uwsgi_err.log
 stdout_logfile  = /tmp/uwsgi.log
