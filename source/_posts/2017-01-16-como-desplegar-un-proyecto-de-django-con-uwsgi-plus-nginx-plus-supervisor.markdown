@@ -13,11 +13,11 @@ categories:
 
 Suponemos que tenemos [un proyecto](https://github.com/vero4karu/sitp_scraper) de Django y queremos desplegarlo en un servidor con un sistema operativo Linux.
 
-La idea es que nuestro servidor web va a usar una interfaz (WSGI) para "hablar" con nuestra aplicación de Django. Esa interfaz va a correr la aplicación, pasarle las peticiones de usuario y devolver la respuesta.
+La idea es que nuestro servidor web va a usar una interfaz (WSGI) para "hablar" con nuestra aplicación de Django. Esa interfaz va a correr la aplicación, pasarle las peticiones de usuario y devolver la respuesta. WSGI (Web Server Gateway Interface) es un estándar y uWSGI es una de sus implementaciones que vamos a usar:
 
     Usuario <-> Servidow web <-> Socket <-> uWSGI <-> Django
 
-Decimos que el código del proyecto está en la carpeta `/home/deploy/sitp_scraper`. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto:
+Decimos que el código del proyecto está en la carpeta `/home/deploy/sitp_scraper`. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto (en éste ejemplo usamos [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)):
 
     mkvirtualenv stip_scraper
     pip install -r requitements.txt
@@ -109,9 +109,15 @@ gid             = www-data
 vacuum          = true
 ```
 
-Verificamos que todo funcione bien:
+Agregamos nuestro usuario de Linux al grupo `www-data` (para no tener problemas con permisos) y verificamos que todo funcione bien:
 
     uwsgi --ini sitp_scraper_uwsgi.ini
+
+Podemos ver que se creó un archvo `/tmp/sitp_scraper.sock`:
+    
+    ll /tmp/sitp_scraper.sock
+    srw-rw-r-- 1 www-data www-data 0 Jan 15 20:46 /tmp/sitp_scraper.sock
+
 
 Ahora instalamos supervisor:
 
@@ -124,7 +130,7 @@ y creamos un archivo de configuración `/etc/supervisor/conf.d/sitp_scraper.conf
 [program:uwsgi]
 user            = www-data
 command = /home/deploy/.virtualenvs/sitp_scraper/bin/uwsgi --ini=/home/deploy/sitp_scraper/sitp_scraper_uwsgi.ini
-autostart       =true
+autostart       = true
 autorestart     = true
 stderr_logfile  = /tmp/uwsgi_err.log
 stdout_logfile  = /tmp/uwsgi.log
