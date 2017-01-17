@@ -54,13 +54,15 @@ server {
     server_name  nuestroservidor.com;  # Nuestro dominio o dirección IP
     charset      utf-8;
 
-    client_max_body_size 10M;  # Tamaño máximo de archivos subidos al servidor
+    client_max_body_size 10M;  # Tamaño máximo de archivos que podrémos subir al servidor
 
     location /media  {
+        # MEDIA_ROOT de nuestro proyecto de Django
         alias /home/deploy/sitp_scraper/media;
     }
 
     location /static {
+        # STATIC_ROOT de nuestro proyecto de Django
         alias /home/deploy/sitp_scraper/static;
 
     }
