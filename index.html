@@ -174,6 +174,8 @@ sudo /etc/init.d/nginx start
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
 </pre></td><td class='code'><pre><code class='nginx'><span class='line'><span class="k">upstream</span> <span class="s">django</span> <span class="p">{</span>
 </span><span class='line'>    <span class="kn">server</span> <span class="s">unix:///tmp/sitp_scraper.sock</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
@@ -184,13 +186,15 @@ sudo /etc/init.d/nginx start
 </span><span class='line'>    <span class="kn">server_name</span>  <span class="s">nuestroservidor.com</span><span class="p">;</span>  <span class="c1"># Nuestro dominio o dirección IP</span>
 </span><span class='line'>    <span class="kn">charset</span>      <span class="s">utf-8</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="kn">client_max_body_size</span> <span class="s">10M</span><span class="p">;</span>  <span class="c1"># Tamaño máximo de archivos subidos al servidor</span>
+</span><span class='line'>    <span class="kn">client_max_body_size</span> <span class="s">10M</span><span class="p">;</span>  <span class="c1"># Tamaño máximo de archivos que podrémos subir al servidor</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="kn">location</span> <span class="s">/media</span>  <span class="p">{</span>
+</span><span class='line'>        <span class="c1"># MEDIA_ROOT de nuestro proyecto de Django</span>
 </span><span class='line'>        <span class="kn">alias</span> <span class="s">/home/deploy/sitp_scraper/media</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="kn">location</span> <span class="s">/static</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1"># STATIC_ROOT de nuestro proyecto de Django</span>
 </span><span class='line'>        <span class="kn">alias</span> <span class="s">/home/deploy/sitp_scraper/static</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="p">}</span>
