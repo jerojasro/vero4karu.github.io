@@ -17,6 +17,8 @@ La idea es que nuestro servidor web va a usar una interfaz (WSGI) para "hablar" 
 
     Usuario <-> Servidow web <-> Socket <-> uWSGI <-> Django
 
+<!-- more -->
+
 Decimos que el código del proyecto está en la carpeta `/home/deploy/sitp_scraper`. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto (en éste ejemplo usamos [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)):
 
     mkvirtualenv stip_scraper

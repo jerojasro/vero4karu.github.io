@@ -9,6 +9,8 @@ categories:
 
 Cómo armar un invernadero para un apartamento pequeño.
 
+<!-- more -->
+
 Materiales:
 
 * Madera de balsa
