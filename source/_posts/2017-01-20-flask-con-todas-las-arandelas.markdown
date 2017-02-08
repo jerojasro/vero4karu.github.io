@@ -243,3 +243,406 @@ url_for('users.user_detail', pk=user_pk)
 ```
 
 ## Vistas
+
+#### Request
+
+En Flask el objeto `request` no se está pasando como parametro al la vista (como en Django, por ejemplo), sino es una variable global:
+
+```
+GET http://localhost:5000/users/user/1?q=foo
+```
+
+{% codeblock users/views.py lang:python %}
+from flask import Blueprint, request
+
+users = Blueprint('users', __name__, template_folder='templates')
+
+
+@users.route('/user/<int:pk>')
+def user_detail(pk):
+    print(request)
+    print(request.method)  # GET
+    print(request.args)    # ImmutableMultiDict([('q', u'foo')])
+    print(request.headers)
+    return '<h1>Hello, user #{}!</h1>'.format(pk)
+{% endcodeblock %}
+
+#### Decoradores
+
+Aparte de la definición de ruta, la vista en Flask puede tenet otros decoradores, por
+
+{% codeblock users/views.py lang:python %}
+@users.route('/user/<int:pk>')
+@login_required
+def user_detail(pk):
+    return '<h1>Hello, user #{}!</h1>'.format(pk)
+{% endcodeblock %}
+
+## Plantillas
+
+Ahora vamos a renderizar una plantilla desde nuestra vista. Para eso vamos a usar el método `render_template` que recibe como argumentos la ruta hasta la plantilla dentro de la carpeta que especificamos en el parametro `template_folder` del Blueprint, y los demás argumentos que son los parametros de contexto.
+
+{% codeblock users/views.py lang:python %}
+from flask import Blueprint
+from flask import render_template
+
+users = Blueprint('users', __name__, template_folder='templates')
+
+
+@users.route('/user/<int:pk>')
+def user_detail(pk):
+    return render_template('users/detail.html', user_id=pk)
+{% endcodeblock %}
+
+{% codeblock users/templates/users/detail.html lang:html %}
+{% raw %}
+<html>
+  <body>
+    <h1>Hello, user #{{ user_id }}!</h1>
+  </body>
+</html>
+{% endraw %}
+{% endcodeblock %}
+
+### Jinja2
+
+Para renderizar plantillas Flask usa el lenguaje `Jinja2`. Vamos a mirar algunas de sus funcionalidases:
+
+#### Variables:
+
+{% codeblock lang:html %}
+{% raw %}
+{{ foo.bar }}
+{{ foo['bar'] }}
+{% endraw %}
+{% endcodeblock %}
+
+#### Condicionales:
+
+{% codeblock lang:html %}
+{% raw %}
+{% if user.address %}
+    <p>{{ user.address }}</p>
+{% endif %}
+{% endraw %}
+{% endcodeblock %}
+
+##### Bucles:
+
+{% codeblock lang:html %}
+{% raw %}
+{% for user in users %}
+  <li>{{ user.name }}</li>
+{% else %}
+  <li>No hay usuarios</li>
+{% endfor %}
+{% endraw %}
+{% endcodeblock %}
+
+##### Bloques:
+
+{% codeblock lang:html %}
+{% raw %}
+{% block title %}Usuarios{% endblock %}
+{% endraw %}
+{% endcodeblock %}
+
+##### Extender una plantilla base:
+
+{% codeblock lang:html %}
+{% raw %}
+{% extends "layouts/main.html" %}
+{% endraw %}
+{% endcodeblock %}
+
+#### Comentario:
+
+{% codeblock lang:html %}
+{% raw %}
+{# Texto #}
+{% endraw %}
+{% endcodeblock %}
+
+##### Incluir otra plantilla:
+
+{% codeblock lang:html %}
+{% raw %}
+{% with rating=user.rating %}
+    {% include 'includes/_rating.html' %}
+{% endwith %}
+{% endraw %}
+{% endcodeblock %}
+
+##### Asignar valor a una variable local:
+
+{% codeblock lang:html %}
+{% raw %}
+{% set permissions = user.get_permission() %}
+{{ permissions }}
+{% endraw %}
+{% endcodeblock %}
+
+##### Filtros:
+
+{% codeblock lang:html %}
+{% raw %}
+{{ user.address|default('N/A') }}
+{% endraw %}
+{% endcodeblock %}
+
+## Procesadores de contexto
+
+De forma predetermiada, el contexto de todas las plantillas ya tienen los sigientes variables:
+
+* `config` - Objeto de configuración (`flask.config`)
+
+{% codeblock lang:html %}{% raw %}
+{{ config.DEBUG }}
+{% endraw %}{% endcodeblock %}
+
+* `request` - Objeto de la petición actual (`flask.request`)
+
+{% codeblock lang:html %}{% raw %}
+{{ request.path }}
+{% endraw %}{% endcodeblock %}
+
+* `session` - Objeto de sesión (`flask.session`)
+* `g` - Variables globales
+
+Hay una forma de tener `context_processors` (como en Django) par apoder pasar unas variables a todas las plantillas del proyecto:
+
+{% codeblock run.py lang:python %}
+from flask import Flask
+
+def create_app():
+    app = Flask(__name__, static_url_path='/static')
+    app.config.from_object('conf.config')
+
+    from users.views import users
+    app.register_blueprint(users, url_prefix='/users')
+
+    @app.context_processor
+    def constants_processor():
+        return {
+            'say_hello': 'Hola',
+        }
+
+    return app
+{% endcodeblock %}
+
+Ahora podemos acceder la variable `say_hello` desde todas las plantillas sin tener que pasarla cada vez explicitamente:
+
+{% codeblock users/templates/users/detail.html lang:html %}
+{% raw %}
+<html>
+  <body>
+    <h1>{{ say_hello }}, user #{{ user_id }}!</h1>
+  </body>
+</html>
+{% endraw %}
+{% endcodeblock %}
+
+## Modelos
+
+### SQLAlchemy
+
+Hay dos librerías que nos permiten trabajar con modelos y hacer periciones SQL desde Flask.
+
+```
+$ pip install SQLAlchemy
+$ pip install Flask-SQLAlchemy
+```
+
+Una es `SQLAlchemy` y la otra es su extención para Flask - `Flask-SQLAlchemy`, que viene con algunas funcionalidades adicionales y útiles en el desarrollo web, por ejemplo, el método `first_or_404()` para obtener el primer elemento del query o error HTTP 404 si no existe, o el método `paginate()` para realizar paginación sobre los objetos de `BaseQuery`.
+
+Ahora incluimos `SQLAlchemy` como una aplicación externa de nuestro proyecto. Primero creamos una varible `db` para que el import no se rompa cuando la aplicación todavía no se inicializó, y en `create_app` y inicializamos la app: `db.init_app(app)`.
+
+{% codeblock run.py lang:python %}
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+def create_app():
+    app = Flask(__name__, static_url_path='/static')
+    app.config.from_object('conf.config')
+
+    db.init_app(app)
+    return app
+{% endcodeblock %}
+
+En el archivo de comfiguración colocamos la ruta hacía nuestra base de datos.
+
+{% codeblock conf/config.py lang:python %}
+SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
+{% endcodeblock %}
+
+Y ahora posemos crear los modelos. Aquí en ejemplo se puede ver comómo definir modelos, columnas de tipos diferentes, crear llaves foráneas
+
+{% codeblock users/models.py lang:python %}
+from run import db
+
+
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True)
+    email = db.Column(db.String(120), unique=True)
+    city_id = db.Column(db.ForeignKey(u'cities.id'), nullable=False, index=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=db.func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, default=db.func.now(),
+                        onupdate=db.func.now())
+
+    def __repr__(self):
+        return '<Usuario %r>' % self.username
+
+
+class City(db.Model):
+    __tablename__ = 'cities'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+
+    users = db.relationship('User', backref='city', lazy='dynamic')
+{% endcodeblock %}
+
+### CRUD
+
+Miramos los métodos de CRUD básicos que nos ofrece el ORM de SQLAlchemy.
+
+##### Crear
+
+{% codeblock lang:python %}
+user = User(email='john@example.com', username='')
+db.session.add(user)
+db.session.commit()
+{% endcodeblock %}
+
+##### Obtener todos usuarios
+
+{% codeblock lang:python %}
+users = User.query.all()  # [<Usuario john'>, <Usuario u'admin'>]
+{% endcodeblock %}
+
+##### Obtener el primer usuario
+
+{% codeblock lang:python %}
+john = User.query.first()  # <Usuario 'john'>
+{% endcodeblock %}
+
+##### Filtrar usuarios y ordenar
+
+{% codeblock lang:python %}
+User.query.filter_by(username='john').all()
+User.query.filter(
+    User.created_at >= (datetime.datetime.utcnow() - datetime.timedelta(days=3)
+).order_by(User.created_at.desc()).limit(10).all()
+{% endcodeblock %}
+
+##### Borrar
+
+{% codeblock lang:python %}
+db.session.delete(user)
+db.session.commit()
+{% endcodeblock %}
+
+`BaseQuery` no tiene metodo `save()`, sino todos los cambios que hacemos a objetos de modelos se agraga a las sessión. Para realizar la transacción correspondiente a la base de datos, hace falta llamar un método `db.session.commit()`.
+
+## Formularios
+
+Existen varisas librerías de Python que nos permiten trabajar con formularios. En éste ejemplo vamos a mirar una llamada `Flask-WTF`.
+
+```
+$ pip install Flask-WTF
+$ pip install Flask-Bootstrap
+```
+
+Vamos a usarlo junto con una librería complementaria `Flask-Bootstrap` que lo único que hace es generar el código de HTML del formulario con loa esctuctura y las clases de [Twitter Bootstrap](http://getbootstrap.com/2.3.2/) (lo mismo que hace `django-crispy-forms`).
+
+{% codeblock users/forms.py lang:python %}
+import wtforms
+from flask_wtf import Form
+
+class UserForm(Form):
+    email = wtforms.StringField(
+        validators=[
+            wtforms.validators.Email(),
+            wtforms.validators.DataRequired(),
+        ],
+    )
+    username = wtforms.StringField(
+        validators=[wtforms.validators.DataRequired()],
+    )
+    submit = wtforms.SubmitField('Save')
+{% endcodeblock %}
+
+Ahora podemos renderiizar el formulario en nuestra plantilla:
+
+{% codeblock users/templates/users/form.html lang:html %}{% raw %}
+{% extends "layouts/main_layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+  {{ wtf.quick_form(form) }}
+{% endblock %}
+{% endraw %}{% endcodeblock %}
+
+Éste código nos va a renderizar el formulario completo con todos los campos especificados. Si queremos renderizar sólo algunos campor específicos, podemos escrebirlo de la siguiente forma:
+
+{% codeblock users/templates/users/form.html lang:html %}{% raw %}
+{{ wtf.form_field(form.email) }}
+{{ wtf.form_field(form.submit) }}
+{% endraw %}{% endcodeblock %}
+
+Lo único que hace falta es escribir una vista que resiba los datos del formularioi y los guarde en la base de datos, por ejemplo.
+
+El diccionario con los valores para cada campo se encuentra en la variable `request.form`. Si el request tiene método POST, validamos el formulario `form.validate()`, y en el caso exitoso, pasamos los valores del formulario a nuestro objeto: `form.populate_obj(user)`.
+
+{% codeblock users/views.py lang:python %}
+@users.route('/update/<int:pk>/', methods=('GET', 'POST'))
+def user_update(pk):
+    user = User.query.filter_by(id=pk).first_or_404()
+
+    form = UserForm(user, request.form)
+
+    if request.method == 'POST' and form.validate():
+        form.populate_obj(user)
+
+        db.session.add(user)
+        db.session.commit()
+
+        flash('Usuario fue editado exitosamente', 'success')
+        return redirect(url_for('users.user_detail', pk=user.id))
+
+    return render_template(
+        'users/form.html',
+        form=form,
+    )
+{% endcodeblock %}
+
+## Autenticación
+
+Para agregar autenticación al proyecto de Flask, normalmente usan dos siguentes librerías:
+
+```
+$ pip install Flask-Login
+$ pip install Flask-OAuth
+```
+
+La primera tiene toda la funcionalidad de logeo, logout de usuario. La podemos instalar de la misma forma, que hicimos con SQLAlchemy hace poco:
+
+{% codeblock run.py lang:python %}
+from flask_login import LoginManager
+
+login_manager = LoginManager()
+login_manager.login_view = 'users.login'
+
+def create_app():
+    app = Flask(__name__, static_url_path='/static')
+    app.config.from_object('conf.config')
+    app.permanent_session_lifetime = datetime.timedelta(days=365)
+
+    login_manager.init_app(app)
+{% endcodeblock %}
+
+En `login_manager.login_view` especificamos qué vista corresponde a login, y en `permanent_session_lifetime`  se puede indicar el tiempo en el qué expirará la sesión.

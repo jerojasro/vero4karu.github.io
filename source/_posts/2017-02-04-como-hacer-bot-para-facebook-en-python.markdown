@@ -53,6 +53,17 @@ Después de oprimir el botón "Verify and Save"
 
 podemos generar *Access Token* para nuestra página y suscribirnos a los eventos en messenger.
 
+{% img center /images/bots/fb_bot_add_subscription.png %}
+
+{% img center /images/bots/fb_bot_current_subscription.png %}
+
+{% img center /images/bots/fb_bot_edit_subscription.png %}
+
+{% img center /images/bots/fb_bot_subscription_status.png %}
+
+{% img center /images/bots/fb_bot_publish.png %}
+
+
 Enlaces:
 
 * [Quick Start](https://developers.facebook.com/docs/messenger-platform/guides/quick-start): cómo crear y configurar webhooks.
