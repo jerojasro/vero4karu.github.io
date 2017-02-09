@@ -15,11 +15,11 @@ categories:
 
 ## Para empezar
 
-Hay muchos recursos acerca de Flask en internetes, pero aquí me gustaría mencionar los tres que considero fundamentales.
+Hay muchos recursos acerca de Flask en los internetes, pero aquí me gustaría mencionar los tres que considero fundamentales.
 
 El primero, por supuesto, es la documentación oficial del framework: [flask.pocoo.org/docs](http://flask.pocoo.org/docs/).
 
-Luego, es muy bueno mirar el libro de Miguel Grinberg [flaskbook.com](https://flaskbook.com/), quien de forma bastante detallada esplica cómo hacer una plataforma de publicación de entradas de blog. El cógido, que sirve como ejemplo en el libro, se puede encontrar en la página de github del autor. Como material complemetario al libro, es muy recomendado echar una meirada en su blog personal de [blog.miguelgrinberg.com](https://blog.miguelgrinberg.com/), donde Miguel Grinberg cubre los temas más específicas de desarrollo en Flask.
+Luego, es muy bueno mirar el libro de Miguel Grinberg [flaskbook.com](https://flaskbook.com/), quien de forma bastante detallada esplica cómo hacer una plataforma de publicación de entradas de blog. El cógido, que sirve como ejemplo en el libro, se puede encontrar en la página de github del autor. Como material complemetario al libro, es muy recomendado echar una mirada en su blog personal de [blog.miguelgrinberg.com](https://blog.miguelgrinberg.com/), donde Miguel Grinberg cubre los temas más específicas de desarrollo en Flask.
 
 Y ahora, como dijo el austronauta ruso Yuri Gagarin en el momento del despegue de su nave Vostok 1: "¡Poyejali!"" (en ruso: Поехали!; se traduce como «¡Vámonos!»).
 
@@ -646,3 +646,195 @@ def create_app():
 {% endcodeblock %}
 
 En `login_manager.login_view` especificamos qué vista corresponde a login, y en `permanent_session_lifetime`  se puede indicar el tiempo en el qué expirará la sesión.
+
+El modelo que vamos a usar para usuarios debe heredar de `UserMixin` de `flask_logins`
+
+{% codeblock users/models.py lang:python %}
+from flask_login import UserMixin
+from run import db
+
+class User(db.Model, UserMixin):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    # ...
+{% endcodeblock %}
+
+Y ahora usando la otra librería - `Flask-OAuth` - podemos hacer una vista para nuestros usuarios puedan hacer login desde su cuenta de Google, por ejemplo.
+
+{% codeblock users/views.py lang:python %}
+@users.route('/login')
+def login():
+    callback = url_for('users.authorized', _external=True)
+    return google.authorize(callback=callback)
+{% endcodeblock %}
+
+Cuando el usuario ya está autenticado, en cualquer punto de nuestra aplicación podemos preguntar por el objero correspondiente: 
+
+```python
+from flask_login import current_user
+```
+
+Más información acerca de cómo congigurar los tokens de Google se puede encontrar en la documentación de la librería: [pythonhosted.org/Flask-OAuth/](https://pythonhosted.org/Flask-OAuth/).
+
+## Múltiples idiomas
+
+Si queremos tener soporte de multiples idiomas, tendremos que instalar otra librería:
+
+```
+$ pip install Flask-Babel
+```
+
+Mirarmos qué comandos nos ofrece:
+
+{% codeblock lang:bash %}
+# Extraer los textos para traducción 
+# (se corre sólo una vez al principio)
+$ pybabel extract -F babel.cfg -o messages.pot .
+
+
+# Generar un catálogo para español
+$ pybabel init -i messages.pot -d translations -l es
+
+# Se crea el directorio translations/es
+# Por dentro hay otro directorio llamado LC_MESSAGES que tiene  
+# un archivo messages.po. 
+
+# Después de traducir los textos y guardarlos en messages.po,
+# compilamos el archivo y publicamos los textos:
+
+$ pybabel compile -d translations
+
+# Para actualizar las traducciones a diario:
+
+$ pybabel extract -F babel.cfg -o messages.pot .
+$ pybabel update -i messages.pot -d translations
+{% endcodeblock %}
+
+Si queremos traducir cadenas de texto dentro del código de Python, habrá que usar la siguiente sintaxis:
+
+{% codeblock lang:python %}
+from flask_babel import gettext as _
+
+_('Invalid authentication token')
+{% endcodeblock %}
+
+Y en plantillas se ve muy parecido:
+
+{% codeblock lang:html %}{% raw %}
+<button class="btn btn-default" title="{{ _('Help') }}">
+    <i class="fa fa-question"></i>
+</button>
+{% endraw %}{% endcodeblock %}
+
+## Mensajes
+
+Los que están familiares con el framework Django, recuerden que Django tiene un procesador de contexto `messages` que nos permite mandar mensajes a las plantillas desde el código Python:
+
+{% codeblock lang:python %}
+from django.contrib import messages
+
+messages.add_message(request, messages.INFO, 'Hello world.')
+{% endcodeblock %}
+
+En Flask es muy parecido, sino esos mensajes se llaman `flash`:
+
+{% codeblock lang:python %}
+from flask import flash
+
+flash('Hello world.', 'success')
+{% endcodeblock %}
+
+y para consultarnos dentro de la plantilla llamamos el método `get_flashed_messages`:
+
+{% codeblock lang:html %}{% raw %}
+{% for category, message in get_flashed_messages(with_categories=true) %}
+<div class="alert alert-{{ category|replace('message', 'info') }}">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  {{ message }}
+</div>
+{% endfor %}
+{% endraw %}{% endcodeblock %}
+
+## Cache
+
+Y para terminar la presentación, vamos a meter todo en cache #comonosgusta:
+
+```
+$ pip install Flask-Cache
+```
+
+Ya conocemos cómo instalar las aplicaciones externas en Flask, pero lo repasamos:
+
+{% codeblock run.py lang:python %}
+from flask_cache import Cache
+
+
+cache = Cache()
+
+def create_app():
+    app = Flask(__name__, static_url_path='/static')
+    app.config.from_object('conf.config')
+
+    cache.init_app(app)
+{% endcodeblock %}
+
+Y ahora sí, vamos con toda... ponemos en caché una vista completa:
+
+{% codeblock users/views.py lang:python %}
+from run import cache
+
+@users.route('/list')
+@cache.cached(timeout=60*60, key_prefix='user_list')
+def user_list():
+    pass
+{% endcodeblock %}
+
+y luego un fragmento de html:
+
+{% codeblock lang:html %}{% raw %}
+{% cache 60*60, 'dashboard_menu_user' + current_user.id|string %}
+  {% include 'layouts/_menu.html' %}
+{% endcache %}
+{% endraw %}{% endcodeblock %}
+
+## pip freeze
+
+Y ahora vamos resumir qué librerías hemos instalado y cuals otros nos podrías ser útil en el futuro:
+
+{% codeblock %}{% raw %}
+# Framework
+Flask==0.11
+
+# Libs
+celery==3.1.20
+coverage==4.0.3
+factory-boy==2.6.1
+SQLAlchemy==1.0.12
+SQLAlchemy-Utils==0.31.6
+
+# Flask libs
+Flask-And-Redis==0.6
+Flask-Babel==0.9               # Múltiples idiomas y zonas horarias
+Flask-Bootstrap==3.3.5.7       # ~ django-crispy-forms para Bootstrap
+Flask-Cache==0.13.1
+Flask-DebugToolbar==0.10.0     # En Django: django-debug-toolbar
+Flask-fillin==0.2              # Diligenciar formularios en pruebas
+Flask-Login==0.3.2
+Flask-Migrate==1.8.0
+Flask-Moment==0.5.1            # Integración con moment.js
+Flask-OAuth==0.12              # ~ python-social-auth
+Flask-Script==2.0.5            # manage.py, shell
+Flask-SQLAlchemy==2.1
+Flask-WTF==0.12                # Formularios con protección CSRF
+WTForms-Alchemy==0.15.0        # Para crear formularios basados en modelos
+WTForms-Components==0.10.0     # Campos adicionales para los formularios de Flask
+{% endraw %}{% endcodeblock %}
+
+{% img center /images/flask/nerd-dad.jpg %}
+
+Gracias por su atención y a [Tappsi](https://tappsi.co/) por al apoyo.
+
+{% img center /images/flask/tappsi_logo.svg 100 %}
+
+Estamos contratando jobs@tappsi.co
