@@ -19,9 +19,9 @@ Hay muchos recursos acerca de Flask en los internetes, pero aquí me gustaría m
 
 El primero, por supuesto, es la documentación oficial del framework: [flask.pocoo.org/docs](http://flask.pocoo.org/docs/).
 
-Luego, es muy bueno mirar el libro de Miguel Grinberg [flaskbook.com](https://flaskbook.com/), quien de forma bastante detallada esplica cómo hacer una plataforma de publicación de entradas de blog. El cógido, que sirve como ejemplo en el libro, se puede encontrar en la página de github del autor. Como material complemetario al libro, es muy recomendado echar una mirada en su blog personal de [blog.miguelgrinberg.com](https://blog.miguelgrinberg.com/), donde Miguel Grinberg cubre los temas más específicas de desarrollo en Flask.
+Luego, es muy bueno mirar el libro de Miguel Grinberg: [flaskbook.com](https://flaskbook.com/), en donde se explica de forma bastante detallada cómo hacer una plataforma de publicación de entradas de blog. El código, que sirve como ejemplo en el libro, se puede encontrar en la página de github del autor. Como material complementario al libro, es muy recomendado echar una mirada en el [blog personal de Miguel Grinberg](https://blog.miguelgrinberg.com/), donde el autor cubre los temas más específicos del desarrollo en Flask.
 
-Y ahora, como dijo el austronauta ruso Yuri Gagarin en el momento del despegue de su nave Vostok 1: "¡Poyejali!"" (en ruso: Поехали!; se traduce como «¡Vámonos!»).
+Y ahora, como dijo el astronauta ruso Yuri Gagarin en el momento del despegue de su nave Vostok 1: "¡Poyejali!"" (en ruso: Поехали!; se traduce como «¡Vámonos!»).
 
 ## Aplicación básica
 
@@ -32,9 +32,9 @@ $ mkvirtualenv pycon2017 -p python3
 $ pip install Flask
 ```
 
-Al moento de ésta presentación la últma versión del framework es **0.12**.
+Al momento de ésta presentación la última versión del framework es **0.12**.
 
-Ahora creamos nuesta primera aplicancíon de Flask que va a ser sólo un archivo de Python:
+Ahora creamos nuestra primera aplicación de Flask que va a ser sólo un archivo de Python:
 
 {% codeblock app.py lang:python %}
 from flask import Flask
@@ -49,9 +49,9 @@ if __name__ == "__main__":
     app.run()
 {% endcodeblock %}
 
-El decorador ``route`` nos auyda a decinir la ruta de URL para la vista llamada ``hello`` que simplemtnte devuelve al navegador la respuesta HTTP 200 con la frase "Hello World!". 
+El decorador ``route`` nos ayuda a definir la ruta de URL para la vista llamada ``hello`` que simplemente devuelve al navegador la respuesta HTTP 200 con la frase "Hello World!". 
 
-Corrimos la aplicación con el siguiente comando:
+Corremos la aplicación con el siguiente comando:
 
 ```
 $ python app.py 
@@ -64,13 +64,13 @@ Y ahora lo podemos abrir en nuestro navegador:
 
 ## manage.py
 
-Nosotros, por experiencia con otros frameworks, ya nos acostumbramos con la posibilidad de acceder shell de Python desde nuestra aplicación, o con poder correr comandos que pertenecen a la aplicación desde la consola. Para tener todo esto en Flask, instalamos un librería llamada `Flask-Script`.
+Nosotros, por experiencia con otros frameworks, ya nos acostumbramos a la posibilidad de acceder al shell de Python de nuestra aplicación, o con poder correr comandos, que pertenecen a la aplicación, desde la consola. Para tener todo esto en Flask, instalamos un librería llamada `Flask-Script`.
 
 ```
 $ pip install Flask-Script
 ```
 
-Separamos nuesta aplicación en dos archovos: en el primero vamos iniciar la app de Flask, en la que especificamos la ruta de los archivos estáticos y el archovo de configuración (equivalente de `settings.py` en Django)
+Ahora separamos nuestra aplicación en dos archivos: en el primero vamos iniciar la app de Flask, en la que especificamos la ruta de los archivos estáticos y del archivo de configuración (equivalente de `settings.py` en Django)
 
 {% codeblock run.py lang:python %}
 from flask import Flask
@@ -82,7 +82,7 @@ def create_app():
     return app
 {% endcodeblock %}
 
-y en el segundo vamos a colocar la instancia de **Manager**
+y en el segundo vamos a colocar una instancia de **Manager**, que se encaragará de correr la aplicación con `python manage.py`:
 
 {% codeblock manage.py lang:python %}
 from flask.ext.script import Manager
@@ -99,13 +99,13 @@ if __name__ == '__main__':
     manager.run()
 {% endcodeblock %}
 
-Corriendo el sigiente comando en la consola
+Corriendo el siguiente comando en la consola
 
 ```
 $ ./manage.py runserver -h HOST -p PORT
 ```
 
-podemos ver la misma aplicación, como en el paso anterior, sino ahora podemos acceder a shell usando el comando
+podemos ver la misma aplicación, como en el paso anterior, pero ahora podemos además acceder a shell usando el comando
 
 ```
 $ ./manage.py shell
@@ -114,7 +114,7 @@ In [1]:
 
 ## Configuración
 
-Miramos con más atención la estructura del proyecto:
+Miremos con más atención la estructura del proyecto:
 
 ```
 ├── conf
@@ -145,7 +145,7 @@ Más información acerca de la configuración en Flask se puede encontrar en la 
 
 ## Blueprints
 
-Cuando nuesto archivo con las vistas crezca, vamos a querer a separar la lógica de nuestra aplicación en los modulos diferentes (así como lo tenemos con apps de Django):
+Cuando nuestro archivo con las vistas crezca, vamos a querer a separar la lógica de nuestra aplicación en módulos diferentes (así como lo tenemos con apps de Django):
 
 ```
 ├── conf
@@ -162,9 +162,9 @@ Cuando nuesto archivo con las vistas crezca, vamos a querer a separar la lógica
 └── run.py
 ```
 
-En este caso nos auyda un consepto de crear aplicaciones llamado **Blueprints**. La informacion completa acerca de Blueprints se puede encontrar en la documentación de Flask: [flask.pocoo.org/docs/0.12/blueprints/](http://flask.pocoo.org/docs/0.12/blueprints/). 
+En este caso nos ayuda un concepto de crear aplicaciones llamado **Blueprints**. La información completa acerca de Blueprints se puede encontrar en la documentación de Flask: [flask.pocoo.org/docs/0.12/blueprints/](http://flask.pocoo.org/docs/0.12/blueprints/). 
 
-Creamos un Blueprina para nuesta aplicación, conde vamos a guardad las vistas relacionadas a nuestros usuarios, por ejemplo:
+Creamos un Blueprint para nuestra aplicación, donde vamos a guardar las vistas relacionadas a nuestros usuarios, por ejemplo:
 
 {% codeblock users/views.py lang:python %}
 from flask import Blueprint
@@ -179,7 +179,7 @@ def hello():
     return 'Hello Worlds!'
 {% endcodeblock %}
 
-y lo registaramos en el archivo `run.py`:
+y lo registramos en el archivo `run.py`:
 
 {% codeblock run.py lang:python %}
 from flask import Flask
@@ -196,13 +196,13 @@ def create_app():
     return app
 {% endcodeblock %}
 
-indicando en el argumento `url_prefix` del método `register_blueprint`, que todos los URLs, relacionadas con el Blueprint de usuario, van a empezar con el prefijo `/users`, por ejemplo: [http://localhost:5000/users/](http://localhost:5000/users/).
+indicando en el argumento `url_prefix` del método `register_blueprint`, que todos los URLs, relacionados con el Blueprint de usuario, van a empezar con el prefijo `/users`, por ejemplo: [http://localhost:5000/users/](http://localhost:5000/users/).
 
 ## URLs
 
-Miramos cómo se definen los URLs en Flask.
+Miremos cómo se definen los URLs en Flask.
 
-Primero, hay formas diferentes de espesificar la ruta: usando el decorador de Blueprint `@users.route` o el método `users.add_url_rule`:
+Primero, hay formas diferentes de especificar la ruta: usando el decorador de Blueprint `@users.route` o el método `users.add_url_rule`:
 
 ```python
 @users.route('/user/<name>')
@@ -214,9 +214,9 @@ def users_list():
 users.add_url_rule('/', 'users_list', users_list)
 ```
 
-En el primer ejemplo podemos ver, que a la vista se para un paramentro de URL `name`, que luego accedemos desde el parametro `name` de la vista `user_profile`.
+En el primer ejemplo podemos ver, que a la vista se pasa el parámetro de URL `name`, al que luego accedemos desde el parámetro `name` de la vista `user_profile`.
 
-Flaks permite especificar el típo de parametro que esperamos. Por ejemplo, para los númetros enteros, el decorador de escribe así:
+Flaks permite especificar el tipo de parámetro que esperamos. Por ejemplo, para los números enteros, el decorador de escribe así:
 
 ```python
 @users.route('/user/<int:pk>')
@@ -224,7 +224,7 @@ def user_detail(pk):
     return '<h1>Hello, user #{}!</h1>'.format(pk)
 ```
 
-También se puede eplicitamente explicar el método HTTP, a que responde la vista.
+También se puede explícitamente indicar el método HTTP, que acepta la vista.
 
 ```python
 @users.route('/user/<int:pk>/create', methods=('POST',))
@@ -232,9 +232,9 @@ def user_create(pk):
     pass
 ```
 
-En este caso al tratar de acceder la vista con la petición GET, obtenemos el error 405 (Method not allowed).
+En este caso al tratar de acceder a la vista con el método GET, obtenemos el error 405 (Method not allowed).
 
-Para obtener URL, que corresponde a la vista usamos el método `url_for`, al que pasamos el nombre de Blueprint y nombre de la vista:
+Para obtener el URL, que corresponde a la vista usamos el método `url_for`, al que pasamos el nombre del Blueprint y el nombre de la vista:
 
 ```python
 from flask import url_for
@@ -246,7 +246,7 @@ url_for('users.user_detail', pk=user_pk)
 
 #### Request
 
-En Flask el objeto `request` no se está pasando como parametro al la vista (como en Django, por ejemplo), sino es una variable global:
+En Flask el objeto `request` no se está pasando como parámetro al la vista (como en Django, por ejemplo), sino que es una variable global:
 
 ```
 GET http://localhost:5000/users/user/1?q=foo
@@ -269,7 +269,7 @@ def user_detail(pk):
 
 #### Decoradores
 
-Aparte de la definición de ruta, la vista en Flask puede tenet otros decoradores, por
+Aparte de la definición de ruta, la vista en Flask puede tener otros decoradores, por ejemplo:
 
 {% codeblock users/views.py lang:python %}
 @users.route('/user/<int:pk>')
@@ -280,7 +280,7 @@ def user_detail(pk):
 
 ## Plantillas
 
-Ahora vamos a renderizar una plantilla desde nuestra vista. Para eso vamos a usar el método `render_template` que recibe como argumentos la ruta hasta la plantilla dentro de la carpeta que especificamos en el parametro `template_folder` del Blueprint, y los demás argumentos que son los parametros de contexto.
+Ahora vamos a renderizar una plantilla desde nuestra vista. Para eso vamos a usar el método `render_template` que recibe como argumentos la ruta hasta la plantilla dentro de la carpeta que especificamos en el parámetro `template_folder` del Blueprint, y los demás argumentos que son los parámetros de contexto.
 
 {% codeblock users/views.py lang:python %}
 from flask import Blueprint
@@ -306,7 +306,7 @@ def user_detail(pk):
 
 ### Jinja2
 
-Para renderizar plantillas Flask usa el lenguaje `Jinja2`. Vamos a mirar algunas de sus funcionalidases:
+Para renderizar plantillas Flask usa el lenguaje `Jinja2`. Vamos a mirar algunas de sus funcionalidades:
 
 #### Variables:
 
@@ -373,7 +373,7 @@ Para renderizar plantillas Flask usa el lenguaje `Jinja2`. Vamos a mirar algunas
 {% endraw %}
 {% endcodeblock %}
 
-##### Asignar valor a una variable local:
+##### Asignar un valor a una variable local:
 
 {% codeblock lang:html %}
 {% raw %}
@@ -392,7 +392,7 @@ Para renderizar plantillas Flask usa el lenguaje `Jinja2`. Vamos a mirar algunas
 
 ## Procesadores de contexto
 
-De forma predetermiada, el contexto de todas las plantillas ya tienen los sigientes variables:
+De forma predeterminada, el contexto de todas las plantillas ya tiene las siguientes variables:
 
 * `config` - Objeto de configuración (`flask.config`)
 
@@ -409,7 +409,7 @@ De forma predetermiada, el contexto de todas las plantillas ya tienen los sigien
 * `session` - Objeto de sesión (`flask.session`)
 * `g` - Variables globales
 
-Hay una forma de tener `context_processors` (como en Django) par apoder pasar unas variables a todas las plantillas del proyecto:
+Hay una forma de tener `context_processors` (como en Django) para poder pasar variables a todas las plantillas del proyecto:
 
 {% codeblock run.py lang:python %}
 from flask import Flask
@@ -430,7 +430,7 @@ def create_app():
     return app
 {% endcodeblock %}
 
-Ahora podemos acceder la variable `say_hello` desde todas las plantillas sin tener que pasarla cada vez explicitamente:
+Ahora podemos acceder a la variable `say_hello` desde todas las plantillas sin tener que pasarla cada vez explícitamente:
 
 {% codeblock users/templates/users/detail.html lang:html %}
 {% raw %}
@@ -446,16 +446,16 @@ Ahora podemos acceder la variable `say_hello` desde todas las plantillas sin ten
 
 ### SQLAlchemy
 
-Hay dos librerías que nos permiten trabajar con modelos y hacer periciones SQL desde Flask.
+Hay dos librerías que nos permiten trabajar con modelos y hacer peticiones SQL desde Flask.
 
 ```
 $ pip install SQLAlchemy
 $ pip install Flask-SQLAlchemy
 ```
 
-Una es `SQLAlchemy` y la otra es su extención para Flask - `Flask-SQLAlchemy`, que viene con algunas funcionalidades adicionales y útiles en el desarrollo web, por ejemplo, el método `first_or_404()` para obtener el primer elemento del query o error HTTP 404 si no existe, o el método `paginate()` para realizar paginación sobre los objetos de `BaseQuery`.
+Una es `SQLAlchemy` y la otra es su extensión para Flask - `Flask-SQLAlchemy`, que viene con algunas funcionalidades adicionales y útiles en el desarrollo web, por ejemplo, el método `first_or_404()` para obtener el primer elemento del query o error HTTP 404 si no existe, o el método `paginate()` para realizar paginación sobre los objetos de `BaseQuery`.
 
-Ahora incluimos `SQLAlchemy` como una aplicación externa de nuestro proyecto. Primero creamos una varible `db` para que el import no se rompa cuando la aplicación todavía no se inicializó, y en `create_app` y inicializamos la app: `db.init_app(app)`.
+Ahora incluimos `SQLAlchemy` como una aplicación externa de nuestro proyecto. Primero creamos una variable `db` para que el import no se rompa cuando la aplicación todavía no se ha inicializado, y en `create_app` cuando inicializamos la aplicación: `db.init_app(app)`.
 
 {% codeblock run.py lang:python %}
 from flask_sqlalchemy import SQLAlchemy
@@ -470,13 +470,13 @@ def create_app():
     return app
 {% endcodeblock %}
 
-En el archivo de comfiguración colocamos la ruta hacía nuestra base de datos.
+En el archivo de configuración colocamos la ruta hacia nuestra base de datos.
 
 {% codeblock conf/config.py lang:python %}
 SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
 {% endcodeblock %}
 
-Y ahora posemos crear los modelos. Aquí en ejemplo se puede ver comómo definir modelos, columnas de tipos diferentes, crear llaves foráneas
+Y ahora podemos crear los modelos. Aquí en el ejemplo se puede ver cómo definir modelos, columnas de tipos diferentes y crear llaves foráneas
 
 {% codeblock users/models.py lang:python %}
 from run import db
@@ -518,7 +518,7 @@ db.session.add(user)
 db.session.commit()
 {% endcodeblock %}
 
-##### Obtener todos usuarios
+##### Obtener todos los usuarios
 
 {% codeblock lang:python %}
 users = User.query.all()  # [<Usuario john'>, <Usuario u'admin'>]
@@ -546,18 +546,18 @@ db.session.delete(user)
 db.session.commit()
 {% endcodeblock %}
 
-`BaseQuery` no tiene metodo `save()`, sino todos los cambios que hacemos a objetos de modelos se agraga a las sessión. Para realizar la transacción correspondiente a la base de datos, hace falta llamar un método `db.session.commit()`.
+`BaseQuery` no tiene método `save()`, sino todos los cambios que hacemos a objetos de modelos se agregan a la sesión. Como la sesión sólo vive durante la petición, para que nuestos cambios sean enviados a la base de datos, hace falta llamar el método `db.session.commit()`.
 
 ## Formularios
 
-Existen varisas librerías de Python que nos permiten trabajar con formularios. En éste ejemplo vamos a mirar una llamada `Flask-WTF`.
+Existen varias librerías de Python que nos permiten trabajar con formularios. En este ejemplo vamos a mirar una llamada `Flask-WTF`.
 
 ```
 $ pip install Flask-WTF
 $ pip install Flask-Bootstrap
 ```
 
-Vamos a usarlo junto con una librería complementaria `Flask-Bootstrap` que lo único que hace es generar el código de HTML del formulario con loa esctuctura y las clases de [Twitter Bootstrap](http://getbootstrap.com/2.3.2/) (lo mismo que hace `django-crispy-forms`).
+Vamos a usarla junto con una librería complementaria - `Flask-Bootstrap` - que lo único que hace es generar el código de HTML del formulario con la estructura y las clases de [Twitter Bootstrap](http://getbootstrap.com/2.3.2/) (lo mismo que hace `django-crispy-forms`).
 
 {% codeblock users/forms.py lang:python %}
 import wtforms
@@ -576,7 +576,7 @@ class UserForm(Form):
     submit = wtforms.SubmitField('Save')
 {% endcodeblock %}
 
-Ahora podemos renderiizar el formulario en nuestra plantilla:
+Ahora podemos renderizar el formulario en nuestra plantilla:
 
 {% codeblock users/templates/users/form.html lang:html %}{% raw %}
 {% extends "layouts/main_layout.html" %}
@@ -587,14 +587,14 @@ Ahora podemos renderiizar el formulario en nuestra plantilla:
 {% endblock %}
 {% endraw %}{% endcodeblock %}
 
-Éste código nos va a renderizar el formulario completo con todos los campos especificados. Si queremos renderizar sólo algunos campor específicos, podemos escrebirlo de la siguiente forma:
+Este código nos va a renderizar el formulario completo con todos los campos especificados. Si queremos renderizar sólo algunos campos específicos, podemos escribirlo de la siguiente forma:
 
 {% codeblock users/templates/users/form.html lang:html %}{% raw %}
 {{ wtf.form_field(form.email) }}
 {{ wtf.form_field(form.submit) }}
 {% endraw %}{% endcodeblock %}
 
-Lo único que hace falta es escribir una vista que resiba los datos del formularioi y los guarde en la base de datos, por ejemplo.
+Lo único que hace falta es escribir una vista que reciba los datos del formulario y los guarde en la base de datos, por ejemplo.
 
 El diccionario con los valores para cada campo se encuentra en la variable `request.form`. Si el request tiene método POST, validamos el formulario `form.validate()`, y en el caso exitoso, pasamos los valores del formulario a nuestro objeto: `form.populate_obj(user)`.
 
@@ -622,14 +622,14 @@ def user_update(pk):
 
 ## Autenticación
 
-Para agregar autenticación al proyecto de Flask, normalmente usan dos siguentes librerías:
+Para agregar autenticación al proyecto de Flask, normalmente usan las dos siguientes librerías:
 
 ```
 $ pip install Flask-Login
 $ pip install Flask-OAuth
 ```
 
-La primera tiene toda la funcionalidad de logeo, logout de usuario. La podemos instalar de la misma forma, que hicimos con SQLAlchemy hace poco:
+La primera tiene toda la funcionalidad de ingreso, salida de usuario. La podemos instalar de la misma forma, que hicimos con SQLAlchemy hace poco:
 
 {% codeblock run.py lang:python %}
 from flask_login import LoginManager
@@ -645,7 +645,7 @@ def create_app():
     login_manager.init_app(app)
 {% endcodeblock %}
 
-En `login_manager.login_view` especificamos qué vista corresponde a login, y en `permanent_session_lifetime`  se puede indicar el tiempo en el qué expirará la sesión.
+En `login_manager.login_view` especificamos qué vista corresponde al ingreso (login), y en `permanent_session_lifetime`  se puede indicar el tiempo en el qué durará activa la sesión.
 
 El modelo que vamos a usar para usuarios debe heredar de `UserMixin` de `flask_logins`
 
@@ -660,7 +660,7 @@ class User(db.Model, UserMixin):
     # ...
 {% endcodeblock %}
 
-Y ahora usando la otra librería - `Flask-OAuth` - podemos hacer una vista para nuestros usuarios puedan hacer login desde su cuenta de Google, por ejemplo.
+Y ahora usando la otra librería - `Flask-OAuth` - podemos hacer una vista para que nuestros usuarios puedan ingresar desde su cuenta de Google, por ejemplo:
 
 {% codeblock users/views.py lang:python %}
 @users.route('/login')
@@ -669,23 +669,23 @@ def login():
     return google.authorize(callback=callback)
 {% endcodeblock %}
 
-Cuando el usuario ya está autenticado, en cualquer punto de nuestra aplicación podemos preguntar por el objero correspondiente: 
+Cuando el usuario ya está autenticado, en cualquier punto de nuestra aplicación podemos preguntar por el objeto correspondiente: 
 
 ```python
 from flask_login import current_user
 ```
 
-Más información acerca de cómo congigurar los tokens de Google se puede encontrar en la documentación de la librería: [pythonhosted.org/Flask-OAuth/](https://pythonhosted.org/Flask-OAuth/).
+En la siguiente dirección se puede encontrar más información acerca de cómo configurar los tokens de autenticación Google: [pythonhosted.org/Flask-OAuth/](https://pythonhosted.org/Flask-OAuth/).
 
 ## Múltiples idiomas
 
-Si queremos tener soporte de multiples idiomas, tendremos que instalar otra librería:
+Si queremos tener soporte de múltiples idiomas, tendremos que instalar otra librería:
 
 ```
 $ pip install Flask-Babel
 ```
 
-Mirarmos qué comandos nos ofrece:
+Miremos qué comandos nos ofrece:
 
 {% codeblock lang:bash %}
 # Extraer los textos para traducción 
@@ -729,7 +729,7 @@ Y en plantillas se ve muy parecido:
 
 ## Mensajes
 
-Los que están familiares con el framework Django, recuerden que Django tiene un procesador de contexto `messages` que nos permite mandar mensajes a las plantillas desde el código Python:
+Los que están familiarizados con el framework Django, seguramente recuerdan que Django tiene un procesador de contexto `messages` que nos permite mandar mensajes a las plantillas desde el código Python:
 
 {% codeblock lang:python %}
 from django.contrib import messages
@@ -737,7 +737,7 @@ from django.contrib import messages
 messages.add_message(request, messages.INFO, 'Hello world.')
 {% endcodeblock %}
 
-En Flask es muy parecido, sino esos mensajes se llaman `flash`:
+En Flask es muy parecido, sólo que esos mensajes se llaman `flash`:
 
 {% codeblock lang:python %}
 from flask import flash
@@ -745,7 +745,7 @@ from flask import flash
 flash('Hello world.', 'success')
 {% endcodeblock %}
 
-y para consultarnos dentro de la plantilla llamamos el método `get_flashed_messages`:
+y para consultarlos dentro de la plantilla llamamos el método `get_flashed_messages`:
 
 {% codeblock lang:html %}{% raw %}
 {% for category, message in get_flashed_messages(with_categories=true) %}
@@ -756,15 +756,15 @@ y para consultarnos dentro de la plantilla llamamos el método `get_flashed_mess
 {% endfor %}
 {% endraw %}{% endcodeblock %}
 
-## Cache
+## Caché
 
-Y para terminar la presentación, vamos a meter todo en cache #comonosgusta:
+Y para terminar la presentación, vamos a meter todo en caché #comonosgusta:
 
 ```
 $ pip install Flask-Cache
 ```
 
-Ya conocemos cómo instalar las aplicaciones externas en Flask, pero lo repasamos:
+Ya conocemos cómo instalar las aplicaciones externas en Flask, pero repasémoslo:
 
 {% codeblock run.py lang:python %}
 from flask_cache import Cache
@@ -800,7 +800,7 @@ y luego un fragmento de html:
 
 ## pip freeze
 
-Y ahora vamos resumir qué librerías hemos instalado y cuals otros nos podrías ser útil en el futuro:
+Y ahora vamos resumir qué librerías hemos instalado y cuales otras nos podrían ser útiles en el futuro:
 
 {% codeblock %}{% raw %}
 # Framework
@@ -833,7 +833,7 @@ WTForms-Components==0.10.0     # Campos adicionales para los formularios de Flas
 
 {% img center /images/flask/nerd-dad.jpg %}
 
-Gracias por su atención y a [Tappsi](https://tappsi.co/) por al apoyo.
+Gracias por su atención y a [Tappsi](https://tappsi.co/) por el apoyo.
 
 {% img center /images/flask/tappsi_logo.svg 100 %}
 
