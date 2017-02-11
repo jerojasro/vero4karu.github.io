@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2017/01/20/flask-con-todas-las-arandelas/</loc>
+<lastmod>2017-01-20T09:18:28-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2017/01/16/como-desplegar-un-proyecto-de-django-con-uwsgi-plus-nginx-plus-supervisor/</loc>
 <lastmod>2017-01-16T17:39:09-05:00</lastmod>
 </url>
@@ -75,6 +79,10 @@
 <url>
 <loc>http://blog.vero4ka.info/blog/2016/07/20/las-temporadas/</loc>
 <lastmod>2016-07-20T18:34:10-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/2016/07/09/invernadero/</loc>
+<lastmod>2016-07-09T20:13:37-05:00</lastmod>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/2016/07/02/rewire/</loc>
@@ -510,6 +518,9 @@
 <loc>http://blog.vero4ka.info/blog/categories/python/</loc>
 </url>
 <url>
+<loc>http://blog.vero4ka.info/blog/categories/jardineria/</loc>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/categories/estaciones/</loc>
 </url>
 <url>
@@ -541,9 +552,6 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/amazon-s3/</loc>
-</url>
-<url>
-<loc>http://blog.vero4ka.info/blog/categories/jardineria/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/ninos/</loc>

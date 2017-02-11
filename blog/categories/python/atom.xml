@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-16T19:24:32-05:00</updated>
+  <updated>2017-02-10T22:39:11-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,1186 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Flask con todas las arandelas]]></title>
+    <link href="http://blog.vero4ka.info/blog/2017/01/20/flask-con-todas-las-arandelas/"/>
+    <updated>2017-01-20T09:18:28-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2017/01/20/flask-con-todas-las-arandelas</id>
+    <content type="html"><![CDATA[<iframe src="//slides.com/vero4ka/flask-con-todas-las-arandelas/embed?style=light" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+
+
+<!-- more -->
+
+
+<h2>Para empezar</h2>
+
+<p>Hay muchos recursos acerca de Flask en los internetes, pero aquí me gustaría mencionar los tres que considero fundamentales.</p>
+
+<p>El primero, por supuesto, es la documentación oficial del framework: <a href="http://flask.pocoo.org/docs/">flask.pocoo.org/docs</a>.</p>
+
+<p>Luego, es muy bueno mirar el libro de Miguel Grinberg: <a href="https://flaskbook.com/">flaskbook.com</a>, en donde se explica de forma bastante detallada cómo hacer una plataforma de publicación de entradas de blog. El código, que sirve como ejemplo en el libro, se puede encontrar en la página de github del autor. Como material complementario al libro, es muy recomendado echar una mirada en el <a href="https://blog.miguelgrinberg.com/">blog personal de Miguel Grinberg</a>, donde el autor cubre los temas más específicos del desarrollo en Flask.</p>
+
+<p>Y ahora, como dijo el astronauta ruso Yuri Gagarin en el momento del despegue de su nave Vostok 1: &ldquo;¡Poyejali!&rdquo;&ldquo; (en ruso: Поехали!; se traduce como «¡Vámonos!»).</p>
+
+<h2>Aplicación básica</h2>
+
+<p>Empezamos con instalar <strong>Flask</strong>:</p>
+
+<pre><code>$ mkvirtualenv pycon2017 -p python3
+$ pip install Flask
+</code></pre>
+
+<p>Al momento de ésta presentación la última versión del framework es <strong>0.12</strong>.</p>
+
+<p>Ahora creamos nuestra primera aplicación de Flask que va a ser sólo un archivo de Python:</p>
+
+<p><figure class='code'><figcaption><span>app.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+</span><span class='line'><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@app.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">/&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">World</span><span class="err">!</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;&amp;</span><span class="n">rdquo</span><span class="p">;:</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>El decorador <code>route</code> nos ayuda a definir la ruta de URL para la vista llamada <code>hello</code> que simplemente devuelve al navegador la respuesta HTTP 200 con la frase &ldquo;Hello World!&rdquo;.</p>
+
+<p>Corremos la aplicación con el siguiente comando:</p>
+
+<pre><code>$ python app.py 
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+</code></pre>
+
+<p>Y ahora lo podemos abrir en nuestro navegador:</p>
+
+<p><img class="center" src="/images/flask/flask_01.png"></p>
+
+<h2>manage.py</h2>
+
+<p>Nosotros, por experiencia con otros frameworks, ya nos acostumbramos a la posibilidad de acceder al shell de Python de nuestra aplicación, o con poder correr comandos, que pertenecen a la aplicación, desde la consola. Para tener todo esto en Flask, instalamos un librería llamada <code>Flask-Script</code>.</p>
+
+<pre><code>$ pip install Flask-Script
+</code></pre>
+
+<p>Ahora separamos nuestra aplicación en dos archivos: en el primero vamos iniciar la app de Flask, en la que especificamos la ruta de los archivos estáticos y del archivo de configuración (equivalente de <code>settings.py</code> en Django)</p>
+
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">app</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>y en el segundo vamos a colocar una instancia de <strong>Manager</strong>, que se encaragará de correr la aplicación con <code>python manage.py</code>:</p>
+
+<p><figure class='code'><figcaption><span>manage.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask.ext.script</span> <span class="kn">import</span> <span class="n">Manager</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">create_app</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">()</span>
+</span><span class='line'><span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">(</span><span class="n">app</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@app.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">/&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">World</span><span class="err">!</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;&amp;</span><span class="n">rsquo</span><span class="p">;:</span>
+</span><span class='line'>    <span class="n">manager</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Corriendo el siguiente comando en la consola</p>
+
+<pre><code>$ ./manage.py runserver -h HOST -p PORT
+</code></pre>
+
+<p>podemos ver la misma aplicación, como en el paso anterior, pero ahora podemos además acceder a shell usando el comando</p>
+
+<pre><code>$ ./manage.py shell
+In [1]:
+</code></pre>
+
+<h2>Configuración</h2>
+
+<p>Miremos con más atención la estructura del proyecto:</p>
+
+<pre><code>├── conf
+│   ├── config.py
+│   ├── __init__.py
+│   └── local_config.py
+├── manage.py
+└── run.py
+</code></pre>
+
+<p>Ahora tenemos una carpeta con los archivos de configuración - <code>conf</code>:</p>
+
+<p><figure class='code'><figcaption><span>conf/config.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">test</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">:</span>
+</span><span class='line'>        <span class="kn">from</span> <span class="nn">test_config</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="kn">from</span> <span class="nn">local_config</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">pass</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Más información acerca de la configuración en Flask se puede encontrar en la página <a href="http://flask.pocoo.org/docs/0.12/config/">flask.pocoo.org/docs/0.12/config/</a>.</p>
+
+<h2>Blueprints</h2>
+
+<p>Cuando nuestro archivo con las vistas crezca, vamos a querer a separar la lógica de nuestra aplicación en módulos diferentes (así como lo tenemos con apps de Django):</p>
+
+<pre><code>├── conf
+│   ├── config.py
+│   ├── __init__.py
+│   └── local_config.py
+├── app1
+│   ├── templates
+│   └── views.py
+├── app2
+│   ├── templates
+│   └── views.py
+├── manage.py
+└── run.py
+</code></pre>
+
+<p>En este caso nos ayuda un concepto de crear aplicaciones llamado <strong>Blueprints</strong>. La información completa acerca de Blueprints se puede encontrar en la documentación de Flask: <a href="http://flask.pocoo.org/docs/0.12/blueprints/">flask.pocoo.org/docs/0.12/blueprints/</a>.</p>
+
+<p>Creamos un Blueprint para nuestra aplicación, donde vamos a guardar las vistas relacionadas a nuestros usuarios, por ejemplo:</p>
+
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">users</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">templates</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">Worlds</span><span class="err">!</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>y lo registramos en el archivo <code>run.py</code>:</p>
+
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">users.views</span> <span class="kn">import</span> <span class="n">users</span>
+</span><span class='line'><span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s">&#39;/users&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">app</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>indicando en el argumento <code>url_prefix</code> del método <code>register_blueprint</code>, que todos los URLs, relacionados con el Blueprint de usuario, van a empezar con el prefijo <code>/users</code>, por ejemplo: <a href="http://localhost:5000/users/">http://localhost:5000/users/</a>.</p>
+
+<h2>URLs</h2>
+
+<p>Miremos cómo se definen los URLs en Flask.</p>
+
+<p>Primero, hay formas diferentes de especificar la ruta: usando el decorador de Blueprint <code>@users.route</code> o el método <code>users.add_url_rule</code>:</p>
+
+<pre><code class="python">@users.route('/user/&lt;name&gt;')
+def user_profile(name):
+    return '&lt;h1&gt;Hello, {}!&lt;/h1&gt;'.format(name)
+
+def users_list():
+    pass
+users.add_url_rule('/', 'users_list', users_list)
+</code></pre>
+
+<p>En el primer ejemplo podemos ver, que a la vista se pasa el parámetro de URL <code>name</code>, al que luego accedemos desde el parámetro <code>name</code> de la vista <code>user_profile</code>.</p>
+
+<p>Flaks permite especificar el tipo de parámetro que esperamos. Por ejemplo, para los números enteros, el decorador de escribe así:</p>
+
+<pre><code class="python">@users.route('/user/&lt;int:pk&gt;')
+def user_detail(pk):
+    return '&lt;h1&gt;Hello, user #{}!&lt;/h1&gt;'.format(pk)
+</code></pre>
+
+<p>También se puede explícitamente indicar el método HTTP, que acepta la vista.</p>
+
+<pre><code class="python">@users.route('/user/&lt;int:pk&gt;/create', methods=('POST',))
+def user_create(pk):
+    pass
+</code></pre>
+
+<p>En este caso al tratar de acceder a la vista con el método GET, obtenemos el error 405 (Method not allowed).</p>
+
+<p>Para obtener el URL, que corresponde a la vista usamos el método <code>url_for</code>, al que pasamos el nombre del Blueprint y el nombre de la vista:</p>
+
+<pre><code class="python">from flask import url_for
+
+url_for('users.user_detail', pk=user_pk)
+</code></pre>
+
+<h2>Vistas</h2>
+
+<h4>Request</h4>
+
+<p>En Flask el objeto <code>request</code> no se está pasando como parámetro al la vista (como en Django, por ejemplo), sino que es una variable global:</p>
+
+<pre><code>GET http://localhost:5000/users/user/1?q=foo
+</code></pre>
+
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">request</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">users</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">templates</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">user</span><span class="o">/&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">int</span><span class="p">:</span><span class="n">pk</span><span class="o">&gt;&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_detail</span><span class="p">(</span><span class="n">pk</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>  <span class="c"># GET</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>    <span class="c"># ImmutableMultiDict([(&amp;lsquo;q&amp;rsquo;, u&#39;foo&#39;)])</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Hello</span><span class="p">,</span> <span class="n">user</span> <span class="c">#{}!&lt;/h1&gt;&amp;rsquo;.format(pk)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h4>Decoradores</h4>
+
+<p>Aparte de la definición de ruta, la vista en Flask puede tener otros decoradores, por ejemplo:</p>
+
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">user</span><span class="o">/&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">int</span><span class="p">:</span><span class="n">pk</span><span class="o">&gt;&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="nd">@login_required</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_detail</span><span class="p">(</span><span class="n">pk</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Hello</span><span class="p">,</span> <span class="n">user</span> <span class="c">#{}!&lt;/h1&gt;&amp;rsquo;.format(pk)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Plantillas</h2>
+
+<p>Ahora vamos a renderizar una plantilla desde nuestra vista. Para eso vamos a usar el método <code>render_template</code> que recibe como argumentos la ruta hasta la plantilla dentro de la carpeta que especificamos en el parámetro <code>template_folder</code> del Blueprint, y los demás argumentos que son los parámetros de contexto.</p>
+
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">users</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">templates</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">user</span><span class="o">/&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">int</span><span class="p">:</span><span class="n">pk</span><span class="o">&gt;&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_detail</span><span class="p">(</span><span class="n">pk</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">/</span><span class="n">detail</span><span class="o">.</span><span class="n">html</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><figure class='code'><figcaption><span>users/templates/users/detail.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>Hello, user #{{ user_id }}!<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Jinja2</h3>
+
+<p>Para renderizar plantillas Flask usa el lenguaje <code>Jinja2</code>. Vamos a mirar algunas de sus funcionalidades:</p>
+
+<h4>Variables:</h4>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ foo.bar }}
+</span><span class='line'>{{ foo[<span class="ni">&amp;lsquo;</span>bar<span class="ni">&amp;rsquo;</span>] }}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h4>Condicionales:</h4>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if user.address %}
+</span><span class='line'>    <span class="nt">&lt;p&gt;</span>{{ user.address }}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>{% endif %}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Bucles:</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% for user in users %}
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>{{ user.name }}<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>{% else %}
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>No hay usuarios<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>{% endfor %}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Bloques:</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% block title %}Usuarios{% endblock %}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Extender una plantilla base:</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% extends <span class="ni">&amp;ldquo;</span>layouts/main.html<span class="ni">&amp;rdquo;</span> %}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h4>Comentario:</h4>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{# Texto #}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Incluir otra plantilla:</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% with rating=user.rating %}
+</span><span class='line'>    {% include <span class="ni">&amp;lsquo;</span>includes/_rating.html<span class="ni">&amp;rsquo;</span> %}
+</span><span class='line'>{% endwith %}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Asignar un valor a una variable local:</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% set permissions = user.get_permission() %}
+</span><span class='line'>{{ permissions }}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Filtros:</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ user.address|default(<span class="ni">&amp;lsquo;</span>N/A<span class="ni">&amp;rsquo;</span>) }}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Procesadores de contexto</h2>
+
+<p>De forma predeterminada, el contexto de todas las plantillas ya tiene las siguientes variables:</p>
+
+<ul>
+<li><code>config</code> - Objeto de configuración (<code>flask.config</code>)</li>
+</ul>
+
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ config.DEBUG }}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<ul>
+<li><code>request</code> - Objeto de la petición actual (<code>flask.request</code>)</li>
+</ul>
+
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ request.path }}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<ul>
+<li><code>session</code> - Objeto de sesión (<code>flask.session</code>)</li>
+<li><code>g</code> - Variables globales</li>
+</ul>
+
+
+<p>Hay una forma de tener <code>context_processors</code> (como en Django) para poder pasar variables a todas las plantillas del proyecto:</p>
+
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">users.views</span> <span class="kn">import</span> <span class="n">users</span>
+</span><span class='line'><span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s">&#39;/users&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@app.context_processor</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">constants_processor</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;say_hello&#39;</span><span class="p">:</span> <span class="s">&#39;Hola&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">app</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Ahora podemos acceder a la variable <code>say_hello</code> desde todas las plantillas sin tener que pasarla cada vez explícitamente:</p>
+
+<p><figure class='code'><figcaption><span>users/templates/users/detail.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>{{ say_hello }}, user #{{ user_id }}!<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Modelos</h2>
+
+<h3>SQLAlchemy</h3>
+
+<p>Hay dos librerías que nos permiten trabajar con modelos y hacer peticiones SQL desde Flask.</p>
+
+<pre><code>$ pip install SQLAlchemy
+$ pip install Flask-SQLAlchemy
+</code></pre>
+
+<p>Una es <code>SQLAlchemy</code> y la otra es su extensión para Flask - <code>Flask-SQLAlchemy</code>, que viene con algunas funcionalidades adicionales y útiles en el desarrollo web, por ejemplo, el método <code>first_or_404()</code> para obtener el primer elemento del query o error HTTP 404 si no existe, o el método <code>paginate()</code> para realizar paginación sobre los objetos de <code>BaseQuery</code>.</p>
+
+<p>Ahora incluimos <code>SQLAlchemy</code> como una aplicación externa de nuestro proyecto. Primero creamos una variable <code>db</code> para que el import no se rompa cuando la aplicación todavía no se ha inicializado, y en <code>create_app</code> cuando inicializamos la aplicación: <code>db.init_app(app)</code>.</p>
+
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_sqlalchemy</span> <span class="kn">import</span> <span class="n">SQLAlchemy</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'><span class="k">return</span> <span class="n">app</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>En el archivo de configuración colocamos la ruta hacia nuestra base de datos.</p>
+
+<p><figure class='code'><figcaption><span>conf/config.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">sqlite</span><span class="p">:</span><span class="o">////</span><span class="n">tmp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">db</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Y ahora podemos crear los modelos. Aquí en el ejemplo se puede ver cómo definir modelos, columnas de tipos diferentes y crear llaves foráneas</p>
+
+<p><figure class='code'><figcaption><span>users/models.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">db</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">tablename</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">username</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">email</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">120</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">city_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">u&#39;cities.id&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">created_at</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+</span><span class='line'><span class="n">updated_at</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+</span><span class='line'>                    <span class="n">onupdate</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s">&#39;&amp;lt;Usuario </span><span class="si">%r</span><span class="s">&amp;gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">City</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">tablename</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">cities</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s">&#39;User&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s">&#39;dynamic&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>CRUD</h3>
+
+<p>Miramos los métodos de CRUD básicos que nos ofrece el ORM de SQLAlchemy.</p>
+
+<h5>Crear</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#x3a;&amp;#x6a;&amp;#x6f;&amp;#x68;&amp;#x6e;&amp;#64;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#112;&amp;#x6c;&amp;#101;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#x6d;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x6a;&amp;#111;&amp;#104;&amp;#x6e;&amp;#x40;&amp;#101;&amp;#x78;&amp;#97;&amp;#109;&amp;#x70;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#x6d;&lt;/a&gt;&amp;rsquo;, username=&amp;lsquo;&amp;rsquo;)</span>
+</span><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Obtener todos los usuarios</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c"># [&lt;Usuario john&#39;&gt;, &lt;Usuario u&#39;admin&#39;&gt;]</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Obtener el primer usuario</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">john</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>  <span class="c"># &lt;Usuario &#39;john&#39;&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Filtrar usuarios y ordenar</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">john</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'><span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">User</span><span class="o">.</span><span class="n">created_at</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>Borrar</h5>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><code>BaseQuery</code> no tiene método <code>save()</code>, sino todos los cambios que hacemos a objetos de modelos se agregan a la sesión. Como la sesión sólo vive durante la petición, para que nuestos cambios sean enviados a la base de datos, hace falta llamar el método <code>db.session.commit()</code>.</p>
+
+<h2>Formularios</h2>
+
+<p>Existen varias librerías de Python que nos permiten trabajar con formularios. En este ejemplo vamos a mirar una llamada <code>Flask-WTF</code>.</p>
+
+<pre><code>$ pip install Flask-WTF
+$ pip install Flask-Bootstrap
+</code></pre>
+
+<p>Vamos a usarla junto con una librería complementaria - <code>Flask-Bootstrap</code> - que lo único que hace es generar el código de HTML del formulario con la estructura y las clases de <a href="http://getbootstrap.com/2.3.2/">Twitter Bootstrap</a> (lo mismo que hace <code>django-crispy-forms</code>).</p>
+
+<p><figure class='code'><figcaption><span>users/forms.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">wtforms</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">flask_wtf</span> <span class="kn">import</span> <span class="n">Form</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">UserForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">email</span> <span class="o">=</span> <span class="n">wtforms</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">validators</span><span class="o">=</span><span class="p">[</span>
+</span><span class='line'>            <span class="n">wtforms</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">Email</span><span class="p">(),</span>
+</span><span class='line'>            <span class="n">wtforms</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">DataRequired</span><span class="p">(),</span>
+</span><span class='line'>        <span class="p">],</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>    <span class="n">username</span> <span class="o">=</span> <span class="n">wtforms</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">wtforms</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">DataRequired</span><span class="p">()],</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>    <span class="n">submit</span> <span class="o">=</span> <span class="n">wtforms</span><span class="o">.</span><span class="n">SubmitField</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Save</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Ahora podemos renderizar el formulario en nuestra plantilla:</p>
+
+<p><figure class='code'><figcaption><span>users/templates/users/form.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% extends <span class="ni">&amp;ldquo;</span>layouts/main_layout.html<span class="ni">&amp;rdquo;</span> %}
+</span><span class='line'>{% import <span class="ni">&amp;ldquo;</span>bootstrap/wtf.html<span class="ni">&amp;rdquo;</span> as wtf %}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{% block content %}
+</span><span class='line'>  {{ wtf.quick_form(form) }}
+</span><span class='line'>{% endblock %}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Este código nos va a renderizar el formulario completo con todos los campos especificados. Si queremos renderizar sólo algunos campos específicos, podemos escribirlo de la siguiente forma:</p>
+
+<p><figure class='code'><figcaption><span>users/templates/users/form.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ wtf.form_field(form.email) }}
+</span><span class='line'>{{ wtf.form_field(form.submit) }}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Lo único que hace falta es escribir una vista que reciba los datos del formulario y los guarde en la base de datos, por ejemplo.</p>
+
+<p>El diccionario con los valores para cada campo se encuentra en la variable <code>request.form</code>. Si el request tiene método POST, validamos el formulario <code>form.validate()</code>, y en el caso exitoso, pasamos los valores del formulario a nuestro objeto: <code>form.populate_obj(user)</code>.</p>
+
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">update</span><span class="o">/&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">int</span><span class="p">:</span><span class="n">pk</span><span class="o">&gt;/&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="n">methods</span><span class="o">=</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">GET</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">POST</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;))</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_update</span><span class="p">(</span><span class="n">pk</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_404</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">form</span> <span class="o">=</span> <span class="n">UserForm</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span> <span class="ow">and</span> <span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">form</span><span class="o">.</span><span class="n">populate_obj</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">flash</span><span class="p">(</span><span class="s">&#39;Usuario fue editado exitosamente&#39;</span><span class="p">,</span> <span class="s">&#39;success&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;users.user_detail&#39;</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&#39;users/form.html&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Autenticación</h2>
+
+<p>Para agregar autenticación al proyecto de Flask, normalmente usan las dos siguientes librerías:</p>
+
+<pre><code>$ pip install Flask-Login
+$ pip install Flask-OAuth
+</code></pre>
+
+<p>La primera tiene toda la funcionalidad de ingreso, salida de usuario. La podemos instalar de la misma forma, que hicimos con SQLAlchemy hace poco:</p>
+
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">LoginManager</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span>
+</span><span class='line'><span class="n">login_manager</span><span class="o">.</span><span class="n">login_view</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">.</span><span class="n">login</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">permanent_session_lifetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">login_manager</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>En <code>login_manager.login_view</code> especificamos qué vista corresponde al ingreso (login), y en <code>permanent_session_lifetime</code>  se puede indicar el tiempo en el qué durará activa la sesión.</p>
+
+<p>El modelo que vamos a usar para usuarios debe heredar de <code>UserMixin</code> de <code>flask_logins</code></p>
+
+<p><figure class='code'><figcaption><span>users/models.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">UserMixin</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">db</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">,</span> <span class="n">UserMixin</span><span class="p">):</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">tablename</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="c"># ...</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Y ahora usando la otra librería - <code>Flask-OAuth</code> - podemos hacer una vista para que nuestros usuarios puedan ingresar desde su cuenta de Google, por ejemplo:</p>
+
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">login</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">callback</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">.</span><span class="n">authorized</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="n">_external</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">google</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Cuando el usuario ya está autenticado, en cualquier punto de nuestra aplicación podemos preguntar por el objeto correspondiente:</p>
+
+<pre><code class="python">from flask_login import current_user
+</code></pre>
+
+<p>En la siguiente dirección se puede encontrar más información acerca de cómo configurar los tokens de autenticación Google: <a href="https://pythonhosted.org/Flask-OAuth/">pythonhosted.org/Flask-OAuth/</a>.</p>
+
+<h2>Múltiples idiomas</h2>
+
+<p>Si queremos tener soporte de múltiples idiomas, tendremos que instalar otra librería:</p>
+
+<pre><code>$ pip install Flask-Babel
+</code></pre>
+
+<p>Miremos qué comandos nos ofrece:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Extraer los textos para traducción&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;<span class="o">(</span>se corre sólo una vez al principio<span class="o">)</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>pybabel extract -F babel.cfg -o messages.pot .&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Generar un catálogo para español&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>pybabel init -i messages.pot -d translations -l es&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Se crea el directorio translations/es&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Por dentro hay otro directorio llamado LC_MESSAGES que tiene&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;un archivo messages.po.&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Después de traducir los textos y guardarlos en messages.po,&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;compilamos el archivo y publicamos los textos:&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>pybabel compile -d translations&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Para actualizar las traducciones a diario:&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>pybabel extract -F babel.cfg -o messages.pot .
+</span><span class='line'><span class="nv">$ </span>pybabel update -i messages.pot -d translations
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Si queremos traducir cadenas de texto dentro del código de Python, habrá que usar la siguiente sintaxis:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_babel</span> <span class="kn">import</span> <span class="n">gettext</span> <span class="k">as</span> <span class="n">_</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">_</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Invalid</span> <span class="n">authentication</span> <span class="n">token</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Y en plantillas se ve muy parecido:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="na">title=</span><span class="s">&quot;{{ _(&#39;Help&#39;) }}&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;fa fa-question&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+</span><span class='line'><span class="nt">&lt;/button&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Mensajes</h2>
+
+<p>Los que están familiarizados con el framework Django, seguramente recuerdan que Django tiene un procesador de contexto <code>messages</code> que nos permite mandar mensajes a las plantillas desde el código Python:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">messages</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">messages</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">world</span><span class="o">.&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>En Flask es muy parecido, sólo que esos mensajes se llaman <code>flash</code>:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">flash</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">flash</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">world</span><span class="o">.&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">success</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>y para consultarlos dentro de la plantilla llamamos el método <code>get_flashed_messages</code>:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% for category, message in get_flashed_messages(with_categories=true) %}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-{{ category|replace(&#39;message&#39;, &#39;info&#39;) }}&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+</span><span class='line'>  {{ message }}
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{% endfor %}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Caché</h2>
+
+<p>Y para terminar la presentación, vamos a meter todo en caché #comonosgusta:</p>
+
+<pre><code>$ pip install Flask-Cache
+</code></pre>
+
+<p>Ya conocemos cómo instalar las aplicaciones externas en Flask, pero repasémoslo:</p>
+
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_cache</span> <span class="kn">import</span> <span class="n">Cache</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">cache</span> <span class="o">=</span> <span class="n">Cache</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">cache</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Y ahora sí, vamos con toda&hellip; ponemos en caché una vista completa:</p>
+
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">cache</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="nb">list</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="nd">@cache.cached</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="n">key_prefix</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">user_list</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_list</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">pass</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>y luego un fragmento de html:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% cache 60*60, <span class="ni">&amp;lsquo;</span>dashboard_menu_user<span class="ni">&amp;rsquo;</span> + current_user.id|string %}
+</span><span class='line'>  {% include <span class="ni">&amp;lsquo;</span>layouts/_menu.html<span class="ni">&amp;rsquo;</span> %}
+</span><span class='line'>{% endcache %}
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>pip freeze</h2>
+
+<p>Y ahora vamos resumir qué librerías hemos instalado y cuales otras nos podrían ser útiles en el futuro:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Framework&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Flask==0.11&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Libs&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>celery==3.1.20
+</span><span class='line'>coverage==4.0.3
+</span><span class='line'>factory-boy==2.6.1
+</span><span class='line'>SQLAlchemy==1.0.12
+</span><span class='line'>SQLAlchemy-Utils==0.31.6&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Flask libs&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Flask-And-Redis==0.6
+</span><span class='line'>Flask-Babel==0.9               # Múltiples idiomas y zonas horarias
+</span><span class='line'>Flask-Bootstrap==3.3.5.7       # ~ django-crispy-forms para Bootstrap
+</span><span class='line'>Flask-Cache==0.13.1
+</span><span class='line'>Flask-DebugToolbar==0.10.0     # En Django: django-debug-toolbar
+</span><span class='line'>Flask-fillin==0.2              # Diligenciar formularios en pruebas
+</span><span class='line'>Flask-Login==0.3.2
+</span><span class='line'>Flask-Migrate==1.8.0
+</span><span class='line'>Flask-Moment==0.5.1            # Integración con moment.js
+</span><span class='line'>Flask-OAuth==0.12              # ~ python-social-auth
+</span><span class='line'>Flask-Script==2.0.5            # manage.py, shell
+</span><span class='line'>Flask-SQLAlchemy==2.1
+</span><span class='line'>Flask-WTF==0.12                # Formularios con protección CSRF
+</span><span class='line'>WTForms-Alchemy==0.15.0        # Para crear formularios basados en modelos
+</span><span class='line'>WTForms-Components==0.10.0     # Campos adicionales para los formularios de Flask</span></code></pre></td></tr></table></div></figure></p>
+
+<p><img class="center" src="/images/flask/nerd-dad.jpg"></p>
+
+<p>Gracias por su atención y a <a href="https://tappsi.co/">Tappsi</a> por el apoyo.</p>
+
+<p><img class="center" src="/images/flask/tappsi_logo.svg" width="100"></p>
+
+<p>Estamos contratando <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#106;&#x6f;&#x62;&#115;&#64;&#x74;&#x61;&#x70;&#112;&#x73;&#x69;&#x2e;&#99;&#x6f;">&#106;&#x6f;&#x62;&#x73;&#x40;&#x74;&#97;&#x70;&#112;&#x73;&#x69;&#46;&#99;&#111;</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cómo desplegar un proyecto de Django con uWSGI + nginx + supervisor]]></title>
@@ -24,6 +1204,9 @@
 
 <pre><code>Usuario &lt;-&gt; Servidow web &lt;-&gt; Socket &lt;-&gt; uWSGI &lt;-&gt; Django
 </code></pre>
+
+<!-- more -->
+
 
 <p>Decimos que el código del proyecto está en la carpeta <code>/home/deploy/sitp_scraper</code>. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto (en éste ejemplo usamos <a href="https://virtualenvwrapper.readthedocs.io/en/latest/">virtualenvwrapper</a>):</p>
 
@@ -374,471 +1557,6 @@ msg.attach(part)
 
         super(MyForm, self).__init__(*args, **kwargs)
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cómo hacer integración con Tpaga API usando Python]]></title>
-    <link href="http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/"/>
-    <updated>2016-08-18T08:53:45-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python</id>
-    <content type="html"><![CDATA[<p><a href="https://tpaga.co/">Tpaga</a> es una plataforma que permite recibir pagos electrónicos. Tiene una estructura sencilla para entender y fácil para usar.</p>
-
-<p>Para obtener nuestros claves de acceso y conectarnos con el API de Tpaga, creamos una cuenta en el &ldquo;sandbox&rdquo; de la plataforma: <a href="https://sandbox.tpaga.co/">sandbox.tpaga.co</a>.</p>
-
-<p><img src="/images/tpaga_sandbox_login.png"></p>
-
-<p>Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para la autenticación: <strong>Private Api Key</strong> y <strong>Public Api Key</strong>:</p>
-
-<p><img src="/images/tpaga_sandbox_dashboard.png"></p>
-
-<!-- more -->
-
-
-<p>Tpaga tiene unos modelos básicos que nos permitirán organizar nuestros datos: <strong>Customers</strong> (Clientes), <strong>Credit Cards</strong> (Tarjetas de crédito) asociados a los Clientes y <strong>Charges</strong> (Transacciónes o cobros por tarjeta de crédito).</p>
-
-<p>Ahora, cuando entendemos la estructura, podemos empezar a escribir nuestro programa en Python. Primero instalamos la librería <code>requests</code> que nos permitirá hacer peticiones HTTP.</p>
-
-<pre><code class="bash">$ pip install requests
-</code></pre>
-
-<p>Tpaga, como muchos otros sitios web, acepta la autenticación mediante HTTP Basic Auth. La librería <code>requests</code> provee una forma fácil de usarla:</p>
-
-<pre><code class="python">&gt;&gt;&gt; import requests
-&gt;&gt;&gt; TPAGA_PRIVATE_TOKEN = 'd13fr8n7vhvkuch3lq2ds5qhjnd2pdd2'
-&gt;&gt;&gt; tpaga_url = 'https://sandbox.tpaga.co/api/customer'
-&gt;&gt;&gt; requests.post(tpaga_url, json={}, auth=(TPAGA_PRIVATE_TOKEN, ''))
-&lt;Response [201]&gt;
-</code></pre>
-
-<p>Escribimos un código sencillo que nos permitirá conectarse al API de Tpaga y mandar peticiones:</p>
-
-<pre><code class="python">from urllib import parse as urlparse
-import requests
-
-TPAGA_PRIVATE_TOKEN = 'd13fr8n7vhvkuch3lq2ds5qhjnd2pdd2'
-TPAGA_API_URL = 'https://sandbox.tpaga.co/api/'
-
-class TpagaTestClient:
-    def __init__(
-            self,
-            private_token=TPAGA_PRIVATE_TOKEN,
-            base_url=TPAGA_API_URL,
-    ):
-        self.base_url = base_url
-        self.private_token = private_token
-
-    def api_post(self, path, data, token=None):
-        if not token:
-            token = self.private_token
-        return requests.post(
-            urlparse.urljoin(self.base_url, path),
-            json=data, auth=(token, ''),
-        )
-
-    def fail(self, response):
-        raise Exception(
-            'Whoops, got\n\nSTATUS: {}\n\nHEADERS: {}\n\nCONTENT: {}'.format(
-                response.status_code,
-                response.headers,
-                response.content,
-            ))
-
-    def json_from_response(self, response, expected_http_code=None):
-        if not expected_http_code:
-            expected_http_code = [201]
-        if response.status_code not in expected_http_code:
-            self.fail(response)
-        if not response.content:
-            return None
-        return response.json()
-</code></pre>
-
-<p>El método <code>__init__</code> nos va a inicializar nuestro cliente, <code>api_post</code> - mandar peticiones POST a la ruta especificada (<code>path</code>) del API, <code>json_from_response</code> - obtener un objeto JSON de la respuesta de API, <code>fail</code> - imprimir los detalles de la respuesta si la petición no ha terminado con éxito.</p>
-
-<h3>Crear un cliente</h3>
-
-<p>Para crear nuestro cliente, vamos a enviar una petición POST al endpoint <code>/customer</code>:</p>
-
-<pre><code class="python">class TpagaTestClient:
-    # ...
-
-    def create_customer(self, data):
-        response = self.api_post('customer', data)
-        return self.json_from_response(response)
-</code></pre>
-
-<pre><code class="python">&gt;&gt; client = TpagaTestClient()
-&gt;&gt; customer = client.create_customer({
-    'firstName': 'Horns and Hoofs',
-    'lastName': 'Perez',
-    'email': 'hornsandhoofs@example.com',
-    'phone': '012345678'
-})
-&gt;&gt; customer_token = customer['id']
-&gt;&gt; print('customer_token', customer_token)
-customer_token qoodmh04sh7ghpp58opn5g0hssg4slq0
-</code></pre>
-
-<p>Otros campos que podemos enviar para guardar nuestros clientes se puede encontrar aquí: <a href="https://tpaga.co/docs/swaggers/v2#!/Customer/createCustomer">tpaga.co/docs/swaggers/v2#!/Customer/createCustomer</a>.</p>
-
-<p>En el dashboard de Tpaga podemos asegurarnos de que el ciente <a href="https://en.wikipedia.org/wiki/The_Little_Golden_Calf#Cultural_influence">&ldquo;Horns and Hoofs&rdquo;</a> fue creado exitosamente:</p>
-
-<p><img src="/images/tpaga_dashboard_customers.png"></p>
-
-<p>Teniendo un token de nuestro cliente, podemos agregarle una tarjeta de crédito.</p>
-
-<h3>Registrar una tarjeta de crédito y asociarla al cliente</h3>
-
-<p>La creación de la tarjeta de crédito se realiza en dos pasos: tokenizar la tarjeta y asociarla un cliente.</p>
-
-<p>Tpaga usa <strong>tokenización</strong>, que nos permite registrar las tarjetas de crédito de nuestros clientes de forma segura. Los clientes ingresan los datos en nuestro sitio web, y estos datos los enviamos directamente al API de Tpaga (desde el código JavaScript), allí serán tokenizados y Tpaga nos devuelve un token temporal con el que podemos proceder con el registro de la tarjeta (desde el código Python).</p>
-
-<p>Creamos un formulario HTML para obtener los datos de la tarjeta de crédito:</p>
-
-<p><img src="/images/tpaga_credit_card_form.png"></p>
-
-<p>Para hacer un formulario bonito, usamos <a href="http://bootsnipp.com/snippets/featured/credit-card-payment-with-stripe">la plantilla de Bootstrap</a> y las librerías <a href="https://jquery.com/">jQuery</a>, <a href="https://jqueryvalidation.org/">jQuery Validation Plugin</a> y <a href="https://github.com/stripe/jquery.payment">jQuery.payment</a> para validar los datos.</p>
-
-<pre><code class="html">&lt;form id="credit_card_form" method="post" name="credit_card_form"&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="col-xs-12"&gt;
-        &lt;div class="form-group" id="div_id_primaryAccountNumber"&gt;
-          &lt;label class="control-label requiredField" for="id_primaryAccountNumber"&gt;Número de la tarjeta&lt;/label&gt;
-          &lt;div class="controls"&gt;
-            &lt;div class="input-group"&gt;
-              &lt;input class="textinput textInput form-control" id="id_primaryAccountNumber" name="primaryAccountNumber" required="" type="text"&gt; &lt;span class="input-group-addon"&gt;&lt;i class="fa fa-credit-card"&gt;&lt;/i&gt;&lt;/span&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="col-xs-12"&gt;
-        &lt;div class="form-group" id="div_id_cardHolderName"&gt;
-          &lt;label class="control-label requiredField" for="id_cardHolderName"&gt;Nombre del tarjetahabiente&lt;/label&gt;
-          &lt;div class="controls"&gt;
-            &lt;input class="textinput textInput form-control" id="id_cardHolderName" name="cardHolderName" required="" type="text"&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="col-xs-3"&gt;
-        &lt;div class="form-group" id="div_id_expirationMonth"&gt;
-          &lt;label class="control-label requiredField" for="id_expirationMonth"&gt;Fecha de expiración&lt;/label&gt;
-          &lt;div class="controls"&gt;
-            &lt;select class="select form-control" id="id_expirationMonth" name="expirationMonth" required=""&gt;
-              &lt;option value="01"&gt;Enero&lt;/option&gt;
-              &lt;option value="02"&gt;Febrero&lt;/option&gt;
-              &lt;option value="03"&gt;Marzo&lt;/option&gt;
-              &lt;option value="04"&gt;Abril&lt;/option&gt;
-              &lt;option value="05"&gt;Mayo&lt;/option&gt;
-              &lt;option value="06"&gt;Junio&lt;/option&gt;
-              &lt;option value="07"&gt;Julio&lt;/option&gt;
-              &lt;option value="08"&gt;Agosto&lt;/option&gt;
-              &lt;option value="09"&gt;Septiembre&lt;/option&gt;
-              &lt;option value="10"&gt;Octubre&lt;/option&gt;
-              &lt;option value="11"&gt;Noviembre&lt;/option&gt;
-              &lt;option value="12"&gt;Diciembre&lt;/option&gt;
-            &lt;/select&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class="col-xs-3"&gt;
-        &lt;div class="form-group" id="div_id_expirationYear"&gt;
-          &lt;label class="control-label requiredField" for="id_expirationYear"&gt;Año&lt;/label&gt;
-          &lt;div class="controls"&gt;
-            &lt;select class="select form-control" id="id_expirationYear" name="expirationYear" required=""&gt;
-              &lt;option value="2016"&gt;2016&lt;/option&gt;
-              &lt;option value="2017"&gt;2017&lt;/option&gt;
-              &lt;option value="2018"&gt;2018&lt;/option&gt;
-              &lt;option value="2019"&gt;2019&lt;/option&gt;
-              &lt;option value="2020"&gt;2020&lt;/option&gt;
-              &lt;option value="2021"&gt;2021&lt;/option&gt;
-              &lt;option value="2022"&gt;2022&lt;/option&gt;
-              &lt;option value="2023"&gt;2023&lt;/option&gt;
-              &lt;option value="2024"&gt;2024&lt;/option&gt;
-              &lt;option value="2025"&gt;2025&lt;/option&gt;
-            &lt;/select&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class="col-xs-3 pull-right"&gt;
-        &lt;div class="form-group" id="div_id_cvc"&gt;
-          &lt;label class="control-label requiredField" for="id_cvc"&gt;CVC&lt;/label&gt;
-          &lt;div class="controls"&gt;
-            &lt;input class="textinput textInput form-control" id="id_cvc" maxlength="10" name="cvc" required="" type="password"&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="buttonHolder"&gt;
-      &lt;input class="btn btn-primary bg-purple" id="submit-id-submit" name="submit" type="submit" value="Guardar"&gt;
-    &lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
-
-<p>Al final, tenemos un formulario con los siguientes campos:</p>
-
-<ul>
-<li><code>primaryAccountNumber</code> para el número de la tarjeta,</li>
-<li><code>cardHolderName</code> para el nombre del tarjetahabiente,</li>
-<li><code>expirationMonth</code> para el mes de expiración,</li>
-<li><code>expirationYear</code> para el año de expiración,</li>
-<li><code>cvc</code> para el código CVC.</li>
-</ul>
-
-
-<p>Creamos otro formulario oculto que usaremos para enviar el token temporal de la tarjeta de crédito a nuestro servidor:</p>
-
-<pre><code class="html">&lt;form id="associate_customer_cc_form" action="/asociar-cliente-tarjeta-credito" method="POST"&gt;
-  &lt;input type="hidden" name="tmp_cc_token"&gt;
-&lt;/form&gt;
-</code></pre>
-
-<p>En el código JavaScript obtenemos los datos de la tarjeta de crédito y los enviamos al endpoint de Tpaga <code>tokenize/credit_card</code>. Este endpoint convierte los datos sensibles de la tarjeta en un token, el cual será empleado para ejecutar el procesamiento de las transacciones sin necesidad que los datos sensibles del tarjetahabiente pasen por nuestro servidor. Si la información de la tarjeta tiene errores, Tpaga nos devuelve un JSON con el nombre de campo y el mensaje de error, y en el caso contrario - token temporal de la tarjeta.</p>
-
-<pre><code class="javascript">$(function () {
-  'use strict';
-
-  $.fn.serializeObject = function() {
-      var o = {};
-      var a = this.serializeArray();
-      $.each(a, function() {
-          if (o[this.name] !== undefined) {
-              if (!o[this.name].push) {
-                  o[this.name] = [o[this.name]];
-              }
-              o[this.name].push(this.value || '');
-          } else {
-              o[this.name] = this.value || '';
-          }
-      });
-      return o;
-  };
-
-  function associate_customer_cc(data, text_status, request) {
-      $('[name="tmp_cc_token"]').val(data.token);
-      // Enviar el token temporal a nuestro servidor
-      $('#associate_customer_cc_form').submit();
-  }
-
-  function show_errors(request, text_status, error_thrown) {
-      // Mostrar errores de validación
-      if (request.status == 401) {
-          $('#credit_card_form').find('.payment-errors').closest('.row').show();
-          $('#credit_card_form').find('.payment-errors').text('Error de autenticación a la plataforma de pagos.');
-          return;
-      }
-      if (request.status == 422) {
-          var data = JSON.parse(request.responseText);
-          $('#credit_card_form').find('.payment-errors').closest('.row').show();
-          $('#credit_card_form').find('.payment-errors').text('Datos erróneos en el campo ' + $.trim($('#credit_card_form label[for="id_' + data.errors[0].field + '"]').text()));
-          return;
-      }
-  }
-
-  function tokenize_credit_card() {
-    $('#credit_card_form').find('.payment-errors').closest('.row').hide();
-    $('#credit_card_form').find('.payment-errors').text('');
-
-    var tpaga_public_key = 'pk_test_qvbvuthlvqpijnr0elmtg5jh';
-
-    // Enviar los datos de la tarjeta directamente a Tpaga y obtener el token temporal
-    $.ajax('https://sandbox.tpaga.co/api/tokenize/credit_card', {
-      method: 'POST',
-      beforeSend: function (xhr) {
-          xhr.setRequestHeader('Authorization', 'Basic ' + btoa(tpaga_public_key + ':'));
-      },
-      username: tpaga_public_key,
-      password: '',
-      data: JSON.stringify($('#credit_card_form').serializeObject()),
-      contentType: 'application/json',
-      dataType: 'json',
-      success: associate_customer_cc,
-      error: show_errors
-    });
-    return false;
-  }
-
-  $('#credit_card_form').on('submit', tokenize_credit_card);
-
-});
-</code></pre>
-
-<p>donde <code>tpaga_public_key</code> es <strong>la llave PÚBLICA</strong> que copiamos desde el dashboard de Tpaga.</p>
-
-<p>Ahora usando el token temporal de la tarjeta (<code>tmp_cc_token</code>) podemos asociarla al cliente:</p>
-
-<pre><code class="python">class TpagaTestClient:
-    # ...
-
-    def assoc_cc_to_customer(self, customer_token, cc_temp_token=None):
-        cdata = {'token': cc_temp_token }
-        response = self.api_post(
-            'customer/{}/credit_card_token'.format(customer_token), cdata
-        )
-        return self.json_from_response(response)
-</code></pre>
-
-<pre><code class="python">&gt;&gt; cc_temp_token = request.POST['tmp_cc_token']
-&gt;&gt; credit_card = client.assoc_cc_to_customer(
-    customer_token=customer_token,
-    cc_temp_token=cc_temp_token,
-)
-&gt;&gt; credit_card_token = credit_card['id']
-print('credit_card_token', credit_card_token)
-credit_card_token 2k54foql0hki0ot7avrg9nhpvbpqam55
-</code></pre>
-
-<p>Mirando la tabla de <a href="https://sandbox.tpaga.co/merchantDashboard/cards">sandbox.tpaga.co/merchantDashboard/cards</a> vemos que nuestra tarjeta quedó registrada con Tpaga.</p>
-
-<p>Opcionalmente, dependiendo de la configuración de nuestra cuenta en Tpaga, Tpaga puede hacer un cargo de prueba a la tarjeta de crédito al crearla, automáticamente. En este caso, el valor la respuesta <code>response['validationCharge']['successful']</code> nos indica si el pago fue exisoto, y <code>response['validationCharge']['errorCode']</code> tiene el código de error. Por ejemplo:</p>
-
-<pre><code class="python">{
-    'id': 'r6ae7t2u7dmt7injv5c2bg9sqbh0krtr',
-    'addressLine2': None,
-    'addressCountry': None,
-    'addressState': None,
-    'expirationMonth': '03',
-    'lastFour': '0004',
-    'bin': '404000',
-    'fingerprint': '812a1abf6c03db89bdf91025687fe5a77e24065a652860445e45e62fce3a2858',
-    'addressCity': None,
-    'addressPostalCode': None,
-    'type': 'VISA',
-    'cardHolderName': 'Иван Иваныч',
-    'customer': 'qoodmh04sh7ghpp58opn5g0hssg4slq0',
-    'validationCharge': {'successful': False, 'errorCode': '04'},
-    'addressLine1': None,
-    'expirationYear': '2018'
-}
-</code></pre>
-
-<h3>Realizar el pago por la tarjeta de crédito</h3>
-
-<p>Con el token de la tarjeta de crédito, que obtuvimos en el paso anterior, ahora podemos realizar pagos. Para eso enviemos una petición POST al <a href="https://tpaga.co/docs/swaggers/v2#!/Charge/addCreditCardCharge">addCreditCardCharge</a> endpoint con los siguientes parametros:</p>
-
-<ul>
-<li><code>orderId</code> - nuestro id interno que asociamos al pago, que luego nos ayudaría a identificar la transacción en el dashboard de Tpaga;</li>
-<li><code>amount</code>- cantidad de dinero para cobrar,</li>
-<li><code>currency</code>- tipo de moneda, por ejemplo, &lsquo;COP&rsquo;,</li>
-<li><code>creditCard</code> - token de la tarjeta de crédito.</li>
-</ul>
-
-
-<pre><code class="python">class TpagaTestClient:
-    # ...
-
-    def charge_cc(self, cc_token, order_id='BRG-2', amount=1000):
-        cdata = {
-              'orderId': order_id,
-              'currency': 'COP',
-              'taxAmount': 0,
-              'description': 'One bridge in good condition.',
-              'installments': 1,
-              'amount': amount,
-              'creditCard': cc_token,
-        }
-        response = self.api_post('charge/credit_card', cdata)
-        return self.json_from_response(response)
-
-    def refund_cc(self, cc_charge_id):
-        cdata = {
-            'id': cc_charge_id,
-        }
-        response = self.api_post('refund/credit_card', cdata)
-        return self.json_from_response(response, expected_http_code=[202])
-</code></pre>
-
-<pre><code class="python">&gt;&gt; charge_cc_response = client.charge_cc(cc_token=credit_card_token, amount=4500)
-&gt;&gt; cc_charge_id = charge_cc_response['id']
-print('charge_cc_response', charge_cc_response)
-charge_cc_response {
-    'id': '1rnfu463258eph0mlqli4105mjb85kut',
-    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu',
-    'thirdPartyId': None,
-    'installments': 1,
-    'tpagaFeeAmount': '868.00',
-    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh',
-    'iacAmount': '0.00',
-    'transactionInfo': {
-        'authorizationCode': '723045',  # código de transacción del banco
-        'status': 'authorized',  # Posibles valores: created, fraudulent,
-                                 # settled, processor_declined, authorized,
-                                 # voided
-    },
-    'netAmount': '3545.00',
-    'tipAmount': '0.00',
-    'reteIvaAmount': '0.00',
-    'reteIcaAmount': '19.00',
-    'paid': True,
-    'reteRentaAmount': '68.00',
-    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP',
-    'orderId': 'BRG-2',
-    'description': 'One bridge in good condition.',
-    'currency': 'COP',
-    'errorMessage': 'Approved',
-    'taxAmount': '0.00',
-    'errorCode': '00',
-    'amount': '4500.00'
-}
-</code></pre>
-
-<p>Si el pago fue exitoso, el código de respuesta es <code>201</code> y en el JSON podemos ver que la llave <code>paid</code> es <code>True</code> y <code>amount</code> es igual al valor cobrado de la tarjeta.</p>
-
-<p>En el caso cuando el código de respuesta es <code>402</code>, tendríamos fijarnos en los valores de <code>errorCode</code> y <code>errorMessage</code> para entender qué pasó con la transacción. Por ejemplo, el código de error <code>43</code> significa que el dueño de la tarjeta la reportó como robada, y <code>61</code> - que el monto máximo de tarjeta fue excedido.</p>
-
-<p>En otros casos necesitaremos verificar que los datos que pasamos en la petición sean válidos y tengan todos los valores necesarios.</p>
-
-<h3>Revertir el pago</h3>
-
-<p>Los bancos nos permiten revertir el pago dentro de 24 horas después de la transacción. Para hacerlo debemos mandar token de la transacción que queremos revertir al <a href="https://tpaga.co/docs/swaggers/v2#!/Credit_Card/refundCreditCardCharge">refundCreditCardCharge</a> endpoint.</p>
-
-<pre><code class="python">&gt;&gt; refund_cc_response = client.refund_cc(cc_charge_id)
-&gt;&gt; print('refund_cc_response', refund_cc_response)
-refund_cc_response {
-    'id': '1rnfu463258eph0mlqli4105mjb85kut',
-    'creditCard': 'ifmjd9rbe8peqdjh09pln702306nfniu',
-    'thirdPartyId': None,
-    'installments': 1,
-    'tpagaFeeAmount': '868.00',
-    'customer': 'gl01l74skk0po9afrjiaaclt0hr5acsh',
-    'iacAmount': '0.00',
-    'transactionInfo': {'authorizationCode': '723045', 'status': 'voided'},
-    'netAmount': '3545.00',
-    'tipAmount': '0.00',
-    'reteIvaAmount': '0.00',
-    'reteIcaAmount': '19.00',
-    'paid': False,
-    'reteRentaAmount': '68.00',
-    'paymentTransaction': 'tta2hlk0e5n5dgr4kggm5j6vv8qoh3jP',
-    'orderId': 'BRG-2',
-    'description': 'One bridge in good condition.',
-    'currency': 'COP',
-    'errorMessage': 'Approved',
-    'taxAmount': '0.00',
-    'errorCode': '00',
-    'amount': '4500.00'
-}
-</code></pre>
-
-<p>El JSON que nos devolvió Tpaga <code>transactionInfo.status</code> aparece como <code>voided</code> y el valor de <code>paid</code> ahora es falso:</p>
-
-<p><img src="/images/tpaga_dashboard_refund.png"></p>
-
-<p>Enlaces:</p>
-
-<ul>
-<li>Documentación de Tpaga: <a href="https://tpaga.co/docs/swaggers/v2">tpaga.co/docs/swaggers/v2</a></li>
-<li>Tpaga FAQ: <a href="https://tpaga.zendesk.com/hc/es">tpaga.zendesk.com/hc/es</a></li>
-<li>Documentación para la librería <a href="http://docs.python-requests.org/en/master/">Requests: HTTP for Humans</a></li>
-<li>Un ejemplo de integración con Tpaga usando PHP/JavaScript: <a href="https://github.com/Tpaga/tpaga-php-example-backend/">Tpaga/tpaga-php-example-backend</a></li>
-</ul>
-
-
-<p>Muchas gracias a <a href="https://twitter.com/jerojasro">@jerojasro</a> por su ayuda y paciencia.</p>
 ]]></content>
   </entry>
   

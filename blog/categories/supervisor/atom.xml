@@ -4,7 +4,7 @@
   <title><![CDATA[Category: supervisor | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/supervisor/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-01-16T19:24:32-05:00</updated>
+  <updated>2017-02-10T22:39:11-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -24,6 +24,9 @@
 
 <pre><code>Usuario &lt;-&gt; Servidow web &lt;-&gt; Socket &lt;-&gt; uWSGI &lt;-&gt; Django
 </code></pre>
+
+<!-- more -->
+
 
 <p>Decimos que el código del proyecto está en la carpeta <code>/home/deploy/sitp_scraper</code>. Primero creamos el entorno virtual e instalamos las librerías de Python proyecto (en éste ejemplo usamos <a href="https://virtualenvwrapper.readthedocs.io/en/latest/">virtualenvwrapper</a>):</p>
 
