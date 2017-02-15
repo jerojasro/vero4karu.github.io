@@ -112,4 +112,15 @@ I am going to cook.
 ```
 Se habrá     caído  de la bicicleta.
 He will have fallen off the bicycle.
+
+  Habré comido     antes de reunirnos.
+I will  have eaten before we meet.
+```
+
+### El futuro perfecto continuo / Future Perfect Continuous
+
+```
+Francis habrá     estado viviendo en Italia durante 4 años, hasta que haya terminado sus estudios.
+Francis will have been   living   in Italy for 4 years by the time he finishes his studies.
+
 ```
