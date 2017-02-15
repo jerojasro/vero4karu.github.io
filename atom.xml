@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-02-10T22:39:11-05:00</updated>
+  <updated>2017-02-14T22:34:14-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -12,6 +12,131 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[La misma cosa]]></title>
+    <link href="http://blog.vero4ka.info/blog/2017/02/14/la-misma-cosa/"/>
+    <updated>2017-02-14T21:14:51-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2017/02/14/la-misma-cosa</id>
+    <content type="html"><![CDATA[<p>Para los que están convencidos de que inglés es muy diferente a español.</p>
+
+<p><strong>Gerund</strong>: <code>cocinando</code>/<code>cooking</code> <br>
+<strong>Present Participle</strong>: <code>cocinado</code>/<code>cooking</code> <br>
+<strong>Past Participle</strong>: <code>cocinado</code>/<code>cooked</code> <br></p>
+
+<h2>Indicativo/Indicative</h2>
+
+<h3>Pretérito indefinido / Past Simple</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>He cooked yesterday.
+</span><span class='line'>Él cocinó ayer.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Pasado Continuo / Past Continuous (Progressive)</h3>
+
+<p>to be = estar</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>He was    cooking    when the phone rang.
+</span><span class='line'>Él estaba conicnando cuando el teléfono timbró.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Pretérito pluscuamperfecto / Past Perfect</h3>
+
+<p>El pretérito pluscuamperfecto sirve para expresar la anterioridad de un hecho pasado respecto a otro también pasado.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>He had   cooked   the dinner when the phone rang.
+</span><span class='line'>Él había cocinado la cena cuando el teléfono timbró.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Past Perfect Continuous</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>He had been cooking for a long time before he took lessons.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Presente / Present Simple (Indefinite)</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Yo cocino pescado cada viernes.
+</span><span class='line'>I  cook   fish every Friday.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Estar + gerundio / Present Continuous (Progressive)</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  Estoy cocinado ahora.
+</span><span class='line'>I am    cooking  now.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Pretérito perfecto (compuesto) / Present Perfect</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  He   cocinado muchos platos. 
+</span><span class='line'>I have cooked   many meals.
+</span><span class='line'>
+</span><span class='line'>  He   hablado con Peter.
+</span><span class='line'>I have talked  to Peter.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Pretérito imperfecto / used to + inf.</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Yo cocinaba      casi todos los días.
+</span><span class='line'>Yo solía cocinar casi todos los días.
+</span><span class='line'>I  used to cook  almost everyday.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Present Perfect Continuous (Progressive)</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> Han  estado hablando durante tres horas.
+</span><span class='line'>They have been   talking  for three hours.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Futuro Imperfecto / Future Simple</h3>
+
+<p>cocinaré = will cook</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Mañana cocinaré.
+</span><span class='line'>I will cook tomorrow.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Futuro Próximo (ir + a) / going to</h3>
+
+<p>ir a = be going to</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  Voy      a  cocinar.
+</span><span class='line'>I am going to cook.</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Futuro Perfecto / Future Perfect</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Se habrá     caído  de la bicicleta.
+</span><span class='line'>He will have fallen off the bicycle.</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Flask con todas las arandelas]]></title>
@@ -1238,7 +1363,7 @@
 
 <p><img class="center" src="http://blog.vero4ka.info/images/flask/tappsi_logo.svg" width="100"></p>
 
-<p>Estamos contratando <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#106;&#x6f;&#x62;&#x73;&#x40;&#x74;&#97;&#x70;&#112;&#115;&#105;&#x2e;&#99;&#x6f;">&#106;&#x6f;&#98;&#x73;&#x40;&#116;&#97;&#x70;&#112;&#x73;&#x69;&#x2e;&#x63;&#x6f;</a></p>
+<p>Estamos contratando <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#106;&#x6f;&#98;&#x73;&#x40;&#x74;&#97;&#x70;&#112;&#115;&#x69;&#x2e;&#x63;&#x6f;">&#x6a;&#111;&#98;&#115;&#64;&#x74;&#x61;&#x70;&#x70;&#x73;&#x69;&#x2e;&#99;&#111;</a></p>
 ]]></content>
   </entry>
   
@@ -4308,77 +4433,6 @@ las estrofas de Tiútchev:</p>
 <li>Examples: <a href="https://github.com/vero4karu/flask-examples">https://github.com/vero4karu/flask-examples</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Las temporadas]]></title>
-    <link href="http://blog.vero4ka.info/blog/2016/07/20/las-temporadas/"/>
-    <updated>2016-07-20T18:34:10-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2016/07/20/las-temporadas</id>
-    <content type="html"><![CDATA[<p>A veces me parece que aquí el tiempo no se mueve. A veces me digo:
-“El verano pasado…” – o – “El próximo invierno”, y luego me doy cuenta
-que no hay ningún verano, ni invierno, ni primavera, ni otoño. Y eso da
-el sentido que no cambia nada, pero cuando uno mira atrás, así llega uno
-a horrorizarse de cuánto tiempo ha pasado.</p>
-
-<p>Pero antes todo era diferente…</p>
-
-<p>Todo el verano sentía euforia de que por fin hacía calor y todo alrededor
-estaba verde. Podía mirar por horas cómo se movían las ramas de los árboles
-con el viento, aspirar el aire lleno de olores y escuchar los sonidos del bosque.
-Parecía que todo el mundo estaba feliz: los niños por fin tenían sus vacaciones,
-sacaban sus bicicletas y patines y salían a jugar afuera, las muchachas se
-desvestían tratando de exponer más de su cuerpo al sol. Constantemente había
-que acordarse de que eso se iba a acabar pronto, de que teníamos muy poco
-tiempo para disfrutarlo, entonces había que aprovechar cada momento, y por eso
-la gente se enloquecía.</p>
-
-<p>En junio o julio a veces hace tanto calor que parece que el asfalto se funde.
-Realmente, todo se funde. Pero en agosto la llegan los vientos del norte
-trayendo las decepciones. La mente todavía no puede aceptar que el verano
-se acabó tan rápido, y la mente no manda al cuerpo que tiene que vestirse.
-Entonces llegamos al otoño con mocos y tos.</p>
-
-<p>El otoño es un poco incómodo, porque uno no sabe cómo vestirse: de día es
-todavía bastante cálido, pero por la mañana hace mucho frío. Muchísimo.
-Entonces todos andan muy abrigados con muchas prendas quitándose sus sacos
-uno por uno. Después del verano caliente, cinco grados centígrados se siente
-como uno estuviera en el Polo norte. Pero ese es el precio que pagamos para
-ver esa abundancia de colores: las hojas de los árboles pierden el pigmento
-verde y el bosque se convierte en un lugar mágico. Siempre trataba de no
-levantar mucho las piernas cuando andaba para hacer crujir las hojas cecas
-de los árboles.</p>
-
-<p>Luego, inesperadamente (como cada año), llega la nieve, y es inesperado
-porque los servicios de aseo nunca están preparados. De verdad, nadie está
-preparado. Creo que es porque todos tienen muy por dentro una pequeña esperanza
-de que puede ser éste año el invierno no llegue. Los árboles se vuelven
-completamente siniestros y se ven como muertos.</p>
-
-<p><img class="center" src="http://blog.vero4ka.info/images/winter.jpg" title="'Mi colegio (de primaria) en Moscú en invierno'" ></p>
-
-<p>El diciembre el mundo se queda sumido en la oscuridad. Lo más doloroso era
-despertarse por la mañana para ir al colegio:</p>
-
-<p>A las siete de la mañana suena el despertador, uno abre los ojos, pero todo
-está completamente oscuro, como a la medianoche. Los ojos se cierran lentamente
-y te vuelves a terminar de ver el último sueño. Pero luego llega el dolor –
-alguien prendió la luz. La luz entra a través de los párpados cerrados, y es
-insoportable. Uno trata de entreabrir los ojos, pero el brillo amarillo les ciega,
-entonces uno tiene que cerrarlos inmediatamente. Así con los ojos medio abiertos
-uno desayuna, se viste y sale de la casa a la oscuridad para patullar por la nieve.
-Claro que el barrendero también tuvo pereza y lo había limpiado las calles,
-entonces tocaba de nuevo abrir el camino hasta el colegio.</p>
-
-<p><img class="center" src="http://blog.vero4ka.info/images/colegio.jpg" title="'Mi colegio (edificios del primer grado y la secundaria)'" ></p>
-
-<p><img class="center" src="http://blog.vero4ka.info/images/colegio3.jpg" title="'Mi colegio (edificios del primer grado y la secundaria)'" ></p>
-
-<p><img class="center" src="http://blog.vero4ka.info/images/colegio4.jpg" title="'Mi colegio (edificios del primer grado y la secundaria)'" ></p>
-
-<p>Las imágenes tomadas de
-<a href="https://ssl.panoramio.com/user/2301915">https://ssl.panoramio.com/user/2301915</a>.</p>
 ]]></content>
   </entry>
   

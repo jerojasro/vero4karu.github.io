@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tdd | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/tdd/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-02-10T22:39:11-05:00</updated>
+  <updated>2017-02-14T22:34:14-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -106,7 +106,7 @@
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x74;&amp;#x6f;&amp;#x3a;&amp;#115;&amp;#117;&amp;#112;&amp;#101;&amp;#114;&amp;#x75;&amp;#x73;&amp;#x65;&amp;#114;&amp;#x40;&amp;#101;&amp;#x78;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#x65;&amp;#46;&amp;#99;&amp;#x6f;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#115;&amp;#117;&amp;#x70;&amp;#101;&amp;#x72;&amp;#117;&amp;#115;&amp;#x65;&amp;#x72;&amp;#64;&amp;#x65;&amp;#x78;&amp;#97;&amp;#109;&amp;#112;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#111;&amp;#x6d;&lt;/a&gt;&amp;rsquo;,</span>
+</span><span class='line'>            <span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#58;&amp;#115;&amp;#x75;&amp;#x70;&amp;#101;&amp;#114;&amp;#117;&amp;#115;&amp;#x65;&amp;#114;&amp;#x40;&amp;#x65;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#x70;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#115;&amp;#117;&amp;#112;&amp;#101;&amp;#x72;&amp;#x75;&amp;#115;&amp;#x65;&amp;#114;&amp;#64;&amp;#x65;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&amp;rsquo;,</span>
 </span><span class='line'>            <span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">superuser</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>            <span class="n">password</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
 </span><span class='line'>        <span class="p">)</span>
