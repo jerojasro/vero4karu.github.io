@@ -13,114 +13,88 @@ Para los que están convencidos de que inglés es muy diferente a español.
 **Present Participle**: `cocinado`/`cooking` <br>
 **Past Participle**: `cocinado`/`cooked` <br>
 
-## Indicativo/Indicative
-
 ### Pretérito indefinido / Past Simple
 
-```
-He cooked yesterday.
-Él cocinó ayer.
-```
+He **cooked** yesterday. <br>
+Él **cocinó** ayer.
 
 ### Pasado Continuo / Past Continuous (Progressive)
 
-to be = estar
-
-```
-He was    cooking    when the phone rang.
-Él estaba conicnando cuando el teléfono timbró.
-```
+He **was cooking** when the phone rang. <br>
+Él **estaba coninando** cuando el teléfono timbró.
 
 ### Pretérito pluscuamperfecto / Past Perfect
 
 El pretérito pluscuamperfecto sirve para expresar la anterioridad de un hecho pasado respecto a otro también pasado.
 
-```
-He had   cooked   the dinner when the phone rang.
-Él había cocinado la cena cuando el teléfono timbró.
+He **had cooked** the dinner when the phone rang. <br>
+Él **había cocinado** la cena cuando el teléfono timbró.
 
-They had    studied   English before they went to London.
-     Habían estudiado inglés antes de irse a Londres.
-```
+They **had studied** English before they went to London.<br>
+**Habían estudiado** inglés antes de irse a Londres.
 
 ### Past Perfect Continuous
 
-```
-  Había estado estudiando inglés durante 2 años cuando fui a Londres.
-I had   been   studying   English for 2 years when I went to London.
-```
+I **had been studying**   English for 2 years when I went to London. <br>
+**Había estado estudiando** inglés durante 2 años cuando fui a Londres.
+
 
 ### Presente / Present Simple (Indefinite)
 
-```
-Yo cocino pescado cada viernes.
-I  cook   fish every Friday.
-```
+I **cook** fish every Friday. <br>
+Yo **cocino** pescado cada viernes.
 
 ### Estar + gerundio / Present Continuous (Progressive)
 
-```
-  Estoy cocinado ahora.
-I am    cooking  now.
-```
+I **am cooking** now. <br>
+**Estoy cocinado** ahora.
 
 ### Pretérito perfecto (compuesto) / Present Perfect
 
-```
-  He   cocinado muchos platos. 
-I have cooked   many meals.
+**He cocinado** muchos platos. <br>
+I **have cooked** many meals.
 
-  He   hablado con Peter.
-I have talked  to Peter.
-```
+**He hablado** con Peter. <br>
+I **have talked** to Peter.
 
 ### Pretérito imperfecto / used to + inf.
 
-```
-Yo cocinaba      casi todos los días.
-Yo solía cocinar casi todos los días.
-I  used to cook  almost everyday.
-```
+I **used to cook** almost everyday. <br>
+Yo **cocinaba** casi todos los días. <br>
+Yo **solía cocinar** casi todos los días.
 
 ### Present Perfect Continuous (Progressive)
 
-```
-     Han  estado hablando durante tres horas.
-They have been   talking  for three hours.
-```
+They **have been talking** for three hours. <br>
+**Han estado hablando** durante tres horas.
 
 ### Futuro Imperfecto / Future Simple
 
 cocinaré = will cook
 
-```
+I will cook tomorrow. <br>
 Mañana cocinaré.
-I will cook tomorrow.
-```
 
 ### Futuro Próximo (ir + a) / going to
 
 ir a = be going to
 
-```
-  Voy      a  cocinar.
-I am going to cook.
-```
+I **am going to cook**. <br>
+**Voy a cocinar**.
 
 ### Futuro Perfecto / Future Perfect
 
-```
-Se habrá     caído  de la bicicleta.
-He will have fallen off the bicycle.
+habrá + participio = will have + Past Participle
 
-  Habré comido     antes de reunirnos.
-I will  have eaten before we meet.
-```
+He **will have fallen** off the bicycle. <br>
+Se **habrá caído** de la bicicleta.
+
+I **will  have eaten** before we meet. <br>
+**Habré comido** antes de reunirnos.
 
 ### El futuro perfecto continuo / Future Perfect Continuous
 
-```
-Francis habrá     estado viviendo en Italia durante 4 años, hasta que haya terminado sus estudios.
-Francis will have been   living   in Italy for 4 years by the time he finishes his studies.
+habrá estado + gerundio = have been + gerund
 
-```
+Francis **will have been living** in Italy for 4 years by the time he finishes his studies. <br>
+Francis **habrá estado viviendo** en Italia durante 4 años, hasta que haya terminado sus estudios.
