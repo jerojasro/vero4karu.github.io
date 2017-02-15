@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-02-14T22:34:14-05:00</updated>
+  <updated>2017-02-14T22:44:40-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -50,14 +50,22 @@
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>He had   cooked   the dinner when the phone rang.
-</span><span class='line'>Él había cocinado la cena cuando el teléfono timbró.</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>Él había cocinado la cena cuando el teléfono timbró.
+</span><span class='line'>
+</span><span class='line'>They had    studied   English before they went to London.
+</span><span class='line'>     Habían estudiado inglés antes de irse a Londres.</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Past Perfect Continuous</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>He had been cooking for a long time before he took lessons.</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  Había estado estudiando inglés durante 2 años cuando fui a Londres.
+</span><span class='line'>I had   been   studying   English for 2 years when I went to London.</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Presente / Present Simple (Indefinite)</h3>
@@ -1363,7 +1371,7 @@
 
 <p><img class="center" src="http://blog.vero4ka.info/images/flask/tappsi_logo.svg" width="100"></p>
 
-<p>Estamos contratando <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#106;&#x6f;&#98;&#x73;&#x40;&#x74;&#97;&#x70;&#112;&#115;&#x69;&#x2e;&#x63;&#x6f;">&#x6a;&#111;&#98;&#115;&#64;&#x74;&#x61;&#x70;&#x70;&#x73;&#x69;&#x2e;&#99;&#111;</a></p>
+<p>Estamos contratando <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#106;&#x6f;&#98;&#x73;&#64;&#116;&#97;&#112;&#112;&#115;&#105;&#x2e;&#x63;&#x6f;">&#106;&#111;&#98;&#115;&#x40;&#x74;&#x61;&#112;&#112;&#x73;&#x69;&#46;&#x63;&#111;</a></p>
 ]]></content>
   </entry>
   
