@@ -38,12 +38,16 @@ El pretérito pluscuamperfecto sirve para expresar la anterioridad de un hecho p
 ```
 He had   cooked   the dinner when the phone rang.
 Él había cocinado la cena cuando el teléfono timbró.
+
+They had    studied   English before they went to London.
+     Habían estudiado inglés antes de irse a Londres.
 ```
 
 ### Past Perfect Continuous
 
 ```
-He had been cooking for a long time before he took lessons.
+  Había estado estudiando inglés durante 2 años cuando fui a Londres.
+I had   been   studying   English for 2 years when I went to London.
 ```
 
 ### Presente / Present Simple (Indefinite)
