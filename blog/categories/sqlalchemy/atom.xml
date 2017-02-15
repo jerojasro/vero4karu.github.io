@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sqlalchemy | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/sqlalchemy/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-02-14T22:49:36-05:00</updated>
+  <updated>2017-02-14T22:54:25-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -675,7 +675,7 @@ $ pip install Flask-SQLAlchemy
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#58;&amp;#x6a;&amp;#x6f;&amp;#x68;&amp;#110;&amp;#64;&amp;#101;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#101;&amp;#46;&amp;#99;&amp;#111;&amp;#x6d;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#x6a;&amp;#x6f;&amp;#x68;&amp;#x6e;&amp;#64;&amp;#101;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#101;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;&amp;rsquo;, username=&amp;lsquo;&amp;rsquo;)</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#108;&amp;#116;&amp;#x6f;&amp;#x3a;&amp;#106;&amp;#111;&amp;#104;&amp;#110;&amp;#64;&amp;#101;&amp;#x78;&amp;#x61;&amp;#109;&amp;#112;&amp;#108;&amp;#101;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#x6d;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#106;&amp;#x6f;&amp;#x68;&amp;#110;&amp;#64;&amp;#101;&amp;#120;&amp;#97;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#x6d;&lt;/a&gt;&amp;rsquo;, username=&amp;lsquo;&amp;rsquo;)</span>
 </span><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 </span><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure></p>
@@ -1189,7 +1189,7 @@ $ pip install Flask-OAuth
 
 <p><img class="center" src="/images/flask/tappsi_logo.svg" width="100"></p>
 
-<p>Estamos contratando <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#x6a;&#111;&#98;&#115;&#64;&#116;&#97;&#x70;&#x70;&#115;&#105;&#x2e;&#99;&#111;">&#106;&#x6f;&#x62;&#115;&#64;&#116;&#97;&#112;&#112;&#115;&#105;&#46;&#99;&#x6f;</a></p>
+<p>Estamos contratando <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#106;&#x6f;&#98;&#115;&#64;&#x74;&#x61;&#x70;&#112;&#115;&#105;&#46;&#99;&#x6f;">&#106;&#111;&#x62;&#x73;&#x40;&#x74;&#97;&#112;&#x70;&#115;&#105;&#46;&#99;&#x6f;</a></p>
 ]]></content>
   </entry>
   
