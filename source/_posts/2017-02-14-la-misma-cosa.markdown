@@ -9,6 +9,8 @@ categories:
 
 Para los que están convencidos de que inglés es muy diferente a español.
 
+<!-- more -->
+
 **Gerund**: `cocinando`/`cooking` <br>
 **Present Participle**: `cocinado`/`cooking` <br>
 **Past Participle**: `cocinado`/`cooked` <br>
