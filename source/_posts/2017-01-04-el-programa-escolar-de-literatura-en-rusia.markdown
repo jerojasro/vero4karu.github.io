@@ -24,6 +24,8 @@ rusos deben leer...
 
 ### Literatura rusa antigua de los siglos XI - XVII
 
+{% img right /images/Povest_vremennyh_let.jpeg 150 'Crónica de Néstor' %}
+
 * [Cantar de las huestes de Ígor](https://es.wikipedia.org/wiki/Cantar_de_las_huestes_de_%C3%8Dgor) («Слово о полку Игореве»)
 * [Crónica de Néstor](https://es.wikipedia.org/wiki/Cr%C3%B3nica_de_N%C3%A9stor) («Повесть временных лет»)
 
@@ -44,6 +46,7 @@ rusos deben leer...
   * «На птичку»
   * ["Monument"](http://max.mmlc.northwestern.edu/mdenner/Demo/texts/monument_derzhav.htm) «Памятник»
   * «Река времён в своём стремленьи»
+{% img right /images/DenisFonvizin.jpg 150 'Denís Fonvizin' %}
 * [Denís Fonvizin](https://es.wikipedia.org/wiki/Den%C3%ADs_Fonvizin) (Д. И. Фонвизин)
   * "The Minor" (Комедия «Недоросль»)
 * [Aleksandr Radíshchev](https://es.wikipedia.org/wiki/Aleksandr_Rad%C3%ADshchev) (А. Н. Радищев)
@@ -54,8 +57,6 @@ rusos deben leer...
 
 ### Literatura rusa del siglo XIX
 
-{% img right /images/pushkin.jpg 150 'Aleksandr Pushkin' %}
-
 * Fábulas de [Iván Krylov](https://es.wikipedia.org/wiki/Iv%C3%A1n_Krylov)
 * Poesía de [Vasili Zhukovski](https://es.wikipedia.org/wiki/Vasili_Zhukovski)
   * "Svetlana" (Баллада «Светлана»)
@@ -63,6 +64,7 @@ rusos deben leer...
   * ["Woe from Wit"](https://en.wikipedia.org/wiki/Woe_from_Wit) (Комедия «Горе от ума»)
 * Poesía de [Kondrati Ryléyev](https://es.wikipedia.org/wiki/Kondrati_Ryl%C3%A9yev) (К. Ф. Рылеев)
 * Poesía de [Konstantín Bátiushkov](https://es.wikipedia.org/wiki/Konstant%C3%ADn_B%C3%A1tiushkov) (К. Н. Батюшков)
+{% img right /images/pushkin.jpg 150 'Aleksandr Pushkin' %}
 * [Aleksandr Pushkin](https://es.wikipedia.org/wiki/Aleksandr_Pushkin) (А. С. Пушкин)
   * Poesía
   * "Los relatos de Belkin" («Повести Белкина»)
@@ -73,6 +75,7 @@ rusos deben leer...
   * "El caballero de bronce" («Медный всадник»)
   * ["Eugenio Oneguin"](https://es.wikipedia.org/wiki/Eugenio_Oneguin) («Евгений Онегин»)
   * ["Borís Godunov"](https://es.wikipedia.org/wiki/Bor%C3%ADs_Godunov) («Борис Годуновc)
+{% img right /images/lermontov.jpg 150 Mijaíl Lérmontov %}
 * [Mijaíl Lérmontov](https://es.wikipedia.org/wiki/Mija%C3%ADl_L%C3%A9rmontov) (М. Ю. Лермонтов)
   * Poesía
   * [Un héroe de nuestro tiempo](https://es.wikipedia.org/wiki/Un_h%C3%A9roe_de_nuestro_tiempo) («Герой нашего времени»)
@@ -91,6 +94,7 @@ rusos deben leer...
   * "El dineral" («Доходное место»)
   * "La niña de las nieves" («Снегурочка»)
   * "Entre propios anda el juego" («Свои люди — сочтёмся»)
+{% img right /images/turgenev.jpg 150 Iván Turguénev %}
 * [Iván Turguénev](https://es.wikipedia.org/wiki/Iv%C3%A1n_Turgu%C3%A9nev) (И. С. Тургенев)
   * "Padres e hijos" («Отцы и дети»)
   * "Rudin" («Рудин»)
@@ -101,6 +105,7 @@ rusos deben leer...
 * Poesía de [Fyodor Tyutchev](https://en.wikipedia.org/wiki/Fyodor_Tyutchev) (Ф. И. Тютчев)
 * Poesía de [Afanasy Fet]("https://en.wikipedia.org/wiki/Afanasy_Fet") (А. А. Фет)
 * Poesía de [Apolón Máikov](https://es.wikipedia.org/wiki/Apol%C3%B3n_M%C3%A1ikov) (А. Н. Майков)
+{% img right /images/tolstoy.jpg 150 Leo Tolstoy %}
 * [Leo Tolstoy](https://en.wikipedia.org/wiki/Leo_Tolstoy) (Л. Н. Толстой)
   * "Infancia" («Детство»)
   * "Adolescencia" («Отрочество»)
@@ -140,6 +145,7 @@ rusos deben leer...
   * «Парадокс»
   * «Огоньки»
   * «В дурном обществе»
+{% img right /images/chekhov.jpg 150 Antón Chéjov %}
 * [Antón Chéjov](https://es.wikipedia.org/wiki/Ant%C3%B3n_Ch%C3%A9jov) (А. П. Чехов)
   * "Tío Vania" («Дядя Ваня»)
   * ["El jardín de los cerezos"](https://es.wikipedia.org/wiki/El_jard%C3%ADn_de_los_cerezos) («Вишнёвый сад»)
@@ -158,6 +164,8 @@ rusos deben leer...
 
 ### Literatura rusa del siglo XX (la primera mitad)
 
+{% img right /images/bunin.jpg 150 Iván Bunin %}
+
 * [Iván Bunin](https://es.wikipedia.org/wiki/Iv%C3%A1n_Bunin) (И. А. Бунин)
   * ["The Gentleman from San Francisco"](https://en.wikipedia.org/wiki/The_Gentleman_from_San_Francisco) («Господин из Сан-Франциско»)
 * Poesía de [Konstantín Balmont](https://es.wikipedia.org/wiki/Konstant%C3%ADn_Balmont) (К. Д. Бальмонт)
@@ -169,6 +177,7 @@ rusos deben leer...
 * Poesía de [Ígor Severyanin](https://es.wikipedia.org/wiki/Futurismo_ruso) (И. Северянин)
 * Alekséi Rémizov (А. М. Ремизов)
   * «Змей»
+{% img right /images/zamyatin_my.jpg 150 Yevgueni Zamiatin %}
 * [Yevgueni Zamiatin](https://es.wikipedia.org/wiki/Yevgueni_Zamiatin) (Е. И. Замятин)
   * ["Nosotros"]("https://es.wikipedia.org/wiki/Nosotros_(novela)") («Мы»)
 * [Aleksandr Kuprín](https://es.wikipedia.org/wiki/Aleksandr_Kupr%C3%ADn) (А. И. Куприн)
@@ -205,6 +214,7 @@ rusos deben leer...
   * "Chapayev" («Чапаев»)
 * Vikenty Veresaev (Викентий Вересаев)
   * "Without a Road" («В тупике»)
+{% img right /images/Dvenadtsat_stulev.jpeg 150 Las Doce Sillas %}
 * Ilf y Petrov (Илья Ильф и Евгений Петров)
   * ["Las Doce Sillas"]("https://es.wikipedia.org/wiki/Las_doce_sillas_(novela)") («Двенадцать стульев»)
 * Teffi (Надежда Тэффи)
@@ -219,6 +229,7 @@ rusos deben leer...
 * [Arkadi Avérchenko](https://es.wikipedia.org/wiki/Arkadi_Av%C3%A9rchenko) (Аркадий Аверченко)
   * "Una docena de cuchillos en la parte posterior de la Revolución" («Дюжина ножей в спину революции»)
   * «Смерть африканского охотника»
+{% img right /images/Ahmatova.jpg 150 Anna Ajmátova %}
 * Poesía de [Anna Ajmátova](https://es.wikipedia.org/wiki/Anna_Ajm%C3%A1tova) (Анна Ахматова)
 * Poesía de [Marina Tsvetáyeva](https://es.wikipedia.org/wiki/Marina_Tsvet%C3%A1yeva) (М. И. Цветаева)
 * Poesía de [Ósip Mandelshtam](https://es.wikipedia.org/wiki/%C3%93sip_Mandelshtam) (О. Э. Мандельштам)
@@ -255,6 +266,7 @@ rusos deben leer...
 * Poesía de Konstantín Símonov (К. М. Симонов)
   * «Ты помнишь, Алёша, дороги Смоленщины…» 
   * «Жди меня» 
+{% img right /images/don.jpg 150 El Don apacible %}
 * [Mijaíl Shólojov](https://es.wikipedia.org/wiki/Mija%C3%ADl_Sh%C3%B3lojov) (М. А. Шолохов)
   * ["El Don apacible"](https://es.wikipedia.org/wiki/El_Don_apacible) («Тихий Дон»)
   * "Campos roturados" («Поднятая целина»)
