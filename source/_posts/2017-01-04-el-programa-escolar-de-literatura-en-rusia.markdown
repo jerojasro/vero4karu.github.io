@@ -346,73 +346,81 @@ rusos deben leer...
   * "The Golden Pot" («Золотой горшок»)
 * Poesía de George Gordon Byron (Дж. Г. Байрон)
 * П. Мериме (Prosper Mérimée) (una obra que escoge el profesor)
-* Оноре де Бальзак
-  * «Человеческая комедия»
-* Гюстав Флобер
-  * «Саламбо»
-* Г. X. Андерсен
+* [Honoré de Balzac](https://es.wikipedia.org/wiki/Honor%C3%A9_de_Balzac) (Оноре де Бальзак)
+  * ["La comedia humana"](https://es.wikipedia.org/wiki/La_comedia_humana) «Человеческая комедия»
+* [Gustave Flaubert](https://es.wikipedia.org/wiki/Gustave_Flaubert) (Гюстав Флобер)
+  * "Salambó" («Саламбо»)
+* Hans Christian Andersen (Г. X. Андерсен)
   * Соловей
-* Виктор Гюго
-  * «Собор Парижской Богоматери»
-* Даниэль Дефо
-  * «Робинзон Крузо»
-* Джек Лондон
-  * Рассказы
-  * «Любовь к жизни»
-* Э. А. По
+* [Victor Hugo](https://es.wikipedia.org/wiki/Victor_Hugo) (Виктор Гюго)
+  * "Notre-Dame de Paris" («Собор Парижской Богоматери»)
+* Daniel Defoe (Даниэль Дефо)
+  * "Robinson Crusoe" («Робинзон Крузо»)
+* Jack London (Джек Лондон)
+  * Los cuentos
+  * "Love of Life" («Любовь к жизни») - 1905
+* Edgar Allan Poe (Э. А. По)
   * «Лягушонок»
-* Джеймс Олдридж
-  * «Отец и сын»
-* О. Генри
-  * «Дары волхвов»
-* Луиджи Пиранделло
+* James Aldridge (Джеймс Олдридж)
+  * («Последний дюйм»)
+* [O. Henry](https://es.wikipedia.org/wiki/O._Henry) (О. Генри)
+  * "The Gift of the Magi" («Дары волхвов»)
+  * "Cabbages and Kings" («Короли и капуста»)
+* Luigi Pirandello (Луиджи Пиранделло)
   * «Черепаха»
-* Э. Сетон-Томпсон
-  * «Снап (история бультерьера)»
-* М. Твен
-  * «Приключения Тома Сойера»
-  * «Приключения Гекльберри Финна»
-* А. Сент-Экзюпери
-  * «Маленький принц»
-* Л. Кэрролл
-  * Алиса в стране чудес
-* Астрид Линдгрен
+* Ernest Thompson Seton (Э. Сетон-Томпсон)
+  * Cuentos
+* Mark Twain (М. Твен)
+  * "The Adventures of Tom Sawyer" («Приключения Тома Сойера») - 1876
+  * "Adventures of Huckleberry Finn" («Приключения Гекльберри Финна») - 1885
+* Antoine de Saint-Exupéry (А. Сент-Экзюпери)
+  * "El principito" («Маленький принц»)
+* Lewis Carroll (Л. Кэрролл)
+  * "Alice in Wonderland" («Алиса в стране чудес»)
+* Astrid Lindgren (Астрид Линдгрен)
   * «Приключения Калле Блумквиста»
   * «Расмус-бродяга»
-* Рэй Брэдбери
+* Ray Bradbury (Рэй Брэдбери)
   * «Каникулы (Брэдбери)»
   * «Зелёное утро»
-  * «Вино из одуванчиков»
-* Дж. Даррел
-  * «Говорящий свёрток»
-* Дж. Родари
+  * "Dandelion Wine" («Вино из одуванчиков»)
+* Gerald Durrell (Дж. Даррел)
+  * "The Talking Parcel" («Говорящий свёрток»)
+* Gianni Rodari (Дж. Родари)
   * «Приключения Чиполлино»
   * «Джельсомино в Стране Лжецов»
   * «Чем пахнут ремёсла»
-* Туве Янссон
+* Tove Jansson (Туве Янссон)
   * «Последний в мире дракон»
-* Дж. Р. Р. Толкин
+* John Ronald Reuel Tolkien (Дж. Р. Р. Толкин)
   * «Хоббит, или Туда и обратно»
-* Японские хокку (трехстишия)
+* Haiku (Японские хокку (трехстишия))
 
 ## Crítica literaria
 
-* В. Белинский
+* [Visarión Belinski](https://es.wikipedia.org/wiki/Visari%C3%B3n_Belinski) (В. Белинский)
   * «Сочинения Александра Пушкина» (Пушкин)
   * «Стихотворения М. Лермонтова» (Лермонтов)
   * «Герой нашего времени. Сочинение М.Ю.Лермонтова» (Лермонтов)
-* Н. А. Добролюбов
+* [Nikolái Dobroliubov](https://es.wikipedia.org/wiki/Nikol%C3%A1i_Dobroliubov) (Н. А. Добролюбов)
   * «Луч света в тёмном царстве» (Островский)
   * «Что такое обломовщина?» (Гончаров)
-* Д. И. Писарев
+* [Dmitri Písarev](https://es.wikipedia.org/wiki/Dmitri_P%C3%ADsarev) (Д. И. Писарев)
   * «Обломов» (Гончаров)
   * «Базаров» (Тургенев)
-* А. А. Григорьев
+* [Apollon Grigoriev](https://es.wikipedia.org/wiki/Apollon_Grigoriev) (А. А. Григорьев)
   * «После „Грозы“ Островского» (Островский)
   * «Письма к Ивану Сергеевичу Тургеневу»
-* А. В. Дружинин
+* [Alexander Druzhinin](https://en.wikipedia.org/wiki/Alexander_Druzhinin) (А. В. Дружинин)
   * ««Обломов», роман И. А. Гончарова» (Гончаров)
-* Н. Н. Страхов
+* [Nikolái Strájov](https://es.wikipedia.org/wiki/Nikol%C3%A1i_Str%C3%A1jov) (Н. Н. Страхов)
   * ««Отцы и дети» И. С. Тургенева» (Тургенев)
-* М. А. Антонович
+* [Maxim Antonovich](https://en.wikipedia.org/wiki/Maxim_Antonovich) (М. А. Антонович)
   * «Асмодей нашего времени»
+
+------
+
+Enlaces:
+
+* [Libros que leen los niños rusos](http://blog.vero4ka.info/blog/2016/12/18/libros-que-leen-los-ninos-rusos/)
+* [Викитека:Школьная программа](https://ru.wikisource.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D1%82%D0%B5%D0%BA%D0%B0:%D0%A8%D0%BA%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0)
