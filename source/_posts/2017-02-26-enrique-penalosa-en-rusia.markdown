@@ -61,6 +61,8 @@ Varios periódicos rusos como [Gazeta.ru](https://www.gazeta.ru/) , [The Village
 
 <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/F60jcKjs2-M?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
 
+<br>
+
 -> Metro de moscú <-
 
 |   | Moscú | Bogotá |
@@ -68,7 +70,9 @@ Varios periódicos rusos como [Gazeta.ru](https://www.gazeta.ru/) , [The Village
 | Area | [251 100 hectáreas](https://en.wikipedia.org/wiki/Moscow) | [158 700 hectáreas](https://en.wikipedia.org/wiki/Bogot%C3%A1) |
 | Area de zonas verdes | [36 100 hectáreas](http://www.greenpeace.org/russia/ru/news/2015/07-05-moscow_trees/) | [8 800 hectáreas](http://www.eltiempo.com/archivo/documento/CMS-7634408) |
 
-Enlaces: 
+<br>
+
+### Enlaces: 
 
 * Entrevista con la revista Afisha.Daily: https://daily.afisha.ru/archive/gorod/changes/enrike-penyalosa-o-tom-kak-levaya-ideya-pomogaet-gorodam-v-epohu-kapitalizma/
 * Entrevista el el periódico Gazeta.ru: https://www.gazeta.ru/comments/2013/12/30_a_5824765.shtml
