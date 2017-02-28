@@ -82,5 +82,3 @@ Varios periódicos rusos como [Gazeta.ru](https://www.gazeta.ru/) , [The Village
 * [New Urbanism](https://es.wikipedia.org/wiki/New_Urbanism)
 * Enrique Peñalosa: "La ciudad ideal" - conferencia en Kiev.: https://www.youtube.com/watch?v=L1smUjcW8zo
 * Enrique Peñalosa en Kazan: https://www.youtube.com/watch?v=siJcN4N9HkM
-
-<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/watch?v=vrhIcYTH2WE?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
