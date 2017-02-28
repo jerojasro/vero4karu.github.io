@@ -29,17 +29,17 @@ Varios periódicos rusos como [Gazeta.ru](https://www.gazeta.ru/) , [The Village
 
 {% img right /images/penalosa/perehod.jpg 350 %}
 
-**Enrique Peñalosa:** Las autoridades de su ciudad toman muchas decisiones innovadoras. Pero a mi me parece que es más lo que necesita ser mejorado. Hay principios generales para resolver los problemas de tráfico en la ciudad. Su ciudad, por ahora, les pertenece a los automovilistas. Incluso en el centro de Moscú puedo ver los pasos peatonales subterraneos. Usted hace que la gente, como las ratas, corra debajo de las calles, para que ellos no perturben los carros. Es una política equivocada. Ahora en todo el mundo la gente entiende que lo único que traen las autopistas urbanas - es daño. Ellas, como un muro, restringen la libertad de las personas. Como los rios venenosos, reducen el valor de las tierras cercanas. La gente no quiere vivir al lado de ellas.
+**Enrique Peñalosa:** Las autoridades de su ciudad toman muchas decisiones innovadoras. Pero a mi me parece que es más lo que necesita ser mejorado. Hay unos principios generales para resolver los problemas de tráfico en la ciudad. Su ciudad, por ahora, les pertenece a los automovilistas. Incluso en el centro de Moscú puedo ver los pasos peatonales subterraneos. Usted hace que la gente, como las ratas, corra debajo de las calles, para que ellos no perturben los carros. Es una política equivocada. Ahora en todo el mundo la gente entiende que lo único que traen las autopistas urbanas - es daño. Ellas, como un muro, restringen la libertad de las personas. Como los rios venenosos, reducen el valor de las tierras cercanas. La gente no quiere vivir al lado de ellas.
 
 **Gazeta.ru:** Esto es comprensible. Pero es imposible imaginar una ciudad sin calles amplias.
 
 {% img left /images/penalosa/metro_map.jpg 350 %}
 
-**Enrique Peñalosa:** Debe ser vías urbanas y no calles. ¿Han caminado por los Campos Elíseos en París? Tienen diez carriles, no provocan ningún daño a la a la ciudad. Es decir, a lo largo de las avenidas debe haber bulevares grandes, aceras, edificios con fachadas bonitas. En este caso ellas reaniman la ciudad en lugar de matarla. Y otra cosa. A pesar de que el metro de Moscú es muy bonito, ¿para qué meter a la gente debajo del suelo?
+**Enrique Peñalosa:** Deben ser vías urbanas y no calles. ¿Han caminado por los Campos Elíseos en París? Tienen diez carriles, no provocan ningún daño a la ciudad. Es decir, a lo largo de las avenidas debe haber bulevares grandes, aceras, edificios con fachadas bonitas. En este caso ellas reaniman la ciudad en lugar de matarla. Y otra cosa. A pesar de que el metro de Moscú es muy bonito, ¿para qué meter a la gente debajo del suelo?
 
 **Gazeta.ru:** Metro - "nuestro todo".
 
-**Enrique Peñalosa:**  Sí, he oído esta respuesta de muchos. Pero pencen en ello. De hecho, las personas que usan el transporte público tienen que estar bajo la tierra, mientras tanto, los que conducen carros disfrutan el sol. Es necesario construir un sistema de transporte público en superficie, y no por debajo de ella. En muchas ciudades, incluyendo a mi Bogotá, han sido implementados unos buenos sistemas de buses.
+**Enrique Peñalosa:**  Sí, he oído esta respuesta de muchos. Pero piencen en ello. De hecho, las personas que usan el transporte público tienen que estar bajo la tierra, mientras tanto, los que conducen carros disfrutan el sol. Es necesario construir un sistema de transporte público en superficie, y no por debajo de ella. En muchas ciudades, incluyendo a mi Bogotá, han sido implementados unos buenos sistemas de buses.
 
 {% img right /images/penalosa/moscow_map.png 350 %}
 
@@ -47,17 +47,17 @@ Varios periódicos rusos como [Gazeta.ru](https://www.gazeta.ru/) , [The Village
 
 {% img left /images/penalosa/probka_metro.jpg 200 %}
 
-**Enrique Peñalosa:**  ¿No te gustan los buses? Pueden construir un sistema de tranvías. O un metro ligero. Pero la gente debe tener una opción alternativa: ir debajo de la tierra o utilizar el transporte público en la superficie. En Moscú hay una una gran cantidad de áreas sin metro. Y para ir de un punto al otro, lo que uno tiene que hacer es atravezar el centro. Esos puntos dueden estar conectados a través de un sistema de buses.
+**Enrique Peñalosa:** ¿No les gustan los buses? Pueden construir un sistema de tranvías. O un metro ligero. Pero la gente debe tener una opción alternativa: ir debajo de la tierra o utilizar el transporte público en la superficie. En Moscú hay una una gran cantidad de áreas sin metro. Y para ir de un punto al otro, lo que uno tiene que hacer es atravezar el centro. Esos puntos dueden estar conectados a través de un sistema de buses.
 
 **Gazeta.ru:** En una escala de la ciudad "retrasada" a "progresiva", ¿qué nota pondría para Moscú?
 
 {% img right /images/penalosa/tramvai.jpg 350 %}
 
-**Enrique Peñalosa:** Creo que algo en el medio. En Moscú hay lugares para la recreacion pública, hay ciclorutas, zonas peatonales, que es muy bueno. Desde el período del comunismo, cuando la tierra pertenecía al Estado, quedaron muchos espacios verdes. Sin embargo, no a todos esos espacion les dan un uso correcto. Están mal distribuidos y, de hecho, se pierden. Pero tienen mucho petencial. (...) Si usted da una vuelta por el centro de Moscú, lo disfrutará, es probable que sea un paseo interesante. Pero si usted  va a un barrio residencial, sentirá como si estuviera castigado: todo está gris, feo, hay pocos cafés y pocas tiendas.
+**Enrique Peñalosa:** Creo que algo en el medio. En Moscú hay lugares para la recreacion pública, hay ciclorutas, zonas peatonales, que es muy bueno. Desde el período del comunismo, cuando la tierra pertenecía al Estado, quedaron muchos espacios verdes. Sin embargo, no a todos esos espacion les dan un uso correcto. Están mal distribuidos y, de hecho, se pierden. Pero tienen mucho potencial. (...) Si usted da una vuelta por el centro de Moscú, lo disfrutará, es probable que sea un paseo interesante. Pero si usted va a un barrio residencial, sentirá como si estuviera castigado: todo está gris, feo, hay pocos cafés y pocas tiendas.
 
 {% img center /images/penalosa/metromost.jpg %}
 
-**Enrique Peñalosa** (de la entrevista con **The Village**): En Bogotá no hay metro. No pudimos permitir vincular todas las areas de la ciudad con las líneas de metro. Por eso hemos creado un sistema TransMilenio. En principio, se parece más a un metro que a las líneas de autobuses. Pero los autobuses son una forma de desplazamiento mpas eficiente y menos costosa que el metro. Eso funciona así: se acera un bus - de tres vagones, seis puertas, pos las que las personas salen y entran en unos segundos. Hicimos que los buses fueron mejores que un metro. Algunas las calles en Bogotá eran estrechas, por lo cual fue imposible proporcionar carriles exclusvos para los buses. Luego decidimos abordar el problema de manera diferente y crear una ciudad con cientos de kilómetros de vías solamente para autobuses, ciclistas y peatones.
+**Enrique Peñalosa** (de la entrevista con **The Village**): En Bogotá no hay metro. No pudimos permitir vincular todas las areas de la ciudad con las líneas de metro. Por eso hemos creado un sistema TransMilenio. En principio, se parece más a un metro que a las líneas de autobuses. Pero los autobuses son una forma de desplazamiento más eficiente y menos costosa que el metro. Eso funciona así: se acera un bus - de tres vagones, seis puertas, pos las que las personas salen y entran en unos segundos. Hicimos que los buses fueron mejores que un metro. Algunas las calles en Bogotá eran estrechas, por lo cual fue imposible proporcionar carriles exclusvos para los buses. Luego decidimos abordar el problema de manera diferente y crear una ciudad con cientos de kilómetros de vías solamente para autobuses, ciclistas y peatones.
 
 <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/F60jcKjs2-M?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
 
