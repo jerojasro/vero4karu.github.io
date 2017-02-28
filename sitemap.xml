@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2017/02/26/enrique-penalosa-en-rusia/</loc>
+<lastmod>2017-02-26T17:31:09-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2017/02/20/vete-de-aqui/</loc>
 <lastmod>2017-02-20T18:57:13-05:00</lastmod>
 </url>
@@ -575,6 +579,9 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/supervisor/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/transporte/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/posts/2/</loc>
