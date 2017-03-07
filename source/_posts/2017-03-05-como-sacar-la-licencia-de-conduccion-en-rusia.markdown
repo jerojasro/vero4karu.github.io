@@ -120,9 +120,7 @@ Si la persona contesta de forma correcta d todas las preguntas, pasa a la otra e
 
 {% img left /images/pase/examen_gibdd_2.jpg 200 %}
 
-En caso de éxito a la persona la invitan con otros 2-3 personas a un carro de la policía de tránsito. El policía los lleva a alguna parte de la ciudad y luego invita a sus pasajeros (por turnos) a sentarse en el asiento del conductor y les da indicaciones a dónde deben ir y por dónde tienen que girar. No todas las indicaciones cumplen con las normas de tránsito. y por eso la persona al volante debe pensar primero, en lugar de obedecer ciegamente al policía. Si la persona comete más de tres errores insignificantes o un error grave, el policía termina el examen y baja a la persona.
-
-En caso de que 
+En caso de éxito a la persona la invitan con otros 2-3 personas a un carro de la policía de tránsito. El policía los lleva a alguna parte de la ciudad y luego invita a sus pasajeros (por turnos) a sentarse en el asiento del conductor y les da indicaciones a dónde deben ir y por dónde tienen que girar. No todas las indicaciones cumplen con las normas de tránsito. y por eso la persona al volante debe pensar primero, en lugar de obedecer ciegamente al policía. Si la persona comete más de tres errores insignificantes o un error grave, el policía termina el examen y baja a la persona. En caso de que todo esté bien, le dicen en qué día y horario se puede recoger el pase.
 
 Respuestas correctas:
 
