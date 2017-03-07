@@ -4,7 +4,7 @@
   <title><![CDATA[Category: niños | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/ninos/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-02-27T22:43:22-05:00</updated>
+  <updated>2017-03-06T21:53:06-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.vero4ka.info/blog/2016/12/18/libros-que-leen-los-ninos-rusos/"/>
     <updated>2016-12-18T11:49:57-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/12/18/libros-que-leen-los-ninos-rusos</id>
-    <content type="html"><![CDATA[<p><img class="right" src="/images/Cipollino.jpg" width="150" title="&lsquo;Cipollino&rsquo;" ></p>
+    <content type="html"><![CDATA[<p>{% img right /images/Cipollino.jpg 150 &lsquo;Cipollino&rsquo; %}</p>
 
 <h2>Gianni Rodari, Cipollino</h2>
 
@@ -36,7 +36,7 @@ Todos los personajes del cuento son frutas y verduras.</p>
 <p>Aventuras de un niño travieso, curioso, siempre activo y permanentemente
 enredado en situaciones poco habituales y con frecuencia cómicas.</p>
 
-<p><img class="right" src="/images/la_isla_del_tesoro.jpg" width="150" title="&lsquo;La isla del tesoro&rsquo;" ></p>
+<p>{% img right /images/la_isla_del_tesoro.jpg 150 &lsquo;La isla del tesoro&rsquo; %}</p>
 
 <h2>Mark Twain, Las aventuras de Tom Sawyer</h2>
 
@@ -49,7 +49,7 @@ el antebellum del Sur de los Estados Unidos en “St. Petersburg”.</p>
 las aventuras relacionadas con la búsqueda de los tesoros escondidos por el
 pirata Capitán J. Flint en una isla desierta.</p>
 
-<p><img class="right" src="/images/el_caballito_jorobadito.jpg" width="150" title="&lsquo;El caballito jorobado&rsquo;" ></p>
+<p>{% img right /images/el_caballito_jorobadito.jpg 150 &lsquo;El caballito jorobado&rsquo; %}</p>
 
 <h2>Piotr Yershóv,  El caballito jorobado</h2>
 
@@ -61,7 +61,7 @@ son el hijo de un campesino, llamado Iván el Loco, y un caballito mágico jorob
 <p>Son cuentos folclóricos recopilados por dos escritores alemanes: Los músicos
 de Bremen, El lobo y las siete cabritillas, El pescador y su esposa.</p>
 
-<p><img class="right" src="/images/pulgarcita.jpg" width="150" title="&lsquo;Pulgarcita&rsquo;" ></p>
+<p>{% img right /images/pulgarcita.jpg 150 &lsquo;Pulgarcita&rsquo; %}</p>
 
 <h2>Los libros del escritor danés Hans Christian Andersen</h2>
 
@@ -72,7 +72,7 @@ El patito feo, La reina de las nieves, El yesquero.</p>
 
 <p>La trama recuerda a la de La Bella y la Bestia, pero se desarrolla en un ambiente ruso.</p>
 
-<p><img class="right" src="/images/momo.jpg" width="150" title="&lsquo;Momo&rsquo;" ></p>
+<p>{% img right /images/momo.jpg 150 &lsquo;Momo&rsquo; %}</p>
 
 <h2>Los cuentos de Charles Perrault</h2>
 
@@ -87,7 +87,7 @@ chica increíble llamada Momo. Ella tenía un talento muy raro – saber escucha
 a los demás, y por lo tanto tenía muchos amigos. Pero una vez en la ciudad,
 donde vivía Momo, aparecieron los caballeros grises – los ladrones de tiempo …</p>
 
-<p><img class="right" src="/images/Matilda.jpg" width="150" title="&lsquo;Matilda&rsquo;" ></p>
+<p>{% img right /images/Matilda.jpg 150 &lsquo;Matilda&rsquo; %}</p>
 
 <h2>Roald Dahl, Matilda</h2>
 
@@ -99,7 +99,7 @@ que sus padres son tontos, y sólo piensan en sí mismos y no se preocupan por
 su propia hija. Entonces Matilda decide volver a educar a sus padres negligentes,
 junto con la viciosa directora de su colegio.</p>
 
-<p><img class="right" src="/images/karlson.jpg" width="150" title="&lsquo;Karlsson-on-the-Roof&rsquo;" ></p>
+<p>{% img right /images/karlson.jpg 150 &lsquo;Karlsson-on-the-Roof&rsquo; %}</p>
 
 <h2>Libros de Astrid Lindgren</h2>
 
@@ -112,7 +112,7 @@ y sentimientos de los niños y así muestra respeto a ellos.</p>
 <p>Sus libros: Karlsson-on-the-Roof, Pipi Calzaslargas, Ronja, la hija del
 bandolero y muchos otros.</p>
 
-<p><img class="right" src="/images/Finn_Family.png" width="150" title="&lsquo;Finn Family&rsquo;" ></p>
+<p>{% img right /images/Finn_Family.png 150 &lsquo;Finn Family&rsquo; %}</p>
 
 <h2>Tove Jansson, Mumintroll</h2>
 
@@ -131,7 +131,7 @@ El príncipe Guidón y la bella princesa Cisne y El gallito de oro.</p>
 influyó directamente en las concepciones pedagógicas de Lord Baden-Powell
 al crear el Movimiento de los Boy Scouts.</p>
 
-<p><img class="right" src="/images/pipi.jpg" width="150" title="&lsquo;Pipi Calzaslargas&rsquo;" ></p>
+<p>{% img right /images/pipi.jpg 150 &lsquo;Pipi Calzaslargas&rsquo; %}</p>
 
 <h2>Alan Alexander Milne, Winnie de Pooh</h2>
 
@@ -143,7 +143,7 @@ al crear el Movimiento de los Boy Scouts.</p>
 
 <h2>L. Frank Baum, El maravilloso mago de Oz</h2>
 
-<p><img class="right" src="/images/bremen.jpg" width="150" title="&lsquo;Los músicos de Bremen&rsquo;" ></p>
+<p>{% img right /images/bremen.jpg 150 &lsquo;Los músicos de Bremen&rsquo; %}</p>
 
 <h2>Rudyard Kipling, El libro de la selva</h2>
 

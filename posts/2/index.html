@@ -58,10 +58,7 @@
 47
 48
 49
-50
-51
-52
-53 &hellip;">
+import &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -137,6 +134,137 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">How to upload a file to Amazon S3 and generate a pre-signed URL</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-10-27T09:32:43-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:32 am</span></time>
+        
+           | <a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">datetime</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">StringIO</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">xlwt</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">boto3.session</span> <span class="kn">import</span> <span class="n">Session</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">boto3</span> <span class="kn">import</span> <span class="n">client</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Create a file, for example, an Excel document.</span>
+</span><span class='line'><span class="n">xls</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">()</span>
+</span><span class='line'><span class="n">ws</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">&#39;A Test Sheet&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">ws</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1234.56</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">file_name</span> <span class="o">=</span> <span class="s">&#39;example.xls&#39;</span>
+</span><span class='line'><span class="n">output</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+</span><span class='line'><span class="n">xls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Save the file to S3</span>
+</span><span class='line'><span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">],</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'><span class="n">s3</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">&#39;s3&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">s3_bucket_name</span> <span class="o">=</span> <span class="s">&#39;YourBucket&#39;</span>
+</span><span class='line'><span class="n">s3_file_key</span> <span class="o">=</span> <span class="s">&#39;dir1/dir2/{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="n">s3_bucket_name</span><span class="p">)</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Key</span><span class="o">=</span><span class="n">s3_file_key</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">Body</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Generate a pre-signed URL</span>
+</span><span class='line'><span class="n">s3_client</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&#39;s3&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">region_name</span><span class="o">=</span><span class="s">&#39;us-east-1&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">],</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">generate_presigned_url</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">ClientMethod</span><span class="o">=</span><span class="s">&#39;get_object&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">Params</span><span class="o">=</span><span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;Bucket&#39;</span><span class="p">:</span> <span class="n">s3_bucket_name</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;Key&#39;</span><span class="p">:</span> <span class="n">s3_file_key</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="n">ExpiresIn</span><span class="o">=</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>  <span class="c"># Default: 3600</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class='line'><span class="c"># https://s3.amazonaws.com/YourBucket/dir1/dir2/example.xls?AWSAccessKeyId=ATPAJNUDN3ENT2I4S6EF&amp;Expires=1477582080&amp;Signature=POvreXScdYNES98SPFeAN3y12DL%3D</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1100,100 +1228,6 @@ frena duro, y escucha las voces enojadas del los pasajeros:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/07/30/el-colegio/">El colegio</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-07-30T18:40:16-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:40 pm</span></time>
-        
-           | <a href="/blog/2016/07/30/el-colegio/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/07/30/el-colegio/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Nunca me gustaba ir al colegio y siempre he contado cuánto falta hasta el
-último día de encarcelamiento.</p>
-
-<p>Entré al colegio cuando tenía 7 años. Normalmente los niños entran un año
-antes, pero a mis 6 me dijeron que la niña era demasiado pequeña. Durante
-12 meses no crecí mucho, pero ya que no tuvieron razones de no aceptarme.</p>
-
-<p>Mi primer día no me gustó: habían muchos niños a quienes no conocía y no
-quería conocerlos, que se movían por el salón de una forma caótica y hacían
-mucho ruido. Me pusieron en la última mesa del aula junto a la ventana.
-En la primera clase a profesora nos dijo que sacaramos nuestros cuadernos
-de las maletas y dibujaramos algo. Eso fue un estrés total: no pude abrir
-mi maleta. Como tuve que manejar la cerradura por primera vez en mi vida,
-no supe cómo funcionaba y claro que el panico, que llegó inmediatamente,
-no me permitió pensar con claridad.</p>
-
-<p>Del primer grado sólo recuerdo cómo nos enseñaban caligrafía: tuvimos
-que escribir las mismas letras muchas veces. Entonces al final se quedaron
-varias páginas con “а”, “б”, “в”, etc.</p>
-
-<p>En el segundo grado nos muvieron a otro edificio y empezamos a prestar
-servicio. Cada grupo por turnos tuvo que estar de servicio en el colegio
-durante toda la semana. Esto segnificaba que tuvimos que llegar 30 minutos
-antes que todos los demás.  Nos reunían en el primer piso y decían a cada
-no su cargo. Habían varios tipos de cargos: unos tuvieron que estar en
-la entrada del edificio y en las entradas de cada piso y decir a cada niño
-que pasaba: “¡Smenka!”. “Smenka” significa “los zapatos de cambio”.
-En el invierno la nieve se metía en las indiduras de los zapatos y cuando
-uno entraba al edificio se derretía y dejaba charcos. Por eso por el orden
-“¡Smenka!” el estudiante tuvo que levantar el pie y mostrar la suela.
-Si estaba mojada “el guardia” tuvo que detenerlo y mandarlo a la casa por
-los zapatos de cambio. Ese cargo no me gustaba porque los otros estudiantes
-lo tomaban como un deporte lograr pasar con los zapatos que llevaban puestos
-en la calle, entonces inventaban trucos para confundir la guardia o
-simplemente corrían de nosotros. Entonces había otro cargo: vigilar
-los corredores, detener los estudiantes que corrían y mandarles
-al director del colegio.</p>
-
-<p>Existía un cargo que era el más agradable de todos: estar en la cafetería.
-Había que ordenar las mesas y las sillas y antes de las horas del desayuno
-y almuerzo había que servir la comida y después recoger los platos.</p>
-
-<p>Después de las clases nos quedábamos por una hora para limpiar todo el colegio.</p>
-
-<p>Tuvimos 4 periodos y 4 vacaciones: 3 cortas y umas largas de tres meses
-en verano. Para las vacaciones de verano nos daban una lista de libros para
-leer. Como durante los estudios casi no tuvimos tiempo para la lectura,
-tuvimos que pasar por todos los libros del curso de literatura antrs de
-que empezara el año escolar. A pesar de que leía de 3 a 5 horas al día no
-alcanzaba leer todos los libros del listado. Me gusta leer mucho, pero
-odiaba las clases de literatura. La parte más tonta era memorizar los poemas.
-Tuvimos que recitar de memoria los poemas de Homero, Pushkin, Lermontov,
-Tiútchev, Mayakovski, Blok y muchos otros. A cada uno llamaban a la pizarra
-y tuvimos que declamar frente al grupo. Así los profesores lograron que hasta
-la mejor poesía pudiera provocar un reflejo vomitivo. Pero creo que era la
-mejor forma de instalar los pensamientos de otras personas a las mentes
-inmaduras. Hasta ahora cuando veo una tormenta fuerte a veces se me ocurren
-las estrofas de Tiútchev:</p>
-
-<p>Люблю грозу в начале мая (Me gustan las tormentas a principios de mayo) /
-Когда весенний первый гром (Cuando el primer trueno primaveral) /
-Как бы резвяся и играя (Como haciendo travesuras y jugando) /
-Грохочет в небе голубом (Trona en el cielo azul).</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -1209,6 +1243,10 @@ las estrofas de Tiútchev:</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/03/05/como-sacar-la-licencia-de-conduccion-en-rusia/">Cómo sacar la licencia de conducción en Rusia</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/02/26/enrique-penalosa-en-rusia/">Enrique Peñalosa en Rusia</a>
@@ -1246,16 +1284,14 @@ las estrofas de Tiútchev:</p>
         <a href="/blog/2016/10/30/sistema-de-riego-por-capilaridad/">Sistema de riego por capilaridad</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2016/10/27/how-to-upload-a-file-to-amazon-s3-and-generate-a-pre-signed-url/">How to upload a file to Amazon S3 and generate a pre-signed URL</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
     
       
     
@@ -1754,7 +1790,7 @@ las estrofas de Tiútchev:</p>
 
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 103.15789473684211%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 103.15789473684211%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 103.15789473684211%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 103.15789473684211%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 106.3157894736842%'>aventuras</a> <a href='/blog/categories/bogota' style='font-size: 103.15789473684211%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 103.15789473684211%'>bootstrap</a> <a href='/blog/categories/chiste' style='font-size: 112.63157894736842%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 103.15789473684211%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 109.47368421052632%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 103.15789473684211%'>cine</a> <a href='/blog/categories/cita' style='font-size: 103.15789473684211%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 109.47368421052632%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 103.15789473684211%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 112.63157894736842%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 109.47368421052632%'>colombia</a> <a href='/blog/categories/comida' style='font-size: 103.15789473684211%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 103.15789473684211%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 106.3157894736842%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 153.68421052631578%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 103.15789473684211%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 106.3157894736842%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 103.15789473684211%'>estaciones</a> <a href='/blog/categories/flask' style='font-size: 109.47368421052632%'>flask</a> <a href='/blog/categories/historia' style='font-size: 106.3157894736842%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 103.15789473684211%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 103.15789473684211%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 106.3157894736842%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 103.15789473684211%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 122.10526315789474%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 103.15789473684211%'>mel script</a> <a href='/blog/categories/montanas' style='font-size: 103.15789473684211%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 109.47368421052632%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 103.15789473684211%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 103.15789473684211%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 106.3157894736842%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 103.15789473684211%'>niños</a> <a href='/blog/categories/parques' style='font-size: 103.15789473684211%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 103.15789473684211%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 103.15789473684211%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 128.42105263157896%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 106.3157894736842%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 103.15789473684211%'>requests</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 103.15789473684211%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 109.47368421052632%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 103.15789473684211%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 103.15789473684211%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 103.15789473684211%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 103.15789473684211%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 103.15789473684211%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 103.15789473684211%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 106.3157894736842%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 103.15789473684211%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 103.15789473684211%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 103.15789473684211%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 106.3157894736842%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 103.15789473684211%'>uwsgi</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 103.0%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 103.0%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 103.0%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 103.0%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 106.0%'>aventuras</a> <a href='/blog/categories/bogota' style='font-size: 103.0%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 103.0%'>bootstrap</a> <a href='/blog/categories/chiste' style='font-size: 112.0%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 103.0%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 109.0%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 103.0%'>cine</a> <a href='/blog/categories/cita' style='font-size: 103.0%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 109.0%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 103.0%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 112.0%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 109.0%'>colombia</a> <a href='/blog/categories/comida' style='font-size: 103.0%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 103.0%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 106.0%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 151.0%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 103.0%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 106.0%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 103.0%'>estaciones</a> <a href='/blog/categories/flask' style='font-size: 109.0%'>flask</a> <a href='/blog/categories/historia' style='font-size: 106.0%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 103.0%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 103.0%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 106.0%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 103.0%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 121.0%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 103.0%'>mel script</a> <a href='/blog/categories/montanas' style='font-size: 103.0%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 109.0%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 103.0%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 103.0%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 106.0%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 103.0%'>niños</a> <a href='/blog/categories/parques' style='font-size: 103.0%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 103.0%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 103.0%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 127.0%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 106.0%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 103.0%'>requests</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 103.0%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 109.0%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 103.0%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 103.0%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 103.0%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 103.0%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 103.0%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 103.0%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 106.0%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 106.0%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 103.0%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 103.0%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 106.0%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 103.0%'>uwsgi</a> </span>
 </section><section>
   <h1>Stats</h1>
   <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img

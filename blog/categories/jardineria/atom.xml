@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jardinería | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/jardineria/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-02-27T22:43:22-05:00</updated>
+  <updated>2017-03-06T21:53:06-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,8 +18,8 @@
     <link href="http://blog.vero4ka.info/blog/2016/10/30/sistema-de-riego-por-capilaridad/"/>
     <updated>2016-10-30T17:55:06-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/10/30/sistema-de-riego-por-capilaridad</id>
-    <content type="html"><![CDATA[<p><img class="right" src="/images/riego1.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" >
-<img class="right" src="/images/riego2.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" ></p>
+    <content type="html"><![CDATA[<p>{% img right /images/riego1.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}
+{% img right /images/riego2.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}</p>
 
 <ul>
 <li>Bomba de agua</li>
@@ -35,8 +35,8 @@
 <!-- more -->
 
 
-<p><img class="right" src="/images/riego3.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" >
-<img class="right" src="/images/riego4.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" ></p>
+<p>{% img right /images/riego3.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}
+{% img right /images/riego4.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}</p>
 
 <p>La bomba pasa el agua desde el balde al garrafón por medio de una manguera.
 El garrafón tiene unos huecos al fondo en las cuales están instalados los tubos
@@ -45,13 +45,13 @@ que necesitan el riego, el agua basa por la gravedad por medio de
 las cuentagotas, con la velocidad definida por la rueda para regular
 el flujo del gotero.</p>
 
-<p><img class="left" src="/images/riego5.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" >
-<img class="left" src="/images/riego6.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" >
-<img class="left" src="/images/riego7.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" ></p>
+<p>{% img left /images/riego5.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}
+{% img left /images/riego6.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}
+{% img left /images/riego7.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}</p>
 
-<p><img class="right" src="/images/riego8.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" >
-<img class="right" src="/images/riego9.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" >
-<img class="right" src="/images/riego10.jpg" title="&lsquo;Sistema de riego por capilaridad&rsquo;" ></p>
+<p>{% img right /images/riego8.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}
+{% img right /images/riego9.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}
+{% img right /images/riego10.jpg &lsquo;Sistema de riego por capilaridad&rsquo; %}</p>
 ]]></content>
   </entry>
   
@@ -79,21 +79,21 @@ el flujo del gotero.</p>
 </ul>
 
 
-<p><img class="center" src="/images/greenhouse/greenhouse_01.jpg"></p>
+<p>{% img center /images/greenhouse/greenhouse_01.jpg %}</p>
 
-<p><img class="center" src="/images/greenhouse/greenhouse_02.jpg"></p>
+<p>{% img center /images/greenhouse/greenhouse_02.jpg %}</p>
 
-<p><img class="center" src="/images/greenhouse/greenhouse_03.jpg"></p>
+<p>{% img center /images/greenhouse/greenhouse_03.jpg %}</p>
 
-<p><img class="center" src="/images/greenhouse/greenhouse_04.jpg"></p>
+<p>{% img center /images/greenhouse/greenhouse_04.jpg %}</p>
 
-<p><img class="center" src="/images/greenhouse/greenhouse_05.jpg"></p>
+<p>{% img center /images/greenhouse/greenhouse_05.jpg %}</p>
 
-<p><img class="center" src="/images/greenhouse/greenhouse_06.jpg"></p>
+<p>{% img center /images/greenhouse/greenhouse_06.jpg %}</p>
 
-<p><img class="center" src="/images/greenhouse/greenhouse_07.jpg"></p>
+<p>{% img center /images/greenhouse/greenhouse_07.jpg %}</p>
 
-<p><img class="center" src="/images/greenhouse/greenhouse_08.jpg"></p>
+<p>{% img center /images/greenhouse/greenhouse_08.jpg %}</p>
 ]]></content>
   </entry>
   

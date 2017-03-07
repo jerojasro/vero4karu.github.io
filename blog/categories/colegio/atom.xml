@@ -4,7 +4,7 @@
   <title><![CDATA[Category: colegio | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/colegio/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-02-27T22:43:22-05:00</updated>
+  <updated>2017-03-06T21:53:06-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -40,7 +40,7 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa antigua de los siglos XI - XVII</h3>
 
-<p><img class="right" src="/images/Povest_vremennyh_let.jpeg" width="150" title="&lsquo;Crónica de Néstor&rsquo;" ></p>
+<p>{% img right /images/Povest_vremennyh_let.jpeg 150 &lsquo;Crónica de Néstor&rsquo; %}</p>
 
 <ul>
 <li><a href="https://es.wikipedia.org/wiki/Cantar_de_las_huestes_de_%C3%8Dgor">Cantar de las huestes de Ígor</a> («Слово о полку Игореве»)</li>
@@ -73,7 +73,7 @@ rusos deben leer&hellip;</p>
 <li>«На птичку»</li>
 <li><a href="http://max.mmlc.northwestern.edu/mdenner/Demo/texts/monument_derzhav.htm">&ldquo;Monument&rdquo;</a> «Памятник»</li>
 <li>«Река времён в своём стремленьи»
-<img class="right" src="/images/DenisFonvizin.jpg" width="150" title="&lsquo;Denís Fonvizin&rsquo;" ></li>
+{% img right /images/DenisFonvizin.jpg 150 &lsquo;Denís Fonvizin&rsquo; %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Den%C3%ADs_Fonvizin">Denís Fonvizin</a> (Д. И. Фонвизин)
@@ -116,7 +116,7 @@ rusos deben leer&hellip;</p>
 </li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Kondrati_Ryl%C3%A9yev">Kondrati Ryléyev</a> (К. Ф. Рылеев)</li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Konstant%C3%ADn_B%C3%A1tiushkov">Konstantín Bátiushkov</a> (К. Н. Батюшков)
-<img class="right" src="/images/pushkin.jpg" width="150" title="&lsquo;Aleksandr Pushkin&rsquo;" ></li>
+{% img right /images/pushkin.jpg 150 &lsquo;Aleksandr Pushkin&rsquo; %}</li>
 <li><a href="https://es.wikipedia.org/wiki/Aleksandr_Pushkin">Aleksandr Pushkin</a> (А. С. Пушкин)
 
 <ul>
@@ -129,7 +129,7 @@ rusos deben leer&hellip;</p>
 <li>&ldquo;El caballero de bronce&rdquo; («Медный всадник»)</li>
 <li><a href="https://es.wikipedia.org/wiki/Eugenio_Oneguin">&ldquo;Eugenio Oneguin&rdquo;</a> («Евгений Онегин»)</li>
 <li><a href="https://es.wikipedia.org/wiki/Bor%C3%ADs_Godunov">&ldquo;Borís Godunov&rdquo;</a> («Борис Годуновc)
-<img class="right" src="/images/lermontov.jpg" width="150" title="Mijaíl Lérmontov" ></li>
+{% img right /images/lermontov.jpg 150 Mijaíl Lérmontov %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Mija%C3%ADl_L%C3%A9rmontov">Mijaíl Lérmontov</a> (М. Ю. Лермонтов)
@@ -160,7 +160,7 @@ rusos deben leer&hellip;</p>
 <li>&ldquo;El dineral&rdquo; («Доходное место»)</li>
 <li>&ldquo;La niña de las nieves&rdquo; («Снегурочка»)</li>
 <li>&ldquo;Entre propios anda el juego&rdquo; («Свои люди — сочтёмся»)
-<img class="right" src="/images/turgenev.jpg" width="150" title="Iván Turguénev" ></li>
+{% img right /images/turgenev.jpg 150 Iván Turguénev %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Iv%C3%A1n_Turgu%C3%A9nev">Iván Turguénev</a> (И. С. Тургенев)
@@ -177,7 +177,7 @@ rusos deben leer&hellip;</p>
 <li>Poesía de <a href="https://en.wikipedia.org/wiki/Fyodor_Tyutchev">Fyodor Tyutchev</a> (Ф. И. Тютчев)</li>
 <li>Poesía de <a href="" title="https://en.wikipedia.org/wiki/Afanasy_Fet">Afanasy Fet</a> (А. А. Фет)</li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Apol%C3%B3n_M%C3%A1ikov">Apolón Máikov</a> (А. Н. Майков)
-<img class="right" src="/images/tolstoy.jpg" width="150" title="Leo Tolstoy" ></li>
+{% img right /images/tolstoy.jpg 150 Leo Tolstoy %}</li>
 <li><a href="https://en.wikipedia.org/wiki/Leo_Tolstoy">Leo Tolstoy</a> (Л. Н. Толстой)
 
 <ul>
@@ -247,7 +247,7 @@ rusos deben leer&hellip;</p>
 <li>«Парадокс»</li>
 <li>«Огоньки»</li>
 <li>«В дурном обществе»
-<img class="right" src="/images/chekhov.jpg" width="150" title="Antón Chéjov" ></li>
+{% img right /images/chekhov.jpg 150 Antón Chéjov %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Ant%C3%B3n_Ch%C3%A9jov">Antón Chéjov</a> (А. П. Чехов)
@@ -274,7 +274,7 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa del siglo XX (la primera mitad)</h3>
 
-<p><img class="right" src="/images/bunin.jpg" width="150" title="Iván Bunin" ></p>
+<p>{% img right /images/bunin.jpg 150 Iván Bunin %}</p>
 
 <ul>
 <li><a href="https://es.wikipedia.org/wiki/Iv%C3%A1n_Bunin">Iván Bunin</a> (И. А. Бунин)
@@ -298,7 +298,7 @@ rusos deben leer&hellip;</p>
 
 <ul>
 <li>«Змей»
-<img class="right" src="/images/zamyatin_my.jpg" width="150" title="Yevgueni Zamiatin" ></li>
+{% img right /images/zamyatin_my.jpg 150 Yevgueni Zamiatin %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Yevgueni_Zamiatin">Yevgueni Zamiatin</a> (Е. И. Замятин)
@@ -387,7 +387,7 @@ rusos deben leer&hellip;</p>
 
 <ul>
 <li>&ldquo;Without a Road&rdquo; («В тупике»)
-<img class="right" src="/images/Dvenadtsat_stulev.jpeg" width="150" title="Las Doce Sillas" ></li>
+{% img right /images/Dvenadtsat_stulev.jpeg 150 Las Doce Sillas %}</li>
 </ul>
 </li>
 <li>Ilf y Petrov (Илья Ильф и Евгений Петров)
@@ -418,7 +418,7 @@ rusos deben leer&hellip;</p>
 <ul>
 <li>&ldquo;Una docena de cuchillos en la parte posterior de la Revolución&rdquo; («Дюжина ножей в спину революции»)</li>
 <li>«Смерть африканского охотника»
-<img class="right" src="/images/Ahmatova.jpg" width="150" title="Anna Ajmátova" ></li>
+{% img right /images/Ahmatova.jpg 150 Anna Ajmátova %}</li>
 </ul>
 </li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Anna_Ajm%C3%A1tova">Anna Ajmátova</a> (Анна Ахматова)</li>
@@ -483,7 +483,7 @@ rusos deben leer&hellip;</p>
 <ul>
 <li>«Ты помнишь, Алёша, дороги Смоленщины…»</li>
 <li>«Жди меня»
-<img class="right" src="/images/don.jpg" width="150" title="El Don apacible" ></li>
+{% img right /images/don.jpg 150 El Don apacible %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Mija%C3%ADl_Sh%C3%B3lojov">Mijaíl Shólojov</a> (М. А. Шолохов)
@@ -1001,7 +1001,7 @@ preparado. Creo que es porque todos tienen muy por dentro una pequeña esperanza
 de que puede ser éste año el invierno no llegue. Los árboles se vuelven
 completamente siniestros y se ven como muertos.</p>
 
-<p><img class="center" src="/images/winter.jpg" title="&lsquo;Mi colegio (de primaria) en Moscú en invierno&rsquo;" ></p>
+<p>{% img center /images/winter.jpg &lsquo;Mi colegio (de primaria) en Moscú en invierno&rsquo; %}</p>
 
 <p>El diciembre el mundo se queda sumido en la oscuridad. Lo más doloroso era
 despertarse por la mañana para ir al colegio:</p>
@@ -1016,11 +1016,11 @@ uno desayuna, se viste y sale de la casa a la oscuridad para patullar por la nie
 Claro que el barrendero también tuvo pereza y lo había limpiado las calles,
 entonces tocaba de nuevo abrir el camino hasta el colegio.</p>
 
-<p><img class="center" src="/images/colegio.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
+<p>{% img center /images/colegio.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
 
-<p><img class="center" src="/images/colegio3.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
+<p>{% img center /images/colegio3.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
 
-<p><img class="center" src="/images/colegio4.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
+<p>{% img center /images/colegio4.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
 
 <p>Las imágenes tomadas de
 <a href="https://ssl.panoramio.com/user/2301915">https://ssl.panoramio.com/user/2301915</a>.</p>
