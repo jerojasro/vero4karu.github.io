@@ -4,7 +4,7 @@
   <title><![CDATA[Category: django | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/django/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-06T21:53:06-05:00</updated>
+  <updated>2017-03-06T21:55:07-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -399,7 +399,7 @@ from django_webtest import WebTest</p>
 <p>class HistoryViewsTests(WebTest):
     def setUp(self):
         self.superuser = get_user_model().objects.create_superuser(
-            email=&lsquo;<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x73;&#117;&#112;&#101;&#x72;&#117;&#115;&#x65;&#x72;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#109;">&#x73;&#x75;&#112;&#101;&#x72;&#x75;&#x73;&#x65;&#x72;&#x40;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#x2e;&#x63;&#x6f;&#109;</a>&rsquo;,
+            email=&lsquo;<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#x73;&#x75;&#112;&#101;&#x72;&#117;&#x73;&#x65;&#114;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#109;">&#x73;&#117;&#x70;&#x65;&#x72;&#117;&#x73;&#x65;&#114;&#64;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#101;&#46;&#x63;&#111;&#109;</a>&rsquo;,
             username=&lsquo;superuser&rsquo;,
             password=&lsquo;secret&rsquo;,
         )
