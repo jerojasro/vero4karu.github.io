@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2017/03/11/dia-de-la-mujer/</loc>
+<lastmod>2017-03-11T19:37:52-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2017/03/05/como-sacar-la-licencia-de-conduccion-en-rusia/</loc>
 <lastmod>2017-03-05T09:40:14-05:00</lastmod>
 </url>
@@ -586,6 +590,9 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/transporte/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/feminismo/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/posts/2/</loc>
