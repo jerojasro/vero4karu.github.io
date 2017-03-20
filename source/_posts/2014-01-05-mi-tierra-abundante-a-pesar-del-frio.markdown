@@ -6,7 +6,6 @@ comments: true
 categories:
 - Plantas
 - Rusia
-featured: true
 ---
 
 ##### Grosella

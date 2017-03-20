@@ -3,6 +3,7 @@ layout: post
 title: "Día de la mujer"
 date: 2017-03-11 19:37:52 -0500
 comments: true
+featured: true
 categories: 
 - Feminismo
 ---

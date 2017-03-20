@@ -11,7 +11,7 @@ categories:
 
 Este ejemplo fue probado con la versión de Django 1.10.
 
-Primero instalamos los siguentes dos librerías que hacen parte del proyecto [Python Social Auth](https://github.com/python-social-auth):
+Primero instalamos las siguentes dos librerías que hacen parte del proyecto [Python Social Auth](https://github.com/python-social-auth):
 
 ```bash
 $ pip install social-auth-core
