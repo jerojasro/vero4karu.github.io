@@ -4,7 +4,7 @@
   <title><![CDATA[Category: invierno | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/invierno/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-14T21:58:38-05:00</updated>
+  <updated>2017-03-20T17:28:02-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -58,7 +58,7 @@ preparado. Creo que es porque todos tienen muy por dentro una pequeña esperanza
 de que puede ser éste año el invierno no llegue. Los árboles se vuelven
 completamente siniestros y se ven como muertos.</p>
 
-<p><img class="center" src="/images/winter.jpg" title="&lsquo;Mi colegio (de primaria) en Moscú en invierno&rsquo;" ></p>
+<p>{% img center /images/winter.jpg &lsquo;Mi colegio (de primaria) en Moscú en invierno&rsquo; %}</p>
 
 <p>El diciembre el mundo se queda sumido en la oscuridad. Lo más doloroso era
 despertarse por la mañana para ir al colegio:</p>
@@ -73,11 +73,11 @@ uno desayuna, se viste y sale de la casa a la oscuridad para patullar por la nie
 Claro que el barrendero también tuvo pereza y lo había limpiado las calles,
 entonces tocaba de nuevo abrir el camino hasta el colegio.</p>
 
-<p><img class="center" src="/images/colegio.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
+<p>{% img center /images/colegio.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
 
-<p><img class="center" src="/images/colegio3.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
+<p>{% img center /images/colegio3.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
 
-<p><img class="center" src="/images/colegio4.jpg" title="&lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo;" ></p>
+<p>{% img center /images/colegio4.jpg &lsquo;Mi colegio (edificios del primer grado y la secundaria)&rsquo; %}</p>
 
 <p>Las imágenes tomadas de
 <a href="https://ssl.panoramio.com/user/2301915">https://ssl.panoramio.com/user/2301915</a>.</p>

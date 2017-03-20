@@ -4,7 +4,7 @@
   <title><![CDATA[Category: recuerdos | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/recuerdos/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-14T21:58:38-05:00</updated>
+  <updated>2017-03-20T17:28:02-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -77,7 +77,7 @@ de los otros pasajeros, miro por la ventana y veo las montañas tan majestuosas
 y tan bellas, y así, al llegar a Suba pasa todo: el estrés, el mal genio y
 otras tonterías.</p>
 
-<p><img class="center" src="/images/caminata.png" title="&lsquo;Caminata&rsquo;" ></p>
+<p>{% img center /images/caminata.png &lsquo;Caminata&rsquo; %}</p>
 ]]></content>
   </entry>
   
@@ -111,7 +111,7 @@ llevando el contrapeso. Ese hueco era muy oscuro con un bombillo amarillo
 marcando cada piso. Y debajo, cubierto del polvo, estaba el cacho de mi cabra&hellip;
 En ese momento me desperté con sudor frío.</p>
 
-<p><img class="center" src="/images/lift.jpg" title="&lsquo;Ascensor&rsquo;" ></p>
+<p>{% img center /images/lift.jpg &lsquo;Ascensor&rsquo; %}</p>
 
 <p>Tuve otra experiencia con un ascensor cuando fuimos a una casa vieja en el
 centro de Moscú. En esa casa había un ascensor muy antiguo

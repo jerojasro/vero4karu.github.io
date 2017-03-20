@@ -4,7 +4,7 @@
   <title><![CDATA[Category: pycharm | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/pycharm/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-14T21:58:38-05:00</updated>
+  <updated>2017-03-20T17:28:02-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -44,11 +44,11 @@
 
 <p>Para esto debemos ir a <code>File -&gt; Settings -&gt; File Watchers</code> y agregar un nuevo watcher, escogiendo la opción <code>SASS</code></p>
 
-<p><img src="/images/pycharm_file_watchers.png"></p>
+<p>{% img /images/pycharm_file_watchers.png %}</p>
 
 <p>y editar las configuraciones:</p>
 
-<p><img src="/images/pycharm_file_watchers_settings.png"></p>
+<p>{% img /images/pycharm_file_watchers_settings.png %}</p>
 ]]></content>
   </entry>
   

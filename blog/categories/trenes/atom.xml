@@ -4,7 +4,7 @@
   <title><![CDATA[Category: trenes | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/trenes/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-14T21:58:38-05:00</updated>
+  <updated>2017-03-20T17:28:02-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -50,7 +50,7 @@ que dan las ruedas y a soñar&hellip; soñar que estoy en una casa del campo al 
 de pechka (horno de leña) esperando a que comience a hervir el agua en
 el <a href="http://es.wikipedia.org/wiki/Samovar">samovar</a>&hellip;</p>
 
-<p><img class="center" src="/images/podstakannik.jpg" title="&lsquo;Tvorog&rsquo;" ></p>
+<p>{% img center /images/podstakannik.jpg &lsquo;Tvorog&rsquo; %}</p>
 
 <p><em>Podstakannik con el té (en un tren). La imagen tomada de <a href="http://vahvarh.terra-cognita.ru/text-25/">http://vahvarh.terra-cognita.ru/text-25/</a></em></p>
 ]]></content>

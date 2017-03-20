@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: messenger | Cansada de ser feliz]]></title>
+  <link href="http://blog.vero4ka.info/blog/categories/messenger/atom.xml" rel="self"/>
+  <link href="http://blog.vero4ka.info/"/>
+  <updated>2017-03-20T17:28:02-05:00</updated>
+  <id>http://blog.vero4ka.info/</id>
+  <author>
+    <name><![CDATA[vero4ka]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo hacer bot para Facebook en Python]]></title>
+    <link href="http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/"/>
+    <updated>2017-02-04T11:27:15-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python</id>
+    <content type="html"><![CDATA[<p>Primero creamos una aplicación en Facebook, vamos al menú de configuración y agregamos el servicio de messenger (&ldquo;Add Product&rdquo;):</p>
+
+<p>{% img center /images/bots/fb_bot_webhook.png %}</p>
+
+<p>Luedo vamos a hacer click en el botón &ldquo;Setup Webhooks&rdquo;:</p>
+
+<p>{% img center /images/bots/fb_bot_register.png %}</p>
+
+<p>Para poder verificar que nuestro bot esté bien configurado, Facebook nos mandará una peticicón GET a nuestro servidor</p>
+
+<pre><code>GET https://mipagina.com/bot/fb-webhook/?hub.mode=subscribe&amp;hub.challenge=1122334455&amp;hub.verify_token=una-frase-secreta
+</code></pre>
+
+<p>y esperará que le respondemos con el código 200 y el contenido del paramentro <code>hub.challenge</code> cuando <code>verify_token</code> coincide con la frase secreta que especificamos, o con el código HTTP 403 en el caso opuesto.</p>
+
+<p>{% codeblock urls.py lang:python %}
+    # &hellip;
+    url(
+        r'fb-webhook/$&lsquo;,
+        FacebookCommandReceiveView.as_view(),
+        name='fb_webhook&rsquo;,
+    ),
+    # &hellip;
+{% endcodeblock %}</p>
+
+<p>{% codeblock urls.py lang:python %}
+class FacebookCommandReceiveView(View):</p>
+
+<pre><code>def get(self, request):
+    if request.GET.get('hub.mode') == 'subscribe' and request.GET.get('hub.verify_token') == settings.FACEBOOK_VERIFY_TOKEN:
+        return HttpResponse(request.GET.get('hub.challenge'))
+    else:
+        return HttpResponseForbidden()
+</code></pre>
+
+<p>{% endcodeblock %}</p>
+
+<p>Después de oprimir el botón &ldquo;Verify and Save&rdquo;</p>
+
+<p>{% img center /images/bots/fb_bot_settings.png %}</p>
+
+<p>podemos generar <em>Access Token</em> para nuestra página y suscribirnos a los eventos en messenger.</p>
+
+<p>{% img center /images/bots/fb_bot_add_subscription.png %}</p>
+
+<p>{% img center /images/bots/fb_bot_current_subscription.png %}</p>
+
+<p>{% img center /images/bots/fb_bot_edit_subscription.png %}</p>
+
+<p>{% img center /images/bots/fb_bot_subscription_status.png %}</p>
+
+<p>{% img center /images/bots/fb_bot_publish.png %}</p>
+
+<p>Enlaces:</p>
+
+<ul>
+<li><a href="https://developers.facebook.com/docs/messenger-platform/guides/quick-start">Quick Start</a>: cómo crear y configurar webhooks.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

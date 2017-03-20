@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2017/03/20/login-con-facebook-en-django/</loc>
+<lastmod>2017-03-20T15:24:49-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2017/03/11/dia-de-la-mujer/</loc>
 <lastmod>2017-03-11T19:37:52-05:00</lastmod>
 </url>
@@ -19,6 +23,10 @@
 <url>
 <loc>http://blog.vero4ka.info/blog/2017/02/14/la-misma-cosa/</loc>
 <lastmod>2017-02-14T21:14:51-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/</loc>
+<lastmod>2017-02-04T11:27:15-05:00</lastmod>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/2017/01/20/flask-con-todas-las-arandelas/</loc>
@@ -589,10 +597,22 @@
 <loc>http://blog.vero4ka.info/blog/categories/supervisor/</loc>
 </url>
 <url>
+<loc>http://blog.vero4ka.info/blog/categories/facebook/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/bot/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/messenger/</loc>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/categories/transporte/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/feminismo/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/oauth/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/posts/2/</loc>
