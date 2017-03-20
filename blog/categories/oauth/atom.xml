@@ -4,7 +4,7 @@
   <title><![CDATA[Category: oauth | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/oauth/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-20T17:28:02-05:00</updated>
+  <updated>2017-03-20T17:35:43-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -20,11 +20,14 @@
     <id>http://blog.vero4ka.info/blog/2017/03/20/login-con-facebook-en-django</id>
     <content type="html"><![CDATA[<p>Este ejemplo fue probado con la versión de Django 1.10.</p>
 
-<p>Primero instalamos los siguentes dos librerías que hacen parte del proyecto <a href="https://github.com/python-social-auth">Python Social Auth</a>:</p>
+<p>Primero instalamos las siguentes dos librerías que hacen parte del proyecto <a href="https://github.com/python-social-auth">Python Social Auth</a>:</p>
 
 <pre><code class="bash">$ pip install social-auth-core
 $ pip install social-auth-app-django
 </code></pre>
+
+<!-- more -->
+
 
 <p>Agregamos la aplicación <code>social_django</code> en la lista <code>INSTALLED_APPS</code> del archivo <code>settings.py</code> en nuestro proyecto de Django:</p>
 

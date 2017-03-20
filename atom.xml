@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-20T17:27:57-05:00</updated>
+  <updated>2017-03-20T17:35:38-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -27,6 +27,11 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install social-auth-core
 </span><span class='line'><span class="nv">$ </span>pip install social-auth-app-django
 </span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
 
 
 <p>Agregamos la aplicación <code>social_django</code> en la lista <code>INSTALLED_APPS</code> del archivo <code>settings.py</code> en nuestro proyecto de Django:</p>
@@ -713,6 +718,90 @@ Se <strong>habrá caído</strong> de la bicicleta.</p>
 
 <p>Francis <strong>will have been living</strong> in Italy for 4 years by the time he finishes his studies. <br>
 Francis <strong>habrá estado viviendo</strong> en Italia durante 4 años, hasta que haya terminado sus estudios.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cómo hacer bot para Facebook en Python]]></title>
+    <link href="http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/"/>
+    <updated>2017-02-04T11:27:15-05:00</updated>
+    <id>http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python</id>
+    <content type="html"><![CDATA[<p>Primero creamos una aplicación en Facebook, vamos al menú de configuración y agregamos el servicio de messenger (&ldquo;Add Product&rdquo;):</p>
+
+<p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_webhook.png"></p>
+
+<p>Luedo vamos a hacer click en el botón &ldquo;Setup Webhooks&rdquo;:</p>
+
+<p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_register.png"></p>
+
+<p>Para poder verificar que nuestro bot esté bien configurado, Facebook nos mandará una peticicón GET a nuestro servidor</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET https://mipagina.com/bot/fb-webhook/?hub.mode=subscribe&hub.challenge=1122334455&hub.verify_token=una-frase-secreta</span></code></pre></td></tr></table></div></figure>
+
+
+<p>y esperará que le respondemos con el código 200 y el contenido del paramentro <code>hub.challenge</code> cuando <code>verify_token</code> coincide con la frase secreta que especificamos, o con el código HTTP 403 en el caso opuesto.</p>
+
+<figure class='code'><figcaption><span>urls.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'>    <span class="c"># ...</span>
+</span><span class='line'>    <span class="n">url</span><span class="p">(</span>
+</span><span class='line'>        <span class="s">r&#39;fb-webhook/$&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">FacebookCommandReceiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
+</span><span class='line'>        <span class="n">name</span><span class="o">=</span><span class="s">&#39;fb_webhook&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">),</span>
+</span><span class='line'>    <span class="c"># ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>urls.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">FacebookCommandReceiveView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.mode&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#39;subscribe&#39;</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.verify_token&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">settings</span><span class="o">.</span><span class="n">FACEBOOK_VERIFY_TOKEN</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.challenge&#39;</span><span class="p">))</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">HttpResponseForbidden</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Después de oprimir el botón &ldquo;Verify and Save&rdquo;</p>
+
+<p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_settings.png"></p>
+
+<p>podemos generar <em>Access Token</em> para nuestra página y suscribirnos a los eventos en messenger.</p>
+
+<p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_add_subscription.png"></p>
+
+<p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_current_subscription.png"></p>
+
+<p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_edit_subscription.png"></p>
+
+<p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_subscription_status.png"></p>
+
+<p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_publish.png"></p>
+
+<p>Enlaces:</p>
+
+<ul>
+<li><a href="https://developers.facebook.com/docs/messenger-platform/guides/quick-start">Quick Start</a>: cómo crear y configurar webhooks.</li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -1941,7 +2030,7 @@ Francis <strong>habrá estado viviendo</strong> en Italia durante 4 años, hasta
 
 <p><img class="center" src="http://blog.vero4ka.info/images/flask/tappsi_logo.svg" width="100"></p>
 
-<p>Estamos contratando <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#106;&#x6f;&#x62;&#x73;&#64;&#x74;&#97;&#x70;&#x70;&#x73;&#x69;&#46;&#x63;&#111;">&#x6a;&#111;&#98;&#115;&#x40;&#116;&#97;&#x70;&#112;&#x73;&#x69;&#x2e;&#x63;&#x6f;</a></p>
+<p>Estamos contratando <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#106;&#x6f;&#98;&#x73;&#x40;&#x74;&#x61;&#112;&#112;&#115;&#x69;&#46;&#x63;&#x6f;">&#106;&#x6f;&#x62;&#x73;&#x40;&#116;&#x61;&#112;&#x70;&#x73;&#105;&#x2e;&#99;&#x6f;</a></p>
 ]]></content>
   </entry>
   
@@ -3966,202 +4055,6 @@ de una familia rica y viaja al salvaje oeste para curar y salvar a los desfavore
 <li>Columbo (Estados Unidos)</li>
 <li>Alf (Estados Unidos)</li>
 <li>Beverly Hills, 90210 (Estados Unidos)</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Múltiples bases de datos en Django]]></title>
-    <link href="http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django/"/>
-    <updated>2016-08-31T11:15:01-05:00</updated>
-    <id>http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django</id>
-    <content type="html"><![CDATA[<p>Tenemos dos tablas con esquemas iguales dos en bases de datos diferentes: <code>production</code> y <code>history</code>.</p>
-
-<figure class='code'><figcaption><span>settings.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">DATABASE_ROUTERS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;routers.HistoricRouter&#39;</span><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;production&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;USER&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">},</span>
-</span><span class='line'>    <span class="s">&#39;historical&#39;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;history&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;USER&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Escribimos un router para definir a qué base de datos hacer la petición:</p>
-
-<figure class='code'><figcaption><span>routers.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">HistoricRouter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="sd">    A router to control all database operations on models in the historic application.</span>
-</span><span class='line'><span class="sd">    &quot;&quot;&quot;</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">db_for_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
-</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="sd">        Attempts to read historic models go to historical.</span>
-</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="s">&#39;historical&#39;</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">db_for_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
-</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="sd">        Attempts to write historic models go to historical.</span>
-</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="s">&#39;historical&#39;</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">allow_relation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
-</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="sd">        Allow relations if a model in the historic app is involved.</span>
-</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">obj1</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span> <span class="ow">or</span> \
-</span><span class='line'>            <span class="n">obj2</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="bp">True</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">allow_migrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">app_label</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
-</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="sd">        Make sure the historic app only appears in the &#39;historical&#39; database.</span>
-</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">db</span> <span class="o">==</span> <span class="s">&#39;historical&#39;</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>En nuestros modelos especificamos <code>app_label</code> para referirnos a la base de datos distinta a <code>default</code>:</p>
-
-<figure class='code'><figcaption><span>models.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;authors&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">AbstractBook</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;books.Author&#39;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;books&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">unmanaged</span> <span class="o">=</span> <span class="bp">True</span>
-</span><span class='line'>        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">Book</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;books&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">HistoricBook</span><span class="p">(</span><span class="n">Book</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">unmanaged</span> <span class="o">=</span> <span class="bp">True</span>
-</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;books&#39;</span>
-</span><span class='line'>        <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;historic&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>La petición <code>Book.objects.all()</code> va a traer libros de la base de datos <code>production</code> y <code>HistoricBook.objects.all()</code> - de la base de datos <code>history</code>.</p>
-
-<p>Modificando <code>allow_relation</code> en nuestro router, podemos permitir llaves foráneas entre modelos de diferentes bases de datos:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">allow_relation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">return</span> <span class="bp">True</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Enlaces:</p>
-
-<ul>
-<li><a href="https://docs.djangoproject.com/en/1.10/topics/db/multi-db/#cross-database-relations">Django: Cross-database relations</a></li>
 </ul>
 
 ]]></content>

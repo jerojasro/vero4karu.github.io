@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Caperucita roja en los diferentes países - Cansada de ser feliz</title>
+  <title>Cómo hacer bot para Facebook en Python - Cansada de ser feliz</title>
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Desde la niñez conocemos la historia de Caperucita roja, gracias al escritor
-francés Charles Perrault. Pero es simplemente una elaboración literaria &hellip;">
+  <meta name="description" content="Primero creamos una aplicación en Facebook, vamos al menú de configuración y agregamos el servicio de messenger (&ldquo;Add Product&rdquo;): Luedo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ francés Charles Perrault. Pero es simplemente una elaboración literaria &helli
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.vero4ka.info/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/">
+  <link rel="canonical" href="http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/">
 
   <link href="/favicon.ico" rel="icon">
 
@@ -89,7 +88,7 @@ francés Charles Perrault. Pero es simplemente una elaboración literaria &helli
   
   <header>
     
-      <h1 class="entry-title">Caperucita roja en los diferentes países</h1>
+      <h1 class="entry-title">Cómo hacer bot para Facebook en Python</h1>
     
     
       <p class="meta">
@@ -98,7 +97,7 @@ francés Charles Perrault. Pero es simplemente una elaboración literaria &helli
 
 
 
-<time class='entry-date' datetime='2016-04-16T19:08:32-05:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:08 pm</span></time>
+<time class='entry-date' datetime='2017-02-04T11:27:15-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:27 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://blog.vero4ka.info">Comments</a>
@@ -108,45 +107,82 @@ francés Charles Perrault. Pero es simplemente una elaboración literaria &helli
   </header>
 
 
-<div class="entry-content"><p><img class="center" src="/images/caperucita2.jpg" title="'Caperucita roja'" ></p>
+<div class="entry-content"><p>Primero creamos una aplicación en Facebook, vamos al menú de configuración y agregamos el servicio de messenger (&ldquo;Add Product&rdquo;):</p>
 
-<p>Desde la niñez conocemos la historia de Caperucita roja, gracias al escritor
-francés Charles Perrault. Pero es simplemente una elaboración literaria de un
-cuento folclórico.</p>
+<p><img class="center" src="/images/bots/fb_bot_webhook.png"></p>
 
-<p>En distintos países cuentan la historia de la muchacha, que fue a visitar
-a su abuelita, de forma diferente. En un lugar el personaje no es una ñina
-sino un niño (por ejemplo, en Irán, donde las niñas pequeñas no andas sólas),
-o en el otro, como en Asia Suroriental, no es un lobo sino un tigre.
-Pero la idea se mantiene igual.</p>
+<p>Luedo vamos a hacer click en el botón &ldquo;Setup Webhooks&rdquo;:</p>
 
-<p><img class="right" src="/images/caperucita.jpg" width="250" title="'Caperucita roja'" ></p>
+<p><img class="center" src="/images/bots/fb_bot_register.png"></p>
 
-<p>Un antropólogo británico llamado Jamshid J. Tehrani decidió aclarar de dónde
-es Caperucita roja, usando un método filogenético, con el que normalmente se
-reconstruyen los enlaces entre los organismos vivos. El científico analizó 58
-versiones de la historia en todo el mundo según 72 criterios – la apariencia,
-el sexo de los protagonistas, los trucos con los cuales el malvado engaña
-a sus víctimas. Según el sistema de Aarne-Thompson-Uther, el cuento
-de Caperucita roja corresponde a la categoría de los tramas,
-en los cuales el protagonista tiene superpoderes, y tiene un código ATU-333.</p>
+<p>Para poder verificar que nuestro bot esté bien configurado, Facebook nos mandará una peticicón GET a nuestro servidor</p>
 
-<p>Según los cálculos de Tehrani, aproximadamente en el siglo I esa historia
-se derivó de otro cuento popular de Oriente Próximo del lobo y
-siete cabritos (ATU-123). llegando a Asia y África, el cuento se mezcló
-con las versiones locales del lobo y siete cabritos y obtuvo sus rasgos únicos.
-En Europa el cuento también se transformó dependiendo de la región.
-Por ejemplo, en Italia en la cesta de la niña había un pescado fresco,
-y en Suiza – una bola de queso. La caperucita francesa llevaba a sua abuela
-un pote de mantequilla y un pastel relleno. También vaía la edad de
-la protagonista: en unas partes es una niña pequeña, y en otras
-– una muchacha joven.</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET https://mipagina.com/bot/fb-webhook/?hub.mode=subscribe&hub.challenge=1122334455&hub.verify_token=una-frase-secreta</span></code></pre></td></tr></table></div></figure>
 
-<p>¿Y qué lleva caperucita roja a su abuelita en el país de usted?</p>
 
-<p>Imágenes tomadas de:
-<a href="http://pikabu.ru/story/art_krasnaya_shapochka_790068">http://pikabu.ru/story/art_krasnaya_shapochka_790068</a>,
-<a href="http://pikabu.ru/story/krasnaya_shapochka_1666502">http://pikabu.ru/story/krasnaya_shapochka_1666502</a></p>
+<p>y esperará que le respondemos con el código 200 y el contenido del paramentro <code>hub.challenge</code> cuando <code>verify_token</code> coincide con la frase secreta que especificamos, o con el código HTTP 403 en el caso opuesto.</p>
+
+<figure class='code'><figcaption><span>urls.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'>    <span class="c"># ...</span>
+</span><span class='line'>    <span class="n">url</span><span class="p">(</span>
+</span><span class='line'>        <span class="s">r&#39;fb-webhook/$&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">FacebookCommandReceiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
+</span><span class='line'>        <span class="n">name</span><span class="o">=</span><span class="s">&#39;fb_webhook&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">),</span>
+</span><span class='line'>    <span class="c"># ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>urls.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">FacebookCommandReceiveView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.mode&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#39;subscribe&#39;</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.verify_token&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">settings</span><span class="o">.</span><span class="n">FACEBOOK_VERIFY_TOKEN</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.challenge&#39;</span><span class="p">))</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">HttpResponseForbidden</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Después de oprimir el botón &ldquo;Verify and Save&rdquo;</p>
+
+<p><img class="center" src="/images/bots/fb_bot_settings.png"></p>
+
+<p>podemos generar <em>Access Token</em> para nuestra página y suscribirnos a los eventos en messenger.</p>
+
+<p><img class="center" src="/images/bots/fb_bot_add_subscription.png"></p>
+
+<p><img class="center" src="/images/bots/fb_bot_current_subscription.png"></p>
+
+<p><img class="center" src="/images/bots/fb_bot_edit_subscription.png"></p>
+
+<p><img class="center" src="/images/bots/fb_bot_subscription_status.png"></p>
+
+<p><img class="center" src="/images/bots/fb_bot_publish.png"></p>
+
+<p>Enlaces:</p>
+
+<ul>
+<li><a href="https://developers.facebook.com/docs/messenger-platform/guides/quick-start">Quick Start</a>: cómo crear y configurar webhooks.</li>
+</ul>
+
 </div>
 
 
@@ -162,15 +198,21 @@ la protagonista: en unas partes es una niña pequeña, y en otras
 
 
 
-<time class='entry-date' datetime='2016-04-16T19:08:32-05:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:08 pm</span></time>
+<time class='entry-date' datetime='2017-02-04T11:27:15-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:27 am</span></time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bot/'>bot</a>, <a class='category' href='/blog/categories/facebook/'>facebook</a>, <a class='category' href='/blog/categories/messenger/'>messenger</a>, <a class='category' href='/blog/categories/python/'>python</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.vero4ka.info/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/" data-via="vero4ka_ru" data-counturl="http://blog.vero4ka.info/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/" data-via="vero4ka_ru" data-counturl="http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/" >Tweet</a>
   
   
   
@@ -179,10 +221,10 @@ la protagonista: en unas partes es una niña pequeña, y en otras
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/04/02/los-programas-de-radio-y-television-rusas-que-me-gusta-escuchar/" title="Previous Post: Los programas de radio y televisión rusas que me gusta escuchar">&laquo; Los programas de radio y televisión rusas que me gusta escuchar</a>
+        <a class="basic-alignment left" href="/blog/2017/01/20/flask-con-todas-las-arandelas/" title="Previous Post: Flask con todas las arandelas">&laquo; Flask con todas las arandelas</a>
       
       
-        <a class="basic-alignment right" href="/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual/" title="Next Post: Asya Kazantseva: “La utilidad de los productos orgánicos es un mito habitual”">Asya Kazantseva: “La utilidad de los productos orgánicos es un mito habitual” &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2017/02/14/la-misma-cosa/" title="Next Post: La misma cosa">La misma cosa &raquo;</a>
       
     </p>
   </footer>
@@ -782,8 +824,8 @@ la protagonista: en unas partes es una niña pequeña, y en otras
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.vero4ka.info/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/';
-        var disqus_url = 'http://blog.vero4ka.info/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/';
+        var disqus_identifier = 'http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/';
+        var disqus_url = 'http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/';
         var disqus_script = 'embed.js';
       
     (function () {
