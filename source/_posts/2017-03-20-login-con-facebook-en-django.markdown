@@ -18,6 +18,8 @@ $ pip install social-auth-core
 $ pip install social-auth-app-django
 ```
 
+<!-- more -->
+
 Agregamos la aplicación `social_django` en la lista `INSTALLED_APPS` del archivo `settings.py` en nuestro proyecto de Django:
 
 ```python
