@@ -11,14 +11,14 @@ categories:
 
 Este ejemplo fue probado con la versión de Django 1.10.
 
-Instalamos dos librerías:
+Primero instalamos los siguentes dos librerías que hacen parte del proyecto [Python Social Auth](https://github.com/python-social-auth):
 
 ```bash
 $ pip install social-auth-core
 $ pip install social-auth-app-django
 ```
 
-Agregamos `social_django` en la lista `INSTALLED_APPS` del archivo `settings.py`:
+Agregamos la aplicación `social_django` en la lista `INSTALLED_APPS` del archivo `settings.py` en nuestro proyecto de Django:
 
 ```python
 INSTALLED_APPS = [
@@ -26,7 +26,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-y backend de autenticación:
+Especificamos `AUTHENTICATION_BACKENDS``que vamos a usar un backend adicional para ingresar con la cuenta de Facebook:
 
 ```python
 AUTHENTICATION_BACKENDS = [
@@ -36,7 +36,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 ```
 
-y al fin los procesadores de contexto:
+y al fin agregamos los procesadores de contexto:
 
 ```python
 TEMPLATES = [
@@ -55,7 +55,7 @@ TEMPLATES = [
 ]
 ```
 
-Ahora podemos correr las migraciónes para crear las tablas que usa `social_django`:
+Ahora podemos correr las migraciónes para crear las tablas que usa `social_django` para guargar las cuentas y relaciones con los usuarios de Django que ya tenemos:
 
 ```bash
 $ ./manage.py migrate
@@ -74,7 +74,7 @@ Agregamos urls de `social_django` en `urls.py`:
 url('', include('social_django.urls', namespace='social')),
 ```
 
-Y ahora podemos escribir en la plantilla:
+Listo, con esto podemos agregar un enlace en alguna de nuestras plantillas:
 
 {% codeblock templates/base.html lang:html %}
 {% raw %}
@@ -82,7 +82,7 @@ Y ahora podemos escribir en la plantilla:
 {% endraw %}
 {% endcodeblock %}
 
-Especificamos que queremos asocial usuarios por correo electrónico:
+Especificamos que queremos asocial usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:
 
 ```python
 SOCIAL_AUTH_PIPELINE = (
@@ -99,7 +99,9 @@ SOCIAL_AUTH_PIPELINE = (
 )
 ```
 
-Ir a https://developers.facebook.com y crear una aplicación. Añadir servicio de "Facebook Login":
+Es decir: cuando un usuario va a ingresar a nuestra página con su cuenta de Facebook, la aplicación va a mirar si en la tabla de usuario ya existe uno con el mismo correo, y si es así, simplemente lo asocia al la cuenta de Facebook con la que el usuario ingresó. En el caso opuesto, se crea un nuevo registro en la tabla `users`.
+
+Ahora tenemos que crear la aplicación de Facebook desde la página [developers.facebook.com](https://developers.facebook.com). Luego agregamos el servicio de "Facebook Login":
 
 {% img center /images/django/fb-app-login.png %}
 
@@ -114,11 +116,11 @@ SOCIAL_AUTH_FACEBOOK_KEY = 'app-id'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'app-secret'
 {% endcodeblock %}
 
-Después de hacer los pasos anteriores, al momento de hacer click en "Login con Facebook", la aplicación nos redirige a la siguiente página:
+Después de hacer los pasos anteriores, al momento de hacer click en "Login con Facebook", la aplicación nos va a redirigir a la siguiente página:
 
 {% img center /images/django/fb-login-1.png %}
 
-Pero nosotros, al momento de login queremos obtener correo electrónico de nuestro usuario, por eso definimos scope:
+Pero nosotros, al momento de login queremos obtener correo electrónico de nuestro usuario, por eso definimos el scope:
 
 {% codeblock settings.py lang:python %}
 SOCIAL_AUTH_FACEBOOK_IGNORE_DEFAULT_SCOPE = True
@@ -131,6 +133,10 @@ Y ahora sí, la aplicación pide acceso al correo electrónico:
 
 {% img center /images/django/fb-login-2.png %}
 
-Entramos al administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de tados con su cuenta de FB:
+Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de tados a su cuenta de Facebook:
 
 {% img center /images/django/fb-app-django-admin.png %}
+
+Enlaces:
+
+* [Documentación de FB](https://developers.facebook.com/docs/facebook-login)
