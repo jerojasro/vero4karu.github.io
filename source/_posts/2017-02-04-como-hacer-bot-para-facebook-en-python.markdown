@@ -15,6 +15,8 @@ Primero creamos una aplicación en Facebook, vamos al menú de configuración y 
 
 {% img center /images/bots/fb_bot_webhook.png %}
 
+<!-- more -->
+
 Luedo vamos a hacer click en el botón "Setup Webhooks":
 
 {% img center /images/bots/fb_bot_register.png %}

@@ -9,7 +9,7 @@ categories:
 - Facebook
 ---
 
-Este ejemplo fue probado con la versión de Django 1.10.
+Este ejemplo fue probado con la versión 1.10 de Django.
 
 Primero instalamos las siguentes dos librerías que hacen parte del proyecto [Python Social Auth](https://github.com/python-social-auth):
 
@@ -20,7 +20,7 @@ $ pip install social-auth-app-django
 
 <!-- more -->
 
-Agregamos la aplicación `social_django` en la lista `INSTALLED_APPS` del archivo `settings.py` en nuestro proyecto de Django:
+Agregamos la aplicación `social_django` a la lista `INSTALLED_APPS` del archivo `settings.py` en nuestro proyecto de Django:
 
 ```python
 INSTALLED_APPS = [
@@ -28,7 +28,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Especificamos `AUTHENTICATION_BACKENDS``que vamos a usar un backend adicional para ingresar con la cuenta de Facebook:
+Especificamos en `AUTHENTICATION_BACKENDS` que vamos a usar un backend adicional para ingresar con la cuenta de Facebook:
 
 ```python
 AUTHENTICATION_BACKENDS = [
@@ -38,7 +38,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 ```
 
-y al fin agregamos los procesadores de contexto:
+y finalmente agregamos los procesadores de contexto:
 
 ```python
 TEMPLATES = [
@@ -70,7 +70,7 @@ Running migrations:
   Applying social_django.0006_partial... OK
 ```
 
-Agregamos urls de `social_django` en `urls.py`:
+Agregamos las urls de `social_django` en `urls.py`:
 
 ```python
 url('', include('social_django.urls', namespace='social')),
@@ -84,7 +84,7 @@ Listo, con esto podemos agregar un enlace en alguna de nuestras plantillas:
 {% endraw %}
 {% endcodeblock %}
 
-Especificamos que queremos asocial usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:
+Especificamos que queremos asociar usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:
 
 ```python
 SOCIAL_AUTH_PIPELINE = (
@@ -135,7 +135,7 @@ Y ahora sí, la aplicación pide acceso al correo electrónico:
 
 {% img center /images/django/fb-login-2.png %}
 
-Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de tados a su cuenta de Facebook:
+Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de datos a su cuenta de Facebook:
 
 {% img center /images/django/fb-app-django-admin.png %}
 
