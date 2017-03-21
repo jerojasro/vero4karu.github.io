@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-20T17:35:43-05:00</updated>
+  <updated>2017-03-20T20:38:15-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -20,11 +20,14 @@
     <id>http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python</id>
     <content type="html"><![CDATA[<p>Primero creamos una aplicación en Facebook, vamos al menú de configuración y agregamos el servicio de messenger (&ldquo;Add Product&rdquo;):</p>
 
-<p>{% img center /images/bots/fb_bot_webhook.png %}</p>
+<p><img class="center" src="/images/bots/fb_bot_webhook.png"></p>
+
+<!-- more -->
+
 
 <p>Luedo vamos a hacer click en el botón &ldquo;Setup Webhooks&rdquo;:</p>
 
-<p>{% img center /images/bots/fb_bot_register.png %}</p>
+<p><img class="center" src="/images/bots/fb_bot_register.png"></p>
 
 <p>Para poder verificar que nuestro bot esté bien configurado, Facebook nos mandará una peticicón GET a nuestro servidor</p>
 
@@ -33,43 +36,75 @@
 
 <p>y esperará que le respondemos con el código 200 y el contenido del paramentro <code>hub.challenge</code> cuando <code>verify_token</code> coincide con la frase secreta que especificamos, o con el código HTTP 403 en el caso opuesto.</p>
 
-<p>{% codeblock urls.py lang:python %}
-    # &hellip;
-    url(
-        r'fb-webhook/$&lsquo;,
-        FacebookCommandReceiveView.as_view(),
-        name='fb_webhook&rsquo;,
-    ),
-    # &hellip;
-{% endcodeblock %}</p>
+<p>Entonces esribimos una vista que se encargará de eso:</p>
 
-<p>{% codeblock urls.py lang:python %}
-class FacebookCommandReceiveView(View):</p>
+<p><figure class='code'><figcaption><span>urls.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'>    <span class="c"># &amp;hellip;</span>
+</span><span class='line'>    <span class="n">url</span><span class="p">(</span>
+</span><span class='line'>        <span class="s">r&#39;fb-webhook/$&amp;lsquo;,</span>
+</span><span class='line'>        <span class="n">FacebookCommandReceiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
+</span><span class='line'>        <span class="n">name</span><span class="o">=</span><span class="s">&#39;fb_webhook&amp;rsquo;,</span>
+</span><span class='line'>    <span class="p">),</span>
+</span><span class='line'>    <span class="c"># &amp;hellip;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<pre><code>def get(self, request):
-    if request.GET.get('hub.mode') == 'subscribe' and request.GET.get('hub.verify_token') == settings.FACEBOOK_VERIFY_TOKEN:
-        return HttpResponse(request.GET.get('hub.challenge'))
-    else:
-        return HttpResponseForbidden()
-</code></pre>
+<p><figure class='code'><figcaption><span>urls.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">FacebookCommandReceiveView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.mode&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#39;subscribe&#39;</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.verify_token&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">settings</span><span class="o">.</span><span class="n">FACEBOOK_VERIFY_TOKEN</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.challenge&#39;</span><span class="p">))</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">HttpResponseForbidden</span><span class="p">()</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p>{% endcodeblock %}</p>
+<p>Cuando la vista esté lista y desplegada en producción, podemos oprimir el botón &ldquo;Verify and Save&rdquo;. Después de eso Facebook nos dará un token de la aplicación y permitirá configurar un <em>webhook</em>:</p>
 
-<p>Después de oprimir el botón &ldquo;Verify and Save&rdquo;</p>
+<p><img class="center" src="/images/bots/fb_bot_settings.png"></p>
 
-<p>{% img center /images/bots/fb_bot_settings.png %}</p>
+<p>Ahora podemos suscribirnos a los eventos en messenger, es decir: cada vez que alguien escibe un mensaje vía messanger a nuestra página de Facebook, Facebook enviará una petición POST al weebhook con el JSON que tendrá todos los datos del mensaje.</p>
 
-<p>podemos generar <em>Access Token</em> para nuestra página y suscribirnos a los eventos en messenger.</p>
+<p><img class="center" src="/images/bots/fb_bot_add_subscription.png"></p>
 
-<p>{% img center /images/bots/fb_bot_add_subscription.png %}</p>
+<p>Desúés de oprimir el botón &ldquo;Add to Subscription&rdquo;, Facebook nos mostrará el enlace &ldquo;Edit notes&rdquo;:</p>
 
-<p>{% img center /images/bots/fb_bot_current_subscription.png %}</p>
+<p><img class="center" src="/images/bots/fb_bot_current_subscription.png"></p>
 
-<p>{% img center /images/bots/fb_bot_edit_subscription.png %}</p>
+<p>Damos click en &ldquo;Edit notes&rdquo; y entramos a el formulario de configuración. Aquí especificamos la página a los mensajes de la cual vamos a suscribirnos e escribimos ejemplos de respuestas que dará nuesto bot a ciertos mensajes en Messanger:</p>
 
-<p>{% img center /images/bots/fb_bot_subscription_status.png %}</p>
+<p><img class="center" src="/images/bots/fb_bot_edit_subscription.png"></p>
 
-<p>{% img center /images/bots/fb_bot_publish.png %}</p>
+<p>Eso sirve para que Facebook pueda verificar que nuestro bot efectivamente responde bien a los mensajes de chat.</p>
+
+<p>Después de que Facebook verifique el comportamiento de nuestro bot, recibimos el mensaje de aprobación, diciendo que desde ahora nuestro bot está activo:</p>
+
+<p><img class="center" src="/images/bots/fb_bot_subscription_status.png"></p>
+
+<p>Eso nos permite hacer pruebas de la plataforma, porque el bot va a poder responder sólo a los mensajer enviados por los administradores de nuestra página de Facebook.</p>
+
+<p>Cuando nuestro bot esté listo, lo podemos activar para todos los usuarios (hacerlo público):</p>
+
+<p><img class="center" src="/images/bots/fb_bot_publish.png"></p>
 
 <p>Enlaces:</p>
 
@@ -115,17 +150,26 @@ $ pip install Flask
 
 <p>Ahora creamos nuestra primera aplicación de Flask que va a ser sólo un archivo de Python:</p>
 
-<p>{% codeblock app.py lang:python %}
-from flask import Flask
-app = Flask(<strong>name</strong>)</p>
-
-<p>@app.route(&ldquo;/&rdquo;)
-def hello():
-    return &ldquo;Hello World!&rdquo;</p>
-
-<p>if <strong>name</strong> == &ldquo;<strong>main</strong>&rdquo;:
-    app.run()
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>app.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+</span><span class='line'><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@app.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">/&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">World</span><span class="err">!</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;&amp;</span><span class="n">rdquo</span><span class="p">;:</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>El decorador <code>route</code> nos ayuda a definir la ruta de URL para la vista llamada <code>hello</code> que simplemente devuelve al navegador la respuesta HTTP 200 con la frase &ldquo;Hello World!&rdquo;.</p>
 
@@ -137,7 +181,7 @@ def hello():
 
 <p>Y ahora lo podemos abrir en nuestro navegador:</p>
 
-<p>{% img center /images/flask/flask_01.png %}</p>
+<p><img class="center" src="/images/flask/flask_01.png"></p>
 
 <h2>manage.py</h2>
 
@@ -148,32 +192,51 @@ def hello():
 
 <p>Ahora separamos nuestra aplicación en dos archivos: en el primero vamos iniciar la app de Flask, en la que especificamos la ruta de los archivos estáticos y del archivo de configuración (equivalente de <code>settings.py</code> en Django)</p>
 
-<p>{% codeblock run.py lang:python %}
-from flask import Flask</p>
-
-<p>def create_app():
-    app = Flask(<strong>name</strong>,
-        static_url_path=&lsquo;/static&rsquo;)
-    app.config.from_object(&lsquo;conf.config&rsquo;)
-    return app
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">app</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>y en el segundo vamos a colocar una instancia de <strong>Manager</strong>, que se encaragará de correr la aplicación con <code>python manage.py</code>:</p>
 
-<p>{% codeblock manage.py lang:python %}
-from flask.ext.script import Manager
-from run import create_app</p>
-
-<p>app = create_app()
-manager = Manager(app)</p>
-
-<p>@app.route(&ldquo;/&rdquo;)
-def hello():
-    return &ldquo;Hello World!&rdquo;</p>
-
-<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:
-    manager.run()
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>manage.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask.ext.script</span> <span class="kn">import</span> <span class="n">Manager</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">create_app</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">()</span>
+</span><span class='line'><span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">(</span><span class="n">app</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@app.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">/&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">World</span><span class="err">!</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;&amp;</span><span class="n">rsquo</span><span class="p">;:</span>
+</span><span class='line'>    <span class="n">manager</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Corriendo el siguiente comando en la consola</p>
 
@@ -200,19 +263,30 @@ In [1]:
 
 <p>Ahora tenemos una carpeta con los archivos de configuración - <code>conf</code>:</p>
 
-<p>{% codeblock conf/config.py lang:python %}
-import sys</p>
-
-<p>DEBUG = False</p>
-
-<p>try:
-    if &lsquo;test&rsquo; in sys.argv:
-        from test_config import *
-    else:
-        from local_config import *
-except ImportError:
-    pass
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>conf/config.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">test</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">:</span>
+</span><span class='line'>        <span class="kn">from</span> <span class="nn">test_config</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="kn">from</span> <span class="nn">local_config</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">pass</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Más información acerca de la configuración en Flask se puede encontrar en la página <a href="http://flask.pocoo.org/docs/0.12/config/">flask.pocoo.org/docs/0.12/config/</a>.</p>
 
@@ -238,36 +312,61 @@ except ImportError:
 
 <p>Creamos un Blueprint para nuestra aplicación, donde vamos a guardar las vistas relacionadas a nuestros usuarios, por ejemplo:</p>
 
-<p>{% codeblock users/views.py lang:python %}
-from flask import Blueprint</p>
-
-<p>users = Blueprint(
-    &lsquo;users&rsquo;,
-    <strong>name</strong>,
-    template_folder=&lsquo;templates&rsquo;)</p>
-
-<p>@users.route(&lsquo;/&rsquo;)
-def hello():
-    return &lsquo;Hello Worlds!&rsquo;
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">users</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">templates</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">Worlds</span><span class="err">!</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>y lo registramos en el archivo <code>run.py</code>:</p>
 
-<p>{% codeblock run.py lang:python %}
-from flask import Flask</p>
-
-<p>def create_app():
-    app = Flask(<strong>name</strong>,
-        static_url_path=&lsquo;/static&rsquo;)
-    app.config.from_object(&lsquo;conf.config&rsquo;)</p>
-
-<pre><code>from users.views import users
-app.register_blueprint(users, url_prefix='/users')
-
-return app
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">users.views</span> <span class="kn">import</span> <span class="n">users</span>
+</span><span class='line'><span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s">&#39;/users&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">app</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>indicando en el argumento <code>url_prefix</code> del método <code>register_blueprint</code>, que todos los URLs, relacionados con el Blueprint de usuario, van a empezar con el prefijo <code>/users</code>, por ejemplo: <a href="http://localhost:5000/users/">http://localhost:5000/users/</a>.</p>
 
@@ -320,55 +419,81 @@ url_for('users.user_detail', pk=user_pk)
 <pre><code>GET http://localhost:5000/users/user/1?q=foo
 </code></pre>
 
-<p>{% codeblock users/views.py lang:python %}
-from flask import Blueprint, request</p>
-
-<p>users = Blueprint(&lsquo;users&rsquo;, <strong>name</strong>, template_folder=&lsquo;templates&rsquo;)</p>
-
-<p>@users.route(&lsquo;/user/&lt;int:pk>&rsquo;)
-def user_detail(pk):
-    print(request)
-    print(request.method)  # GET
-    print(request.args)    # ImmutableMultiDict([(&lsquo;q&rsquo;, u'foo')])
-    print(request.headers)
-    return &lsquo;<h1>Hello, user #{}!</h1>&rsquo;.format(pk)
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">request</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">users</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">templates</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">user</span><span class="o">/&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">int</span><span class="p">:</span><span class="n">pk</span><span class="o">&gt;&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_detail</span><span class="p">(</span><span class="n">pk</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>  <span class="c"># GET</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>    <span class="c"># ImmutableMultiDict([(&amp;lsquo;q&amp;rsquo;, u&#39;foo&#39;)])</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Hello</span><span class="p">,</span> <span class="n">user</span> <span class="c">#{}!&lt;/h1&gt;&amp;rsquo;.format(pk)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h4>Decoradores</h4>
 
 <p>Aparte de la definición de ruta, la vista en Flask puede tener otros decoradores, por ejemplo:</p>
 
-<p>{% codeblock users/views.py lang:python %}
-@users.route(&lsquo;/user/&lt;int:pk>&rsquo;)
-@login_required
-def user_detail(pk):
-    return &lsquo;<h1>Hello, user #{}!</h1>&rsquo;.format(pk)
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">user</span><span class="o">/&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">int</span><span class="p">:</span><span class="n">pk</span><span class="o">&gt;&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="nd">@login_required</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_detail</span><span class="p">(</span><span class="n">pk</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Hello</span><span class="p">,</span> <span class="n">user</span> <span class="c">#{}!&lt;/h1&gt;&amp;rsquo;.format(pk)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2>Plantillas</h2>
 
 <p>Ahora vamos a renderizar una plantilla desde nuestra vista. Para eso vamos a usar el método <code>render_template</code> que recibe como argumentos la ruta hasta la plantilla dentro de la carpeta que especificamos en el parámetro <code>template_folder</code> del Blueprint, y los demás argumentos que son los parámetros de contexto.</p>
 
-<p>{% codeblock users/views.py lang:python %}
-from flask import Blueprint
-from flask import render_template</p>
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">users</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">templates</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">user</span><span class="o">/&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">int</span><span class="p">:</span><span class="n">pk</span><span class="o">&gt;&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_detail</span><span class="p">(</span><span class="n">pk</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">/</span><span class="n">detail</span><span class="o">.</span><span class="n">html</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p>users = Blueprint(&lsquo;users&rsquo;, <strong>name</strong>, template_folder=&lsquo;templates&rsquo;)</p>
-
-<p>@users.route(&lsquo;/user/&lt;int:pk>&rsquo;)
-def user_detail(pk):
-    return render_template(&lsquo;users/detail.html&rsquo;, user_id=pk)
-{% endcodeblock %}</p>
-
-<p>{% codeblock users/templates/users/detail.html lang:html %}
-{% raw %}
-<html>
-  <body>
-    <h1>Hello, user #{{ user_id }}!</h1>
-  </body>
-</html>
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/templates/users/detail.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>Hello, user #{{ user_id }}!<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3>Jinja2</h3>
 
@@ -376,85 +501,77 @@ def user_detail(pk):
 
 <h4>Variables:</h4>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{{ foo.bar }}
-{{ foo[&lsquo;bar&rsquo;] }}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ foo.bar }}
+</span><span class='line'>{{ foo[<span class="ni">&amp;lsquo;</span>bar<span class="ni">&amp;rsquo;</span>] }}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h4>Condicionales:</h4>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{% if user.address %}
-    <p>{{ user.address }}</p>
-{% endif %}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if user.address %}
+</span><span class='line'>    <span class="nt">&lt;p&gt;</span>{{ user.address }}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>{% endif %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Bucles:</h5>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{% for user in users %}
-  <li>{{ user.name }}</li>
-{% else %}
-  <li>No hay usuarios</li>
-{% endfor %}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% for user in users %}
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>{{ user.name }}<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>{% else %}
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>No hay usuarios<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>{% endfor %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Bloques:</h5>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{% block title %}Usuarios{% endblock %}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% block title %}Usuarios{% endblock %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Extender una plantilla base:</h5>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{% extends &ldquo;layouts/main.html&rdquo; %}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% extends <span class="ni">&amp;ldquo;</span>layouts/main.html<span class="ni">&amp;rdquo;</span> %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h4>Comentario:</h4>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{# Texto #}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{# Texto #}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Incluir otra plantilla:</h5>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{% with rating=user.rating %}
-    {% include &lsquo;includes/_rating.html&rsquo; %}
-{% endwith %}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% with rating=user.rating %}
+</span><span class='line'>    {% include <span class="ni">&amp;lsquo;</span>includes/_rating.html<span class="ni">&amp;rsquo;</span> %}
+</span><span class='line'>{% endwith %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Asignar un valor a una variable local:</h5>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{% set permissions = user.get_permission() %}
-{{ permissions }}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% set permissions = user.get_permission() %}
+</span><span class='line'>{{ permissions }}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Filtros:</h5>
 
-<p>{% codeblock lang:html %}
-{% raw %}
-{{ user.address|default(&lsquo;N/A&rsquo;) }}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ user.address|default(<span class="ni">&amp;lsquo;</span>N/A<span class="ni">&amp;rsquo;</span>) }}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2>Procesadores de contexto</h2>
 
@@ -465,18 +582,18 @@ def user_detail(pk):
 </ul>
 
 
-<p>{% codeblock lang:html %}{% raw %}
-{{ config.DEBUG }}
-{% endraw %}{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ config.DEBUG }}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
 <li><code>request</code> - Objeto de la petición actual (<code>flask.request</code>)</li>
 </ul>
 
 
-<p>{% codeblock lang:html %}{% raw %}
-{{ request.path }}
-{% endraw %}{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ request.path }}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
 <li><code>session</code> - Objeto de sesión (<code>flask.session</code>)</li>
@@ -486,38 +603,61 @@ def user_detail(pk):
 
 <p>Hay una forma de tener <code>context_processors</code> (como en Django) para poder pasar variables a todas las plantillas del proyecto:</p>
 
-<p>{% codeblock run.py lang:python %}
-from flask import Flask</p>
-
-<p>def create_app():
-    app = Flask(<strong>name</strong>, static_url_path=&lsquo;/static&rsquo;)
-    app.config.from_object(&lsquo;conf.config&rsquo;)</p>
-
-<pre><code>from users.views import users
-app.register_blueprint(users, url_prefix='/users')
-
-@app.context_processor
-def constants_processor():
-    return {
-        'say_hello': 'Hola',
-    }
-
-return app
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">users.views</span> <span class="kn">import</span> <span class="n">users</span>
+</span><span class='line'><span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s">&#39;/users&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@app.context_processor</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">constants_processor</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;say_hello&#39;</span><span class="p">:</span> <span class="s">&#39;Hola&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">app</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Ahora podemos acceder a la variable <code>say_hello</code> desde todas las plantillas sin tener que pasarla cada vez explícitamente:</p>
 
-<p>{% codeblock users/templates/users/detail.html lang:html %}
-{% raw %}
-<html>
-  <body>
-    <h1>{{ say_hello }}, user #{{ user_id }}!</h1>
-  </body>
-</html>
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/templates/users/detail.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>{{ say_hello }}, user #{{ user_id }}!<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2>Modelos</h2>
 
@@ -533,57 +673,100 @@ $ pip install Flask-SQLAlchemy
 
 <p>Ahora incluimos <code>SQLAlchemy</code> como una aplicación externa de nuestro proyecto. Primero creamos una variable <code>db</code> para que el import no se rompa cuando la aplicación todavía no se ha inicializado, y en <code>create_app</code> cuando inicializamos la aplicación: <code>db.init_app(app)</code>.</p>
 
-<p>{% codeblock run.py lang:python %}
-from flask_sqlalchemy import SQLAlchemy</p>
-
-<p>db = SQLAlchemy()</p>
-
-<p>def create_app():
-    app = Flask(<strong>name</strong>, static_url_path=&lsquo;/static&rsquo;)
-    app.config.from_object(&lsquo;conf.config&rsquo;)</p>
-
-<pre><code>db.init_app(app)
-return app
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_sqlalchemy</span> <span class="kn">import</span> <span class="n">SQLAlchemy</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'><span class="k">return</span> <span class="n">app</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>En el archivo de configuración colocamos la ruta hacia nuestra base de datos.</p>
 
-<p>{% codeblock conf/config.py lang:python %}
-SQLALCHEMY_DATABASE_URI = &lsquo;sqlite:////tmp/test.db&rsquo;
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>conf/config.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">sqlite</span><span class="p">:</span><span class="o">////</span><span class="n">tmp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">db</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Y ahora podemos crear los modelos. Aquí en el ejemplo se puede ver cómo definir modelos, columnas de tipos diferentes y crear llaves foráneas</p>
 
-<p>{% codeblock users/models.py lang:python %}
-from run import db</p>
-
-<p>class User(db.Model):
-    <strong>tablename</strong> = &lsquo;users&rsquo;</p>
-
-<pre><code>id = db.Column(db.Integer, primary_key=True)
-username = db.Column(db.String(80), unique=True)
-email = db.Column(db.String(120), unique=True)
-city_id = db.Column(db.ForeignKey(u'cities.id'), nullable=False, index=True)
-created_at = db.Column(db.DateTime, nullable=False, default=db.func.now())
-updated_at = db.Column(db.DateTime, nullable=False, default=db.func.now(),
-                    onupdate=db.func.now())
-
-def __repr__(self):
-    return '&lt;Usuario %r&gt;' % self.username
-</code></pre>
-
-<p>class City(db.Model):
-    <strong>tablename</strong> = &lsquo;cities&rsquo;</p>
-
-<pre><code>id = db.Column(db.Integer, primary_key=True)
-name = db.Column(db.String(255))
-
-users = db.relationship('User', backref='city', lazy='dynamic')
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/models.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">db</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">tablename</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">username</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">email</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">120</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">city_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">u&#39;cities.id&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">created_at</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+</span><span class='line'><span class="n">updated_at</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+</span><span class='line'>                    <span class="n">onupdate</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s">&#39;&amp;lt;Usuario </span><span class="si">%r</span><span class="s">&amp;gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">City</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">tablename</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">cities</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s">&#39;User&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s">&#39;dynamic&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3>CRUD</h3>
 
@@ -591,39 +774,45 @@ users = db.relationship('User', backref='city', lazy='dynamic')
 
 <h5>Crear</h5>
 
-<p>{% codeblock lang:python %}
-user = User(email=&lsquo;<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x6a;&#x6f;&#104;&#x6e;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#111;&#x6d;">&#x6a;&#x6f;&#x68;&#x6e;&#64;&#101;&#120;&#97;&#109;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;</a>&rsquo;, username=&lsquo;&rsquo;)
-db.session.add(user)
-db.session.commit()
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">email</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#108;&amp;#x74;&amp;#x6f;&amp;#58;&amp;#x6a;&amp;#111;&amp;#104;&amp;#x6e;&amp;#x40;&amp;#101;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#x6d;&quot;</span><span class="o">&gt;&amp;</span><span class="c">#106;&amp;#111;&amp;#x68;&amp;#110;&amp;#x40;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&lt;/a&gt;&amp;rsquo;, username=&amp;lsquo;&amp;rsquo;)</span>
+</span><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Obtener todos los usuarios</h5>
 
-<p>{% codeblock lang:python %}
-users = User.query.all()  # [<Usuario john'>, <Usuario u'admin'>]
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c"># [&lt;Usuario john&#39;&gt;, &lt;Usuario u&#39;admin&#39;&gt;]</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Obtener el primer usuario</h5>
 
-<p>{% codeblock lang:python %}
-john = User.query.first()  # <Usuario 'john'>
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">john</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>  <span class="c"># &lt;Usuario &#39;john&#39;&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Filtrar usuarios y ordenar</h5>
 
-<p>{% codeblock lang:python %}
-User.query.filter_by(username=&lsquo;john&rsquo;).all()
-User.query.filter(
-    User.created_at >= (datetime.datetime.utcnow() - datetime.timedelta(days=3)
-).order_by(User.created_at.desc()).limit(10).all()
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">username</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">john</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'><span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">User</span><span class="o">.</span><span class="n">created_at</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h5>Borrar</h5>
 
-<p>{% codeblock lang:python %}
-db.session.delete(user)
-db.session.commit()
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p><code>BaseQuery</code> no tiene método <code>save()</code>, sino todos los cambios que hacemos a objetos de modelos se agregan a la sesión. Como la sesión sólo vive durante la petición, para que nuestos cambios sean enviados a la base de datos, hace falta llamar el método <code>db.session.commit()</code>.</p>
 
@@ -637,68 +826,113 @@ $ pip install Flask-Bootstrap
 
 <p>Vamos a usarla junto con una librería complementaria - <code>Flask-Bootstrap</code> - que lo único que hace es generar el código de HTML del formulario con la estructura y las clases de <a href="http://getbootstrap.com/2.3.2/">Twitter Bootstrap</a> (lo mismo que hace <code>django-crispy-forms</code>).</p>
 
-<p>{% codeblock users/forms.py lang:python %}
-import wtforms
-from flask_wtf import Form</p>
-
-<p>class UserForm(Form):
-    email = wtforms.StringField(
-        validators=[
-            wtforms.validators.Email(),
-            wtforms.validators.DataRequired(),
-        ],
-    )
-    username = wtforms.StringField(
-        validators=[wtforms.validators.DataRequired()],
-    )
-    submit = wtforms.SubmitField(&lsquo;Save&rsquo;)
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/forms.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">wtforms</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">flask_wtf</span> <span class="kn">import</span> <span class="n">Form</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">UserForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">email</span> <span class="o">=</span> <span class="n">wtforms</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">validators</span><span class="o">=</span><span class="p">[</span>
+</span><span class='line'>            <span class="n">wtforms</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">Email</span><span class="p">(),</span>
+</span><span class='line'>            <span class="n">wtforms</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">DataRequired</span><span class="p">(),</span>
+</span><span class='line'>        <span class="p">],</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>    <span class="n">username</span> <span class="o">=</span> <span class="n">wtforms</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">wtforms</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">DataRequired</span><span class="p">()],</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>    <span class="n">submit</span> <span class="o">=</span> <span class="n">wtforms</span><span class="o">.</span><span class="n">SubmitField</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Save</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Ahora podemos renderizar el formulario en nuestra plantilla:</p>
 
-<p>{% codeblock users/templates/users/form.html lang:html %}{% raw %}
-{% extends &ldquo;layouts/main_layout.html&rdquo; %}
-{% import &ldquo;bootstrap/wtf.html&rdquo; as wtf %}</p>
-
-<p>{% block content %}
-  {{ wtf.quick_form(form) }}
-{% endblock %}
-{% endraw %}{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/templates/users/form.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% extends <span class="ni">&amp;ldquo;</span>layouts/main_layout.html<span class="ni">&amp;rdquo;</span> %}
+</span><span class='line'>{% import <span class="ni">&amp;ldquo;</span>bootstrap/wtf.html<span class="ni">&amp;rdquo;</span> as wtf %}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{% block content %}
+</span><span class='line'>  {{ wtf.quick_form(form) }}
+</span><span class='line'>{% endblock %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Este código nos va a renderizar el formulario completo con todos los campos especificados. Si queremos renderizar sólo algunos campos específicos, podemos escribirlo de la siguiente forma:</p>
 
-<p>{% codeblock users/templates/users/form.html lang:html %}{% raw %}
-{{ wtf.form_field(form.email) }}
-{{ wtf.form_field(form.submit) }}
-{% endraw %}{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/templates/users/form.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{{ wtf.form_field(form.email) }}
+</span><span class='line'>{{ wtf.form_field(form.submit) }}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Lo único que hace falta es escribir una vista que reciba los datos del formulario y los guarde en la base de datos, por ejemplo.</p>
 
 <p>El diccionario con los valores para cada campo se encuentra en la variable <code>request.form</code>. Si el request tiene método POST, validamos el formulario <code>form.validate()</code>, y en el caso exitoso, pasamos los valores del formulario a nuestro objeto: <code>form.populate_obj(user)</code>.</p>
 
-<p>{% codeblock users/views.py lang:python %}
-@users.route(&lsquo;/update/&lt;int:pk>/&rsquo;, methods=(&lsquo;GET&rsquo;, &lsquo;POST&rsquo;))
-def user_update(pk):
-    user = User.query.filter_by(id=pk).first_or_404()</p>
-
-<pre><code>form = UserForm(user, request.form)
-
-if request.method == 'POST' and form.validate():
-    form.populate_obj(user)
-
-    db.session.add(user)
-    db.session.commit()
-
-    flash('Usuario fue editado exitosamente', 'success')
-    return redirect(url_for('users.user_detail', pk=user.id))
-
-return render_template(
-    'users/form.html',
-    form=form,
-)
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">update</span><span class="o">/&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">int</span><span class="p">:</span><span class="n">pk</span><span class="o">&gt;/&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="n">methods</span><span class="o">=</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">GET</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">POST</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;))</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_update</span><span class="p">(</span><span class="n">pk</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_404</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">form</span> <span class="o">=</span> <span class="n">UserForm</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span> <span class="ow">and</span> <span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">form</span><span class="o">.</span><span class="n">populate_obj</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">flash</span><span class="p">(</span><span class="s">&#39;Usuario fue editado exitosamente&#39;</span><span class="p">,</span> <span class="s">&#39;success&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;users.user_detail&#39;</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&#39;users/form.html&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2>Autenticación</h2>
 
@@ -710,47 +944,78 @@ $ pip install Flask-OAuth
 
 <p>La primera tiene toda la funcionalidad de ingreso, salida de usuario. La podemos instalar de la misma forma, que hicimos con SQLAlchemy hace poco:</p>
 
-<p>{% codeblock run.py lang:python %}
-from flask_login import LoginManager</p>
-
-<p>login_manager = LoginManager()
-login_manager.login_view = &lsquo;users.login&rsquo;</p>
-
-<p>def create_app():
-    app = Flask(<strong>name</strong>, static_url_path=&lsquo;/static&rsquo;)
-    app.config.from_object(&lsquo;conf.config&rsquo;)
-    app.permanent_session_lifetime = datetime.timedelta(days=365)</p>
-
-<pre><code>login_manager.init_app(app)
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">LoginManager</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span>
+</span><span class='line'><span class="n">login_manager</span><span class="o">.</span><span class="n">login_view</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">.</span><span class="n">login</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">permanent_session_lifetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">login_manager</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>En <code>login_manager.login_view</code> especificamos qué vista corresponde al ingreso (login), y en <code>permanent_session_lifetime</code>  se puede indicar el tiempo en el qué durará activa la sesión.</p>
 
 <p>El modelo que vamos a usar para usuarios debe heredar de <code>UserMixin</code> de <code>flask_logins</code></p>
 
-<p>{% codeblock users/models.py lang:python %}
-from flask_login import UserMixin
-from run import db</p>
-
-<p>class User(db.Model, UserMixin):
-    <strong>tablename</strong> = &lsquo;users&rsquo;</p>
-
-<pre><code>id = Column(Integer, primary_key=True)
-# ...
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/models.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">UserMixin</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">db</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">,</span> <span class="n">UserMixin</span><span class="p">):</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">tablename</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'><span class="c"># ...</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Y ahora usando la otra librería - <code>Flask-OAuth</code> - podemos hacer una vista para que nuestros usuarios puedan ingresar desde su cuenta de Google, por ejemplo:</p>
 
-<p>{% codeblock users/views.py lang:python %}
-@users.route(&lsquo;/login&rsquo;)
-def login():
-    callback = url_for(&lsquo;users.authorized&rsquo;, _external=True)
-    return google.authorize(callback=callback)
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">login</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">callback</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">users</span><span class="o">.</span><span class="n">authorized</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="n">_external</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">google</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Cuando el usuario ya está autenticado, en cualquier punto de nuestra aplicación podemos preguntar por el objeto correspondiente:</p>
 
@@ -768,83 +1033,127 @@ def login():
 
 <p>Miremos qué comandos nos ofrece:</p>
 
-<p>{% codeblock lang:bash %}</p>
-
-<h1>Extraer los textos para traducción</h1>
-
-<h1>(se corre sólo una vez al principio)</h1>
-
-<p>$ pybabel extract -F babel.cfg -o messages.pot .</p>
-
-<h1>Generar un catálogo para español</h1>
-
-<p>$ pybabel init -i messages.pot -d translations -l es</p>
-
-<h1>Se crea el directorio translations/es</h1>
-
-<h1>Por dentro hay otro directorio llamado LC_MESSAGES que tiene</h1>
-
-<h1>un archivo messages.po.</h1>
-
-<h1>Después de traducir los textos y guardarlos en messages.po,</h1>
-
-<h1>compilamos el archivo y publicamos los textos:</h1>
-
-<p>$ pybabel compile -d translations</p>
-
-<h1>Para actualizar las traducciones a diario:</h1>
-
-<p>$ pybabel extract -F babel.cfg -o messages.pot .
-$ pybabel update -i messages.pot -d translations
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Extraer los textos para traducción&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;<span class="o">(</span>se corre sólo una vez al principio<span class="o">)</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>pybabel extract -F babel.cfg -o messages.pot .&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Generar un catálogo para español&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>pybabel init -i messages.pot -d translations -l es&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Se crea el directorio translations/es&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Por dentro hay otro directorio llamado LC_MESSAGES que tiene&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;un archivo messages.po.&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Después de traducir los textos y guardarlos en messages.po,&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;compilamos el archivo y publicamos los textos:&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>pybabel compile -d translations&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Para actualizar las traducciones a diario:&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>pybabel extract -F babel.cfg -o messages.pot .
+</span><span class='line'><span class="nv">$ </span>pybabel update -i messages.pot -d translations
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Si queremos traducir cadenas de texto dentro del código de Python, habrá que usar la siguiente sintaxis:</p>
 
-<p>{% codeblock lang:python %}
-from flask_babel import gettext as _</p>
-
-<p>_(&lsquo;Invalid authentication token&rsquo;)
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_babel</span> <span class="kn">import</span> <span class="n">gettext</span> <span class="k">as</span> <span class="n">_</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">_</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Invalid</span> <span class="n">authentication</span> <span class="n">token</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Y en plantillas se ve muy parecido:</p>
 
-<p>{% codeblock lang:html %}{% raw %}
-<button class="btn btn-default" title="{{ _('Help') }}">
-    <i class="fa fa-question"></i>
-</button>
-{% endraw %}{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="na">title=</span><span class="s">&quot;{{ _(&#39;Help&#39;) }}&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;fa fa-question&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+</span><span class='line'><span class="nt">&lt;/button&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2>Mensajes</h2>
 
 <p>Los que están familiarizados con el framework Django, seguramente recuerdan que Django tiene un procesador de contexto <code>messages</code> que nos permite mandar mensajes a las plantillas desde el código Python:</p>
 
-<p>{% codeblock lang:python %}
-from django.contrib import messages</p>
-
-<p>messages.add_message(request, messages.INFO, &lsquo;Hello world.&rsquo;)
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">messages</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">messages</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">world</span><span class="o">.&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>En Flask es muy parecido, sólo que esos mensajes se llaman <code>flash</code>:</p>
 
-<p>{% codeblock lang:python %}
-from flask import flash</p>
-
-<p>flash(&lsquo;Hello world.&rsquo;, &lsquo;success&rsquo;)
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">flash</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">flash</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Hello</span> <span class="n">world</span><span class="o">.&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">success</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>y para consultarlos dentro de la plantilla llamamos el método <code>get_flashed_messages</code>:</p>
 
-<p>{% codeblock lang:html %}{% raw %}
-{% for category, message in get_flashed_messages(with_categories=true) %}</p>
-
-<div class="alert alert-{{ category|replace('message', 'info') }}">
-  <button type="button" class="close" data-dismiss="alert">×</button>
-  {{ message }}
-</div>
-
-
-<p>{% endfor %}
-{% endraw %}{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% for category, message in get_flashed_messages(with_categories=true) %}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-{{ category|replace(&#39;message&#39;, &#39;info&#39;) }}&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>×<span class="nt">&lt;/button&gt;</span>
+</span><span class='line'>  {{ message }}
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{% endfor %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2>Caché</h2>
 
@@ -855,83 +1164,134 @@ from flask import flash</p>
 
 <p>Ya conocemos cómo instalar las aplicaciones externas en Flask, pero repasémoslo:</p>
 
-<p>{% codeblock run.py lang:python %}
-from flask_cache import Cache</p>
-
-<p>cache = Cache()</p>
-
-<p>def create_app():
-    app = Flask(<strong>name</strong>, static_url_path=&lsquo;/static&rsquo;)
-    app.config.from_object(&lsquo;conf.config&rsquo;)</p>
-
-<pre><code>cache.init_app(app)
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>run.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">flask_cache</span> <span class="kn">import</span> <span class="n">Cache</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">cache</span> <span class="o">=</span> <span class="n">Cache</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">static_url_path</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="n">static</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'>    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">conf</span><span class="o">.</span><span class="n">config</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">cache</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Y ahora sí, vamos con toda&hellip; ponemos en caché una vista completa:</p>
 
-<p>{% codeblock users/views.py lang:python %}
-from run import cache</p>
-
-<p>@users.route(&lsquo;/list&rsquo;)
-@cache.cached(timeout=60*60, key_prefix=&lsquo;user_list&rsquo;)
-def user_list():
-    pass
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>users/views.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">cache</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@users.route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="nb">list</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="nd">@cache.cached</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="n">key_prefix</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">user_list</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_list</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">pass</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>y luego un fragmento de html:</p>
 
-<p>{% codeblock lang:html %}{% raw %}
-{% cache 60*60, &lsquo;dashboard_menu_user&rsquo; + current_user.id|string %}
-  {% include &lsquo;layouts/_menu.html&rsquo; %}
-{% endcache %}
-{% endraw %}{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% cache 60*60, <span class="ni">&amp;lsquo;</span>dashboard_menu_user<span class="ni">&amp;rsquo;</span> + current_user.id|string %}
+</span><span class='line'>  {% include <span class="ni">&amp;lsquo;</span>layouts/_menu.html<span class="ni">&amp;rsquo;</span> %}
+</span><span class='line'>{% endcache %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2>pip freeze</h2>
 
 <p>Y ahora vamos resumir qué librerías hemos instalado y cuales otras nos podrían ser útiles en el futuro:</p>
 
-<p>{% codeblock %}{% raw %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Framework&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Flask==0.11&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Libs&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>celery==3.1.20
+</span><span class='line'>coverage==4.0.3
+</span><span class='line'>factory-boy==2.6.1
+</span><span class='line'>SQLAlchemy==1.0.12
+</span><span class='line'>SQLAlchemy-Utils==0.31.6&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Flask libs&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Flask-And-Redis==0.6
+</span><span class='line'>Flask-Babel==0.9               # Múltiples idiomas y zonas horarias
+</span><span class='line'>Flask-Bootstrap==3.3.5.7       # ~ django-crispy-forms para Bootstrap
+</span><span class='line'>Flask-Cache==0.13.1
+</span><span class='line'>Flask-DebugToolbar==0.10.0     # En Django: django-debug-toolbar
+</span><span class='line'>Flask-fillin==0.2              # Diligenciar formularios en pruebas
+</span><span class='line'>Flask-Login==0.3.2
+</span><span class='line'>Flask-Migrate==1.8.0
+</span><span class='line'>Flask-Moment==0.5.1            # Integración con moment.js
+</span><span class='line'>Flask-OAuth==0.12              # ~ python-social-auth
+</span><span class='line'>Flask-Script==2.0.5            # manage.py, shell
+</span><span class='line'>Flask-SQLAlchemy==2.1
+</span><span class='line'>Flask-WTF==0.12                # Formularios con protección CSRF
+</span><span class='line'>WTForms-Alchemy==0.15.0        # Para crear formularios basados en modelos
+</span><span class='line'>WTForms-Components==0.10.0     # Campos adicionales para los formularios de Flask</span></code></pre></td></tr></table></div></figure></p>
 
-<h1>Framework</h1>
-
-<p>Flask==0.11</p>
-
-<h1>Libs</h1>
-
-<p>celery==3.1.20
-coverage==4.0.3
-factory-boy==2.6.1
-SQLAlchemy==1.0.12
-SQLAlchemy-Utils==0.31.6</p>
-
-<h1>Flask libs</h1>
-
-<p>Flask-And-Redis==0.6
-Flask-Babel==0.9               # Múltiples idiomas y zonas horarias
-Flask-Bootstrap==3.3.5.7       # ~ django-crispy-forms para Bootstrap
-Flask-Cache==0.13.1
-Flask-DebugToolbar==0.10.0     # En Django: django-debug-toolbar
-Flask-fillin==0.2              # Diligenciar formularios en pruebas
-Flask-Login==0.3.2
-Flask-Migrate==1.8.0
-Flask-Moment==0.5.1            # Integración con moment.js
-Flask-OAuth==0.12              # ~ python-social-auth
-Flask-Script==2.0.5            # manage.py, shell
-Flask-SQLAlchemy==2.1
-Flask-WTF==0.12                # Formularios con protección CSRF
-WTForms-Alchemy==0.15.0        # Para crear formularios basados en modelos
-WTForms-Components==0.10.0     # Campos adicionales para los formularios de Flask
-{% endraw %}{% endcodeblock %}</p>
-
-<p>{% img center /images/flask/nerd-dad.jpg %}</p>
+<p><img class="center" src="/images/flask/nerd-dad.jpg"></p>
 
 <p>Gracias por su atención y a <a href="https://tappsi.co/">Tappsi</a> por el apoyo.</p>
 
-<p>{% img center /images/flask/tappsi_logo.svg 100 %}</p>
+<p><img class="center" src="/images/flask/tappsi_logo.svg" width="100"></p>
 
-<p>Estamos contratando <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x6a;&#x6f;&#x62;&#x73;&#64;&#116;&#97;&#112;&#x70;&#x73;&#x69;&#x2e;&#x63;&#x6f;">&#x6a;&#111;&#98;&#115;&#64;&#x74;&#x61;&#x70;&#112;&#115;&#105;&#x2e;&#99;&#x6f;</a></p>
+<p>Estamos contratando <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#106;&#111;&#x62;&#x73;&#64;&#116;&#97;&#112;&#112;&#115;&#x69;&#x2e;&#x63;&#x6f;">&#x6a;&#x6f;&#98;&#x73;&#x40;&#116;&#97;&#112;&#112;&#115;&#105;&#46;&#99;&#111;</a></p>
 ]]></content>
   </entry>
   

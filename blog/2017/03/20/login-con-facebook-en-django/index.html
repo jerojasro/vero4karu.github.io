@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Este ejemplo fue probado con la versión de Django 1.10. Primero instalamos los siguentes dos librerías que hacen parte del proyecto Python Social &hellip;">
+  <meta name="description" content="Este ejemplo fue probado con la versión 1.10 de Django. Primero instalamos las siguentes dos librerías que hacen parte del proyecto Python Social &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,9 +107,9 @@
   </header>
 
 
-<div class="entry-content"><p>Este ejemplo fue probado con la versión de Django 1.10.</p>
+<div class="entry-content"><p>Este ejemplo fue probado con la versión 1.10 de Django.</p>
 
-<p>Primero instalamos los siguentes dos librerías que hacen parte del proyecto <a href="https://github.com/python-social-auth">Python Social Auth</a>:</p>
+<p>Primero instalamos las siguentes dos librerías que hacen parte del proyecto <a href="https://github.com/python-social-auth">Python Social Auth</a>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -123,7 +123,7 @@
 <!-- more -->
 
 
-<p>Agregamos la aplicación <code>social_django</code> en la lista <code>INSTALLED_APPS</code> del archivo <code>settings.py</code> en nuestro proyecto de Django:</p>
+<p>Agregamos la aplicación <code>social_django</code> a la lista <code>INSTALLED_APPS</code> del archivo <code>settings.py</code> en nuestro proyecto de Django:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -134,7 +134,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Especificamos `AUTHENTICATION_BACKENDS``que vamos a usar un backend adicional para ingresar con la cuenta de Facebook:</p>
+<p>Especificamos en <code>AUTHENTICATION_BACKENDS</code> que vamos a usar un backend adicional para ingresar con la cuenta de Facebook:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -149,7 +149,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>y al fin agregamos los procesadores de contexto:</p>
+<p>y finalmente agregamos los procesadores de contexto:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -203,7 +203,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Agregamos urls de <code>social_django</code> en <code>urls.py</code>:</p>
+<p>Agregamos las urls de <code>social_django</code> en <code>urls.py</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">url</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;social_django.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">&#39;social&#39;</span><span class="p">)),</span>
@@ -218,7 +218,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Especificamos que queremos asocial usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:</p>
+<p>Especificamos que queremos asociar usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -289,7 +289,7 @@
 
 <p><img class="center" src="/images/django/fb-login-2.png"></p>
 
-<p>Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de tados a su cuenta de Facebook:</p>
+<p>Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de datos a su cuenta de Facebook:</p>
 
 <p><img class="center" src="/images/django/fb-app-django-admin.png"></p>
 
@@ -407,6 +407,11 @@
     
       
     
+      
+        
+        <li class="post">
+          <a href="/blog/2017/03/11/dia-de-la-mujer/">Día de la mujer</a>
+        </li>
       
     
       
@@ -592,11 +597,6 @@
     
       
     
-      
-        
-        <li class="post">
-          <a href="/blog/2014/01/05/mi-tierra-abundante-a-pesar-del-frio/">Mi tierra abundante (a pesar del frío)</a>
-        </li>
       
     
       

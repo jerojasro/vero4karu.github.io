@@ -4,7 +4,7 @@
   <title><![CDATA[Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-20T17:35:38-05:00</updated>
+  <updated>2017-03-20T20:38:15-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,9 +18,9 @@
     <link href="http://blog.vero4ka.info/blog/2017/03/20/login-con-facebook-en-django/"/>
     <updated>2017-03-20T15:24:49-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2017/03/20/login-con-facebook-en-django</id>
-    <content type="html"><![CDATA[<p>Este ejemplo fue probado con la versión de Django 1.10.</p>
+    <content type="html"><![CDATA[<p>Este ejemplo fue probado con la versión 1.10 de Django.</p>
 
-<p>Primero instalamos los siguentes dos librerías que hacen parte del proyecto <a href="https://github.com/python-social-auth">Python Social Auth</a>:</p>
+<p>Primero instalamos las siguentes dos librerías que hacen parte del proyecto <a href="https://github.com/python-social-auth">Python Social Auth</a>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -34,7 +34,7 @@
 <!-- more -->
 
 
-<p>Agregamos la aplicación <code>social_django</code> en la lista <code>INSTALLED_APPS</code> del archivo <code>settings.py</code> en nuestro proyecto de Django:</p>
+<p>Agregamos la aplicación <code>social_django</code> a la lista <code>INSTALLED_APPS</code> del archivo <code>settings.py</code> en nuestro proyecto de Django:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -45,7 +45,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Especificamos `AUTHENTICATION_BACKENDS``que vamos a usar un backend adicional para ingresar con la cuenta de Facebook:</p>
+<p>Especificamos en <code>AUTHENTICATION_BACKENDS</code> que vamos a usar un backend adicional para ingresar con la cuenta de Facebook:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -60,7 +60,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>y al fin agregamos los procesadores de contexto:</p>
+<p>y finalmente agregamos los procesadores de contexto:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -114,7 +114,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Agregamos urls de <code>social_django</code> en <code>urls.py</code>:</p>
+<p>Agregamos las urls de <code>social_django</code> en <code>urls.py</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">url</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;social_django.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">&#39;social&#39;</span><span class="p">)),</span>
@@ -129,7 +129,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Especificamos que queremos asocial usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:</p>
+<p>Especificamos que queremos asociar usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -200,7 +200,7 @@
 
 <p><img class="center" src="http://blog.vero4ka.info/images/django/fb-login-2.png"></p>
 
-<p>Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de tados a su cuenta de Facebook:</p>
+<p>Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de datos a su cuenta de Facebook:</p>
 
 <p><img class="center" src="http://blog.vero4ka.info/images/django/fb-app-django-admin.png"></p>
 
@@ -730,6 +730,9 @@ Francis <strong>habrá estado viviendo</strong> en Italia durante 4 años, hasta
 
 <p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_webhook.png"></p>
 
+<!-- more -->
+
+
 <p>Luedo vamos a hacer click en el botón &ldquo;Setup Webhooks&rdquo;:</p>
 
 <p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_register.png"></p>
@@ -741,6 +744,8 @@ Francis <strong>habrá estado viviendo</strong> en Italia durante 4 años, hasta
 
 
 <p>y esperará que le respondemos con el código 200 y el contenido del paramentro <code>hub.challenge</code> cuando <code>verify_token</code> coincide con la frase secreta que especificamos, o con el código HTTP 403 en el caso opuesto.</p>
+
+<p>Entonces esribimos una vista que se encargará de eso:</p>
 
 <figure class='code'><figcaption><span>urls.py </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -780,19 +785,31 @@ Francis <strong>habrá estado viviendo</strong> en Italia durante 4 años, hasta
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Después de oprimir el botón &ldquo;Verify and Save&rdquo;</p>
+<p>Cuando la vista esté lista y desplegada en producción, podemos oprimir el botón &ldquo;Verify and Save&rdquo;. Después de eso Facebook nos dará un token de la aplicación y permitirá configurar un <em>webhook</em>:</p>
 
 <p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_settings.png"></p>
 
-<p>podemos generar <em>Access Token</em> para nuestra página y suscribirnos a los eventos en messenger.</p>
+<p>Ahora podemos suscribirnos a los eventos en messenger, es decir: cada vez que alguien escibe un mensaje vía messanger a nuestra página de Facebook, Facebook enviará una petición POST al weebhook con el JSON que tendrá todos los datos del mensaje.</p>
 
 <p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_add_subscription.png"></p>
 
+<p>Desúés de oprimir el botón &ldquo;Add to Subscription&rdquo;, Facebook nos mostrará el enlace &ldquo;Edit notes&rdquo;:</p>
+
 <p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_current_subscription.png"></p>
+
+<p>Damos click en &ldquo;Edit notes&rdquo; y entramos a el formulario de configuración. Aquí especificamos la página a los mensajes de la cual vamos a suscribirnos e escribimos ejemplos de respuestas que dará nuesto bot a ciertos mensajes en Messanger:</p>
 
 <p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_edit_subscription.png"></p>
 
+<p>Eso sirve para que Facebook pueda verificar que nuestro bot efectivamente responde bien a los mensajes de chat.</p>
+
+<p>Después de que Facebook verifique el comportamiento de nuestro bot, recibimos el mensaje de aprobación, diciendo que desde ahora nuestro bot está activo:</p>
+
 <p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_subscription_status.png"></p>
+
+<p>Eso nos permite hacer pruebas de la plataforma, porque el bot va a poder responder sólo a los mensajer enviados por los administradores de nuestra página de Facebook.</p>
+
+<p>Cuando nuestro bot esté listo, lo podemos activar para todos los usuarios (hacerlo público):</p>
 
 <p><img class="center" src="http://blog.vero4ka.info/images/bots/fb_bot_publish.png"></p>
 
@@ -2030,7 +2047,7 @@ Francis <strong>habrá estado viviendo</strong> en Italia durante 4 años, hasta
 
 <p><img class="center" src="http://blog.vero4ka.info/images/flask/tappsi_logo.svg" width="100"></p>
 
-<p>Estamos contratando <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#106;&#x6f;&#98;&#x73;&#x40;&#x74;&#x61;&#112;&#112;&#115;&#x69;&#46;&#x63;&#x6f;">&#106;&#x6f;&#x62;&#x73;&#x40;&#116;&#x61;&#112;&#x70;&#x73;&#105;&#x2e;&#99;&#x6f;</a></p>
+<p>Estamos contratando <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#106;&#x6f;&#x62;&#115;&#x40;&#x74;&#97;&#x70;&#x70;&#x73;&#x69;&#x2e;&#x63;&#111;">&#106;&#111;&#x62;&#115;&#x40;&#116;&#x61;&#x70;&#112;&#115;&#105;&#46;&#x63;&#111;</a></p>
 ]]></content>
   </entry>
   

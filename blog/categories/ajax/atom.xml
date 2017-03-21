@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ajax | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/ajax/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-20T17:35:43-05:00</updated>
+  <updated>2017-03-20T20:38:15-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -20,7 +20,25 @@
     <id>http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests</id>
     <content type="html"><![CDATA[<p>If you have a view that requires an AJAX request, in other words, checks if <code>request.is_ajax()</code>, here is a way you can write a unit test for this view:</p>
 
-<p>{% gist dca59e325c9f7554d176 %}</p>
+<p><div><script src='https://gist.github.com/dca59e325c9f7554d176.js'></script>
+<noscript><pre><code>import json
+from django.test import TestCase
+
+class JSONViewTestCase(TestCase):
+
+    def test_json_view(self):
+        response = self.client.post(
+            reverse(&#39;my_json_view&#39;),
+            json.dumps({
+                # your JSON
+            }),
+            &#39;json&#39;,
+            HTTP_X_REQUESTED_WITH=&#39;XMLHttpRequest&#39;,
+        )
+        json_string = response.content
+        response_data = json.loads(json_string)
+        # do smth.</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

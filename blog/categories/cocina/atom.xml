@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cocina | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/cocina/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-03-20T17:35:43-05:00</updated>
+  <updated>2017-03-20T20:38:15-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,28 +18,28 @@
     <link href="http://blog.vero4ka.info/blog/2016/10/17/albondigas-de-lentejas/"/>
     <updated>2016-10-17T07:38:52-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/10/17/albondigas-de-lentejas</id>
-    <content type="html"><![CDATA[<p>{% img center /images/lentejas/lentejas1.jpg %}</p>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/lentejas/lentejas1.jpg"></p>
 
 <!-- more -->
 
 
 <p>Cocinar lentejas con cebolla y sal</p>
 
-<p>{% img center /images/lentejas/lentejas2.jpg 300 %}</p>
+<p><img class="center" src="/images/lentejas/lentejas2.jpg" width="300"></p>
 
 <p>Licuar todo en una licuadora</p>
 
-<p>{% img center /images/lentejas/lentejas3.jpg 300 %}
-{% img center /images/lentejas/lentejas4.jpg 300 %}</p>
+<p><img class="center" src="/images/lentejas/lentejas3.jpg" width="300">
+<img class="center" src="/images/lentejas/lentejas4.jpg" width="300"></p>
 
 <p>Mezclar con huevos y migas de pan</p>
 
-<p>{% img center /images/lentejas/lentejas5.jpg 300 %}</p>
+<p><img class="center" src="/images/lentejas/lentejas5.jpg" width="300"></p>
 
 <p>Fritar con aceite</p>
 
-<p>{% img center /images/lentejas/lentejas6.jpg 300 %}
-{% img center /images/lentejas/lentejas7.jpg 300 %}</p>
+<p><img class="center" src="/images/lentejas/lentejas6.jpg" width="300">
+<img class="center" src="/images/lentejas/lentejas7.jpg" width="300"></p>
 ]]></content>
   </entry>
   
