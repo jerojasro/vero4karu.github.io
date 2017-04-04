@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jquery | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T21:50:51-05:00</updated>
+  <updated>2017-04-03T22:16:06-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,7 +18,11 @@
     <link href="http://blog.vero4ka.info/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery/"/>
     <updated>2015-03-01T19:17:42-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2015/03/01/get-an-array-of-checked-checkboxes-values-using-jquery</id>
-    <content type="html"><![CDATA[<p>{% gist 9772283 %}</p>
+    <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/9772283.js'></script>
+<noscript><pre><code>&lt;input type=&quot;checkbox&quot; value=&quot;UN&quot; name=&quot;airlines&quot; checked&gt;		  
+&lt;input type=&quot;checkbox&quot; value=&quot;IB&quot; name=&quot;airlines&quot;&gt;		
+&lt;input type=&quot;checkbox&quot; value=&quot;SU&quot; name=&quot;airlines&quot; checked&gt;</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

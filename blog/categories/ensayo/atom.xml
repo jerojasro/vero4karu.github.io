@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ensayo | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/ensayo/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T21:50:51-05:00</updated>
+  <updated>2017-04-03T22:16:06-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -20,7 +20,7 @@
     <id>http://blog.vero4ka.info/blog/2014/06/28/el-destino</id>
     <content type="html"><![CDATA[<p><em>Tarea: convertir el cómic a un relato.</em></p>
 
-<p>{% img right /images/comic1.jpg &lsquo;El destino&rsquo; %}</p>
+<p><img class="right" src="/images/comic1.jpg" title="&lsquo;El destino&rsquo;" ></p>
 
 <p>El señor Felipe vivía solo en su habitación pequeña en el centro de una ciudad grande. Como él trabajaba en un laboratorio dónde realizaban las pruebas de las máquinas diferentes, todo su trabajo se reducía a buscar errores de los demás. La vida le parecía aburrida y monótona, y un día Felipe decidió suicidarse. Él navegó por todo Internet buscando las formas de darse de baja. Primero pensó en ahogarse, pero desde la infancia odiaba el sentido de cómo el agua se mete en su nariz. Luego a Felipe se le ocurrió que sería mejor lanzarse de un edificio suficientemente alto. Pero ese escenario tampoco le convenía: no le gustaba la idea de que se reuniría mucha gente para mirar ese espectáculo y nuestro protagonista no quería la publicidad. Después de pensar  un poco Felipe se acordó que se podría cortar las venas en las muñecas. Pero en el mismo momento rechazó esa opción que se veía demasiado histérica y un hombre tan serio como nuestro Felipe no quería parecer a una muchacha adolescente. “¿Cuál sería la forma más apropiada?” – pensaba él. – “¿Puede se ahorcarse?.. ¡No! Sería demasiado demorado… y ¿qué haría si no se rompiera mi cuello?”</p>
 
@@ -30,7 +30,7 @@
 
 <p>Su pistola erró el tiro. Se impuso el silencio y una idea  aterrizó a los mientes de Felipe. ¿Cómo algo tan sencillo no le ocurrió antes? ¡Un veneno! Felipe se emocionó mucho. De nuevo de dirigió a Internet para averiguar el recetario de la ponzoña, anotó el listado de ingredientes y muy feliz se fue al supermercado. Pero todavía no sabía que por allá lo estaba esperando su destino.</p>
 
-<p>{% img right /images/comic2.jpg &lsquo;El destino&rsquo; %}</p>
+<p><img class="right" src="/images/comic2.jpg" title="&lsquo;El destino&rsquo;" ></p>
 
 <p>El destino llegó con la encarnación del muchacho Carlos que trabajaba en ese supermercado como marcador de precios de la mercancía. Cada día andaba con su máquina por los pasillos y entre los estantes pegando los papelitos. A Carlos le gustaba mucho su trabajo: él pudo siempre estar con personas – clientes del supermercado – y mirar a las mujeres. Precisamente con esto estaba ocupado cuando pegó un papelito con el precio en la espalda de nuestro Felipe, que estaba tan entusiasmado con sus compras que no se dio cuenta. Así, gracias a Carlos, Sara, la mujer solterona con 30 gatos en su apartamento, se fijó en Felipe. El precio le convino y la calidad del articulo también, y después de seguirlo por un rato, Sara decidió invertir su dinero en éste hombre. Lo cogió y lo llevó al la caja.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: chiste | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/chiste/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T21:50:51-05:00</updated>
+  <updated>2017-04-03T22:16:06-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -24,7 +24,7 @@ frena duro, y escucha las voces enojadas del los pasajeros:
 
 <p><em>*Buratino es Pinocchio en ruso.</em></p>
 
-<p>{% img center /images/buratino.jpg %}</p>
+<p><img class="center" src="/images/buratino.jpg"></p>
 ]]></content>
   </entry>
   

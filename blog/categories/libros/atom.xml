@@ -4,7 +4,7 @@
   <title><![CDATA[Category: libros | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/libros/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T21:50:51-05:00</updated>
+  <updated>2017-04-03T22:16:06-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -40,7 +40,7 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa antigua de los siglos XI - XVII</h3>
 
-<p>{% img right /images/Povest_vremennyh_let.jpeg 150 &lsquo;Crónica de Néstor&rsquo; %}</p>
+<p><img class="right" src="/images/Povest_vremennyh_let.jpeg" width="150" title="&lsquo;Crónica de Néstor&rsquo;" ></p>
 
 <ul>
 <li><a href="https://es.wikipedia.org/wiki/Cantar_de_las_huestes_de_%C3%8Dgor">Cantar de las huestes de Ígor</a> («Слово о полку Игореве»)</li>
@@ -73,7 +73,7 @@ rusos deben leer&hellip;</p>
 <li>«На птичку»</li>
 <li><a href="http://max.mmlc.northwestern.edu/mdenner/Demo/texts/monument_derzhav.htm">&ldquo;Monument&rdquo;</a> «Памятник»</li>
 <li>«Река времён в своём стремленьи»
-{% img right /images/DenisFonvizin.jpg 150 &lsquo;Denís Fonvizin&rsquo; %}</li>
+<img class="right" src="/images/DenisFonvizin.jpg" width="150" title="&lsquo;Denís Fonvizin&rsquo;" ></li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Den%C3%ADs_Fonvizin">Denís Fonvizin</a> (Д. И. Фонвизин)
@@ -116,7 +116,7 @@ rusos deben leer&hellip;</p>
 </li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Kondrati_Ryl%C3%A9yev">Kondrati Ryléyev</a> (К. Ф. Рылеев)</li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Konstant%C3%ADn_B%C3%A1tiushkov">Konstantín Bátiushkov</a> (К. Н. Батюшков)
-{% img right /images/pushkin.jpg 150 &lsquo;Aleksandr Pushkin&rsquo; %}</li>
+<img class="right" src="/images/pushkin.jpg" width="150" title="&lsquo;Aleksandr Pushkin&rsquo;" ></li>
 <li><a href="https://es.wikipedia.org/wiki/Aleksandr_Pushkin">Aleksandr Pushkin</a> (А. С. Пушкин)
 
 <ul>
@@ -129,7 +129,7 @@ rusos deben leer&hellip;</p>
 <li>&ldquo;El caballero de bronce&rdquo; («Медный всадник»)</li>
 <li><a href="https://es.wikipedia.org/wiki/Eugenio_Oneguin">&ldquo;Eugenio Oneguin&rdquo;</a> («Евгений Онегин»)</li>
 <li><a href="https://es.wikipedia.org/wiki/Bor%C3%ADs_Godunov">&ldquo;Borís Godunov&rdquo;</a> («Борис Годуновc)
-{% img right /images/lermontov.jpg 150 Mijaíl Lérmontov %}</li>
+<img class="right" src="/images/lermontov.jpg" width="150" title="Mijaíl Lérmontov" ></li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Mija%C3%ADl_L%C3%A9rmontov">Mijaíl Lérmontov</a> (М. Ю. Лермонтов)
@@ -160,7 +160,7 @@ rusos deben leer&hellip;</p>
 <li>&ldquo;El dineral&rdquo; («Доходное место»)</li>
 <li>&ldquo;La niña de las nieves&rdquo; («Снегурочка»)</li>
 <li>&ldquo;Entre propios anda el juego&rdquo; («Свои люди — сочтёмся»)
-{% img right /images/turgenev.jpg 150 Iván Turguénev %}</li>
+<img class="right" src="/images/turgenev.jpg" width="150" title="Iván Turguénev" ></li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Iv%C3%A1n_Turgu%C3%A9nev">Iván Turguénev</a> (И. С. Тургенев)
@@ -177,7 +177,7 @@ rusos deben leer&hellip;</p>
 <li>Poesía de <a href="https://en.wikipedia.org/wiki/Fyodor_Tyutchev">Fyodor Tyutchev</a> (Ф. И. Тютчев)</li>
 <li>Poesía de <a href="" title="https://en.wikipedia.org/wiki/Afanasy_Fet">Afanasy Fet</a> (А. А. Фет)</li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Apol%C3%B3n_M%C3%A1ikov">Apolón Máikov</a> (А. Н. Майков)
-{% img right /images/tolstoy.jpg 150 Leo Tolstoy %}</li>
+<img class="right" src="/images/tolstoy.jpg" width="150" title="Leo Tolstoy" ></li>
 <li><a href="https://en.wikipedia.org/wiki/Leo_Tolstoy">Leo Tolstoy</a> (Л. Н. Толстой)
 
 <ul>
@@ -247,7 +247,7 @@ rusos deben leer&hellip;</p>
 <li>«Парадокс»</li>
 <li>«Огоньки»</li>
 <li>«В дурном обществе»
-{% img right /images/chekhov.jpg 150 Antón Chéjov %}</li>
+<img class="right" src="/images/chekhov.jpg" width="150" title="Antón Chéjov" ></li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Ant%C3%B3n_Ch%C3%A9jov">Antón Chéjov</a> (А. П. Чехов)
@@ -274,7 +274,7 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa del siglo XX (la primera mitad)</h3>
 
-<p>{% img right /images/bunin.jpg 150 Iván Bunin %}</p>
+<p><img class="right" src="/images/bunin.jpg" width="150" title="Iván Bunin" ></p>
 
 <ul>
 <li><a href="https://es.wikipedia.org/wiki/Iv%C3%A1n_Bunin">Iván Bunin</a> (И. А. Бунин)
@@ -298,7 +298,7 @@ rusos deben leer&hellip;</p>
 
 <ul>
 <li>«Змей»
-{% img right /images/zamyatin_my.jpg 150 Yevgueni Zamiatin %}</li>
+<img class="right" src="/images/zamyatin_my.jpg" width="150" title="Yevgueni Zamiatin" ></li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Yevgueni_Zamiatin">Yevgueni Zamiatin</a> (Е. И. Замятин)
@@ -387,7 +387,7 @@ rusos deben leer&hellip;</p>
 
 <ul>
 <li>&ldquo;Without a Road&rdquo; («В тупике»)
-{% img right /images/Dvenadtsat_stulev.jpeg 150 Las Doce Sillas %}</li>
+<img class="right" src="/images/Dvenadtsat_stulev.jpeg" width="150" title="Las Doce Sillas" ></li>
 </ul>
 </li>
 <li>Ilf y Petrov (Илья Ильф и Евгений Петров)
@@ -418,7 +418,7 @@ rusos deben leer&hellip;</p>
 <ul>
 <li>&ldquo;Una docena de cuchillos en la parte posterior de la Revolución&rdquo; («Дюжина ножей в спину революции»)</li>
 <li>«Смерть африканского охотника»
-{% img right /images/Ahmatova.jpg 150 Anna Ajmátova %}</li>
+<img class="right" src="/images/Ahmatova.jpg" width="150" title="Anna Ajmátova" ></li>
 </ul>
 </li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Anna_Ajm%C3%A1tova">Anna Ajmátova</a> (Анна Ахматова)</li>
@@ -483,7 +483,7 @@ rusos deben leer&hellip;</p>
 <ul>
 <li>«Ты помнишь, Алёша, дороги Смоленщины…»</li>
 <li>«Жди меня»
-{% img right /images/don.jpg 150 El Don apacible %}</li>
+<img class="right" src="/images/don.jpg" width="150" title="El Don apacible" ></li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Mija%C3%ADl_Sh%C3%B3lojov">Mijaíl Shólojov</a> (М. А. Шолохов)
@@ -890,7 +890,7 @@ rusos deben leer&hellip;</p>
     <link href="http://blog.vero4ka.info/blog/2016/12/18/libros-que-leen-los-ninos-rusos/"/>
     <updated>2016-12-18T11:49:57-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/12/18/libros-que-leen-los-ninos-rusos</id>
-    <content type="html"><![CDATA[<p>{% img right /images/Cipollino.jpg 150 &lsquo;Cipollino&rsquo; %}</p>
+    <content type="html"><![CDATA[<p><img class="right" src="/images/Cipollino.jpg" width="150" title="&lsquo;Cipollino&rsquo;" ></p>
 
 <h2>Gianni Rodari, Cipollino</h2>
 
@@ -908,7 +908,7 @@ Todos los personajes del cuento son frutas y verduras.</p>
 <p>Aventuras de un niño travieso, curioso, siempre activo y permanentemente
 enredado en situaciones poco habituales y con frecuencia cómicas.</p>
 
-<p>{% img right /images/la_isla_del_tesoro.jpg 150 &lsquo;La isla del tesoro&rsquo; %}</p>
+<p><img class="right" src="/images/la_isla_del_tesoro.jpg" width="150" title="&lsquo;La isla del tesoro&rsquo;" ></p>
 
 <h2>Mark Twain, Las aventuras de Tom Sawyer</h2>
 
@@ -921,7 +921,7 @@ el antebellum del Sur de los Estados Unidos en “St. Petersburg”.</p>
 las aventuras relacionadas con la búsqueda de los tesoros escondidos por el
 pirata Capitán J. Flint en una isla desierta.</p>
 
-<p>{% img right /images/el_caballito_jorobadito.jpg 150 &lsquo;El caballito jorobado&rsquo; %}</p>
+<p><img class="right" src="/images/el_caballito_jorobadito.jpg" width="150" title="&lsquo;El caballito jorobado&rsquo;" ></p>
 
 <h2>Piotr Yershóv,  El caballito jorobado</h2>
 
@@ -933,7 +933,7 @@ son el hijo de un campesino, llamado Iván el Loco, y un caballito mágico jorob
 <p>Son cuentos folclóricos recopilados por dos escritores alemanes: Los músicos
 de Bremen, El lobo y las siete cabritillas, El pescador y su esposa.</p>
 
-<p>{% img right /images/pulgarcita.jpg 150 &lsquo;Pulgarcita&rsquo; %}</p>
+<p><img class="right" src="/images/pulgarcita.jpg" width="150" title="&lsquo;Pulgarcita&rsquo;" ></p>
 
 <h2>Los libros del escritor danés Hans Christian Andersen</h2>
 
@@ -944,7 +944,7 @@ El patito feo, La reina de las nieves, El yesquero.</p>
 
 <p>La trama recuerda a la de La Bella y la Bestia, pero se desarrolla en un ambiente ruso.</p>
 
-<p>{% img right /images/momo.jpg 150 &lsquo;Momo&rsquo; %}</p>
+<p><img class="right" src="/images/momo.jpg" width="150" title="&lsquo;Momo&rsquo;" ></p>
 
 <h2>Los cuentos de Charles Perrault</h2>
 
@@ -959,7 +959,7 @@ chica increíble llamada Momo. Ella tenía un talento muy raro – saber escucha
 a los demás, y por lo tanto tenía muchos amigos. Pero una vez en la ciudad,
 donde vivía Momo, aparecieron los caballeros grises – los ladrones de tiempo …</p>
 
-<p>{% img right /images/Matilda.jpg 150 &lsquo;Matilda&rsquo; %}</p>
+<p><img class="right" src="/images/Matilda.jpg" width="150" title="&lsquo;Matilda&rsquo;" ></p>
 
 <h2>Roald Dahl, Matilda</h2>
 
@@ -971,7 +971,7 @@ que sus padres son tontos, y sólo piensan en sí mismos y no se preocupan por
 su propia hija. Entonces Matilda decide volver a educar a sus padres negligentes,
 junto con la viciosa directora de su colegio.</p>
 
-<p>{% img right /images/karlson.jpg 150 &lsquo;Karlsson-on-the-Roof&rsquo; %}</p>
+<p><img class="right" src="/images/karlson.jpg" width="150" title="&lsquo;Karlsson-on-the-Roof&rsquo;" ></p>
 
 <h2>Libros de Astrid Lindgren</h2>
 
@@ -984,7 +984,7 @@ y sentimientos de los niños y así muestra respeto a ellos.</p>
 <p>Sus libros: Karlsson-on-the-Roof, Pipi Calzaslargas, Ronja, la hija del
 bandolero y muchos otros.</p>
 
-<p>{% img right /images/Finn_Family.png 150 &lsquo;Finn Family&rsquo; %}</p>
+<p><img class="right" src="/images/Finn_Family.png" width="150" title="&lsquo;Finn Family&rsquo;" ></p>
 
 <h2>Tove Jansson, Mumintroll</h2>
 
@@ -1003,7 +1003,7 @@ El príncipe Guidón y la bella princesa Cisne y El gallito de oro.</p>
 influyó directamente en las concepciones pedagógicas de Lord Baden-Powell
 al crear el Movimiento de los Boy Scouts.</p>
 
-<p>{% img right /images/pipi.jpg 150 &lsquo;Pipi Calzaslargas&rsquo; %}</p>
+<p><img class="right" src="/images/pipi.jpg" width="150" title="&lsquo;Pipi Calzaslargas&rsquo;" ></p>
 
 <h2>Alan Alexander Milne, Winnie de Pooh</h2>
 
@@ -1015,7 +1015,7 @@ al crear el Movimiento de los Boy Scouts.</p>
 
 <h2>L. Frank Baum, El maravilloso mago de Oz</h2>
 
-<p>{% img right /images/bremen.jpg 150 &lsquo;Los músicos de Bremen&rsquo; %}</p>
+<p><img class="right" src="/images/bremen.jpg" width="150" title="&lsquo;Los músicos de Bremen&rsquo;" ></p>
 
 <h2>Rudyard Kipling, El libro de la selva</h2>
 
@@ -1057,7 +1057,7 @@ que les han impactado en su infancia.</p>
     <link href="http://blog.vero4ka.info/blog/2016/07/02/rewire/"/>
     <updated>2016-07-02T08:19:37-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/07/02/rewire</id>
-    <content type="html"><![CDATA[<p>{% img center /images/rewire.jpg &lsquo;Rewire&rsquo; %}</p>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/rewire.jpg" title="&lsquo;Rewire&rsquo;" ></p>
 
 <p>Hace unos meses me di cuenta de que casi no leía noticias de Colombia,
 y era bastante difícil empezar a hacerlo, a pesar de que ya vivía aquí por
@@ -1095,11 +1095,9 @@ El libro Rewire: <a href="https://www.goodreads.com/book/show/16233761-rewire">w
     <link href="http://blog.vero4ka.info/blog/2016/05/29/somos-de-una-sangre-por-roman-super/"/>
     <updated>2016-05-29T14:10:22-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/05/29/somos-de-una-sangre-por-roman-super</id>
-    <content type="html"><![CDATA[<p>{% blockquote Rudyard Kipling, El libro de la selva %}
-Somos de una sangre, tú y yo" - dijo Mowgli&hellip;
-{% endblockquote %}</p>
+    <content type="html"><![CDATA[<p><blockquote><p>Somos de una sangre, tú y yo" - dijo Mowgli&hellip;</p><footer><strong>Rudyard Kipling</strong> <cite>El Libro De La Selva</cite></footer></blockquote></p>
 
-<p>{% img center /images/de_una_sangre.jpg &lsquo;Somos de una sangre&rsquo; %}</p>
+<p><img class="center" src="/images/de_una_sangre.jpg" title="&lsquo;Somos de una sangre&rsquo;" ></p>
 
 <p><a href="https://daily.afisha.ru/archive/gorod/people/esli-est-ad-na-zemle-eto-kashirka-roman-super-o-tom-kak-perezhit-rak-zheny/">La entrevista</a>
 con Roman Super y la periodista Elena Vanina para
@@ -1225,7 +1223,7 @@ cada segundo libre con mi familia, simplemente siempre queremos estar juntos.
 Antes no era así. Ésta visa es muy correcta. Ella da origen a muchos sensaciones
 agradables, de las cuales nos estamos privando. Puede ser que para eso.</p>
 
-<p>{% img center /images/super_book.jpg &lsquo;Roman Super&rsquo; %}</p>
+<p><img class="center" src="/images/super_book.jpg" title="&lsquo;Roman Super&rsquo;" ></p>
 
 <p>El libro de Roman Super en Bookmate:
 <a href="https://bookmate.com/books/IRInDaCY">https://bookmate.com/books/IRInDaCY</a></p>
@@ -1237,7 +1235,7 @@ agradables, de las cuales nos estamos privando. Puede ser que para eso.</p>
     <link href="http://blog.vero4ka.info/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual/"/>
     <updated>2016-04-20T21:08:04-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual</id>
-    <content type="html"><![CDATA[<p>{% img center /images/asya.jpg &lsquo;Asya Kazantseva&rsquo; %}</p>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/asya.jpg" title="&lsquo;Asya Kazantseva&rsquo;" ></p>
 
 <p><em>Asya Kazantseva es una periodista científica y divulgadora de ciencia.</em></p>
 

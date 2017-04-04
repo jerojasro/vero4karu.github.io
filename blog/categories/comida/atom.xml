@@ -4,7 +4,7 @@
   <title><![CDATA[Category: comida | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/comida/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T21:50:51-05:00</updated>
+  <updated>2017-04-03T22:16:06-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -30,7 +30,7 @@
 
 <p>Me parecía que con el cambio de la dieta también se fueron esas memorias, pero lo que hicieron fue esperar su hora para hacerme recordarlas.</p>
 
-<p>{% img center /images/tvorog.jpg &lsquo;Tvorog&rsquo; %}</p>
+<p><img class="center" src="/images/tvorog.jpg" title="&lsquo;Tvorog&rsquo;" ></p>
 
 <p><em>La imagen tomada de <a href="http://www.vorobiov.com/archive/domikpro/detail-tvorog-i-ego-bratya.html">http://www.vorobiov.com/archive/domikpro/detail-tvorog-i-ego-bratya.html</a></em></p>
 ]]></content>
