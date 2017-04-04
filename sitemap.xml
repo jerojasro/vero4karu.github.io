@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2017/04/03/no-es-dimon-para-ustedes/</loc>
+<lastmod>2017-04-03T19:09:25-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2017/03/20/login-con-facebook-en-django/</loc>
 <lastmod>2017-03-20T15:24:49-05:00</lastmod>
 </url>
@@ -610,6 +614,12 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/feminismo/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/resistencia/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/colombias/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/oauth/</loc>
