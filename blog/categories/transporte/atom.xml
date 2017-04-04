@@ -4,7 +4,7 @@
   <title><![CDATA[Category: transporte | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/transporte/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T22:16:04-05:00</updated>
+  <updated>2017-04-03T22:17:09-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -20,44 +20,44 @@
     <id>http://blog.vero4ka.info/blog/2017/03/05/como-sacar-la-licencia-de-conduccion-en-rusia</id>
     <content type="html"><![CDATA[<p>En Rusia sólo los que toman los cursos de conducción pueden obtener el pase. Cada escuela de conducción elabora su programa de estudios guiándose por las directrices del Ministerio de Educación. El curso dura de 3 a 4 meses y la parte teórica ocupa dos tercios del programa. Antes de firmar un contrato con una escuela de conducción, hay que asegurarse de que ella tenga licencia del Gobierno.</p>
 
-<p>{% img right /images/pase/escuela.jpeg 200 %}</p>
+<p><img class="right" src="/images/pase/escuela.jpeg" width="200"></p>
 
 <p>Lo primero que le empiezan a enseñar a uno es la parte teórica. En cada clase el profesor explica un capítulo del código de tránsito y después da una tarea para la casa como memorizar las normas de ese capítulo y practicar las tareas correspondientes del libro para el examen. En la siguiente clase, el profesor hace un breve repaso del conocimiento de los estudiantes y, si todo está bien claro, pasa al siguiente tema.</p>
 
 <!-- more -->
 
 
-<p>{% img left /images/pase/ploshadka.jpg 200 %}</p>
+<p><img class="left" src="/images/pase/ploshadka.jpg" width="200"></p>
 
 <p>Después de varias clases teóricas, simultáneamente empieza la parte práctica. A cada le asignan un profesor de conducción. Las primeras clases pasan exclusivamente en un área cerrada. Durante esas clases, el profesor explica cómo funciona un carro, cómo se debe arrancar y hacer maniobras. Normalmente un área de conducción tiene palitos puestos con banderas y la marcación en el asfalto para practicar los siguientes ejercicios:</p>
 
 <h4>1. Arrancar en subida</h4>
 
-<p>{% img center /images/pase/examen_gibdd_estakada.jpg 400 %}</p>
+<p><img class="center" src="/images/pase/examen_gibdd_estakada.jpg" width="400"></p>
 
 <p>cuando el carro arranca desde la pendiente del ascenso. El estudiante debe aprender cómo empezar el movimiento, quitando el freno de mano y arrancar al mismo tiempo sin rodar hacía atrás.</p>
 
 <h4>2. Parquar un carro en reversa en un tiempo</h4>
 
-<p>{% img center /images/pase/examen_gibdd_boks.jpg 400 %}</p>
+<p><img class="center" src="/images/pase/examen_gibdd_boks.jpg" width="400"></p>
 
 <p>Durante este ejercicio, el estudiante practica cómo paquear un carro sin tumbar las banderas de control, mirando el espejo derecho.</p>
 
 <h4>3. Viraje de 180 grados</h4>
 
-<p>{% img center /images/pase/examen_gibdd_razvorot.jpg 400 %}</p>
+<p><img class="center" src="/images/pase/examen_gibdd_razvorot.jpg" width="400"></p>
 
 <p>El tercer ejercicio es para aprender a hacer un viraje de 180 grados dentro de un espacio limitado con las banderas.</p>
 
 <h4>4. Serpiente</h4>
 
-<p>{% img center /images/pase/examen_gibdd_zmeika.jpg 400 %}</p>
+<p><img class="center" src="/images/pase/examen_gibdd_zmeika.jpg" width="400"></p>
 
 <p>En este ejercicio las banderas están ubicadas en la una línea, y hay qye contornear ellas sin tumbarlas.</p>
 
 <h4>5. Parquear en línea</h4>
 
-<p>{% img center /images/pase/examen_gibdd_parkovka.jpg 400 %}</p>
+<p><img class="center" src="/images/pase/examen_gibdd_parkovka.jpg" width="400"></p>
 
 <p>El último ejercicio tienen el fin de practicar cómo parquear un carro en línea entre dos carros.</p>
 
@@ -71,7 +71,7 @@
 
 <h5>Q1. Usted puede continuar el movimiento por el carril izquierdo</h5>
 
-<p>{% img center /images/pase/question1.png %}</p>
+<p><img class="center" src="/images/pase/question1.png"></p>
 
 <ol>
 <li>Sólo para voltear a la izquierda.</li>
@@ -82,7 +82,7 @@
 
 <h5>Q2. Usted tiene la intención de seguir derecho. ¿A quién debe ceder la vía?</h5>
 
-<p>{% img center /images/pase/question2.png %}</p>
+<p><img class="center" src="/images/pase/question2.png"></p>
 
 <ol>
 <li>Sólo a la motocicleta.</li>
@@ -93,7 +93,7 @@
 
 <h5>Q3. ¿A quién debe ceder la vía al girar a la izquierda?</h5>
 
-<p>{% img center /images/pase/question3.png %}</p>
+<p><img class="center" src="/images/pase/question3.png"></p>
 
 <ol>
 <li>A las tranvías А y Б.</li>
@@ -105,7 +105,7 @@
 
 <h5>Q4. ¿QUé hay que hacer en una situación en la que haya un deslizamiento lateral del eje trasero en el carro con tracción trasera durante un giro?</h5>
 
-<p>{% img center /images/pase/question4.png %}</p>
+<p><img class="center" src="/images/pase/question4.png"></p>
 
 <ol>
 <li>Hundir el accelerador y usar el volante para estabilizar el movimiento.</li>
@@ -117,7 +117,7 @@
 
 <h5>Q5. ¿Usando qué treyectoria está permitido el giro a la izquierda?</h5>
 
-<p>{% img center /images/pase/question5.png %}</p>
+<p><img class="center" src="/images/pase/question5.png"></p>
 
 <ol>
 <li>Sólo A.</li>
@@ -128,7 +128,7 @@
 
 <h5>Q6. ¿En qué caso usted debe ceder el camino al tranvía?</h5>
 
-<p>{% img center /images/pase/question6.png %}</p>
+<p><img class="center" src="/images/pase/question6.png"></p>
 
 <ol>
 <li>Al girar a la izquierda.</li>
@@ -139,7 +139,7 @@
 
 <h4>Q7. ¿Está permitido adelantar a un carro si usted está en carretera?</h4>
 
-<p>{% img center /images/pase/question7.png %}</p>
+<p><img class="center" src="/images/pase/question7.png"></p>
 
 <ol>
 <li>Sí.</li>
@@ -148,11 +148,11 @@
 </ol>
 
 
-<p>{% img right /images/pase/examen_gibdd_1.jpg 200 %}</p>
+<p><img class="right" src="/images/pase/examen_gibdd_1.jpg" width="200"></p>
 
 <p>Si la persona contesta de forma correcta d todas las preguntas, pasa a la otra etapa. donde le piden hacer tres ejercicios de los que practivcaba en el area cerrar con su profesor.</p>
 
-<p>{% img left /images/pase/examen_gibdd_2.jpg 200 %}</p>
+<p><img class="left" src="/images/pase/examen_gibdd_2.jpg" width="200"></p>
 
 <p>En caso de éxito a la persona la invitan con otros 2-3 personas a un carro de la policía de tránsito. El policía los lleva a alguna parte de la ciudad y luego invita a sus pasajeros (por turnos) a sentarse en el asiento del conductor y les da indicaciones a dónde deben ir y por dónde tienen que girar. No todas las indicaciones cumplen con las normas de tránsito. y por eso la persona al volante debe pensar primero, en lugar de obedecer ciegamente al policía. Si la persona comete más de tres errores insignificantes o un error grave, el policía termina el examen y baja a la persona. En caso de que todo esté bien, le dicen en qué día y horario se puede recoger el pase.</p>
 
@@ -176,13 +176,11 @@
     <link href="http://blog.vero4ka.info/blog/2017/02/26/enrique-penalosa-en-rusia/"/>
     <updated>2017-02-26T17:31:09-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2017/02/26/enrique-penalosa-en-rusia</id>
-    <content type="html"><![CDATA[<p>{% blockquote Enrique Peñalosa %}
-Usted hace que la gente, como las ratas, corra debajo de las calles.
-{% endblockquote %}</p>
+    <content type="html"><![CDATA[<p><blockquote><p>Usted hace que la gente, como las ratas, corra debajo de las calles.</p><footer><strong>Enrique Peñalosa</strong></footer></blockquote></p>
 
 <p><a href="https://en.wikipedia.org/wiki/Vukan_R._Vuchic">Vukan Vuchic</a> - urbanista y profesor de la Universidad de Pennsylvania - en su libro <a href="https://www.goodreads.com/book/show/2737061-transportation-for-livable-cities">Transportation for Livable Cities</a> escribe lo siguiente:</p>
 
-<p>{% img right /images/penalosa/transportation_book.jpg 200 %}</p>
+<p><img class="right" src="/images/penalosa/transportation_book.jpg" width="200"></p>
 
 <p>&ldquo;En los últimos años en muchas ciudades alrededor del mundo, sobre todo en los países en desarrollo (Brasil, México, China), empezaron a funcionar los sistemas de líneas de autobuses y trolebuses, trazados a lo largo exclusivamente en los carriles separados. Estos sistemas de autobús de tránsito rápido (Bus Rapid Transit en inglés, <a href="https://es.wikipedia.org/wiki/Autob%C3%BAs_de_tr%C3%A1nsito_r%C3%A1pido">BRT</a>) son distintos al tren ligero (light rail transit, <a href="https://en.wikipedia.org/wiki/Light_rail">LRT</a>). Ellos requieren una menor inversión de capital, pero mayores costos operativos causados ​​por un mayor insumo laboral: el conductor de bus del sistema BRT opera con una capacidad nominal <strong>de 80 a 140</strong> asientos de pasajeros, mientras que el LRT está diseñado para una capacidad <strong>de 250 a 750</strong> asientos. Por otro lado, la construcción del BRT toma menos tiempo que la del LRT. Los ejemplos del último sistema en Bogotá (Colombia), Pekín (China) y Ahmedabad (India) demuestran que el tiempo requerido, para que empiecen a funcionar los BRT, en realidad es muy corto. Los indicadores de explotación, como los tiempos de desplazamiento y la regularidad de los buses, en gran medida dependen del trabajo de la policía local, que debe garantizar el  tránsito prioritario. Desafortunadamente, en muchas ciudades, el trabajo policial es extremadamente ineficiente. Además, esos indicadores demenden de los líderes políticos locales o los tribunales que a menudo devuelven las carriles exclusivos del BRT a un estado para uso general: por razones de la "competencia leal&rdquo; permiten que otras busetas y minibuses circulen en ellos. Y así los carriles exclusivos se convierten en los pasillos densamente cargados con el movimiento desorganizado."</p>
 
@@ -195,13 +193,13 @@ Usted hace que la gente, como las ratas, corra debajo de las calles.
 
 <p><strong>Gazeta.ru:</strong> En el foro usted interpretaba el papel del abogado de los peatones criticando con dureza el alcalde de Moscú. ¿Qué haría usted en su posición?</p>
 
-<p>{% img right /images/penalosa/perehod.jpg 350 %}</p>
+<p><img class="right" src="/images/penalosa/perehod.jpg" width="350"></p>
 
 <p><strong>Enrique Peñalosa:</strong> Las autoridades de su ciudad toman muchas decisiones innovadoras. Pero a mi me parece que es más lo que necesita ser mejorado. Hay unos principios generales para resolver los problemas de tráfico en la ciudad. Su ciudad, por ahora, les pertenece a los automovilistas. Incluso en el centro de Moscú puedo ver los pasos peatonales subterraneos. Usted hace que la gente, como las ratas, corra debajo de las calles, para que ellos no perturben los carros. Es una política equivocada. Ahora en todo el mundo la gente entiende que lo único que traen las autopistas urbanas - es daño. Ellas, como un muro, restringen la libertad de las personas. Como los rios venenosos, reducen el valor de las tierras cercanas. La gente no quiere vivir al lado de ellas.</p>
 
 <p><strong>Gazeta.ru:</strong> Esto es comprensible. Pero es imposible imaginar una ciudad sin calles amplias.</p>
 
-<p>{% img left /images/penalosa/metro_map.jpg 350 %}</p>
+<p><img class="left" src="/images/penalosa/metro_map.jpg" width="350"></p>
 
 <p><strong>Enrique Peñalosa:</strong> Deben ser vías urbanas y no calles. ¿Han caminado por los Campos Elíseos en París? Tienen diez carriles, no provocan ningún daño a la ciudad. Es decir, a lo largo de las avenidas debe haber bulevares grandes, aceras, edificios con fachadas bonitas. En este caso ellas reaniman la ciudad en lugar de matarla. Y otra cosa. A pesar de que el metro de Moscú es muy bonito, ¿para qué meter a la gente debajo del suelo?</p>
 
@@ -209,21 +207,21 @@ Usted hace que la gente, como las ratas, corra debajo de las calles.
 
 <p><strong>Enrique Peñalosa:</strong>  Sí, he oído esta respuesta de muchos. Pero piencen en ello. De hecho, las personas que usan el transporte público tienen que estar bajo la tierra, mientras tanto, los que conducen carros disfrutan el sol. Es necesario construir un sistema de transporte público en superficie, y no por debajo de ella. En muchas ciudades, incluyendo a mi Bogotá, han sido implementados unos buenos sistemas de buses.</p>
 
-<p>{% img right /images/penalosa/moscow_map.png 350 %}</p>
+<p><img class="right" src="/images/penalosa/moscow_map.png" width="350"></p>
 
 <p><strong>Gazeta.ru:</strong> Sí, los ciudadanos de Bogotá subieron a los buses de buena gana. Con tantas ganas, que ahora dicen, que el apretón allá es peor que en el metro de Moscú.</p>
 
-<p>{% img left /images/penalosa/probka_metro.jpg 200 %}</p>
+<p><img class="left" src="/images/penalosa/probka_metro.jpg" width="200"></p>
 
 <p><strong>Enrique Peñalosa:</strong> ¿No les gustan los buses? Pueden construir un sistema de tranvías. O un metro ligero. Pero la gente debe tener una opción alternativa: ir debajo de la tierra o utilizar el transporte público en la superficie. En Moscú hay una una gran cantidad de áreas sin metro. Y para ir de un punto al otro, lo que uno tiene que hacer es atravezar el centro. Esos puntos dueden estar conectados a través de un sistema de buses.</p>
 
 <p><strong>Gazeta.ru:</strong> En una escala de la ciudad &ldquo;retrasada&rdquo; a &ldquo;progresiva&rdquo;, ¿qué nota pondría para Moscú?</p>
 
-<p>{% img right /images/penalosa/tramvai.jpg 350 %}</p>
+<p><img class="right" src="/images/penalosa/tramvai.jpg" width="350"></p>
 
 <p><strong>Enrique Peñalosa:</strong> Creo que algo en el medio. En Moscú hay lugares para la recreacion pública, hay ciclorutas, zonas peatonales, que es muy bueno. Desde el período del comunismo, cuando la tierra pertenecía al Estado, quedaron muchos espacios verdes. Sin embargo, no a todos esos espacion les dan un uso correcto. Están mal distribuidos y, de hecho, se pierden. Pero tienen mucho potencial. (&hellip;) Si usted da una vuelta por el centro de Moscú, lo disfrutará, es probable que sea un paseo interesante. Pero si usted va a un barrio residencial, sentirá como si estuviera castigado: todo está gris, feo, hay pocos cafés y pocas tiendas.</p>
 
-<p>{% img center /images/penalosa/metromost.jpg %}</p>
+<p><img class="center" src="/images/penalosa/metromost.jpg"></p>
 
 <p><strong>Enrique Peñalosa</strong> (de la entrevista con <strong>The Village</strong>): En Bogotá no hay metro. No pudimos permitir vincular todas las areas de la ciudad con las líneas de metro. Por eso hemos creado un sistema TransMilenio. En principio, se parece más a un metro que a las líneas de autobuses. Pero los autobuses son una forma de desplazamiento más eficiente y menos costosa que el metro. Eso funciona así: se acera un bus - de tres vagones, seis puertas, pos las que las personas salen y entran en unos segundos. Hicimos que los buses fueron mejores que un metro. Algunas las calles en Bogotá eran estrechas, por lo cual fue imposible proporcionar carriles exclusvos para los buses. Luego decidimos abordar el problema de manera diferente y crear una ciudad con cientos de kilómetros de vías solamente para autobuses, ciclistas y peatones.</p>
 
