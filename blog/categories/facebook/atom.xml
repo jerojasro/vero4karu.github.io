@@ -4,7 +4,7 @@
   <title><![CDATA[Category: facebook | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/facebook/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T21:43:13-05:00</updated>
+  <updated>2017-04-03T21:50:51-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -82,10 +82,11 @@ Running migrations:
 
 <p>Listo, con esto podemos agregar un enlace en alguna de nuestras plantillas:</p>
 
-<p><figure class='code'><figcaption><span>templates/base.html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{% url &#39;social:begin&#39; &#39;facebook&#39; %}?next={{ request.path }}&quot;</span><span class="nt">&gt;</span>Login con Facebook<span class="nt">&lt;/a&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock templates/base.html lang:html %}
+{% raw %}
+<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login con Facebook</a>
+{% endraw %}
+{% endcodeblock %}</p>
 
 <p>Especificamos que queremos asociar usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:</p>
 
@@ -107,45 +108,39 @@ Running migrations:
 
 <p>Ahora tenemos que crear la aplicación de Facebook desde la página <a href="https://developers.facebook.com">developers.facebook.com</a>. Luego agregamos el servicio de &ldquo;Facebook Login&rdquo;:</p>
 
-<p><img class="center" src="/images/django/fb-app-login.png"></p>
+<p>{% img center /images/django/fb-app-login.png %}</p>
 
 <p>Copiamos las llaves de la aplicación</p>
 
-<p><img class="center" src="/images/django/fb-app-key.png"></p>
+<p>{% img center /images/django/fb-app-key.png %}</p>
 
 <p>y los pegamos en el archivo de configuración de Django:</p>
 
-<p><figure class='code'><figcaption><span>settings.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">SOCIAL_AUTH_FACEBOOK_KEY</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">app</span><span class="o">-</span><span class="nb">id</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
-</span><span class='line'><span class="n">SOCIAL_AUTH_FACEBOOK_SECRET</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">app</span><span class="o">-</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock settings.py lang:python %}
+SOCIAL_AUTH_FACEBOOK_KEY = &lsquo;app-id&rsquo;
+SOCIAL_AUTH_FACEBOOK_SECRET = &lsquo;app-secret&rsquo;
+{% endcodeblock %}</p>
 
 <p>Después de hacer los pasos anteriores, al momento de hacer click en &ldquo;Login con Facebook&rdquo;, la aplicación nos va a redirigir a la siguiente página:</p>
 
-<p><img class="center" src="/images/django/fb-login-1.png"></p>
+<p>{% img center /images/django/fb-login-1.png %}</p>
 
 <p>Pero nosotros, al momento de login queremos obtener correo electrónico de nuestro usuario, por eso definimos el scope:</p>
 
-<p><figure class='code'><figcaption><span>settings.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">SOCIAL_AUTH_FACEBOOK_IGNORE_DEFAULT_SCOPE</span> <span class="o">=</span> <span class="bp">True</span>
-</span><span class='line'><span class="n">SOCIAL_AUTH_FACEBOOK_SCOPE</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class='line'>    <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">email</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
-</span><span class='line'><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock settings.py lang:python %}
+SOCIAL_AUTH_FACEBOOK_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_FACEBOOK_SCOPE = [
+    &lsquo;email&rsquo;
+]
+{% endcodeblock %}</p>
 
 <p>Y ahora sí, la aplicación pide acceso al correo electrónico:</p>
 
-<p><img class="center" src="/images/django/fb-login-2.png"></p>
+<p>{% img center /images/django/fb-login-2.png %}</p>
 
 <p>Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de datos a su cuenta de Facebook:</p>
 
-<p><img class="center" src="/images/django/fb-app-django-admin.png"></p>
+<p>{% img center /images/django/fb-app-django-admin.png %}</p>
 
 <p>Enlaces:</p>
 
@@ -163,14 +158,14 @@ Running migrations:
     <id>http://blog.vero4ka.info/blog/2017/02/04/como-hacer-bot-para-facebook-en-python</id>
     <content type="html"><![CDATA[<p>Primero creamos una aplicación en Facebook, vamos al menú de configuración y agregamos el servicio de messenger (&ldquo;Add Product&rdquo;):</p>
 
-<p><img class="center" src="/images/bots/fb_bot_webhook.png"></p>
+<p>{% img center /images/bots/fb_bot_webhook.png %}</p>
 
 <!-- more -->
 
 
 <p>Luedo vamos a hacer click en el botón &ldquo;Setup Webhooks&rdquo;:</p>
 
-<p><img class="center" src="/images/bots/fb_bot_register.png"></p>
+<p>{% img center /images/bots/fb_bot_register.png %}</p>
 
 <p>Para poder verificar que nuestro bot esté bien configurado, Facebook nos mandará una peticicón GET a nuestro servidor</p>
 
@@ -181,73 +176,55 @@ Running migrations:
 
 <p>Entonces esribimos una vista que se encargará de eso:</p>
 
-<p><figure class='code'><figcaption><span>urls.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'>    <span class="c"># &amp;hellip;</span>
-</span><span class='line'>    <span class="n">url</span><span class="p">(</span>
-</span><span class='line'>        <span class="s">r&#39;fb-webhook/$&amp;lsquo;,</span>
-</span><span class='line'>        <span class="n">FacebookCommandReceiveView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
-</span><span class='line'>        <span class="n">name</span><span class="o">=</span><span class="s">&#39;fb_webhook&amp;rsquo;,</span>
-</span><span class='line'>    <span class="p">),</span>
-</span><span class='line'>    <span class="c"># &amp;hellip;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock urls.py lang:python %}
+    # &hellip;
+    url(
+        r'fb-webhook/$&lsquo;,
+        FacebookCommandReceiveView.as_view(),
+        name='fb_webhook&rsquo;,
+    ),
+    # &hellip;
+{% endcodeblock %}</p>
 
-<p><figure class='code'><figcaption><span>urls.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">FacebookCommandReceiveView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.mode&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#39;subscribe&#39;</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.verify_token&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">settings</span><span class="o">.</span><span class="n">FACEBOOK_VERIFY_TOKEN</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;hub.challenge&#39;</span><span class="p">))</span>
-</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">HttpResponseForbidden</span><span class="p">()</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock urls.py lang:python %}
+class FacebookCommandReceiveView(View):</p>
+
+<pre><code>def get(self, request):
+    if request.GET.get('hub.mode') == 'subscribe' and request.GET.get('hub.verify_token') == settings.FACEBOOK_VERIFY_TOKEN:
+        return HttpResponse(request.GET.get('hub.challenge'))
+    else:
+        return HttpResponseForbidden()
+</code></pre>
+
+<p>{% endcodeblock %}</p>
 
 <p>Cuando la vista esté lista y desplegada en producción, podemos oprimir el botón &ldquo;Verify and Save&rdquo;. Después de eso Facebook nos dará un token de la aplicación y permitirá configurar un <em>webhook</em>:</p>
 
-<p><img class="center" src="/images/bots/fb_bot_settings.png"></p>
+<p>{% img center /images/bots/fb_bot_settings.png %}</p>
 
 <p>Ahora podemos suscribirnos a los eventos en messenger, es decir: cada vez que alguien escibe un mensaje vía messanger a nuestra página de Facebook, Facebook enviará una petición POST al weebhook con el JSON que tendrá todos los datos del mensaje.</p>
 
-<p><img class="center" src="/images/bots/fb_bot_add_subscription.png"></p>
+<p>{% img center /images/bots/fb_bot_add_subscription.png %}</p>
 
 <p>Desúés de oprimir el botón &ldquo;Add to Subscription&rdquo;, Facebook nos mostrará el enlace &ldquo;Edit notes&rdquo;:</p>
 
-<p><img class="center" src="/images/bots/fb_bot_current_subscription.png"></p>
+<p>{% img center /images/bots/fb_bot_current_subscription.png %}</p>
 
 <p>Damos click en &ldquo;Edit notes&rdquo; y entramos a el formulario de configuración. Aquí especificamos la página a los mensajes de la cual vamos a suscribirnos e escribimos ejemplos de respuestas que dará nuesto bot a ciertos mensajes en Messanger:</p>
 
-<p><img class="center" src="/images/bots/fb_bot_edit_subscription.png"></p>
+<p>{% img center /images/bots/fb_bot_edit_subscription.png %}</p>
 
 <p>Eso sirve para que Facebook pueda verificar que nuestro bot efectivamente responde bien a los mensajes de chat.</p>
 
 <p>Después de que Facebook verifique el comportamiento de nuestro bot, recibimos el mensaje de aprobación, diciendo que desde ahora nuestro bot está activo:</p>
 
-<p><img class="center" src="/images/bots/fb_bot_subscription_status.png"></p>
+<p>{% img center /images/bots/fb_bot_subscription_status.png %}</p>
 
 <p>Eso nos permite hacer pruebas de la plataforma, porque el bot va a poder responder sólo a los mensajer enviados por los administradores de nuestra página de Facebook.</p>
 
 <p>Cuando nuestro bot esté listo, lo podemos activar para todos los usuarios (hacerlo público):</p>
 
-<p><img class="center" src="/images/bots/fb_bot_publish.png"></p>
+<p>{% img center /images/bots/fb_bot_publish.png %}</p>
 
 <p>Enlaces:</p>
 

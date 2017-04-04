@@ -4,7 +4,7 @@
   <title><![CDATA[Category: traducción | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/traduccion/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T21:43:13-05:00</updated>
+  <updated>2017-04-03T21:50:51-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -25,7 +25,7 @@
 <!-- more -->
 
 
-<p><img class="center" src="/images/vete-de-aqui.jpg"></p>
+<p>{% img center /images/vete-de-aqui.jpg %}</p>
 
 <blockquote><p>En nuestra sociedad poseída por el culto a la juventud, precisamente la juventud se vuelve el delito fundamental.</p></blockquote>
 
@@ -52,7 +52,7 @@
     <link href="http://blog.vero4ka.info/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual/"/>
     <updated>2016-04-20T21:08:04-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/04/20/asya-kazantseva-la-utilidad-de-los-productos-organicos-es-un-mito-habitual</id>
-    <content type="html"><![CDATA[<p><img class="center" src="/images/asya.jpg" title="&lsquo;Asya Kazantseva&rsquo;" ></p>
+    <content type="html"><![CDATA[<p>{% img center /images/asya.jpg &lsquo;Asya Kazantseva&rsquo; %}</p>
 
 <p><em>Asya Kazantseva es una periodista científica y divulgadora de ciencia.</em></p>
 

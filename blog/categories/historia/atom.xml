@@ -4,7 +4,7 @@
   <title><![CDATA[Category: historia | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/historia/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-04-03T21:43:13-05:00</updated>
+  <updated>2017-04-03T21:50:51-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -84,7 +84,9 @@ el <a href="http://es.wikipedia.org/wiki/Imperio_ruso">Imperio Ruso</a>.</p>
     <link href="http://blog.vero4ka.info/blog/2014/01/02/viera-ivanovna-salbiieva/"/>
     <updated>2014-01-02T09:36:12-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2014/01/02/viera-ivanovna-salbiieva</id>
-    <content type="html"><![CDATA[<p><blockquote><p>Образ женщины-бойца с винтовкой в руках, у штурвала самолета, образ санитарки, сестры или врача с погонами на печах будет жить в нашей памяти как светлый пример самоотверженности и патриотизма.</p><footer><strong>Л. И. Брежнев</strong></footer></blockquote></p>
+    <content type="html"><![CDATA[<p>{% blockquote Л. И. Брежнев %}
+Образ женщины-бойца с винтовкой в руках, у штурвала самолета, образ санитарки, сестры или врача с погонами на печах будет жить в нашей памяти как светлый пример самоотверженности и патриотизма.
+{% endblockquote %}</p>
 
 <p><em>Борис СКОРБИН:</em></p>
 
@@ -92,7 +94,7 @@ el <a href="http://es.wikipedia.org/wiki/Imperio_ruso">Imperio Ruso</a>.</p>
 облике, хотя сейчас сидит передо мной в обыкновенном женском костюме, и концы
 красного теплого платка прикрывают орденские планки.</p>
 
-<p><img class="center" src="/images/salbieva/salbieva_70.jpg"></p>
+<p>{% img center /images/salbieva/salbieva_70.jpg %}</p>
 
 <h3>Вера Ивановна Салбиева</h3>
 
@@ -249,7 +251,7 @@ el <a href="http://es.wikipedia.org/wiki/Imperio_ruso">Imperio Ruso</a>.</p>
 Вера Ивановна развернула карту. И уже через минуту раздался ее громкий голос,
 прозвучали слова команды.</p>
 
-<p><img class="center" src="/images/salbieva/salamov_i_m.jpg"></p>
+<p>{% img center /images/salbieva/salamov_i_m.jpg %}</p>
 
 <h3>Переправа через Днепр</h3>
 
@@ -262,7 +264,7 @@ el <a href="http://es.wikipedia.org/wiki/Imperio_ruso">Imperio Ruso</a>.</p>
 мин и патронов иссякали. На третьи сутки непрерывных боев, комдив получил
 приказ отойти на левый берег Днепра и там закрепиться.</p>
 
-<p><img class="center" src="/images/salbieva/newspaper.jpg"></p>
+<p>{% img center /images/salbieva/newspaper.jpg %}</p>
 
 <p>Августовской ночью малочисленные . и измотанные части дивизии, оторвавшись
 от гитлеровцев, начали переправу. Батальон связи двигался вместе со штабными
@@ -300,7 +302,7 @@ el <a href="http://es.wikipedia.org/wiki/Imperio_ruso">Imperio Ruso</a>.</p>
 <p>Это! Первый рукопашный бой закончился нашей победой. У ног разгоряченных бойцов
 плескалась родная днепровская вода.</p>
 
-<p><img class="center" src="/images/salbieva/newspaper_muzhestvo.jpg"></p>
+<p>{% img center /images/salbieva/newspaper_muzhestvo.jpg %}</p>
 
 <p>Салбиева организовала оборону переправы, расположила стрелков и пулеметчиков,
 разыскала и заставила работать саперов и понтонеров. Завидев три танка,
@@ -325,7 +327,7 @@ el <a href="http://es.wikipedia.org/wiki/Imperio_ruso">Imperio Ruso</a>.</p>
 
 <h3>Из фронтового блокнота художника</h3>
 
-<p><img class="left" src="/images/salbieva/salbieva.jpg" width="300"></p>
+<p>{% img left /images/salbieva/salbieva.jpg 300 %}</p>
 
 <p>Гвардии лейтенант художник С. Ф. Панкратов сделал много зарисовок женщин –
 воинов Ленинградского фронта.</p>
@@ -368,7 +370,7 @@ el <a href="http://es.wikipedia.org/wiki/Imperio_ruso">Imperio Ruso</a>.</p>
 старший инженер — геолог. Младшую дочь Галину потянуло в Северную Осетию.
 Там она работает медицинской сестрой.</p>
 
-<p><img class="center" src="/images/salbieva/capitan_salbieva.jpg"></p>
+<p>{% img center /images/salbieva/capitan_salbieva.jpg %}</p>
 
 <p>Сквозь годы и годы мне видится стройная фигура женщины в пилотке, плащ-накидке,
 с наганом в руке&hellip; А она, неуловимо изменившаяся и поседевшая, но по-прежнему
@@ -388,9 +390,9 @@ el <a href="http://es.wikipedia.org/wiki/Imperio_ruso">Imperio Ruso</a>.</p>
 </ul>
 
 
-<p><img class="center" src="/images/salbieva/mi_pobedili_1.jpg"></p>
+<p>{% img center /images/salbieva/mi_pobedili_1.jpg %}</p>
 
-<p><img class="center" src="/images/salbieva/mi_pobedili_2.jpg"></p>
+<p>{% img center /images/salbieva/mi_pobedili_2.jpg %}</p>
 
 <p>А также&hellip;</p>
 
