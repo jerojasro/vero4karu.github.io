@@ -13,7 +13,7 @@ categories:
 
 [Motherhood, Russian-style](https://www.goodreads.com/book/show/24913381-motherhood-russian-style?ac=1&from_search=true) por Tanja Maier (2015)
 
-{% img right /images/books/shapka_babushka_kefir.jpg 300 %}
+{% img right /images/books/shapka_babushka_kefir.jpg 400 %}
 
 Tanja Maier es una señora estadounidense que sabe ruso y que trabajó durante un tiempo en Moscú en los comienzos de la década de los 2000, donde crió a su primer hijo. Tanja pasaba mucho tiempo con sus amigas rusas y en los grupos de las mamás rusas en Facebook, y al final decidió resumir su experiencia de maternidad en un libro, que en la edición rusa se llama “Shapka, babushka, kefir. Cómo crían a los niños en Rusia.”
 
@@ -38,7 +38,11 @@ El libro tiene los siguientes capítulos:
 
 Por ejemplo, Tanja Maier cuenta que las mamás rusas tratan de pasar con sus niños mucho tiempo al aire libre: al menos dos horas por la mañana y dos horas en la tarde. En parte es porque todo el invierno es muy oscuro, y paseando afuera, los niños reciben su dosis de la vitamina D. Pero también es porque los paseos vigorizan la inmunidad y hacen a los niños más fuertes. Por eso las vueltas en el parque cercano son una parte integral de cada día. 
 
-Otra cosa que sorprende a Tanja Maier, es que las mamás rusas dan comida saludable a sus niños: [mors](https://en.wikipedia.org/wiki/Mors_\(drink\)) (la bebida de arándanos rojos), [kefír](https://en.wikipedia.org/wiki/Kefir) (un producto lácteo fermentado), yogur griego, las kashas de alforfón y avena para el desayuno (lo que en Inglaterra se llama “porridge”, o “oatmeal” - en los EEUU, pero que ni se acerca a la kasha rusa), pepinos, zanahorias, albóndigas de calabacín, sopas y muchas frutas, bayas y verduras. Las gaseosas, los jugos empaquetados y las papas franceses pueden encontrarse en algunas fiestas, pero no están incluidas en la ración diaria. Aunque también existen muchos prejuicios. Por ejemplo, las mamás rusas nunca dan a sus niños comidas y bebidas frías, temiendo que se les irrite la garganta.
+{% img left /images/books/mors.jpg 200 %}
+
+Otra cosa que sorprende a Tanja Maier, es que las mamás rusas dan comida saludable a sus niños: [mors](https://en.wikipedia.org/wiki/Mors_\(drink\)) (la bebida de arándanos rojos), [kefír](https://en.wikipedia.org/wiki/Kefir) (un producto lácteo fermentado), yogur griego, las kashas de [alforfón](https://es.wikipedia.org/wiki/Fagopyrum_esculentum) y avena para el desayuno (lo que en Inglaterra se llama “porridge”, o “oatmeal” - en los EEUU, pero que ni se acerca a la kasha rusa), pepinos, zanahorias, albóndigas de calabacín, sopas y muchas [frutas, bayas y verduras](http://blog.vero4ka.info/blog/2014/01/05/mi-tierra-abundante-a-pesar-del-frio/). Las gaseosas, los jugos empaquetados y las papas franceses pueden encontrarse en algunas fiestas, pero no están incluidas en la ración diaria. Aunque también existen muchos prejuicios. Por ejemplo, las mamás rusas nunca dan a sus niños comidas y bebidas frías, temiendo que se les irrite la garganta.
+
+{% img right /images/books/buckwheat.jpg 300 %}
 
 En el último capítulo Tanja Maier cuenta que las mujeres rusas dedican mucho tiempo a su aspecto físico: no es extraño ver a una mamá rusa con las uñas impecables, falda y tacones. En parte es así porque después de la segunda guerra mundial se disminuyó significamente la cantidad de hombres, pero también es porque lo quieren hacer para otras mujeres. Las mamás rusas dicen muchos cumplidos una a otra, y eso siempre suena natural. No es algo como: “Me encanta tu vestido. ¿Dónde lo compraste?”, sino “¡Lenka, te ves genial, te queda genial ese peinado!”
 
