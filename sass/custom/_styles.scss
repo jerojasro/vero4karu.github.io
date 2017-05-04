@@ -8,7 +8,11 @@ body {
 }
 
 body>header {
-  background: url(/images/header_background.jpg) repeat-x bottom left #66B4DA;
+  background: url(/images/header_background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   padding-bottom: 100px;
 }
 
@@ -22,8 +26,12 @@ body>nav a {
 
 article blockquote footer {
   margin-top: -1em;
-  font-size: 0.8em;
+  font-size: 0.7em;
   text-align: right;
+}
+
+article blockquote {
+  font-size: 0.9em;
 }
 
 article .entry-content {
@@ -64,6 +72,7 @@ figure.code {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Cherry Swash", "PT Serif","Georgia","Helvetica Neue",Arial,sans-serif;
+  color: #2F423F;
 }
 
 * + table {
