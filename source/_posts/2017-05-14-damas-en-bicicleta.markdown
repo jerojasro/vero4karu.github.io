@@ -10,17 +10,17 @@ categories:
 
 {% img right /images/books/damas_en_bicicleta.jpg 300 %}
 
-En abril de este año terminé de leer el libro, escrito por la señorita británica  F.J. Erskine, llamado “Damas en Bicicleta”. El libro fue publicado en el año 1987, y l principio pensé que sería una lectura graciosa y que me daría mucha risa leer acerca de cómo las mujeres veían su relación con la bicicleta en esa época tan lejana. Aunque el final resultó todo lo opuesto e incluso me dió verguenza por mi actitud en ciertas situaciones y por mi conocimiento humilde de la máquina, comparando con lo que sabe la señorita Erskine.
+En abril de este año terminé de leer el libro, escrito por la señorita británica  F.J. Erskine, llamado “Damas en Bicicleta”. El libro fue publicado en el año 1987, y al principio pensé que sería una lectura graciosa y que me daría mucha risa leer acerca de cómo las mujeres veían su relación con la bicicleta en esa época tan lejana. Aunque el final resultó todo lo opuesto e incluso me dió verguenza por mi actitud en ciertas situaciones y por mi conocimiento humilde de la máquina, comparando con lo que sabe la señorita Erskine.
 
 <!-- more -->
 
-En el primer capítulo la autora trata de convencer a las damas de su época usar la bicicleta. Ella de varios argumentos de por qué una dama claramente necesita pasar a una cicla, en lugar de pagar tanto dinero por un poni, que además, la obligará a comprar un montón de cosas adicionales: un carro, los arneses, el forraje. La “arriesgada amazona del pedal” nos explica, que además de las razones económicas, es importante practicar el ciclismo desde el punto de vista de salud, aunque advierte que hay que tener mucho cuidado durante las fase de aprendizaje, “es decir, la etapa "acrobática" o de "equilibrio"”.
+En el primer capítulo la autora trata de convencer a las damas usar la bicicleta. Ella da varios argumentos de por qué una dama claramente necesita pasar a una cicla, en lugar de pagar tanto dinero por un poni, que además, la obligará a comprar un montón de cosas adicionales: un carro, los arneses, el forraje. La “arriesgada amazona del pedal” nos explica, que además de las razones económicas, es importante practicar el ciclismo desde el punto de vista de salud, aunque advierte que hay que tener mucho cuidado durante la fase de aprendizaje, “es decir, la etapa "acrobática" o de "equilibrio"”.
 
 {% img left /images/books/Lady-Cycling-Cover.png 300 %}
 
 Hay todo un capítulo dedicado a la forma en la que una mujer debe vestirse andando en la bicicleta. En este capítulo se nota que la autora es una señorita moderna y práctica: ella sugiere escoger unos vestidos cómodos y aptos para manejar la cicla y se burla de las mujeres que caen víctimas de la moda. 
 
-Ella insiste, que al manejar la bicicleta, la mujer podría ganar cierta independencia de los hombres, y, por ejemplo, en lugar de estar encerrada en la casa, podría coger su cicla e ir a visitar a sus amigas, en incluso a unas que viven en otros pueblos.
+Ella insiste, que al manejar la bicicleta, la mujer podría ganar cierta independencia de los hombres, y, por ejemplo, en lugar de estar encerrada en la casa, podría coger su cicla e ir a visitar a sus amigas, e incluso a unas que viven en otros pueblos.
 
 La autora de forma muy entretenida y con muchos ejemplos de su experiencia personal describe cómo escoger su propia bicicleta, cómo cuidarla y repararla, describe las técnicas que ayudan a subir colinas y cómo manejar en la ciudad: “concentrate, querida amiga, en lo que tienes entre manos y en lo que estás haciendo, mantén la mirada alta al frente, actúa con decisión, y mantén la bicicleta siempre bajo control.”
 
