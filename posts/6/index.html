@@ -9,11 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Modo #1: Podemos usar itertools.chain para unir dos o más querysets: 1
-2
-3
-from itertools import chain
-for item in chain(qs1, qs2, qs3): # ... Modo # &hellip;">
+  <meta name="description" content="If you have a view that requires an AJAX request, in other words, checks if request.is_ajax(), here is a way you can write a unit test for this view &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +86,58 @@ for item in chain(qs1, qs2, qs3): # ... Modo # &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/">How to send request to AJAX view in Django tests</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T19:23:37-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:23 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-send-request-to-ajax-view-in-django-tests/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you have a view that requires an AJAX request, in other words, checks if <code>request.is_ajax()</code>, here is a way you can write a unit test for this view:</p>
+
+<div><script src='https://gist.github.com/dca59e325c9f7554d176.js'></script>
+<noscript><pre><code>import json
+from django.test import TestCase
+
+class JSONViewTestCase(TestCase):
+
+    def test_json_view(self):
+        response = self.client.post(
+            reverse(&#39;my_json_view&#39;),
+            json.dumps({
+                # your JSON
+            }),
+            &#39;json&#39;,
+            HTTP_X_REQUESTED_WITH=&#39;XMLHttpRequest&#39;,
+        )
+        json_string = response.content
+        response_data = json.loads(json_string)
+        # do smth.</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -637,59 +685,6 @@ for($node in $nodes){
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">How to add a custom button to admin change list view id Django</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-21T17:35:44-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:35 pm</span></time>
-        
-           | <a href="/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/02/21/how-to-add-a-custom-button-to-admin-change-list-view-id-django/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><script src='https://gist.github.com/12fb4de2726c6ef563f3.js'></script>
-<noscript><pre><code>class BasicAdmin(admin.ModelAdmin):
-    # ...
-
-    def get_urls(self):
-        urls = super(BasicAdmin, self).get_urls()
-        my_urls = patterns(
-            &#39;&#39;,
-            (r&#39;^download_as_xls/$&#39;, self.download_as_xls_view)
-        )
-        return my_urls + urls
-
-    def download_as_xls_view(self, request):
-        &quot;&quot;&quot;Generates an xls file
-        &quot;&quot;&quot;
-
-        response = HttpResponse(mimetype=&#39;application/ms-excel&#39;)
-        response[&#39;Content-Disposition&#39;] = \
-            &#39;attachment; filename=Report.xls&#39;
-        # do something
-        return response</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -705,6 +700,10 @@ for($node in $nodes){
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/05/14/damas-en-bicicleta/">Damas en bicicleta</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/04/29/best-places-in-bogota/">Best places in Bogotá</a>
@@ -742,16 +741,14 @@ for($node in $nodes){
         <a href="/blog/2017/02/14/la-misma-cosa/">La misma cosa</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/02/04/como-hacer-bot-para-facebook-en-python/">Cómo hacer bot para Facebook en Python</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
     
       
     
@@ -1264,7 +1261,7 @@ for($node in $nodes){
 
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.72727272727273%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.72727272727273%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.72727272727273%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.72727272727273%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.45454545454545%'>aventuras</a> <a href='/blog/categories/bogota' style='font-size: 105.45454545454545%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.72727272727273%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.72727272727273%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.9090909090909%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.72727272727273%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 108.18181818181819%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.72727272727273%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.72727272727273%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 108.18181818181819%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.72727272727273%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 110.9090909090909%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 108.18181818181819%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.72727272727273%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.45454545454545%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.45454545454545%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.45454545454545%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 149.0909090909091%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.72727272727273%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.45454545454545%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.72727272727273%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.45454545454545%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.72727272727273%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 108.18181818181819%'>flask</a> <a href='/blog/categories/historia' style='font-size: 105.45454545454545%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.72727272727273%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.72727272727273%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.45454545454545%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.72727272727273%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 121.81818181818181%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.72727272727273%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.72727272727273%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.72727272727273%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 108.18181818181819%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.72727272727273%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.72727272727273%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 108.18181818181819%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.72727272727273%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.72727272727273%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.72727272727273%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.72727272727273%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.72727272727273%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 127.27272727272728%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.45454545454545%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.72727272727273%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.45454545454545%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.72727272727273%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 108.18181818181819%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.72727272727273%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.72727272727273%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.72727272727273%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.72727272727273%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.72727272727273%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.72727272727273%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.45454545454545%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.45454545454545%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.72727272727273%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.72727272727273%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.45454545454545%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.72727272727273%'>uwsgi</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.72727272727273%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.72727272727273%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.72727272727273%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.72727272727273%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.45454545454545%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.72727272727273%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 105.45454545454545%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.72727272727273%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.72727272727273%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.9090909090909%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.72727272727273%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 108.18181818181819%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.72727272727273%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.72727272727273%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 108.18181818181819%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.72727272727273%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 110.9090909090909%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 108.18181818181819%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.72727272727273%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.45454545454545%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.45454545454545%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.45454545454545%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 149.0909090909091%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.72727272727273%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.45454545454545%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.72727272727273%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.45454545454545%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.72727272727273%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 108.18181818181819%'>flask</a> <a href='/blog/categories/historia' style='font-size: 105.45454545454545%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.72727272727273%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.72727272727273%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.45454545454545%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.72727272727273%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 124.54545454545455%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.72727272727273%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.72727272727273%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.72727272727273%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 108.18181818181819%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.72727272727273%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.72727272727273%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 108.18181818181819%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.72727272727273%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.72727272727273%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.72727272727273%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.72727272727273%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.72727272727273%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 127.27272727272728%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.45454545454545%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.72727272727273%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.45454545454545%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.72727272727273%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 108.18181818181819%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.72727272727273%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.72727272727273%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.72727272727273%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.72727272727273%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.72727272727273%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.72727272727273%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.45454545454545%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.45454545454545%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.72727272727273%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.72727272727273%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.45454545454545%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.72727272727273%'>uwsgi</a> </span>
 </section><section>
   <h1>Stats</h1>
   <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img
