@@ -12,6 +12,8 @@ categories:
 
 En abril de este año terminé de leer el libro, escrito por la señorita británica  F.J. Erskine, llamado “Damas en Bicicleta”. El libro fue publicado en el año 1987, y l principio pensé que sería una lectura graciosa y que me daría mucha risa leer acerca de cómo las mujeres veían su relación con la bicicleta en esa época tan lejana. Aunque el final resultó todo lo opuesto e incluso me dió verguenza por mi actitud en ciertas situaciones y por mi conocimiento humilde de la máquina, comparando con lo que sabe la señorita Erskine.
 
+<!-- more -->
+
 En el primer capítulo la autora trata de convencer a las damas de su época usar la bicicleta. Ella de varios argumentos de por qué una dama claramente necesita pasar a una cicla, en lugar de pagar tanto dinero por un poni, que además, la obligará a comprar un montón de cosas adicionales: un carro, los arneses, el forraje. La “arriesgada amazona del pedal” nos explica, que además de las razones económicas, es importante practicar el ciclismo desde el punto de vista de salud, aunque advierte que hay que tener mucho cuidado durante las fase de aprendizaje, “es decir, la etapa "acrobática" o de "equilibrio"”.
 
 {% img left /images/books/Lady-Cycling-Cover.png 300 %}
