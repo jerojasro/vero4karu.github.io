@@ -10,7 +10,7 @@ categories:
 
 {% img right /images/books/damas_en_bicicleta.jpg 300 %}
 
-En abril de este año terminé de leer el libro, escrito por la señorita británica  F.J. Erskine, llamado “Damas en Bicicleta”. El libro fue publicado en el año 1987, y al principio pensé que sería una lectura graciosa y que me daría mucha risa leer acerca de cómo las mujeres veían su relación con la bicicleta en esa época tan lejana. Aunque el final resultó todo lo opuesto e incluso me dió verguenza por mi actitud en ciertas situaciones y por mi conocimiento humilde de la máquina, comparando con lo que sabe la señorita Erskine.
+En abril de este año terminé de leer el libro, escrito por la señorita británica  F.J. Erskine, llamado “Damas en Bicicleta”. El libro fue publicado en el año 1897, y al principio pensé que sería una lectura graciosa y que me daría mucha risa leer acerca de cómo las mujeres veían su relación con la bicicleta en esa época tan lejana. Aunque el final resultó todo lo opuesto e incluso me dió verguenza por mi actitud en ciertas situaciones y por mi conocimiento humilde de la máquina, comparando con lo que sabe la señorita Erskine.
 
 <!-- more -->
 
