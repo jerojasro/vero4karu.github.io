@@ -9,8 +9,8 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Opinión especial. Radio Echo de Moscú. Es un programa que sale al aire cada día entre semana.
-Los invitados responden a las preguntas, que les envían &hellip;">
+  <meta name="description" content="Desde la niñez conocemos la historia de Caperucita roja, gracias al escritor
+francés Charles Perrault. Pero es simplemente una elaboración literaria &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,76 @@ Los invitados responden a las preguntas, que les envían &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/">Caperucita roja en los diferentes países</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-16T19:08:32-05:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:08 pm</span></time>
+        
+           | <a href="/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/04/16/caperucita-roja-en-los-diferentes-paises/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/caperucita2.jpg" title="'Caperucita roja'" ></p>
+
+<p>Desde la niñez conocemos la historia de Caperucita roja, gracias al escritor
+francés Charles Perrault. Pero es simplemente una elaboración literaria de un
+cuento folclórico.</p>
+
+<p>En distintos países cuentan la historia de la muchacha, que fue a visitar
+a su abuelita, de forma diferente. En un lugar el personaje no es una ñina
+sino un niño (por ejemplo, en Irán, donde las niñas pequeñas no andas sólas),
+o en el otro, como en Asia Suroriental, no es un lobo sino un tigre.
+Pero la idea se mantiene igual.</p>
+
+<p><img class="right" src="/images/caperucita.jpg" width="250" title="'Caperucita roja'" ></p>
+
+<p>Un antropólogo británico llamado Jamshid J. Tehrani decidió aclarar de dónde
+es Caperucita roja, usando un método filogenético, con el que normalmente se
+reconstruyen los enlaces entre los organismos vivos. El científico analizó 58
+versiones de la historia en todo el mundo según 72 criterios – la apariencia,
+el sexo de los protagonistas, los trucos con los cuales el malvado engaña
+a sus víctimas. Según el sistema de Aarne-Thompson-Uther, el cuento
+de Caperucita roja corresponde a la categoría de los tramas,
+en los cuales el protagonista tiene superpoderes, y tiene un código ATU-333.</p>
+
+<p>Según los cálculos de Tehrani, aproximadamente en el siglo I esa historia
+se derivó de otro cuento popular de Oriente Próximo del lobo y
+siete cabritos (ATU-123). llegando a Asia y África, el cuento se mezcló
+con las versiones locales del lobo y siete cabritos y obtuvo sus rasgos únicos.
+En Europa el cuento también se transformó dependiendo de la región.
+Por ejemplo, en Italia en la cesta de la niña había un pescado fresco,
+y en Suiza – una bola de queso. La caperucita francesa llevaba a sua abuela
+un pote de mantequilla y un pastel relleno. También vaía la edad de
+la protagonista: en unas partes es una niña pequeña, y en otras
+– una muchacha joven.</p>
+
+<p>¿Y qué lleva caperucita roja a su abuelita en el país de usted?</p>
+
+<p>Imágenes tomadas de:
+<a href="http://pikabu.ru/story/art_krasnaya_shapochka_790068">http://pikabu.ru/story/art_krasnaya_shapochka_790068</a>,
+<a href="http://pikabu.ru/story/krasnaya_shapochka_1666502">http://pikabu.ru/story/krasnaya_shapochka_1666502</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1066,109 +1136,6 @@ class ContractUpdateView(UpdateView):
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">How to show a BooleanField of a ModelForm as radio select (yes/no) in Django</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-01T19:26:52-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:26 pm</span></time>
-        
-           | <a href="/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/how-to-show-a-booleanfield-of-a-modelform-as-radio-select-yes-slash-no-in-django/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Let&rsquo;s suppose that we have a field <code>is_active</code> in our model. It is a boolean field, but in a template we want to show it as a radio select.</p>
-
-<p>In this case we just need to add <code>choices</code> attribute for the model field and then change a widget of the corresponding form:</p>
-
-<figure class='code'><figcaption><span>forms.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
-</span><span class='line'>        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>            <span class="s">&#39;is_active&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">RadioSelect</span>
-</span><span class='line'>        <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>forms.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">STATE_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
-</span><span class='line'>        <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="s">u&#39;Yes&#39;</span><span class="p">),</span>
-</span><span class='line'>        <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="s">u&#39;No&#39;</span><span class="p">),</span>
-</span><span class='line'>    <span class="p">)</span>
-</span><span class='line'>    <span class="n">is_active</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span>
-</span><span class='line'>        <span class="n">verbose_name</span><span class="o">=</span><span class="s">u&#39;Is it active?&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-</span><span class='line'>        <span class="n">choices</span><span class="o">=</span><span class="n">STATE_CHOICES</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>UPDATE:</p>
-
-<p>For Django forms.</p>
-
-<figure class='code'><figcaption><span>forms.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">is_active</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TypedChoiceField</span><span class="p">(</span>
-</span><span class='line'>        <span class="nb">coerce</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
-</span><span class='line'>        <span class="n">choices</span><span class="o">=</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;No&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;Yes&#39;</span><span class="p">)),</span>
-</span><span class='line'>        <span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">RadioSelect</span>
-</span><span class='line'>    <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -1184,6 +1151,10 @@ class ContractUpdateView(UpdateView):
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/05/20/cheatsheet/">Cheatsheet</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/05/14/biografia-de-astrid-lindgren/">Biografía de Astrid Lindgren</a>
@@ -1221,16 +1192,14 @@ class ContractUpdateView(UpdateView):
         <a href="/blog/2017/02/20/vete-de-aqui/">«Vete de aquí, niña»: cómo vivir cuando te ves más joven de lo que eres</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/02/14/la-misma-cosa/">La misma cosa</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
     
       
     
