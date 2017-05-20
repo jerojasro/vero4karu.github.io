@@ -6,6 +6,8 @@ comments: true
 categories: 
 ---
 
+<!-- more -->
+
 ## PostgreSQL
 
 * Installation: https://help.ubuntu.com/community/PostgreSQL
@@ -122,4 +124,42 @@ WHERE now() - pg_stat_activity.query_start > interval '5 minutes';
 
 ```sql
 SELECT pg_cancel_backend(__pid__);
+```
+
+## Heroku
+
+* [Getting Started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
+* [Deploying Python and Django Apps on Heroku](https://devcenter.heroku.com/articles/deploying-python)
+
+#### Login to Heroku from console
+
+```
+$ heroku login
+```
+
+#### Run Heroku app locally
+
+```
+$ heroku local web
+```
+
+#### Deploy your code
+
+```
+$ git push heroku master
+```
+
+#### View logs of your application
+
+```
+$ heroku logs --tail
+```
+
+#### Other commends
+
+```
+$ heroku run bash
+$ heroku run python
+$ heroku run python manage.py shell
+$ exit
 ```
