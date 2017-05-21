@@ -3,6 +3,7 @@ layout: post
 title: "El programa escolar de literatura en Rusia"
 date: 2017-01-04 18:50:49 -0500
 comments: true
+featured: true
 categories:
 - Libros
 - Colegio
