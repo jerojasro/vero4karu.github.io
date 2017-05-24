@@ -7,7 +7,9 @@ categories:
 - Viajes
 ---
 
-Hace poco Deutsche Bank publicó su [reporte anual](https://www.finews.ch/images/download/Mapping.the.worlds.prices.2017.pdf), donde comparó los precios de las cosas básicas para las 47 ciudades principales del mundo.
+Hace poco Deutsche Bank publicó su [reporte anual](https://www.finews.ch/images/download/Mapping.the.worlds.prices.2017.pdf), donde comparó los precios de las cosas básicas en las 47 ciudades principales del mundo.
+
+<!-- more -->
 
 #### Cerveza en un bar local (0,5 litros)
 
