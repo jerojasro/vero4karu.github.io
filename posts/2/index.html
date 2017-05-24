@@ -9,7 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Para los que están convencidos de que inglés es muy diferente a español. ">
+  <meta name="description" content="Traducción del articulo de la revista Wonderzine escrito por Dasha Tatarkova. Hace más o menos un mes escribí en mi twitter, que año tras año me &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,45 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/02/20/vete-de-aqui/">«Vete de aquí, niña»: cómo vivir cuando te ves más joven de lo que eres</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-02-20T18:57:13-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>6:57 pm</span></time>
+        
+           | <a href="/blog/2017/02/20/vete-de-aqui/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2017/02/20/vete-de-aqui/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Traducción <a href="http://www.wonderzine.com/wonderzine/life/experience/219769-forever-young">del articulo</a> de la revista Wonderzine escrito por Dasha Tatarkova.</p>
+
+<p>Hace más o menos un mes escribí en mi twitter, que año tras año me parezco menos a un adulto convencional. Casi no me maquillo, llevo un morral, overol y sombrero de tela, y a menudo no llevo sostén. Tengo veintisiete años, pero incluso los doctores a veces piensan que tengo diecisiete como mucho. El hecho de que me vea más joven de que lo soy, no me molesta – es el resultado de opciones deliberadas. Y si eso me llegara a molestar, cambiaría mi personalidad para ajustarme a los estándares de la sociedad. Me molesta otra cosa: cuando la gente decide que soy todavía una muchacha adolescente, me trate con condescendencia, y a veces incluso de forma grosera. Paradójicamente, así se comportan incluso los profesionales, como los médicos. En nuestra sociedad poseída por el culto a la juventud, precisamente la juventud se vuelve el delito fundamental.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2017/02/20/vete-de-aqui/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -570,266 +609,6 @@ Todos los personajes del cuento son frutas y verduras.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/">How to send an email with attachment via Amazon SES in Python</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-10-26T14:19:26-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:19 pm</span></time>
-        
-           | <a href="/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/10/26/how-to-send-an-email-with-attachment-via-amazon-ses-in-python/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">xlwt</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">boto3</span> <span class="kn">import</span> <span class="n">client</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">email_from</span> <span class="o">=</span> <span class="s">&#39;from@example.com&#39;</span>
-</span><span class='line'><span class="n">email_to</span> <span class="o">=</span> <span class="s">&#39;to@example.com&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Create a workbook</span>
-</span><span class='line'><span class="n">xls</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">()</span>
-</span><span class='line'><span class="c"># Create a sheet</span>
-</span><span class='line'><span class="n">sheet</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">&#39;Sheet name&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="c"># Set styles for headers and dates</span>
-</span><span class='line'><span class="n">header_style</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">easyxf</span><span class="p">(</span><span class="s">&#39;font: bold True;&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">date_format</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">XFStyle</span><span class="p">()</span>
-</span><span class='line'><span class="n">date_format</span><span class="o">.</span><span class="n">num_format_str</span> <span class="o">=</span> <span class="s">&#39;dd/mm/yyyy hh:mm:ss&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Header</span>
-</span><span class='line'><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class='line'>    <span class="s">u&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="s">u&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'><span class="p">]</span>
-</span><span class='line'><span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">labels</span><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Get data for other rows</span>
-</span><span class='line'><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">get_rows_with_content</span><span class="p">():</span>
-</span><span class='line'>    <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Write it down</span>
-</span><span class='line'><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)):</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">row</span><span class="p">])):</span>
-</span><span class='line'>        <span class="n">data</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
-</span><span class='line'>        <span class="c"># If it&#39;s a header</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header_style</span><span class="p">)</span>
-</span><span class='line'>            <span class="k">continue</span>
-</span><span class='line'>        <span class="c"># If it&#39;s a date</span>
-</span><span class='line'>        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">date_format</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Set filename</span>
-</span><span class='line'><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
-</span><span class='line'><span class="n">file_name</span> <span class="o">=</span> <span class="s">&#39;my_file_{}.xls&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Save the file</span>
-</span><span class='line'><span class="n">output</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
-</span><span class='line'><span class="n">xls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Build an email</span>
-</span><span class='line'><span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Hi, here is your file&#39;</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_from</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_to</span>
-</span><span class='line'><span class="c"># What a recipient sees if they don&#39;t use an email reader</span>
-</span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">preamble</span> <span class="o">=</span> <span class="s">&#39;Multipart message.</span><span class="se">\n</span><span class="s">&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># The attachment</span>
-</span><span class='line'><span class="n">part</span> <span class="o">=</span> <span class="n">MIMEApplication</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
-</span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Content-Disposition&#39;</span><span class="p">,</span> <span class="s">&#39;attachment&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">file_name</span><span class="p">)</span>
-</span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;application/vnd.ms-excel; charset=UTF-8&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Connect to Amazon SES</span>
-</span><span class='line'><span class="n">ses</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span>
-</span><span class='line'>    <span class="s">&#39;ses&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">region_name</span><span class="o">=</span><span class="s">&#39;us-east-1&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">],</span>
-</span><span class='line'>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">],</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'><span class="c"># And finally, send the email</span>
-</span><span class='line'><span class="n">ses</span><span class="o">.</span><span class="n">send_raw_email</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">Source</span><span class="o">=</span><span class="n">email_from</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">Destinations</span><span class="o">=</span><span class="p">[</span><span class="n">email_to</span><span class="p">],</span>
-</span><span class='line'>    <span class="n">RawMessage</span><span class="o">=</span><span class="p">{</span>
-</span><span class='line'>        <span class="s">&#39;Data&#39;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">(),</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If we need to create a ZIP archive first:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">zipfile</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">tempfile</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">email</span> <span class="kn">import</span> <span class="n">encoders</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span><span class="p">,</span> <span class="n">MIMEBase</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># ....</span>
-</span><span class='line'><span class="n">output</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
-</span><span class='line'><span class="n">xls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Create zip file</span>
-</span><span class='line'><span class="n">zf</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">&#39;fileprefix&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s">&#39;.zip&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="nb">zip</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zf</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="nb">zip</span><span class="o">.</span><span class="n">writestr</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
-</span><span class='line'><span class="nb">zip</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span class='line'><span class="n">zf</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Hi, here is your file&#39;</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_from</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_to</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># What a recipient sees if they don&#39;t use an email reader</span>
-</span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">preamble</span> <span class="o">=</span> <span class="s">&#39;Multipart message.</span><span class="se">\n</span><span class="s">&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># the attachment</span>
-</span><span class='line'><span class="n">part</span> <span class="o">=</span> <span class="n">MIMEBase</span><span class="p">(</span><span class="s">&#39;application&#39;</span><span class="p">,</span> <span class="s">&#39;zip&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">set_payload</span><span class="p">(</span><span class="n">zf</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</span><span class='line'><span class="n">encoders</span><span class="o">.</span><span class="n">encode_base64</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
-</span><span class='line'><span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span>
-</span><span class='line'>    <span class="s">&#39;Content-Disposition&#39;</span><span class="p">,</span> <span class="s">&#39;attachment&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="n">filename</span><span class="o">=</span><span class="s">u&#39;{}.zip&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">),</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
-</span><span class='line'><span class="c"># ....</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -845,6 +624,10 @@ Todos los personajes del cuento son frutas y verduras.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/05/23/las-ciudades-mas-costosas-para-viajar/">Las ciudades más costosas para viajar</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/05/20/cheatsheet/">Cheatsheet</a>
@@ -882,16 +665,14 @@ Todos los personajes del cuento son frutas y verduras.</p>
         <a href="/blog/2017/02/26/enrique-penalosa-en-rusia/">Enrique Peñalosa en Rusia</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/02/20/vete-de-aqui/">«Vete de aquí, niña»: cómo vivir cuando te ves más joven de lo que eres</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
     
       
     
@@ -1413,7 +1194,7 @@ Todos los personajes del cuento son frutas y verduras.</p>
 
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.72727272727273%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.72727272727273%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.72727272727273%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.72727272727273%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.45454545454545%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.72727272727273%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.72727272727273%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.72727272727273%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.72727272727273%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.9090909090909%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.72727272727273%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 108.18181818181819%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.72727272727273%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.72727272727273%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 108.18181818181819%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.72727272727273%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 110.9090909090909%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 108.18181818181819%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.72727272727273%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.45454545454545%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.45454545454545%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.45454545454545%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 149.0909090909091%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.72727272727273%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.45454545454545%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.72727272727273%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.45454545454545%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.72727272727273%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 108.18181818181819%'>flask</a> <a href='/blog/categories/historia' style='font-size: 105.45454545454545%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.72727272727273%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.72727272727273%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.45454545454545%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.72727272727273%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 127.27272727272728%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.72727272727273%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.72727272727273%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.72727272727273%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 108.18181818181819%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.72727272727273%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.72727272727273%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 108.18181818181819%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.72727272727273%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.72727272727273%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.72727272727273%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.72727272727273%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.72727272727273%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 127.27272727272728%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.45454545454545%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.72727272727273%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.45454545454545%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.72727272727273%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 108.18181818181819%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.72727272727273%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.72727272727273%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.72727272727273%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.72727272727273%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.72727272727273%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.72727272727273%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.45454545454545%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.45454545454545%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.72727272727273%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.72727272727273%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.45454545454545%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.72727272727273%'>uwsgi</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.72727272727273%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.72727272727273%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.72727272727273%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.72727272727273%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.45454545454545%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.72727272727273%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.72727272727273%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.72727272727273%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.72727272727273%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.9090909090909%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.72727272727273%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 108.18181818181819%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.72727272727273%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.72727272727273%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 108.18181818181819%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.72727272727273%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 110.9090909090909%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 108.18181818181819%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.72727272727273%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.45454545454545%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.45454545454545%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.45454545454545%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 149.0909090909091%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.72727272727273%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.45454545454545%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.72727272727273%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.45454545454545%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.72727272727273%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 108.18181818181819%'>flask</a> <a href='/blog/categories/historia' style='font-size: 105.45454545454545%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.72727272727273%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.72727272727273%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.45454545454545%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.72727272727273%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 127.27272727272728%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.72727272727273%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.72727272727273%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.72727272727273%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 108.18181818181819%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.72727272727273%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.72727272727273%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 108.18181818181819%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.72727272727273%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.72727272727273%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.72727272727273%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.72727272727273%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.72727272727273%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 127.27272727272728%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.45454545454545%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.72727272727273%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.45454545454545%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.72727272727273%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 108.18181818181819%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.72727272727273%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.72727272727273%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.72727272727273%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.72727272727273%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.72727272727273%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.72727272727273%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.45454545454545%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.45454545454545%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.72727272727273%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.72727272727273%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.45454545454545%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.72727272727273%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.72727272727273%'>viajes</a> </span>
 </section><section>
   <h1>Stats</h1>
   <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img
