@@ -126,6 +126,12 @@ WHERE now() - pg_stat_activity.query_start > interval '5 minutes';
 SELECT pg_cancel_backend(__pid__);
 ```
 
+#### Joins 
+
+* [Visual Representation of SQL Joins](https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins)
+
+{% img center /images/dev/Visual_SQL_JOINS_V2.png 500 %}
+
 ## Heroku
 
 * [Getting Started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
