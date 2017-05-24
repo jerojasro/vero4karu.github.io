@@ -32,3 +32,16 @@ Moscú: 5.0 USD
 | Varsovia        | 19.1 | Copenhague | 55.7 |
 
 Moscú: 38.0 USD
+
+#### Transporte publico (gasto mensual)
+
+| Ciudad          | USD  | Ciudad     | USD  |
+|-----------------|------|------------|------|
+| Mumbai          | 14.6 | Londres    | 174.0 |
+| Nueva Delhi     | 20.6 | Dublín     | 131.6 |
+| Praga           | 21.7 | Auckland   | 122.9 |
+| Yakarta         | 22.8 | Nueva York | 117.7 |
+| México          | 23.1 | Tokio      | 110.7 |
+| Bangalore       | 27.7 | Amsterdam  | 108.6 |
+
+Moscú: 34.8 USD
