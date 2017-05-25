@@ -9,8 +9,7 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="JSONView Validate and view JSON documents.
-https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc Postman - REST Client https:// &hellip;">
+  <meta name="description" content="python-social-auth configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django. def &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +86,107 @@ https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc Postm
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/">Django: python-social-auth configuration and pipeline to get users information</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-01T18:45:21-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:45 pm</span></time>
+        
+           | <a href="/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/03/01/django-python-social-auth-configuration-and-pipeline-to-get-users-information/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>python-social-auth</code> configuration and pipeline to get users email, full name and save avatar for Facebook, Twitter, LinkedIn and Google in Django.</p>
+
+<div><script src='https://gist.github.com/9899590.js'></script>
+<noscript><pre><code>def update_user_social_data(strategy, *args, **kwargs):
+    &quot;&quot;&quot;Set the name and avatar for a user only if is new.
+    &quot;&quot;&quot;
+    print &#39;update_user_social_data ::&#39;, strategy
+    if not kwargs[&#39;is_new&#39;]:
+        return
+
+    full_name = &#39;&#39;
+    backend = kwargs[&#39;backend&#39;]
+
+    user = kwargs[&#39;user&#39;]
+
+    if (
+        isinstance(backend, GoogleOAuth2)
+        or isinstance(backend, FacebookOAuth2)
+    ):
+        full_name = kwargs[&#39;response&#39;].get(&#39;name&#39;)
+    elif (
+        isinstance(backend, LinkedinOAuth)
+        or isinstance(backend, TwitterOAuth)
+    ):
+        if kwargs.get(&#39;details&#39;):
+            full_name = kwargs[&#39;details&#39;].get(&#39;fullname&#39;)
+
+    user.full_name = full_name
+
+    if isinstance(backend, GoogleOAuth2):
+        if response.get(&#39;image&#39;) and response[&#39;image&#39;].get(&#39;url&#39;):
+            url = response[&#39;image&#39;].get(&#39;url&#39;)
+            ext = url.split(&#39;.&#39;)[-1]
+            user.avatar.save(
+               &#39;{0}.{1}&#39;.format(&#39;avatar&#39;, ext),
+               ContentFile(urllib2.urlopen(url).read()),
+               save=False
+            )
+    elif isinstance(backend, FacebookOAuth2):
+        fbuid = kwargs[&#39;response&#39;][&#39;id&#39;]
+        image_name = &#39;fb_avatar_%s.jpg&#39; % fbuid
+        image_url = &#39;http://graph.facebook.com/%s/picture?type=large&#39; % fbuid
+        image_stream = urlopen(image_url)
+
+        user.avatar.save(
+            image_name,
+            ContentFile(image_stream.read()),
+        )
+    elif isinstance(backend, TwitterOAuth):
+        if kwargs[&#39;response&#39;].get(&#39;profile_image_url&#39;):
+            image_name = &#39;tw_avatar_%s.jpg&#39; % full_name
+            image_url = kwargs[&#39;response&#39;].get[&#39;profile_image_url&#39;]
+            image_stream = urlopen(image_url)
+
+            user.avatar.save(
+                image_name,
+                ContentFile(image_stream.read()),
+            )
+    elif isinstance(backend, LinkedinOAuth):
+        if kwargs[&#39;response&#39;].get(&#39;pictureUrl&#39;):
+            image_name = &#39;linked_avatar_%s.jpg&#39; % full_name
+            image_url = kwargs[&#39;response&#39;].get[&#39;pictureUrl&#39;]
+            image_stream = urlopen(image_url)
+
+            user.avatar.save(
+                image_name,
+                ContentFile(image_stream.read()),
+            )
+    user.save()</code></pre></noscript></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -709,44 +809,6 @@ de sus viajes le consigue al padre <strong>Zhar-Ptitsa</strong> - el pájaro de 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/19/el-escape/">El escape</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-19T08:30:30-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:30 am</span></time>
-        
-           | <a href="/blog/2014/10/19/el-escape/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2014/10/19/el-escape/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>No hay nada peor que vivir esperando algo. Así uno no vive, sino existe, constantemente pensando en cómo será su vida en el futuro en ese mundo cuando se cumplan sus expectativas. En lugar de disfrutar cada momento del día, uno lo rechaza como algo indeseable y temporal y sigue pensando en los sueños sobre esa vida imaginaria, haciendo planes por allá, pensando en qué va a hacer y qué va a sentir en esas circunstancias.</p>
-
-<p>Ya es medianoche y está muy oscuro. Un muchacho está sentado en una cama pequeña mirando frustradamente a la pared frene a sí. Su cuarto es bastante humilde: aparte de la cama hay una mesita, una silla y un estante de libros. Él ha estado encarcelado por allá por tanto tiempo que ya no recuerde cómo era vivir en condiciones diferentes. El mundo exterior le parece hostil y peligroso. En los primeros años de encarcelamiento había una esperanza de que le iban a liberar pronto, pero después de ese sentimiento se disminuyó y se reemplazó con una frustración constante. La única ventana al mundo real eran los libros. Con libros él pudo viajar a países diferentes, conocer a otras personas, tener aventuras, enamorarse y decepcionarse – en una palabra, tener una vida completa. Por varios años eso le ayudaba a olvidar que estaba encerrado, pero después con más y más frecuencia le llegaba la idea que los libros eran un sucedáneo que le sustituía la vida real. Él se sentía como una marioneta, la que manipulaban los autores de libros que leía. Le mostraban sólo las partes que querían y ocultaban el resto, entonces él no pudo apreciar las situaciones y las emociones de los personajes de forma objetiva y tuvo que fiarse de los juicios del autor.</p>
-
-<p>Un día el muchacho se dio cuenta que no era tan difícil escaparse de su cárcel. Después de todos esos años ya le miraban con la vista gorda, porque estaban seguros de que su voluntad había sido reprimida y que simplemente no podría encontrar fuerzas para la fuga. Y en parte era verdad, le inculcaron muy bien la idea de que él ya no puede cuidarse a sí mismo y que el mundo exterior es aún más cruel que su cárcel que ya es familiar.</p>
-
-<p>Y ahora el muchacho está mirando a la pared y dibujando las ensenas de su escape, de su vida futura, está imaginando los personajes que va a encontrar por allá, los lugares a cuales va a viajar y las aventuras que va a tener.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/8">&larr; Older</a>
@@ -762,6 +824,10 @@ de sus viajes le consigue al padre <strong>Zhar-Ptitsa</strong> - el pájaro de 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/05/24/dictado-total/">Dictado total</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/05/23/las-ciudades-mas-costosas-para-viajar/">Las ciudades más costosas para viajar</a>
@@ -799,16 +865,14 @@ de sus viajes le consigue al padre <strong>Zhar-Ptitsa</strong> - el pájaro de 
         <a href="/blog/2017/03/05/como-sacar-la-licencia-de-conduccion-en-rusia/">Cómo sacar la licencia de conducción en Rusia</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/02/26/enrique-penalosa-en-rusia/">Enrique Peñalosa en Rusia</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
     
       
     
@@ -1332,7 +1396,7 @@ de sus viajes le consigue al padre <strong>Zhar-Ptitsa</strong> - el pájaro de 
 
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.72727272727273%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.72727272727273%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.72727272727273%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.72727272727273%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.45454545454545%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.72727272727273%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.72727272727273%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.72727272727273%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.72727272727273%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.9090909090909%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.72727272727273%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 108.18181818181819%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.72727272727273%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.72727272727273%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 108.18181818181819%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.72727272727273%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 110.9090909090909%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 108.18181818181819%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.72727272727273%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.45454545454545%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.45454545454545%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.45454545454545%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 149.0909090909091%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.72727272727273%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.45454545454545%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.72727272727273%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.45454545454545%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.72727272727273%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 108.18181818181819%'>flask</a> <a href='/blog/categories/historia' style='font-size: 105.45454545454545%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.72727272727273%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.72727272727273%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.45454545454545%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.72727272727273%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 127.27272727272728%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.72727272727273%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.72727272727273%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.72727272727273%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 108.18181818181819%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.72727272727273%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.72727272727273%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 108.18181818181819%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.72727272727273%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.72727272727273%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.72727272727273%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.72727272727273%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.72727272727273%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 127.27272727272728%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.45454545454545%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.72727272727273%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.45454545454545%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.72727272727273%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 108.18181818181819%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.72727272727273%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.72727272727273%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.72727272727273%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.72727272727273%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.72727272727273%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.72727272727273%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.45454545454545%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.45454545454545%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.72727272727273%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.72727272727273%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.45454545454545%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.72727272727273%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.72727272727273%'>viajes</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.6086956521739%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.6086956521739%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.6086956521739%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.6086956521739%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.21739130434783%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.6086956521739%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.6086956521739%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.6086956521739%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.6086956521739%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.43478260869566%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.6086956521739%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 107.82608695652173%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.6086956521739%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.6086956521739%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 107.82608695652173%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.6086956521739%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 113.04347826086956%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 107.82608695652173%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.6086956521739%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.21739130434783%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.21739130434783%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.21739130434783%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 146.95652173913044%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.6086956521739%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.21739130434783%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.6086956521739%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.21739130434783%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.6086956521739%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 107.82608695652173%'>flask</a> <a href='/blog/categories/historia' style='font-size: 105.21739130434783%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.6086956521739%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.6086956521739%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.21739130434783%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.6086956521739%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 126.08695652173913%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.6086956521739%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.6086956521739%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.6086956521739%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 107.82608695652173%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.6086956521739%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.6086956521739%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 107.82608695652173%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.6086956521739%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.6086956521739%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.6086956521739%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.6086956521739%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.6086956521739%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 126.08695652173913%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.21739130434783%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.6086956521739%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.21739130434783%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.6086956521739%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 107.82608695652173%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.6086956521739%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.6086956521739%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.6086956521739%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.6086956521739%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.6086956521739%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.6086956521739%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.21739130434783%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.21739130434783%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.6086956521739%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.6086956521739%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.21739130434783%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.6086956521739%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.6086956521739%'>viajes</a> </span>
 </section><section>
   <h1>Stats</h1>
   <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img
