@@ -17,13 +17,16 @@ Para los que están convencidos de que inglés es muy diferente a español.
 
 ### Pretérito indefinido / Past Simple
 
-He **cooked** yesterday. <br>
-Él **cocinó** ayer.
+| V. (*Past Simple*) | V. (*Pretérito indefinido*) |
+|---|---|
+| He **cooked** yesterday. | Él **cocinó** ayer. |
+| She **sent** a letter. | **Mandó** una carta. |
 
 ### Pasado Continuo / Past Continuous (Progressive)
 
-He **was cooking** when the phone rang. <br>
-Él **estaba coninando** cuando el teléfono timbró.
+| was (*Past Simple*) + V. (*Gerund*) | estar (*Pretérito indefinido*) + V. (*Gerund*) |
+|---|---|
+| He **was cooking** when the phone rang. | Él **estaba coninando** cuando el teléfono timbró. |
 
 ### Pretérito pluscuamperfecto / Past Perfect
 
@@ -43,8 +46,10 @@ I **had been studying**   English for 2 years when I went to London. <br>
 
 ### Presente / Present Simple (Indefinite)
 
-I **cook** fish every Friday. <br>
-Yo **cocino** pescado cada viernes.
+| V. (*Present Simple*) | V. (*Presente*) |
+|---|---|
+| I **cook** fish every Friday. | Yo **cocino** pescado cada viernes. |
+| We always **cook** paella on Sundays. | Siempre **cocinamos** paella los domingos. |
 
 ### Estar + gerundio / Present Continuous (Progressive)
 
@@ -53,11 +58,10 @@ I **am cooking** now. <br>
 
 ### Pretérito perfecto (compuesto) / Present Perfect
 
-**He cocinado** muchos platos. <br>
-I **have cooked** many meals.
-
-**He hablado** con Peter. <br>
-I **have talked** to Peter.
+| **have** (*Present Simple*) + V. (*Past Simple*) | **haber** (Presente) + V. (*Pretérito perfecto*) |
+|---|---|
+| I **have cooked** many meals. | **He cocinado** muchos platos. |
+| I **have talked** to Peter. | **He hablado** con Peter. |
 
 ### Pretérito imperfecto / used to + inf.
 
@@ -86,13 +90,12 @@ I **am going to cook**. <br>
 
 ### Futuro Perfecto / Future Perfect
 
-habrá + participio = will have + Past Participle
+habrá + Participio = will have + Past Participle
 
-He **will have fallen** off the bicycle. <br>
-Se **habrá caído** de la bicicleta.
-
-I **will  have eaten** before we meet. <br>
-**Habré comido** antes de reunirnos.
+| **will have** (*Future Simple*) + V. (*Past Participle*) | **habrá** (*Futuro simple*) + V. (*Participio*) |
+|---|---|
+| He **will have fallen** off the bicycle. | Se **habrá caído** de la bicicleta. |
+| I **will  have eaten** before we meet. | **Habré comido** antes de reunirnos. |
 
 ### El futuro perfecto continuo / Future Perfect Continuous
 
