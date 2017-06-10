@@ -4,7 +4,7 @@
   <title><![CDATA[Category: español | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/espanol/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-05-24T20:53:55-05:00</updated>
+  <updated>2017-06-09T23:15:19-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -29,13 +29,43 @@
 
 <h3>Pretérito indefinido / Past Simple</h3>
 
-<p>He <strong>cooked</strong> yesterday. <br>
-Él <strong>cocinó</strong> ayer.</p>
+<table>
+<thead>
+<tr>
+<th> V. (<em>Past Simple</em>) </th>
+<th> V. (<em>Pretérito indefinido</em>) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> He <strong>cooked</strong> yesterday. </td>
+<td> Él <strong>cocinó</strong> ayer. </td>
+</tr>
+<tr>
+<td> She <strong>sent</strong> a letter. </td>
+<td> <strong>Mandó</strong> una carta. </td>
+</tr>
+</tbody>
+</table>
+
 
 <h3>Pasado Continuo / Past Continuous (Progressive)</h3>
 
-<p>He <strong>was cooking</strong> when the phone rang. <br>
-Él <strong>estaba coninando</strong> cuando el teléfono timbró.</p>
+<table>
+<thead>
+<tr>
+<th> was (<em>Past Simple</em>) + V. (<em>Gerund</em>) </th>
+<th> estar (<em>Pretérito indefinido</em>) + V. (<em>Gerund</em>) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> He <strong>was cooking</strong> when the phone rang. </td>
+<td> Él <strong>estaba coninando</strong> cuando el teléfono timbró. </td>
+</tr>
+</tbody>
+</table>
+
 
 <h3>Pretérito pluscuamperfecto / Past Perfect</h3>
 
@@ -54,8 +84,25 @@
 
 <h3>Presente / Present Simple (Indefinite)</h3>
 
-<p>I <strong>cook</strong> fish every Friday. <br>
-Yo <strong>cocino</strong> pescado cada viernes.</p>
+<table>
+<thead>
+<tr>
+<th> V. (<em>Present Simple</em>) </th>
+<th> V. (<em>Presente</em>) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> I <strong>cook</strong> fish every Friday. </td>
+<td> Yo <strong>cocino</strong> pescado cada viernes. </td>
+</tr>
+<tr>
+<td> We always <strong>cook</strong> paella on Sundays. </td>
+<td> Siempre <strong>cocinamos</strong> paella los domingos. </td>
+</tr>
+</tbody>
+</table>
+
 
 <h3>Estar + gerundio / Present Continuous (Progressive)</h3>
 
@@ -64,11 +111,25 @@ Yo <strong>cocino</strong> pescado cada viernes.</p>
 
 <h3>Pretérito perfecto (compuesto) / Present Perfect</h3>
 
-<p><strong>He cocinado</strong> muchos platos. <br>
-I <strong>have cooked</strong> many meals.</p>
+<table>
+<thead>
+<tr>
+<th> <strong>have</strong> (<em>Present Simple</em>) + V. (<em>Past Simple</em>) </th>
+<th> <strong>haber</strong> (Presente) + V. (<em>Pretérito perfecto</em>) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> I <strong>have cooked</strong> many meals. </td>
+<td> <strong>He cocinado</strong> muchos platos. </td>
+</tr>
+<tr>
+<td> I <strong>have talked</strong> to Peter. </td>
+<td> <strong>He hablado</strong> con Peter. </td>
+</tr>
+</tbody>
+</table>
 
-<p><strong>He hablado</strong> con Peter. <br>
-I <strong>have talked</strong> to Peter.</p>
 
 <h3>Pretérito imperfecto / used to + inf.</h3>
 
@@ -97,13 +158,27 @@ Mañana cocinaré.</p>
 
 <h3>Futuro Perfecto / Future Perfect</h3>
 
-<p>habrá + participio = will have + Past Participle</p>
+<p>habrá + Participio = will have + Past Participle</p>
 
-<p>He <strong>will have fallen</strong> off the bicycle. <br>
-Se <strong>habrá caído</strong> de la bicicleta.</p>
+<table>
+<thead>
+<tr>
+<th> <strong>will have</strong> (<em>Future Simple</em>) + V. (<em>Past Participle</em>) </th>
+<th> <strong>habrá</strong> (<em>Futuro simple</em>) + V. (<em>Participio</em>) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> He <strong>will have fallen</strong> off the bicycle. </td>
+<td> Se <strong>habrá caído</strong> de la bicicleta. </td>
+</tr>
+<tr>
+<td> I <strong>will  have eaten</strong> before we meet. </td>
+<td> <strong>Habré comido</strong> antes de reunirnos. </td>
+</tr>
+</tbody>
+</table>
 
-<p>I <strong>will  have eaten</strong> before we meet. <br>
-<strong>Habré comido</strong> antes de reunirnos.</p>
 
 <h3>El futuro perfecto continuo / Future Perfect Continuous</h3>
 

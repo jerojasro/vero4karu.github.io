@@ -9,7 +9,11 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Banda: Rap tecnológico Canción: Pero eres Programador En una vida soy simplemente un peón: no soy ni fuerte, ni ancho de espalda, Pero en la otra soy &hellip;">
+  <meta name="description" content="Some examples on how to convert raw SQL to SQLAlchemy query: Select all 1
+SELECT COUNT(*) 1
+2
+&gt; from sqlalchemy import text, func
+&gt; db.session. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +90,198 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/05/04/sql-to-sqlalchemy-conversions/">SQL to SQLAlchemy conversions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-05-04T21:15:39-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:15 pm</span></time>
+        
+           | <a href="/blog/2016/05/04/sql-to-sqlalchemy-conversions/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/04/sql-to-sqlalchemy-conversions/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some examples on how to convert raw SQL to SQLAlchemy query:</p>
+
+<h3>Select all</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">text</span><span class="p">,</span> <span class="n">func</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Add labels</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">requiests</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;requests&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">requests</span>
+</span><span class='line'><span class="mi">12</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Sum</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="k">as</span> <span class="n">rides</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;books&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">books</span>
+</span><span class='line'><span class="mi">12</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Return a count of rows and distinct</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="p">(</span><span class="n">author_id</span><span class="p">))</span> <span class="k">as</span> <span class="n">authors</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">distinct</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">distinct</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">author_id</span><span class="p">))</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;authors&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Query a date range</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">b</span><span class="p">.</span><span class="n">created_at</span> <span class="o">&gt;</span> <span class="k">current_timestamp</span> <span class="o">-</span> <span class="p">(</span><span class="k">current_timestamp</span> <span class="o">-</span> <span class="nb">interval</span> <span class="s1">&#39;5 hours&#39;</span><span class="p">)::</span><span class="n">time</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">now</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Conditional sum</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(((</span><span class="n">status</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">))::</span><span class="nb">int</span><span class="p">))</span> <span class="k">as</span> <span class="n">books</span> <span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy.sql.expression</span> <span class="kn">import</span> <span class="n">case</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">case</span><span class="p">([(</span><span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">in_</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">else_</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s">&#39;books&#39;</span><span class="p">),</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="c"># ...</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>In</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">Book</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">in_</span><span class="p">((</span>
+</span><span class='line'>        <span class="n">BOOK_CONFIRMED</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">BOOK_FINISHED</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)),</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Other examples</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+</span><span class='line'><span class="n">six_months_ago</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">books</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">author_id</span> <span class="o">==</span> <span class="n">author</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>  <span class="c"># Filter books by author</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">six_months_ago_min</span><span class="p">,</span> <span class="n">today_max</span><span class="p">)</span>  <span class="c"># Get all books created in last six months</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">to_char</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="s">&#39;MM&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -902,281 +1098,6 @@ otras tonterías.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/09/30/pruebas-para-formularios-en-django/">Pruebas para formularios en Django</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-30T04:49:19-05:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:49 am</span></time>
-        
-           | <a href="/blog/2015/09/30/pruebas-para-formularios-en-django/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/09/30/pruebas-para-formularios-en-django/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>En esta entrada de blog quiero compartir la forma en la que escribo ruebas para formularios en un proyecto de Django.</p>
-
-<p>Primero vamos a instalar los paquetes necesarios:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ pip install django-webtest
-</span><span class='line'>$ pip install factory-boy</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://webtest.pythonpaste.org/en/latest/WebTest">WebTest</a> es una biblioteca que nos ayuda a escribir pruebas para las aplicaciones wsgi. Es mucho más poderosa comparando con <code>django.test.Client</code> que viene con Django.</p>
-
-<p>En el archivo de configuración especificamos que vamos a usar la base de datos SQLite para correr nuestras pruebas:</p>
-
-<figure class='code'><figcaption><span>test_settings.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.sqlite3&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Suponemos que queremos escribir una prueba unitaria para una vista que crea un objeto del modelo <code>Event</code>:</p>
-
-<figure class='code'><figcaption><span>models.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">start_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">end_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">people</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="s">&#39;history.Person&#39;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;events&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Aquí está la vista que maneja el formulario para crear un evento:</p>
-
-<figure class='code'><figcaption><span>views.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">EventCreateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">CreateView</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">model</span> <span class="o">=</span> <span class="n">Event</span>
-</span><span class='line'>    <span class="n">form_class</span> <span class="o">=</span> <span class="n">EventForm</span>
-</span><span class='line'>    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s">&#39;history:timeline&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora escribimos nuestra prueba. Vamos a extender la clase <code>django_webtest.WebTest</code>, que en su lugar extiende <code>django.test.TestCase</code> de Django, y crear a un usuario:</p>
-
-<figure class='code'><figcaption><span>tests.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">django_webtest</span> <span class="kn">import</span> <span class="n">WebTest</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">superuser</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_superuser</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">email</span><span class="o">=</span><span class="s">&#39;superuser@example.com&#39;</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">username</span><span class="o">=</span><span class="s">&#39;superuser&#39;</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">password</span><span class="o">=</span><span class="s">&#39;secret&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="p">)</span>
-</span><span class='line'>        <span class="nb">super</span><span class="p">(</span><span class="n">HistoryViewsTests</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">test_create_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="c"># código para nuestra prueba</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora podemos probar que cuando un usuario trata de acceder nuestra página, se redirige al formulario de acceso (el códigos de estado HTTP es 302):</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&#39;history:event_create&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">302</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora vamos a acceder la vista como superusuario:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">superuser</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Como tenemos solo un formulario en la página, podemos obtenerlo por una de tres formas: por el atributo <code>.form</code>: <code>response.form</code>, por índice <code>response.forms[0]</code> o por <code>id</code> del formulario (artibuto HTML)<code>response.forms['event_form']</code>.</p>
-
-<p>Para facilitar la depuración de nuestras pruebas, podemos pedir a mostrar el <code>response</code> en navegador predeterminado:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">response</span><span class="o">.</span><span class="n">showbrowser</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora podemos diligenciar nuestro formulario con los datos de prueba:</p>
-
-<figure class='code'><figcaption><span>tests.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">HistoryViewsTests</span><span class="p">(</span><span class="n">WebTest</span><span class="p">):</span>
-</span><span class='line'>    <span class="c"># ...</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">test_create_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">person1</span><span class="p">,</span> <span class="n">person2</span><span class="p">,</span> <span class="n">person3</span> <span class="o">=</span> <span class="n">PersonFactory</span><span class="o">.</span><span class="n">create_batch</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">superuser</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">form</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">forms</span><span class="p">[</span><span class="s">&#39;event_form&#39;</span><span class="p">]</span>
-</span><span class='line'>        <span class="n">form</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&#39;Título del evento&#39;</span>
-</span><span class='line'>        <span class="n">form</span><span class="p">[</span><span class="s">&#39;start_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-</span><span class='line'>        <span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">person1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">person2</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
-</span><span class='line'>        <span class="n">form</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span><span class="o">.</span><span class="n">follow</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="s">u&#39;Título del evento&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">people</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">person1</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">person2</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">(</span><span class="n">person3</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Para generar objetos del modelo <code>Person</code> usamos la biblioteca <a href="http://factoryboy.readthedocs.org/">Factory Boy</a>:</p>
-
-<figure class='code'><figcaption><span>factories.py </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">Person</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">factory</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">factory.fuzzy</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">PersonFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">django</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">fuzzy</span><span class="o">.</span><span class="n">FuzzyText</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">model</span> <span class="o">=</span> <span class="n">Person</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Así podemos acceder los opciones de una selección o selección múltiple:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='pycon'><span class='line'><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">options</span>
-</span><span class='line'><span class="go">[(u&#39;1&#39;, False, u&#39;GLUZLvZfyjdZEmjNtnAJvsIVljodQjZpzLRDKrqJtYGiDLmSrN&#39;), (u&#39;2&#39;, False, u&#39;vOxDBbmLaUXxJkJzcqYgLQpBieSoLtXJcpHCEPUpYUIzybhsAh&#39;), (u&#39;3&#39;, False, u&#39;tfXSXCTIQICDwVPYvxZGSXgclFTnHbeYSQaMntxJNcgUJjzAwX&#39;)]</span>
-</span><span class='line'><span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">person1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">person2</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
-</span><span class='line'><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">form</span><span class="p">[</span><span class="s">&#39;people&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-</span><span class='line'><span class="go">[u&#39;1&#39;, u&#39;2&#39;]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ahora corremos nuestras pruebas y voilà:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./manage.py test
-</span><span class='line'>Creating test database for alias 'default'...
-</span><span class='line'>..
-</span><span class='line'>----------------------------------------------------------------------
-</span><span class='line'>Ran 1 test in 0.463s
-</span><span class='line'>
-</span><span class='line'>OK
-</span><span class='line'>Destroying test database for alias 'default'...</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Enlaces:</p>
-
-<ul>
-<li><a href="https://github.com/django-webtest/django-webtest">WebTest</a></li>
-<li><a href="http://webtest.pythonpaste.org/en/latest/forms.html">Manejo de formularios con WebTest</a></li>
-<li><a href="http://factoryboy.readthedocs.org/">Factory Boy</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -1192,6 +1113,10 @@ otras tonterías.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/05/30/perv-el-desviado-sexual-en-todos-nosotros/">Perv: El desviado sexual en todos nosotros</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/05/24/dictado-total/">Dictado total</a>
@@ -1229,16 +1154,14 @@ otras tonterías.</p>
         <a href="/blog/2017/03/11/dia-de-la-mujer/">Día de la mujer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/03/05/como-sacar-la-licencia-de-conduccion-en-rusia/">Cómo sacar la licencia de conducción en Rusia</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
     
       
     
@@ -1764,7 +1687,7 @@ otras tonterías.</p>
 
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.6086956521739%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.6086956521739%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.6086956521739%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.6086956521739%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.21739130434783%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.6086956521739%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.6086956521739%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.6086956521739%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.6086956521739%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.43478260869566%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.6086956521739%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 107.82608695652173%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.6086956521739%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.6086956521739%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 107.82608695652173%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.6086956521739%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 113.04347826086956%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 107.82608695652173%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.6086956521739%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.21739130434783%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.21739130434783%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.21739130434783%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 146.95652173913044%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.6086956521739%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.21739130434783%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.6086956521739%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.21739130434783%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.6086956521739%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 107.82608695652173%'>flask</a> <a href='/blog/categories/historia' style='font-size: 105.21739130434783%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.6086956521739%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.6086956521739%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.21739130434783%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.6086956521739%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 126.08695652173913%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.6086956521739%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.6086956521739%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.6086956521739%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 107.82608695652173%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.6086956521739%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.6086956521739%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 107.82608695652173%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.6086956521739%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.6086956521739%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.6086956521739%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.6086956521739%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.6086956521739%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 126.08695652173913%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.21739130434783%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.6086956521739%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.21739130434783%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.6086956521739%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 107.82608695652173%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.6086956521739%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.6086956521739%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.6086956521739%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.6086956521739%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.6086956521739%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.6086956521739%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.21739130434783%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.21739130434783%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.6086956521739%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.6086956521739%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.21739130434783%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.6086956521739%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.6086956521739%'>viajes</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.6086956521739%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.6086956521739%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.6086956521739%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.6086956521739%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.21739130434783%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.6086956521739%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.6086956521739%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.6086956521739%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.6086956521739%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.43478260869566%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.6086956521739%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 107.82608695652173%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.6086956521739%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.6086956521739%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 107.82608695652173%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.6086956521739%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 113.04347826086956%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 107.82608695652173%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.6086956521739%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.21739130434783%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.21739130434783%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.21739130434783%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 146.95652173913044%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.6086956521739%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.21739130434783%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.6086956521739%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.21739130434783%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.6086956521739%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 107.82608695652173%'>flask</a> <a href='/blog/categories/gramatica' style='font-size: 102.6086956521739%'>gramática</a> <a href='/blog/categories/historia' style='font-size: 105.21739130434783%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.6086956521739%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.6086956521739%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.21739130434783%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.6086956521739%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 128.69565217391303%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.6086956521739%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.6086956521739%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.6086956521739%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 107.82608695652173%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.6086956521739%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.6086956521739%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 107.82608695652173%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.6086956521739%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.6086956521739%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.6086956521739%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.6086956521739%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.6086956521739%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 126.08695652173913%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.21739130434783%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.6086956521739%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.21739130434783%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.6086956521739%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 107.82608695652173%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.6086956521739%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.6086956521739%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.6086956521739%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.6086956521739%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.6086956521739%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.6086956521739%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.21739130434783%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.21739130434783%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.6086956521739%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.6086956521739%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.21739130434783%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.6086956521739%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.6086956521739%'>viajes</a> </span>
 </section><section>
   <h1>Stats</h1>
   <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img
