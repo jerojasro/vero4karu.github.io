@@ -4,7 +4,7 @@
   <title><![CDATA[Category: libros | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/libros/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-06-17T16:59:24-05:00</updated>
+  <updated>2017-06-17T17:12:03-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -20,7 +20,7 @@
     <id>http://blog.vero4ka.info/blog/2017/05/30/perv-el-desviado-sexual-en-todos-nosotros</id>
     <content type="html"><![CDATA[<p><a href="https://www.goodreads.com/book/show/17332242-perv">Perv: The Sexual Deviant in All of Us</a> by Jesse Bering</p>
 
-<p><img class="right" src="/images/books/pervs.jpg" width="200"></p>
+<p>{% img right /images/books/pervs.jpg 200 %}</p>
 
 <p>“Aunque no podemos invertir y reprogramar la cognición social de forma que no nos interesen los deseos y el comportamiento de los demás, somos, sin embargo, capaces de decidir cómo usar la información y cómo tratar a otra persona, ue se ha vuelto vulnerable debido al hecho de que tenemos conocimiento sobre ella. Al igual, como pasa en la lucha contra el alcoholismo, el primer paso que tenemos que hacer para superar la hipocresía sexual es reconocer que  somos mojigatos.”</p>
 
@@ -35,7 +35,7 @@
 
 <p>Bering, por supuesto, no se dedica sólo a explicar que la homosexualidad no es un delito. Él va mucho más allá, tratando de demostrar lo siguiente: todo lo que nosotros nos acostumbramos a considerar como desviaciones, perversiones, excentricidades (desde la zoofilia hasta el fetichismo de pies ó odofilia) - todo es natural y causado por diversas exigencias de la naturaleza, la necesidad de supervivencia.</p>
 
-<p><img class="left" src="/images/books/pervs_ru.jpeg" width="200"></p>
+<p>{% img left /images/books/pervs_ru.jpeg 200 %}</p>
 
 <p>Jesse Bering decidió escribir sobre los temas tabú que, al parecer, se tocaron por primera vez en la literatura científica popular. Él, citando investigaciones recientes, arroja luz sobre cómo se forman las preferencias sexuales más inusuales - desde la acrotomofilia (atracción por los amputados) hasta la melissofilia (excitación sexual al mirar a las abejas).  El autor también cuenta acerca de las desviaciones sexuales que no sólo causan molestias a su dueño, pero también pueden ser un peligro para los demás - como la pedofilia.</p>
 
@@ -43,23 +43,43 @@
 
 <p>Al hablar de los pedófilos, Bering plantea una cuestión moral muy importante que tendremos que resolver tarde ó temprano: cuando la neurociencia nos pueda decir que un niño recién nacido es pre-pedófilo, ¿qué hacer en este caso? ¿Hay que hablar con el joven, explicándole la situación y lo que tendrá que enfrentar en su vida para ayudarlo a superar el miedo al rechazo? “Entre dos personas: la que consume pornografía infantil y la que es juzgada por corrupción de menores - la primera lo más probable es que sea pedófila. “Es extraño” - dirían ustedes. ¿El es un seductor de menores y no es un pedófilo? No hay nada extraño: muchos de los seductores cometen sus acciones violentas con los niños, sólo porque no pueden realizar sus deseos con los adultos (opportunistic offenders).” ¿Qué como sociedad tenemos que hacer en este caso?</p>
 
-<p><blockquote><p>“Важнее всего то, что хотя мы не можем повернуть естественный отбор вспять и перепрограммировать социальное познание так, чтобы нас не интересовали желания и поведение других, мы, тем не менее, способны решить, как использовать информацию и относиться к человеку, ставшему беззащитным из-за того, что мы обладаем этим знанием о нем. Как и в случае борьбы с алкоголизмом, первый шаг преодоления сексуального ханжества – это признание того, что мы ханжи.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“Важнее всего то, что хотя мы не можем повернуть естественный отбор вспять и перепрограммировать социальное познание так, чтобы нас не интересовали желания и поведение других, мы, тем не менее, способны решить, как использовать информацию и относиться к человеку, ставшему беззащитным из-за того, что мы обладаем этим знанием о нем. Как и в случае борьбы с алкоголизмом, первый шаг преодоления сексуального ханжества – это признание того, что мы ханжи.”
+{% endblockquote %}</p>
 
-<p><blockquote><p>“Но чтобы увидеть, насколько все запутано, надо рассмотреть тему вблизи. То, что мы увидели в этой главе, не всегда приятно, и все же это лучше, чем соблюдать дистанцию. Общественное обсуждение заканчивается бесконечным перекладыванием вины друг на друга за то, что некоторые из нас не соответствуют эротическим стереотипам. В этом винят людей, которые якобы сами решили стать девиантами, порнографию, дьявола (куда же без него!), плохих родителей, плохие примеры для подражания, культуру, подавляющую сексуальное выражение, а также психиатров, которые продолжают считать представителей сексуальных меньшинств “больными”. Это бесконечный спор. С позиций морали единственное, что имеет значение – это причиняет ли определенная девиация вред. Если нет, а мы тем не менее продолжаем третировать человека, то мы перестаем быть положительными героями и становимся злодеями.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“Но чтобы увидеть, насколько все запутано, надо рассмотреть тему вблизи. То, что мы увидели в этой главе, не всегда приятно, и все же это лучше, чем соблюдать дистанцию. Общественное обсуждение заканчивается бесконечным перекладыванием вины друг на друга за то, что некоторые из нас не соответствуют эротическим стереотипам. В этом винят людей, которые якобы сами решили стать девиантами, порнографию, дьявола (куда же без него!), плохих родителей, плохие примеры для подражания, культуру, подавляющую сексуальное выражение, а также психиатров, которые продолжают считать представителей сексуальных меньшинств “больными”. Это бесконечный спор. С позиций морали единственное, что имеет значение – это причиняет ли определенная девиация вред. Если нет, а мы тем не менее продолжаем третировать человека, то мы перестаем быть положительными героями и становимся злодеями.”
+{% endblockquote %}</p>
 
-<p><blockquote><p>“Гомосексуалов-трансвеститов не бывает: женское белье напоминает о сексе с женщиной. Среди тех, кто носит одежду противоположного пола, есть и люди, принадлежащие к трансгендерному сообществу. Они переживают так называемую гендерную дисфорию, то есть их биологический пол (определяемый хромосомами XX или XY) не совпадает с ощущением собственного пола, что может быть крайне неприятно.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“Гомосексуалов-трансвеститов не бывает: женское белье напоминает о сексе с женщиной. Среди тех, кто носит одежду противоположного пола, есть и люди, принадлежащие к трансгендерному сообществу. Они переживают так называемую гендерную дисфорию, то есть их биологический пол (определяемый хромосомами XX или XY) не совпадает с ощущением собственного пола, что может быть крайне неприятно.”
+{% endblockquote %}</p>
 
-<p><blockquote><p>“Но прямолинейный подход к вопросу эмоциональной зрелости имеет свои недостатки. Хотя это и не поощряется, нет ничего противозаконного в том, чтобы заниматься сексом с взрослыми, чья умственная и эмоциональная зрелость в силу определенных причин осталась на уровне ребенка. Возьмем как крайний пример взрослых с синдромом Дауна. Средний уровень умственного развития у них сравним с уровнем восьмилетнего ребенка, и, тем не менее, заниматься сексом с ними не является преступлением, если человеку больше 18 и он “добровольно согласился” – в отличие от секса с семнадцатилетним подростком с трехзначным ай-кью. Так что если перед нами стоит задача защитить тех, кто может стать жертвой из-за своей интеллектуальной незрелости, стоит принимать в расчет хронологический возраст, а не уровень умственного развития.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“Но прямолинейный подход к вопросу эмоциональной зрелости имеет свои недостатки. Хотя это и не поощряется, нет ничего противозаконного в том, чтобы заниматься сексом с взрослыми, чья умственная и эмоциональная зрелость в силу определенных причин осталась на уровне ребенка. Возьмем как крайний пример взрослых с синдромом Дауна. Средний уровень умственного развития у них сравним с уровнем восьмилетнего ребенка, и, тем не менее, заниматься сексом с ними не является преступлением, если человеку больше 18 и он “добровольно согласился” – в отличие от секса с семнадцатилетним подростком с трехзначным ай-кью. Так что если перед нами стоит задача защитить тех, кто может стать жертвой из-за своей интеллектуальной незрелости, стоит принимать в расчет хронологический возраст, а не уровень умственного развития.”
+{% endblockquote %}</p>
 
-<p><blockquote><p>“Очевидно, большинство родителей без энтузиазма отнесется к тому, чтобы называть своего семилетнего ребенка “пре-педофилом”, но это не значит, что эта концепция не имеет смысла. И если нами движет искреннее желание уменьшить вред, причиняемый детям, попытки эмпирического анализа, подобного описанному, могут оказать большую помощь. Вероятно, в том возрасте, когда станет можно научно определить, что некто – педофил, будет уже невозможно изменить его возрастную эротическую ориентацию. Но если с умом подойти к этому, можно повлиять на ситуацию, просвещая этих молодых людей об испытании, выпавшем на их долю, и об ответственности, которая лежит на их плечах. Подобная рациональная реакция может помочь пре-педофилам справиться со страхом отверженности. Когда они начинают сознавать, что по мере того, как они взрослеют, их продолжают привлекать те, кто гораздо младше, в отсутствие общественной поддержки у них возникают симптомы дистресса. (Недавнее исследование показало, что педофилы и гебефилы начинают узнавать – и волноваться по этому поводу – о природе своих запретных желаний в возрасте шестнадцати-семнадцати лет.) Никому от этого хорошо не становится. Если среди нас будут ходить педофилы-мизантропы и обвинять окружающих в своей тяжелой доле, то это просто вопрос времени – когда именно сработает взрывное устройство. В такой ситуации им будет легче оправдать и рационализировать любой вред, который они могут нанести, и в результате риск для детей увеличится.<br/>И все же, чтобы этот предупредительный подход возымел должный эффект, кроме логики и здравого смысла (а эти элементы в атмосфере паники обычно быстро выходят из строя), необходимо иметь гораздо более глубокое понимание педофилии, чем нынешнее. В отличие от пре-гомосексуалов, которых часто видно невооруженным глазом, у потенциальных педофилов нет столь заметных черт, которые могли бы представлять научный интерес. Не существует эквивалента “хлюпика” среди пре-педофилов. К тому же вам вряд ли удастся найти взрослых открытых педофилов, кроме уже пойманных полицейскими. А если изучать детские воспоминания этих людей, они могут выявить черты не столько пре-педофилии, сколько неумения держать себя в руках.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“Очевидно, большинство родителей без энтузиазма отнесется к тому, чтобы называть своего семилетнего ребенка “пре-педофилом”, но это не значит, что эта концепция не имеет смысла. И если нами движет искреннее желание уменьшить вред, причиняемый детям, попытки эмпирического анализа, подобного описанному, могут оказать большую помощь. Вероятно, в том возрасте, когда станет можно научно определить, что некто – педофил, будет уже невозможно изменить его возрастную эротическую ориентацию. Но если с умом подойти к этому, можно повлиять на ситуацию, просвещая этих молодых людей об испытании, выпавшем на их долю, и об ответственности, которая лежит на их плечах. Подобная рациональная реакция может помочь пре-педофилам справиться со страхом отверженности. Когда они начинают сознавать, что по мере того, как они взрослеют, их продолжают привлекать те, кто гораздо младше, в отсутствие общественной поддержки у них возникают симптомы дистресса. (Недавнее исследование показало, что педофилы и гебефилы начинают узнавать – и волноваться по этому поводу – о природе своих запретных желаний в возрасте шестнадцати-семнадцати лет.) Никому от этого хорошо не становится. Если среди нас будут ходить педофилы-мизантропы и обвинять окружающих в своей тяжелой доле, то это просто вопрос времени – когда именно сработает взрывное устройство. В такой ситуации им будет легче оправдать и рационализировать любой вред, который они могут нанести, и в результате риск для детей увеличится.
+И все же, чтобы этот предупредительный подход возымел должный эффект, кроме логики и здравого смысла (а эти элементы в атмосфере паники обычно быстро выходят из строя), необходимо иметь гораздо более глубокое понимание педофилии, чем нынешнее. В отличие от пре-гомосексуалов, которых часто видно невооруженным глазом, у потенциальных педофилов нет столь заметных черт, которые могли бы представлять научный интерес. Не существует эквивалента “хлюпика” среди пре-педофилов. К тому же вам вряд ли удастся найти взрослых открытых педофилов, кроме уже пойманных полицейскими. А если изучать детские воспоминания этих людей, они могут выявить черты не столько пре-педофилии, сколько неумения держать себя в руках.”
+{% endblockquote %}</p>
 
-<p><blockquote><p>“Из двух категорий преступников – осужденные за владение детской порнографией и осужденные за совращение малолетних – педофилами являются скорее первые. Странно, скажете вы: совратитель малолетних – и не педофил? Ничего странного: многие растлители (согласно некоторым исследованиям, таких более половины) совершают насильственные действия с детьми лишь потому, что не имеют возможности реализовать свои желания с взрослыми (opportunistic offenders). Они используют детей как суррогат. Такие люди нередко бывают садистами, пьяницами либо имеют те или иные поражения лобных долей головного мозга. С клинической точки зрения они не являются “истинными педофилами”, поскольку в лаборатории проявляют большее половое возбуждение, глядя на обнаженных взрослых, чем на детей. Можно сравнить педофилов-приспособленцев с описанными Кинси мужчинами, выросшими на фермах. Те, кому не доставалась женщина, занимались сексом с козой (или другим пасущимся неподалеку млекопитающим). И как последние не являются “истинными” зоофилами, так и первые – не “истинные” педофилы. Они набрасываются на того, кто очень не вовремя попался им на глаза, а в остальном полагаются на свое воображение.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“Из двух категорий преступников – осужденные за владение детской порнографией и осужденные за совращение малолетних – педофилами являются скорее первые. Странно, скажете вы: совратитель малолетних – и не педофил? Ничего странного: многие растлители (согласно некоторым исследованиям, таких более половины) совершают насильственные действия с детьми лишь потому, что не имеют возможности реализовать свои желания с взрослыми (opportunistic offenders). Они используют детей как суррогат. Такие люди нередко бывают садистами, пьяницами либо имеют те или иные поражения лобных долей головного мозга. С клинической точки зрения они не являются “истинными педофилами”, поскольку в лаборатории проявляют большее половое возбуждение, глядя на обнаженных взрослых, чем на детей. Можно сравнить педофилов-приспособленцев с описанными Кинси мужчинами, выросшими на фермах. Те, кому не доставалась женщина, занимались сексом с козой (или другим пасущимся неподалеку млекопитающим). И как последние не являются “истинными” зоофилами, так и первые – не “истинные” педофилы. Они набрасываются на того, кто очень не вовремя попался им на глаза, а в остальном полагаются на свое воображение.”
+{% endblockquote %}</p>
 
-<p><blockquote><p>“Чиверс заключила, что у мужчин, в отличие от женщин, нет заметного различия между сознательным и подсознательным, когда речь идет о половом возбуждении.<br/>С точки зрения эволюции (другие интерпретации мне неизвестны) различия между полами при возбуждении объясняются тем, что женская половая гиперреактивность в далеком прошлом являлась адаптивной. Десятки тысяч лет назад даже после самых непривлекательных сексуальных сигналов мог последовать половой акт, так что хотела того женщина (взаимное согласие) или нет (изнасилование), способность к быстрому физиологическому возбуждению (вагинальному увлажнению) давала возможность застраховаться от травм. “Цена за отсутствие [генитальной] реакции на сексуальные знаки, включая непредпочтительные, – объясняет психолог Саманта Доусон, – для женщин выше, чем для мужчин”. Справедливость этой теории подтверждают также результаты исследований, согласно которым женщины реагируют возбуждением половых органов на изображения сексуального насилия, в то время как те же женщины сознательно объявляют насилие отвратительным, пугающим.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“Чиверс заключила, что у мужчин, в отличие от женщин, нет заметного различия между сознательным и подсознательным, когда речь идет о половом возбуждении.
+С точки зрения эволюции (другие интерпретации мне неизвестны) различия между полами при возбуждении объясняются тем, что женская половая гиперреактивность в далеком прошлом являлась адаптивной. Десятки тысяч лет назад даже после самых непривлекательных сексуальных сигналов мог последовать половой акт, так что хотела того женщина (взаимное согласие) или нет (изнасилование), способность к быстрому физиологическому возбуждению (вагинальному увлажнению) давала возможность застраховаться от травм. “Цена за отсутствие [генитальной] реакции на сексуальные знаки, включая непредпочтительные, – объясняет психолог Саманта Доусон, – для женщин выше, чем для мужчин”. Справедливость этой теории подтверждают также результаты исследований, согласно которым женщины реагируют возбуждением половых органов на изображения сексуального насилия, в то время как те же женщины сознательно объявляют насилие отвратительным, пугающим.”
+{% endblockquote %}</p>
 
-<p><blockquote><p>“В 2001 году психолог Джонатан Хайдт ввел в оборот термин “моральное ошеломление”: это то, что мы испытываем, когда не умеем внятно назвать причины, в силу которых считаем определенные действия аморальными. Эмоционально нагруженные тавтологии (например, “это неправильно, поскольку это отвратительно”, “ты не должен этого делать, поскольку это странно”, “это аморально, поскольку порочно” и, конечно, “это неправильно, поскольку так сказал Бог”), – лишь отзвук общественного неодобрения некоторых преступлений, которые вообще не должны считаться преступлениями, если мы отдадим приоритет вопросу о вреде.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“В 2001 году психолог Джонатан Хайдт ввел в оборот термин “моральное ошеломление”: это то, что мы испытываем, когда не умеем внятно назвать причины, в силу которых считаем определенные действия аморальными. Эмоционально нагруженные тавтологии (например, “это неправильно, поскольку это отвратительно”, “ты не должен этого делать, поскольку это странно”, “это аморально, поскольку порочно” и, конечно, “это неправильно, поскольку так сказал Бог”), – лишь отзвук общественного неодобрения некоторых преступлений, которые вообще не должны считаться преступлениями, если мы отдадим приоритет вопросу о вреде.”
+{% endblockquote %}</p>
 
-<p><blockquote><p>“Подобно тому, как подвергался нападкам Уайльд, первых сексологов ждало негодование пуристов, опасавшихся, что новые веяния в науке приведут к подрыву таких институтов, как брак, религия и семья. Страхи, связанные с эффектом “скользкой дорожки”, существуют уже очень давно, и в глазах моралистов тех дней непредвзятый подход к сексуальности представлял опасность для всего доброго и святого. Ученые-консерваторы считали, что нейтральное описание сексуальных девиантов, представив порок вариантом “естественного” поведения, может раскачать лодку и привести к тому, что “нормальные” люди станут перенимать аморальный образ жизни[7]. Уже то обстоятельство, что половое влечение к лицам собственного пола получает научное название, делало его в глазах моралистов гораздо более реальным и поэтому более грозным. Для них это было воплощением зла.”</p><footer><strong>Perv: The Sexual Deviant in All of Us by Jesse Bering</strong></footer></blockquote></p>
+<p>{% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
+“Подобно тому, как подвергался нападкам Уайльд, первых сексологов ждало негодование пуристов, опасавшихся, что новые веяния в науке приведут к подрыву таких институтов, как брак, религия и семья. Страхи, связанные с эффектом “скользкой дорожки”, существуют уже очень давно, и в глазах моралистов тех дней непредвзятый подход к сексуальности представлял опасность для всего доброго и святого. Ученые-консерваторы считали, что нейтральное описание сексуальных девиантов, представив порок вариантом “естественного” поведения, может раскачать лодку и привести к тому, что “нормальные” люди станут перенимать аморальный образ жизни[7]. Уже то обстоятельство, что половое влечение к лицам собственного пола получает научное название, делало его в глазах моралистов гораздо более реальным и поэтому более грозным. Для них это было воплощением зла.”
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   
@@ -68,38 +88,56 @@
     <link href="http://blog.vero4ka.info/blog/2017/05/14/biografia-de-astrid-lindgren/"/>
     <updated>2017-05-14T20:23:23-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2017/05/14/biografia-de-astrid-lindgren</id>
-    <content type="html"><![CDATA[<p><img class="right" src="/images/books/Jens_Andersen<em>_Astrid_Lindgren.</em>Etot_den_i_est_zhizn.jpeg" width="220"></p>
+    <content type="html"><![CDATA[<p>{% img right /images/books/Jens_Andersen<em>_Astrid_Lindgren.</em>Etot_den_i_est_zhizn.jpeg 220 %}</p>
 
-<p><blockquote><p>Nada puede reemplazar a un libro. El libro da alimento para la imaginación. Los niños de hoy miran películas y televisión, escuchan la radio, leen los comics - todo es interesante, sin duda, pero tiene poco que ver con la imaginación. A solas con un libro, en algún lugar en los rincones de su alma, el niño crea sus propias imágenes y no hay nada como ellas. Estas imágenes son necesarias para una persona. El día en que la imaginación de un niño no sea capaz de crearlas, será el día en que la humanidad se empobrecerá.” Astrid Lindgren.</p><footer><strong>Astrid Lindgren</strong></footer></blockquote></p>
+<p>{% blockquote Astrid Lindgren %}
+Nada puede reemplazar a un libro. El libro da alimento para la imaginación. Los niños de hoy miran películas y televisión, escuchan la radio, leen los comics - todo es interesante, sin duda, pero tiene poco que ver con la imaginación. A solas con un libro, en algún lugar en los rincones de su alma, el niño crea sus propias imágenes y no hay nada como ellas. Estas imágenes son necesarias para una persona. El día en que la imaginación de un niño no sea capaz de crearlas, será el día en que la humanidad se empobrecerá.” Astrid Lindgren.
+{% endblockquote %}</p>
 
-<p><blockquote><p>«Ничто не заменит книгу. Книга дает пищу воображению. Современные дети смотрят фильмы и телевизор, слушают радио, читают комиксы — все это наверняка интересно, но к фантазии имеет мало отношения. Наедине с книгой, где-то в потаенных уголках своей души, ребенок создает собственные образы, и с ними ничто не сравнится. Эти образы необходимы человеку. В день, когда фантазия ребенка больше не сможет их создавать, — в этот день человечество обеднеет».</p><footer><strong>Astrid Lindgren</strong></footer></blockquote></p>
+<p>{% blockquote Astrid Lindgren %}
+«Ничто не заменит книгу. Книга дает пищу воображению. Современные дети смотрят фильмы и телевизор, слушают радио, читают комиксы — все это наверняка интересно, но к фантазии имеет мало отношения. Наедине с книгой, где-то в потаенных уголках своей души, ребенок создает собственные образы, и с ними ничто не сравнится. Эти образы необходимы человеку. В день, когда фантазия ребенка больше не сможет их создавать, — в этот день человечество обеднеет».
+{% endblockquote %}</p>
 
 <!-- more -->
 
 
 <p>Mientras estoy en un trancón de buses, me gusta abrir <a href="https://bookmate.com/">Bookmate</a> (la aplicación que uso para leer libros) y curiosear qué libros son populares en Rusia. Durante uno de esos momentos, hallé una biografía de Astrid Lindgren - la escritora cuyos libros leía durante mi infancia. Todos recordamos los personajes de sus libros - Pippi Medias Largas, Karlsson, Ronja - pero sabemos muy poco de la creadora de ellos. <strong>“Astrid Lindgren. Este día es la vida”</strong> es la primera biografía que salió en los últimos 40 años. Jens Andersen hizo un trabajo colosal al recoger en su libro no solo los diarios, las fotografías, los recuerdos de las personas cercanas a Astrid Lindgren, pero también los periódicos de esa época.</p>
 
-<p><img class="left" src="/images/books/Andersen_JAstrid_Lindgren_Ihr_Leben_165982.jpg" width="200"></p>
+<p>{% img left /images/books/Andersen_JAstrid_Lindgren_Ihr_Leben_165982.jpg 200 %}</p>
 
 <p>Astrid Lindgren nació en 1907 en Suecia en un pueblo llamado Vimmerby. Sus padres eran campesinos, y Astrid era la segunda de cuatro hijos. Ella tenía un hermano mayor y dos hermanas menores. Durante toda su infancia Astrid estaba rodeada de cuentos folclóricos suecos, canciones e historias que escuchaba de su padre y sus amigos. La infancia de Astrid era feliz y puede ser que por eso que ella la recordara con mucho cariño, y al parecer, nunca había olvidado cómo uno se siente cuando es pequeño: “Sí, no es fácil ser un niño. Es difícil, muy difícil. ¿Pero qué significa ser un niño? Esto significa que hay que acostarse a dormir, levantarse, vestirse, comer, cepillarse los dientes y sonarse la nariz cuando es conveniente para los adultos, y no para ti. Esto significa que debes comer pan de centeno, cuando te gustaría comer un panecillo francés; que debes, sin pestañar, correr hacía donde el lechero, cuando ibas a leer los cuentos de Edgar T. Lawrence. Y también eso significa que debes, sin quejarte, escuchar observaciones críticas de cualquier adulto sobre tu apariencia, salud, ropa y perspectivas.”</p>
 
-<p><blockquote><p>«Ничто на свете не способно восполнить ту любовь, что ребенок недополучил до того, как ему исполнилось десять лет».</p><footer><strong>Astrid Lindgren</strong></footer></blockquote></p>
+<p>{% blockquote Astrid Lindgren %}
+«Ничто на свете не способно восполнить ту любовь, что ребенок недополучил до того, как ему исполнилось десять лет».
+{% endblockquote %}</p>
 
 <p>“Los adultos tienen una afición por las comparaciones. Ellos con mucho gusto hablan sobre su infancia. Por lo que me di cuenta, nunca han existido unos niños tan educados y talentosos, como en la época de mis papás.”</p>
 
-<p><blockquote><p>«&hellip;хочу попытаться больше не бояться&hellip; настоящее несчастье — страх перед всем и вся. Поэтому пусть жизнь приносит то, что приносит, а мне хватит сил принять то, что она принесет».</p><footer><strong>Astrid Lindgren</strong></footer></blockquote></p>
+<p>{% blockquote Astrid Lindgren %}
+«&hellip;хочу попытаться больше не бояться&hellip; настоящее несчастье — страх перед всем и вся. Поэтому пусть жизнь приносит то, что приносит, а мне хватит сил принять то, что она принесет».
+{% endblockquote %}</p>
 
 <p>A los 18 años Astrid Lindgren quedó embarazada de un hombre casado - el editor jefe del periódico donde trabajaba ella. El padre de su futuro hijo estaba en la mitad de divorcio con su segunda esposa, pero no quería sacar a la luz pública sus relaciones con Astrid. Para evitar la reprobación de la sociedad y no dejar descubrir su embarazo, Astrid tuvo que viajar a Copenhague, Dinamarca y dar a luz allá a su hijo Lars. Para poder seguir adelante y conseguir trabajo para sostener a su bebé, Astrid decidió escribirle a Eva Anden, la primera mujer-abogada sueca que ayudaba a las mujeres solteras embarazadas. La abogada la aconsejó dejar a Lars en Copenhague con Maris Stevens - la señora danesa que tenía en su casa algo como una pensión donde las madres podían dejar a sus hijos mientras de estabilizaba su situación económica. Lars vivió con su madre adoptiva durante tres años, que para Astrid fue un gran sufrimiento. Puede ser que por eso en los libros que Astrid Lindgren hayan tantos niños desdichados y solitarios.</p>
 
-<p><blockquote><p>«Я просто живу&hellip; настоящее кажется мне таким любопытным, таким содержательным, что у меня как будто не остается времени ужасаться тому, как оно будет дальше. Мне кажется, нужно каждый день проживать как единственный. „Этот день и есть жизнь“. Но иногда я чувствую, что столького еще хочу, и понимаю, что не успею. 〈&hellip;〉 Вообще-то, я считаю, что жизнь — это скоропреходящая нелепица, за которой наступает великая тишина. Но тот короткий срок, что нам отпущен на земле, нужно наполнять содержанием».</p><footer><strong>Astrid Lindgren</strong></footer></blockquote></p>
+<p>{% blockquote Astrid Lindgren %}
+«Я просто живу&hellip; настоящее кажется мне таким любопытным, таким содержательным, что у меня как будто не остается времени ужасаться тому, как оно будет дальше. Мне кажется, нужно каждый день проживать как единственный. „Этот день и есть жизнь“. Но иногда я чувствую, что столького еще хочу, и понимаю, что не успею. 〈&hellip;〉 Вообще-то, я считаю, что жизнь — это скоропреходящая нелепица, за которой наступает великая тишина. Но тот короткий срок, что нам отпущен на земле, нужно наполнять содержанием».
+{% endblockquote %}</p>
 
-<p><blockquote><p>«Для меня фантазия — это не животные и ангелы, тролли и драконы. Фантазия — это способность представить то, чего нет. Но „то, чего нет“ бывает разным: а) то, чего нет, потому что это невозможно (например, Бог, ангелы, говорящие животные), и б) то, чего нет, но все же возможно (например, социалистическая Швеция или демократическая школа)».</p><footer><strong>Свен Вернстрём</strong></footer></blockquote></p>
+<p>{% blockquote Свен Вернстрём %}
+«Для меня фантазия — это не животные и ангелы, тролли и драконы. Фантазия — это способность представить то, чего нет. Но „то, чего нет“ бывает разным: а) то, чего нет, потому что это невозможно (например, Бог, ангелы, говорящие животные), и б) то, чего нет, но все же возможно (например, социалистическая Швеция или демократическая школа)».
+{% endblockquote %}</p>
 
-<p><blockquote><p>«Матс много читает, а когда он читает, то ничегошеньки не слышит, приходится довольно громко кричать, чтобы хоть какой-то реакции добиться. Я сказала ему: „Ты не слышишь, что тебе говорят, когда читаешь“. На что он ответил: „Не слышу, и это, вообще-то, хорошо. Потому что когда мама сердится, я просто сажусь читать“. Как же хорошо, что ребенок умеет приспособиться к die verdammten Erwachsenen»</p><footer><strong>Astrid Lindgren</strong></footer></blockquote></p>
+<p>{% blockquote Astrid Lindgren %}
+«Матс много читает, а когда он читает, то ничегошеньки не слышит, приходится довольно громко кричать, чтобы хоть какой-то реакции добиться. Я сказала ему: „Ты не слышишь, что тебе говорят, когда читаешь“. На что он ответил: „Не слышу, и это, вообще-то, хорошо. Потому что когда мама сердится, я просто сажусь читать“. Как же хорошо, что ребенок умеет приспособиться к die verdammten Erwachsenen»
+{% endblockquote %}</p>
 
-<p><blockquote><p>«На другой день меня постигло Большое Испытание в лице Луизы Хартунг — самого кипучего человека на свете, который часами болтает без умолку. Она спросила, можно ли у меня пожить, я не смогла отказать — она ведь предоставила мне стол и кров в Берлине. Но в итоге у меня уже ум за разум стал заходить — я думала, бедная голова моя взорвется. Вздохнула с облегчением, когда она уехала в аэропорт. 〈&hellip;〉 Легла и уснула, чувствуя, как все немецкие слова испаряются из моей измученной головы».</p><footer><strong>Astrid Lindgren</strong></footer></blockquote></p>
+<p>{% blockquote Astrid Lindgren %}
+«На другой день меня постигло Большое Испытание в лице Луизы Хартунг — самого кипучего человека на свете, который часами болтает без умолку. Она спросила, можно ли у меня пожить, я не смогла отказать — она ведь предоставила мне стол и кров в Берлине. Но в итоге у меня уже ум за разум стал заходить — я думала, бедная голова моя взорвется. Вздохнула с облегчением, когда она уехала в аэропорт. 〈&hellip;〉 Легла и уснула, чувствуя, как все немецкие слова испаряются из моей измученной головы».
+{% endblockquote %}</p>
 
-<p><blockquote><p>Да, ребенком быть нелегко! Трудно, очень трудно. А что это значит — быть ребенком? А это значит, что надо ложиться спать, вставать, одеваться, есть, чистить зубы и сморкаться, когда это удобно взрослым, а не тебе. Это значит, что нужно есть зерновой хлеб, когда хочется французскую булочку, что нужно, не моргнув глазом, мчаться к молочнику, как раз когда ты собрался почитать Эдгара Т. Лоуренса. А еще это значит, что нужно, не жалуясь, выслушивать самые личные замечания от любого взрослого — о своей внешности, здоровье, одежде и перспективах.</p><footer><strong>Astrid Lindgren</strong></footer></blockquote></p>
+<p>{% blockquote Astrid Lindgren %}
+Да, ребенком быть нелегко! Трудно, очень трудно. А что это значит — быть ребенком? А это значит, что надо ложиться спать, вставать, одеваться, есть, чистить зубы и сморкаться, когда это удобно взрослым, а не тебе. Это значит, что нужно есть зерновой хлеб, когда хочется французскую булочку, что нужно, не моргнув глазом, мчаться к молочнику, как раз когда ты собрался почитать Эдгара Т. Лоуренса. А еще это значит, что нужно, не жалуясь, выслушивать самые личные замечания от любого взрослого — о своей внешности, здоровье, одежде и перспективах.
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   
@@ -108,7 +146,7 @@
     <link href="http://blog.vero4ka.info/blog/2017/05/14/damas-en-bicicleta/"/>
     <updated>2017-05-14T19:30:12-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2017/05/14/damas-en-bicicleta</id>
-    <content type="html"><![CDATA[<p><img class="right" src="/images/books/damas_en_bicicleta.jpg" width="300"></p>
+    <content type="html"><![CDATA[<p>{% img right /images/books/damas_en_bicicleta.jpg 300 %}</p>
 
 <p>En abril de este año terminé de leer el libro, escrito por la señorita británica  F.J. Erskine, llamado “Damas en Bicicleta”. El libro fue publicado en el año 1897, y al principio pensé que sería una lectura graciosa y que me daría mucha risa leer acerca de cómo las mujeres veían su relación con la bicicleta en esa época tan lejana. Aunque el final resultó todo lo opuesto e incluso me dió verguenza por mi actitud en ciertas situaciones y por mi conocimiento humilde de la máquina, comparando con lo que sabe la señorita Erskine.</p>
 
@@ -117,7 +155,7 @@
 
 <p>En el primer capítulo la autora trata de convencer a las damas usar la bicicleta. Ella da varios argumentos de por qué una dama claramente necesita pasar a una cicla, en lugar de pagar tanto dinero por un poni, que además, la obligará a comprar un montón de cosas adicionales: un carro, los arneses, el forraje. La “arriesgada amazona del pedal” nos explica, que además de las razones económicas, es importante practicar el ciclismo desde el punto de vista de salud, aunque advierte que hay que tener mucho cuidado durante la fase de aprendizaje, “es decir, la etapa &ldquo;acrobática&rdquo; o de &ldquo;equilibrio"”.</p>
 
-<p><img class="left" src="/images/books/Lady-Cycling-Cover.png" width="300"></p>
+<p>{% img left /images/books/Lady-Cycling-Cover.png 300 %}</p>
 
 <p>Hay todo un capítulo dedicado a la forma en la que una mujer debe vestirse andando en la bicicleta. En este capítulo se nota que la autora es una señorita moderna y práctica: ella sugiere escoger unos vestidos cómodos y aptos para manejar la cicla y se burla de las mujeres que caen víctimas de la moda.</p>
 
@@ -138,7 +176,7 @@
     <id>http://blog.vero4ka.info/blog/2017/04/17/shapka-babushka-kefir</id>
     <content type="html"><![CDATA[<p><a href="https://www.goodreads.com/book/show/24913381-motherhood-russian-style?ac=1&amp;from_search=true">Motherhood, Russian-style</a> por Tanja Maier (2015)</p>
 
-<p><img class="right" src="/images/books/Tanja_Maier_Motherhood_Russianstyle.jpeg" width="200"></p>
+<p>{% img right /images/books/Tanja_Maier_Motherhood_Russianstyle.jpeg 200 %}</p>
 
 <p>Tanja Maier es una señora estadounidense que sabe ruso y que trabajó durante un tiempo en Moscú en los comienzos de la década de los 2000, donde crió a su primer hijo. Tanja pasaba mucho tiempo con sus amigas rusas y en los grupos de las mamás rusas en Facebook, y al final decidió resumir su experiencia de maternidad en un libro, que en la edición rusa se llama “Shapka, babushka, kefir. Cómo crían a los niños en Rusia.”</p>
 
@@ -167,7 +205,7 @@
 
 <p>Por ejemplo, Tanja Maier cuenta que las mamás rusas tratan de pasar con sus niños mucho tiempo al aire libre: al menos dos horas por la mañana y dos horas en la tarde. En parte es porque todo el invierno es muy oscuro, y paseando afuera, los niños reciben su dosis de la vitamina D. Pero también es porque los paseos vigorizan la inmunidad y hacen a los niños más fuertes. Por eso las vueltas en el parque cercano son una parte integral de cada día.</p>
 
-<p><img class="left" src="/images/books/buckwheat.jpg" width="300"></p>
+<p>{% img left /images/books/buckwheat.jpg 300 %}</p>
 
 <p>Otra cosa que sorprende a Tanja Maier, es que las mamás rusas dan comida saludable a sus niños: <a href="https://en.wikipedia.org/wiki/Mors_(drink)">mors</a> (la bebida de arándanos rojos), <a href="https://en.wikipedia.org/wiki/Kefir">kefír</a> (un producto lácteo fermentado), yogur griego, las kashas de <a href="https://es.wikipedia.org/wiki/Fagopyrum_esculentum">alforfón</a> y avena para el desayuno (lo que en Inglaterra se llama “porridge”, o “oatmeal” - en los EEUU, pero que ni se acerca a la kasha rusa), pepinos, zanahorias, albóndigas de calabacín, sopas y muchas <a href="http://blog.vero4ka.info/blog/2014/01/05/mi-tierra-abundante-a-pesar-del-frio/">frutas, bayas y verduras</a>. Las gaseosas, los jugos empaquetados y las papas franceses pueden encontrarse en algunas fiestas, pero no están incluidas en la ración diaria. Aunque también existen muchos prejuicios. Por ejemplo, las mamás rusas nunca dan a sus niños comidas y bebidas frías, temiendo que se les irrite la garganta.</p>
 
@@ -175,7 +213,7 @@
 
 <p>Para concluir, hace falta decir que el libro de Taja Maier no puede servir como un tutorial sobre crianza de los niños al “estilo ruso”. En este sentido no se puede comparar con el libro reconocido de Pamela Druckerman “Los niños franceses no tiran comida al suelo”. Creo que el libro de Tanja Maier sirve más para las mismas mamás rusas que viven con  sus esposos extranjeros para mostrarselo y decir: “Mira, no estoy loca, existen otras mujeres que hacen lo mismo.”</p>
 
-<p><img class="center" src="/images/books/shapka_babushka_kefir.jpg"></p>
+<p>{% img center /images/books/shapka_babushka_kefir.jpg %}</p>
 ]]></content>
   </entry>
   
@@ -206,7 +244,7 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa antigua de los siglos XI - XVII</h3>
 
-<p><img class="right" src="/images/Povest_vremennyh_let.jpeg" width="150" title="&lsquo;Crónica de Néstor&rsquo;" ></p>
+<p>{% img right /images/Povest_vremennyh_let.jpeg 150 &lsquo;Crónica de Néstor&rsquo; %}</p>
 
 <ul>
 <li><a href="https://es.wikipedia.org/wiki/Cantar_de_las_huestes_de_%C3%8Dgor">Cantar de las huestes de Ígor</a> («Слово о полку Игореве»)</li>
@@ -239,7 +277,7 @@ rusos deben leer&hellip;</p>
 <li>«На птичку»</li>
 <li><a href="http://max.mmlc.northwestern.edu/mdenner/Demo/texts/monument_derzhav.htm">&ldquo;Monument&rdquo;</a> «Памятник»</li>
 <li>«Река времён в своём стремленьи»
-<img class="right" src="/images/DenisFonvizin.jpg" width="150" title="&lsquo;Denís Fonvizin&rsquo;" ></li>
+{% img right /images/DenisFonvizin.jpg 150 &lsquo;Denís Fonvizin&rsquo; %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Den%C3%ADs_Fonvizin">Denís Fonvizin</a> (Д. И. Фонвизин)
@@ -282,7 +320,7 @@ rusos deben leer&hellip;</p>
 </li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Kondrati_Ryl%C3%A9yev">Kondrati Ryléyev</a> (К. Ф. Рылеев)</li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Konstant%C3%ADn_B%C3%A1tiushkov">Konstantín Bátiushkov</a> (К. Н. Батюшков)
-<img class="right" src="/images/pushkin.jpg" width="150" title="&lsquo;Aleksandr Pushkin&rsquo;" ></li>
+{% img right /images/pushkin.jpg 150 &lsquo;Aleksandr Pushkin&rsquo; %}</li>
 <li><a href="https://es.wikipedia.org/wiki/Aleksandr_Pushkin">Aleksandr Pushkin</a> (А. С. Пушкин)
 
 <ul>
@@ -295,7 +333,7 @@ rusos deben leer&hellip;</p>
 <li>&ldquo;El caballero de bronce&rdquo; («Медный всадник»)</li>
 <li><a href="https://es.wikipedia.org/wiki/Eugenio_Oneguin">&ldquo;Eugenio Oneguin&rdquo;</a> («Евгений Онегин»)</li>
 <li><a href="https://es.wikipedia.org/wiki/Bor%C3%ADs_Godunov">&ldquo;Borís Godunov&rdquo;</a> («Борис Годуновc)
-<img class="right" src="/images/lermontov.jpg" width="150" title="Mijaíl Lérmontov" ></li>
+{% img right /images/lermontov.jpg 150 Mijaíl Lérmontov %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Mija%C3%ADl_L%C3%A9rmontov">Mijaíl Lérmontov</a> (М. Ю. Лермонтов)
@@ -326,7 +364,7 @@ rusos deben leer&hellip;</p>
 <li>&ldquo;El dineral&rdquo; («Доходное место»)</li>
 <li>&ldquo;La niña de las nieves&rdquo; («Снегурочка»)</li>
 <li>&ldquo;Entre propios anda el juego&rdquo; («Свои люди — сочтёмся»)
-<img class="right" src="/images/turgenev.jpg" width="150" title="Iván Turguénev" ></li>
+{% img right /images/turgenev.jpg 150 Iván Turguénev %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Iv%C3%A1n_Turgu%C3%A9nev">Iván Turguénev</a> (И. С. Тургенев)
@@ -343,7 +381,7 @@ rusos deben leer&hellip;</p>
 <li>Poesía de <a href="https://en.wikipedia.org/wiki/Fyodor_Tyutchev">Fyodor Tyutchev</a> (Ф. И. Тютчев)</li>
 <li>Poesía de <a href="" title="https://en.wikipedia.org/wiki/Afanasy_Fet">Afanasy Fet</a> (А. А. Фет)</li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Apol%C3%B3n_M%C3%A1ikov">Apolón Máikov</a> (А. Н. Майков)
-<img class="right" src="/images/tolstoy.jpg" width="150" title="Leo Tolstoy" ></li>
+{% img right /images/tolstoy.jpg 150 Leo Tolstoy %}</li>
 <li><a href="https://en.wikipedia.org/wiki/Leo_Tolstoy">Leo Tolstoy</a> (Л. Н. Толстой)
 
 <ul>
@@ -413,7 +451,7 @@ rusos deben leer&hellip;</p>
 <li>«Парадокс»</li>
 <li>«Огоньки»</li>
 <li>«В дурном обществе»
-<img class="right" src="/images/chekhov.jpg" width="150" title="Antón Chéjov" ></li>
+{% img right /images/chekhov.jpg 150 Antón Chéjov %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Ant%C3%B3n_Ch%C3%A9jov">Antón Chéjov</a> (А. П. Чехов)
@@ -440,7 +478,7 @@ rusos deben leer&hellip;</p>
 
 <h3>Literatura rusa del siglo XX (la primera mitad)</h3>
 
-<p><img class="right" src="/images/bunin.jpg" width="150" title="Iván Bunin" ></p>
+<p>{% img right /images/bunin.jpg 150 Iván Bunin %}</p>
 
 <ul>
 <li><a href="https://es.wikipedia.org/wiki/Iv%C3%A1n_Bunin">Iván Bunin</a> (И. А. Бунин)
@@ -464,7 +502,7 @@ rusos deben leer&hellip;</p>
 
 <ul>
 <li>«Змей»
-<img class="right" src="/images/zamyatin_my.jpg" width="150" title="Yevgueni Zamiatin" ></li>
+{% img right /images/zamyatin_my.jpg 150 Yevgueni Zamiatin %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Yevgueni_Zamiatin">Yevgueni Zamiatin</a> (Е. И. Замятин)
@@ -553,7 +591,7 @@ rusos deben leer&hellip;</p>
 
 <ul>
 <li>&ldquo;Without a Road&rdquo; («В тупике»)
-<img class="right" src="/images/Dvenadtsat_stulev.jpeg" width="150" title="Las Doce Sillas" ></li>
+{% img right /images/Dvenadtsat_stulev.jpeg 150 Las Doce Sillas %}</li>
 </ul>
 </li>
 <li>Ilf y Petrov (Илья Ильф и Евгений Петров)
@@ -584,7 +622,7 @@ rusos deben leer&hellip;</p>
 <ul>
 <li>&ldquo;Una docena de cuchillos en la parte posterior de la Revolución&rdquo; («Дюжина ножей в спину революции»)</li>
 <li>«Смерть африканского охотника»
-<img class="right" src="/images/Ahmatova.jpg" width="150" title="Anna Ajmátova" ></li>
+{% img right /images/Ahmatova.jpg 150 Anna Ajmátova %}</li>
 </ul>
 </li>
 <li>Poesía de <a href="https://es.wikipedia.org/wiki/Anna_Ajm%C3%A1tova">Anna Ajmátova</a> (Анна Ахматова)</li>
@@ -649,7 +687,7 @@ rusos deben leer&hellip;</p>
 <ul>
 <li>«Ты помнишь, Алёша, дороги Смоленщины…»</li>
 <li>«Жди меня»
-<img class="right" src="/images/don.jpg" width="150" title="El Don apacible" ></li>
+{% img right /images/don.jpg 150 El Don apacible %}</li>
 </ul>
 </li>
 <li><a href="https://es.wikipedia.org/wiki/Mija%C3%ADl_Sh%C3%B3lojov">Mijaíl Shólojov</a> (М. А. Шолохов)
