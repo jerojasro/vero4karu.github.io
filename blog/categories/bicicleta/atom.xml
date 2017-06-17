@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bicicleta | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/bicicleta/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-06-17T16:56:50-05:00</updated>
+  <updated>2017-06-17T16:58:32-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.vero4ka.info/blog/2017/05/14/damas-en-bicicleta/"/>
     <updated>2017-05-14T19:30:12-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2017/05/14/damas-en-bicicleta</id>
-    <content type="html"><![CDATA[<p>{% img right /images/books/damas_en_bicicleta.jpg 300 %}</p>
+    <content type="html"><![CDATA[<p><img class="right" src="/images/books/damas_en_bicicleta.jpg" width="300"></p>
 
 <p>En abril de este año terminé de leer el libro, escrito por la señorita británica  F.J. Erskine, llamado “Damas en Bicicleta”. El libro fue publicado en el año 1897, y al principio pensé que sería una lectura graciosa y que me daría mucha risa leer acerca de cómo las mujeres veían su relación con la bicicleta en esa época tan lejana. Aunque el final resultó todo lo opuesto e incluso me dió verguenza por mi actitud en ciertas situaciones y por mi conocimiento humilde de la máquina, comparando con lo que sabe la señorita Erskine.</p>
 
@@ -27,7 +27,7 @@
 
 <p>En el primer capítulo la autora trata de convencer a las damas usar la bicicleta. Ella da varios argumentos de por qué una dama claramente necesita pasar a una cicla, en lugar de pagar tanto dinero por un poni, que además, la obligará a comprar un montón de cosas adicionales: un carro, los arneses, el forraje. La “arriesgada amazona del pedal” nos explica, que además de las razones económicas, es importante practicar el ciclismo desde el punto de vista de salud, aunque advierte que hay que tener mucho cuidado durante la fase de aprendizaje, “es decir, la etapa &ldquo;acrobática&rdquo; o de &ldquo;equilibrio"”.</p>
 
-<p>{% img left /images/books/Lady-Cycling-Cover.png 300 %}</p>
+<p><img class="left" src="/images/books/Lady-Cycling-Cover.png" width="300"></p>
 
 <p>Hay todo un capítulo dedicado a la forma en la que una mujer debe vestirse andando en la bicicleta. En este capítulo se nota que la autora es una señorita moderna y práctica: ella sugiere escoger unos vestidos cómodos y aptos para manejar la cicla y se burla de las mujeres que caen víctimas de la moda.</p>
 

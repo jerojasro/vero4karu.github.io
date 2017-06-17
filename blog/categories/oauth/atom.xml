@@ -4,7 +4,7 @@
   <title><![CDATA[Category: oauth | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/oauth/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-06-17T16:56:50-05:00</updated>
+  <updated>2017-06-17T16:58:32-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -82,11 +82,10 @@ Running migrations:
 
 <p>Listo, con esto podemos agregar un enlace en alguna de nuestras plantillas:</p>
 
-<p>{% codeblock templates/base.html lang:html %}
-{% raw %}
-<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login con Facebook</a>
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>templates/base.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{% url &#39;social:begin&#39; &#39;facebook&#39; %}?next={{ request.path }}&quot;</span><span class="nt">&gt;</span>Login con Facebook<span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Especificamos que queremos asociar usuarios que ingresan con Facebook a nuestros usuario de Django por medio de correo electrónico:</p>
 
@@ -108,39 +107,45 @@ Running migrations:
 
 <p>Ahora tenemos que crear la aplicación de Facebook desde la página <a href="https://developers.facebook.com">developers.facebook.com</a>. Luego agregamos el servicio de &ldquo;Facebook Login&rdquo;:</p>
 
-<p>{% img center /images/django/fb-app-login.png %}</p>
+<p><img class="center" src="/images/django/fb-app-login.png"></p>
 
 <p>Copiamos las llaves de la aplicación</p>
 
-<p>{% img center /images/django/fb-app-key.png %}</p>
+<p><img class="center" src="/images/django/fb-app-key.png"></p>
 
 <p>y los pegamos en el archivo de configuración de Django:</p>
 
-<p>{% codeblock settings.py lang:python %}
-SOCIAL_AUTH_FACEBOOK_KEY = &lsquo;app-id&rsquo;
-SOCIAL_AUTH_FACEBOOK_SECRET = &lsquo;app-secret&rsquo;
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>settings.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">SOCIAL_AUTH_FACEBOOK_KEY</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">app</span><span class="o">-</span><span class="nb">id</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span><span class='line'><span class="n">SOCIAL_AUTH_FACEBOOK_SECRET</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">app</span><span class="o">-</span><span class="n">secret</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Después de hacer los pasos anteriores, al momento de hacer click en &ldquo;Login con Facebook&rdquo;, la aplicación nos va a redirigir a la siguiente página:</p>
 
-<p>{% img center /images/django/fb-login-1.png %}</p>
+<p><img class="center" src="/images/django/fb-login-1.png"></p>
 
 <p>Pero nosotros, al momento de login queremos obtener correo electrónico de nuestro usuario, por eso definimos el scope:</p>
 
-<p>{% codeblock settings.py lang:python %}
-SOCIAL_AUTH_FACEBOOK_IGNORE_DEFAULT_SCOPE = True
-SOCIAL_AUTH_FACEBOOK_SCOPE = [
-    &lsquo;email&rsquo;
-]
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>settings.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">SOCIAL_AUTH_FACEBOOK_IGNORE_DEFAULT_SCOPE</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'><span class="n">SOCIAL_AUTH_FACEBOOK_SCOPE</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">email</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span><span class='line'><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Y ahora sí, la aplicación pide acceso al correo electrónico:</p>
 
-<p>{% img center /images/django/fb-login-2.png %}</p>
+<p><img class="center" src="/images/django/fb-login-2.png"></p>
 
 <p>Entramos en el administrador de Django y podemos ver que se creó un registro asociando al usuario que ya existía en la base de datos a su cuenta de Facebook:</p>
 
-<p>{% img center /images/django/fb-app-django-admin.png %}</p>
+<p><img class="center" src="/images/django/fb-app-django-admin.png"></p>
 
 <p>Enlaces:</p>
 
