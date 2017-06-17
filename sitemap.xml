@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.vero4ka.info/blog/2017/06/17/te-kusmi/</loc>
+<lastmod>2017-06-17T17:22:22-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/2017/06/11/un-error/</loc>
+<lastmod>2017-06-11T17:21:06-05:00</lastmod>
+</url>
+<url>
 <loc>http://blog.vero4ka.info/blog/2017/05/30/perv-el-desviado-sexual-en-todos-nosotros/</loc>
 <lastmod>2017-05-30T19:20:45-05:00</lastmod>
 </url>
@@ -650,9 +658,6 @@
 <loc>http://blog.vero4ka.info/blog/categories/resistencia/</loc>
 </url>
 <url>
-<loc>http://blog.vero4ka.info/blog/categories/colombias/</loc>
-</url>
-<url>
 <loc>http://blog.vero4ka.info/blog/categories/oauth/</loc>
 </url>
 <url>
@@ -660,6 +665,9 @@
 </url>
 <url>
 <loc>http://blog.vero4ka.info/blog/categories/viajes/</loc>
+</url>
+<url>
+<loc>http://blog.vero4ka.info/blog/categories/te/</loc>
 </url>
 <url>
 <loc>http://blog.vero4ka.info/posts/2/</loc>

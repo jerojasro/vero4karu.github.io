@@ -9,9 +9,23 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="El bus lleno de Buratinos* va a toda velocidad. En algún momento el conductor
-frena duro, y escucha las voces enojadas del los pasajeros:
-“¡Ey, señor &hellip;">
+  <meta name="description" content="Tenemos dos tablas con esquemas iguales dos en bases de datos diferentes: production y history. settings.py1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +102,270 @@ frena duro, y escucha las voces enojadas del los pasajeros:
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/">Múltiples bases de datos en Django</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-31T11:15:01-05:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>11:15 am</span></time>
+        
+           | <a href="/blog/2016/08/31/multiples-bases-de-datos-en-django/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/08/31/multiples-bases-de-datos-en-django/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tenemos dos tablas con esquemas iguales dos en bases de datos diferentes: <code>production</code> y <code>history</code>.</p>
+
+<figure class='code'><figcaption><span>settings.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">DATABASE_ROUTERS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;routers.HistoricRouter&#39;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;production&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;USER&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="s">&#39;historical&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;history&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;USER&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s">&#39;secret&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Escribimos un router para definir a qué base de datos hacer la petición:</p>
+
+<figure class='code'><figcaption><span>routers.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">HistoricRouter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">    A router to control all database operations on models in the historic application.</span>
+</span><span class='line'><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">db_for_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        Attempts to read historic models go to historical.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="s">&#39;historical&#39;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">db_for_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        Attempts to write historic models go to historical.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="s">&#39;historical&#39;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">allow_relation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        Allow relations if a model in the historic app is involved.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">obj1</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span> <span class="ow">or</span> \
+</span><span class='line'>            <span class="n">obj2</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">allow_migrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">app_label</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        Make sure the historic app only appears in the &#39;historical&#39; database.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">app_label</span> <span class="o">==</span> <span class="s">&#39;historic&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">db</span> <span class="o">==</span> <span class="s">&#39;historical&#39;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">None</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>En nuestros modelos especificamos <code>app_label</code> para referirnos a la base de datos distinta a <code>default</code>:</p>
+
+<figure class='code'><figcaption><span>models.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;authors&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">AbstractBook</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;books.Author&#39;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;books&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">unmanaged</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">Book</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;books&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">HistoricBook</span><span class="p">(</span><span class="n">Book</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">unmanaged</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="n">db_table</span> <span class="o">=</span> <span class="s">&#39;books&#39;</span>
+</span><span class='line'>        <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;historic&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>La petición <code>Book.objects.all()</code> va a traer libros de la base de datos <code>production</code> y <code>HistoricBook.objects.all()</code> - de la base de datos <code>history</code>.</p>
+
+<p>Modificando <code>allow_relation</code> en nuestro router, podemos permitir llaves foráneas entre modelos de diferentes bases de datos:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">allow_relation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="bp">True</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Enlaces:</p>
+
+<ul>
+<li><a href="https://docs.djangoproject.com/en/1.10/topics/db/multi-db/#cross-database-relations">Django: Cross-database relations</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Cómo hacer integración con Tpaga API usando Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-18T08:53:45-05:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:53 am</span></time>
+        
+           | <a href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://tpaga.co/">Tpaga</a> es una plataforma que permite recibir pagos electrónicos. Tiene una estructura sencilla para entender y fácil para usar.</p>
+
+<p>Para obtener nuestros claves de acceso y conectarnos con el API de Tpaga, creamos una cuenta en el &ldquo;sandbox&rdquo; de la plataforma: <a href="https://sandbox.tpaga.co/">sandbox.tpaga.co</a>.</p>
+
+<p><img src="/images/tpaga_sandbox_login.png"></p>
+
+<p>Al registrarnos podemos ver que ahora tenemos dos claves que podemos usar para la autenticación: <strong>Private Api Key</strong> y <strong>Public Api Key</strong>:</p>
+
+<p><img src="/images/tpaga_sandbox_dashboard.png"></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/18/como-hacer-integracion-con-tpaga-api-usando-python/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -812,207 +1090,6 @@ agradables, de las cuales nos estamos privando. Puede ser que para eso.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo obtener el nombre del día de la semana en Python</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-05-26T09:02:36-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:02 am</span></time>
-        
-           | <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">calendar</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Monday&#39;</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Tuesday&#39;</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Wednesday&#39;</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Thursday&#39;</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Friday&#39;</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Saturday&#39;</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Sunday&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Si para nosotros la semana empieza el Domindo, podemos escribirlo de la siguiente forma:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">sunday</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="n">sunday</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">%</span> <span class="mi">7</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Sunday&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">tuesday</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="n">tuesday</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">%</span> <span class="mi">7</span><span class="p">]</span>
-</span><span class='line'><span class="s">&#39;Tuesday&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/05/18/espias-rusos/">Espías rusos</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-05-18T14:56:49-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:56 pm</span></time>
-        
-           | <a href="/blog/2016/05/18/espias-rusos/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/18/espias-rusos/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img class="center" src="/images/espias.jpg" title="'Espías rusos'" ></p>
-
-<p>La pareja de los agentes de los servicios de inteligencia nacidos en Rusia –
-<strong>Andrey Bezrukov</strong> y <strong>Elena Vavilova</strong> – llegaron a Canada para cumplir
-su misión bajo los nombres de <strong>Donald Heathfield</strong> y <strong>Tracey Foley</strong>
-<a href="https://en.wikipedia.org/wiki/Illegals_Program">[1]</a>, y empezaron a construir
-su nueva vida. Posteriormente ellos tuvieron dos hijos:
-<strong>Tim y Alex Foley</strong>, a quienes recientemente les entrevistó el periodista de
-Guardian Shaun Walker <a href="http://www.theguardian.com/world/2016/may/07/discovered-our-parents-were-russian-spies-tim-alex-foley">[2]</a>.
-Los muchachos le contaron acerca de su vida después de la revelación de sus padres
-y su trauma psíquico: no era fácil de aceptar a los 20 años de edad que toda
-la vida de ellos era una mentira…</p>
-
-<p>En el año 2010 arrestaron a diez residentes de EEUU bajo la acusación de espionaje.
-Su actividad se reveló a causa de la traición de uno de los empleados del
-Servicio de Inteligencia Exterior de la Federación de Rusia
-<a href="https://es.wikipedia.org/wiki/Servicio_de_Inteligencia_Extranjera">[3]</a>.
-A Bezrukov y Vavilova les arrestaron en su casa en Cambridge
-(en el estado de Massachusetts). Todo era como en una película:
-un grupo armado irrumpió violentamente en casa con el grito “¡FBI!”,
-agarraron a los espías y los llevaron dentro de unos carros negros.
-A los niños les dijeron que tenían un cuarto de hotel reservado para ellos,
-porque iban a efectuar un registro en la casa. Los policías llevaron absolutamente
-todo, incluyendo las fotos y la consola de videojuegos. Todas las cuentas
-bancarias de Donald y Tracey fueron bloqueadas, por eso los muchachos se quedaron
-sólo con el efectivo que tenían en sus bolsillos en ese momento
-<a href="https://slon.ru/posts/67822">[4]</a>.</p>
-
-<p>Al principio, a los muchachos les parecía que todo eso era un error,
-y que los viajes frecuentes de negocios de su padre hicieron desconfiar
-a la policía. Pero resultó que no hubo ningún error y sus padres de verdad eran
-unos espías rusos.</p>
-
-<blockquote><p>Según Tim y Alex, ellos tenían una vida normal, incluso un poco aburrida…</p></blockquote>
-
-<p>Tracey Foley dio a luz a su primer hijo Tim en 1990. Después de un año del
-nacimiento de Alex la familia se mudó a Paris, donde un tiempo después Donald
-obtuvo su MBA. Al volver de Europa, él entró a la Escuela de Gobierno
-John F. Kennedy de la Universidad de Harvard, y empezó a trabajar en una consultaría.
-Tracey era un ama de casa, pero cuando los niños crecieron, ella empezó a trabajar
-como agente inmobiliario. Según Tim y Alex, ellos tenían una vida normal,
-incluso un poco aburrida: en Boston, a donde su familia se mudó en 1999,
-ellos iban al colegio, salían con sus papás a vacaciones y a veces recibían
-regalos de sus abuelos de Canadá. Los muchachos vieron a sus abuelos sólo
-una vez en su vida, pero cuando eran todavía muy pequeños. Probablemente por eso
-ellos no se dieron cuenta de que los abuelos no sabían hablar inglés.
-Las fotos con la nieve canadiense en el fondo, que les enviaron,
-fueron hechos en Siberia, de donde en realidad era su padre.
-En 2008 la familia recibió la ciudadanía estadounidense, pero Tim y Alex
-siempre se sentían como ciudadanos canadienses y estaban orgullosos de su patria.</p>
-
-<p>En el verano 2010, cuando arrestaron a sus papás, a los muchachos les dieron
-pasaportes rusos y ellos tuvieron que irse a Moscú.
-Tim se convirtió en Timoféy y Alex – en Alexander Vavilov. Como decía Tim,
-se les dificultaba mucho pronunciar sus nuevos nombres.</p>
-
-<iframe style="text: align-center;" width="560" height="315" src="https://www.youtube.com/embed/Lz0eQtTGh84" frameborder="0" allowfullscreen></iframe>
-
-
-<p>Entrevista con Andrey Bezrukov publicada en la revista Experto
-<a href="http://expert.ru/russian_reporter/2012/40/pochemu-shpionyi-pohozhi-na-uchenyih/">[5]</a>:</p>
-
-<p><em>– Dicen que durante todo el tiempo de su servicio usted no dijo ni una palabra en ruso. ¿Es verdad?</em></p>
-
-<p>– Sí, es verdad. Es la particularidad del trabajo ilegal. Tú no puedes hablar
-tu lengua materna incluso en la casa, todo está bajo un autodominio.
-Aunque después de unos años de trabajo eso se vuelve algo natural.
-Incluso tienes sueños en otros idiomas.</p>
-
-<p><em>– ¿Su esposa también trabajaba con usted?</em></p>
-
-<p>– Sí, mi esposa Elena es una espía profesional y estuvimos trabajando
-juntos hasta el último día.</p>
-
-<p><em>– Dinero, el negocio, que hay que mantener – es toda una vida completa en el extranjero…</em></p>
-
-<p>– Sí, por supuesto. En general , al verlo desde un punto de vista profesional,
-cuando una persona se encuentra en el exterior en una situación como la mía,
-se tiene que construir una nueva vida: resolver la situación económica y familiar.
-Prácticamente, esa persona empieza su vida desde ceros. Se puede decir,
-que te sientes como una persona diferente. Nosotros con mi esposa nos fuimos
-a la comisión de servicio sólo con una maleta. Tuvimos que graduarnos de nuevo
-de universidad, buscar trabajo, crear el negocio y no solo uno.
-Y todo sin ninguna ayuda y con los recursos mínimos – tú entiendas
-la situación en la que estaba nuestro país en esa época. Y a pesar de eso,
-teníamos que cumplir nuestra misión – realizar el trabajo que nos dieron.</p>
-
-<p><em>La imagen tomada de <a href="http://www.nytimes.com/2010/07/01/us/01cambridge.html?_r=0">nytimes.com</a></em></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -1028,6 +1105,14 @@ teníamos que cumplir nuestra misión – realizar el trabajo que nos dieron.</p
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/06/17/te-kusmi/">Té KUSMI</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/06/11/un-error/">Un error</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/05/30/perv-el-desviado-sexual-en-todos-nosotros/">Perv: El desviado sexual en todos nosotros</a>
@@ -1061,20 +1146,16 @@ teníamos que cumplir nuestra misión – realizar el trabajo que nos dieron.</p
         <a href="/blog/2017/04/03/no-es-dimon-para-ustedes/">Él para ustedes no es Dimón</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/03/20/login-con-facebook-en-django/">Login con Facebook en Django</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/03/11/dia-de-la-mujer/">Día de la mujer</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
+    
+      
     
       
     
@@ -1602,7 +1683,7 @@ teníamos que cumplir nuestra misión – realizar el trabajo que nos dieron.</p
 
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.6086956521739%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.6086956521739%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.6086956521739%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.6086956521739%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.21739130434783%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.6086956521739%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.6086956521739%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.6086956521739%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.6086956521739%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.43478260869566%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.6086956521739%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 107.82608695652173%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.6086956521739%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.6086956521739%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 107.82608695652173%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.6086956521739%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 113.04347826086956%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 107.82608695652173%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.6086956521739%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.21739130434783%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.21739130434783%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.21739130434783%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 146.95652173913044%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.6086956521739%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.21739130434783%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.6086956521739%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.21739130434783%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.6086956521739%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 107.82608695652173%'>flask</a> <a href='/blog/categories/gramatica' style='font-size: 102.6086956521739%'>gramática</a> <a href='/blog/categories/historia' style='font-size: 105.21739130434783%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.6086956521739%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.6086956521739%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.21739130434783%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.6086956521739%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 128.69565217391303%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.6086956521739%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.6086956521739%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.6086956521739%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 107.82608695652173%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.6086956521739%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.6086956521739%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 107.82608695652173%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.6086956521739%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.6086956521739%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.6086956521739%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.6086956521739%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.6086956521739%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 126.08695652173913%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.21739130434783%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.6086956521739%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.21739130434783%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.6086956521739%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 107.82608695652173%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.6086956521739%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.6086956521739%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.6086956521739%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.6086956521739%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.6086956521739%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.6086956521739%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.21739130434783%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.21739130434783%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.6086956521739%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.6086956521739%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.21739130434783%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.6086956521739%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.6086956521739%'>viajes</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.5%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.5%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.5%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.5%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.0%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.5%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.5%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.5%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.5%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 112.5%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.5%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 107.5%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.5%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.5%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 107.5%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.5%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 112.5%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 110.0%'>colombia</a> <a href='/blog/categories/comida' style='font-size: 105.0%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.0%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.0%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 145.0%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.5%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.0%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.5%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.0%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.5%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 107.5%'>flask</a> <a href='/blog/categories/gramatica' style='font-size: 102.5%'>gramática</a> <a href='/blog/categories/historia' style='font-size: 105.0%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.5%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.5%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.0%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.5%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 127.5%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.5%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.5%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.5%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 107.5%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.5%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.5%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 107.5%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.5%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.5%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.5%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.5%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.5%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 125.0%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.0%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.5%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.0%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.5%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 107.5%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.5%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.5%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.5%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.5%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.5%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.5%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.0%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.0%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.5%'>trenes</a> <a href='/blog/categories/te' style='font-size: 102.5%'>té</a> <a href='/blog/categories/unittests' style='font-size: 102.5%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.0%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.5%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.5%'>viajes</a> </span>
 </section><section>
   <h1>Stats</h1>
   <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img

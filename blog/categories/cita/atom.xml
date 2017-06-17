@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cita | Cansada de ser feliz]]></title>
   <link href="http://blog.vero4ka.info/blog/categories/cita/atom.xml" rel="self"/>
   <link href="http://blog.vero4ka.info/"/>
-  <updated>2017-06-09T23:15:19-05:00</updated>
+  <updated>2017-06-17T16:56:50-05:00</updated>
   <id>http://blog.vero4ka.info/</id>
   <author>
     <name><![CDATA[vero4ka]]></name>
@@ -18,7 +18,11 @@
     <link href="http://blog.vero4ka.info/blog/2016/12/18/think-like-i-do/"/>
     <updated>2016-12-18T22:09:26-05:00</updated>
     <id>http://blog.vero4ka.info/blog/2016/12/18/think-like-i-do</id>
-    <content type="html"><![CDATA[<p><blockquote><p>A she-wolf teaches her cubs: &ldquo;Bite like I do,&rdquo; and that&rsquo;s enough.<br/>A she-rabbit teaches her offspring: &ldquo;Run like I do,&rdquo; and that&rsquo;s also enough.<br/>But when a man teaches his children: &ldquo;Think like I do,&rdquo; and that&rsquo;s a crime.</p><footer><strong>Strugatsky Brothers</strong></footer></blockquote></p>
+    <content type="html"><![CDATA[<p>{% blockquote Strugatsky Brothers %}
+A she-wolf teaches her cubs: &ldquo;Bite like I do,&rdquo; and that&rsquo;s enough.
+A she-rabbit teaches her offspring: &ldquo;Run like I do,&rdquo; and that&rsquo;s also enough.
+But when a man teaches his children: &ldquo;Think like I do,&rdquo; and that&rsquo;s a crime.
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   

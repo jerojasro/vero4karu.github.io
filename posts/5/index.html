@@ -9,11 +9,27 @@
   <meta name="author" content="vero4ka">
 
   
-  <meta name="description" content="Some examples on how to convert raw SQL to SQLAlchemy query: Select all 1
-SELECT COUNT(*) 1
+  <meta name="description" content="1
 2
-&gt; from sqlalchemy import text, func
-&gt; db.session. &hellip;">
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+&gt; import calendar
+&gt; calendar.day_name[0]
+&#39;Monday&#39;
+&gt; calendar.day_name[1]
+&#39;Tuesday&#39;
+&gt; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +106,207 @@ SELECT COUNT(*) 1
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Cómo obtener el nombre del día de la semana en Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-05-26T09:02:36-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:02 am</span></time>
+        
+           | <a href="/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/26/como-obtener-el-nombre-del-dia-de-la-semana-en-python/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">calendar</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Monday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Tuesday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Wednesday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Thursday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Friday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Saturday&#39;</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Sunday&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Si para nosotros la semana empieza el Domindo, podemos escribirlo de la siguiente forma:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;</span> <span class="n">sunday</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="n">sunday</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">%</span> <span class="mi">7</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Sunday&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">tuesday</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="n">tuesday</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">%</span> <span class="mi">7</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Tuesday&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/05/18/espias-rusos/">Espías rusos</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-05-18T14:56:49-05:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:56 pm</span></time>
+        
+           | <a href="/blog/2016/05/18/espias-rusos/#disqus_thread"
+             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/05/18/espias-rusos/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/espias.jpg" title="'Espías rusos'" ></p>
+
+<p>La pareja de los agentes de los servicios de inteligencia nacidos en Rusia –
+<strong>Andrey Bezrukov</strong> y <strong>Elena Vavilova</strong> – llegaron a Canada para cumplir
+su misión bajo los nombres de <strong>Donald Heathfield</strong> y <strong>Tracey Foley</strong>
+<a href="https://en.wikipedia.org/wiki/Illegals_Program">[1]</a>, y empezaron a construir
+su nueva vida. Posteriormente ellos tuvieron dos hijos:
+<strong>Tim y Alex Foley</strong>, a quienes recientemente les entrevistó el periodista de
+Guardian Shaun Walker <a href="http://www.theguardian.com/world/2016/may/07/discovered-our-parents-were-russian-spies-tim-alex-foley">[2]</a>.
+Los muchachos le contaron acerca de su vida después de la revelación de sus padres
+y su trauma psíquico: no era fácil de aceptar a los 20 años de edad que toda
+la vida de ellos era una mentira…</p>
+
+<p>En el año 2010 arrestaron a diez residentes de EEUU bajo la acusación de espionaje.
+Su actividad se reveló a causa de la traición de uno de los empleados del
+Servicio de Inteligencia Exterior de la Federación de Rusia
+<a href="https://es.wikipedia.org/wiki/Servicio_de_Inteligencia_Extranjera">[3]</a>.
+A Bezrukov y Vavilova les arrestaron en su casa en Cambridge
+(en el estado de Massachusetts). Todo era como en una película:
+un grupo armado irrumpió violentamente en casa con el grito “¡FBI!”,
+agarraron a los espías y los llevaron dentro de unos carros negros.
+A los niños les dijeron que tenían un cuarto de hotel reservado para ellos,
+porque iban a efectuar un registro en la casa. Los policías llevaron absolutamente
+todo, incluyendo las fotos y la consola de videojuegos. Todas las cuentas
+bancarias de Donald y Tracey fueron bloqueadas, por eso los muchachos se quedaron
+sólo con el efectivo que tenían en sus bolsillos en ese momento
+<a href="https://slon.ru/posts/67822">[4]</a>.</p>
+
+<p>Al principio, a los muchachos les parecía que todo eso era un error,
+y que los viajes frecuentes de negocios de su padre hicieron desconfiar
+a la policía. Pero resultó que no hubo ningún error y sus padres de verdad eran
+unos espías rusos.</p>
+
+<blockquote><p>Según Tim y Alex, ellos tenían una vida normal, incluso un poco aburrida…</p></blockquote>
+
+<p>Tracey Foley dio a luz a su primer hijo Tim en 1990. Después de un año del
+nacimiento de Alex la familia se mudó a Paris, donde un tiempo después Donald
+obtuvo su MBA. Al volver de Europa, él entró a la Escuela de Gobierno
+John F. Kennedy de la Universidad de Harvard, y empezó a trabajar en una consultaría.
+Tracey era un ama de casa, pero cuando los niños crecieron, ella empezó a trabajar
+como agente inmobiliario. Según Tim y Alex, ellos tenían una vida normal,
+incluso un poco aburrida: en Boston, a donde su familia se mudó en 1999,
+ellos iban al colegio, salían con sus papás a vacaciones y a veces recibían
+regalos de sus abuelos de Canadá. Los muchachos vieron a sus abuelos sólo
+una vez en su vida, pero cuando eran todavía muy pequeños. Probablemente por eso
+ellos no se dieron cuenta de que los abuelos no sabían hablar inglés.
+Las fotos con la nieve canadiense en el fondo, que les enviaron,
+fueron hechos en Siberia, de donde en realidad era su padre.
+En 2008 la familia recibió la ciudadanía estadounidense, pero Tim y Alex
+siempre se sentían como ciudadanos canadienses y estaban orgullosos de su patria.</p>
+
+<p>En el verano 2010, cuando arrestaron a sus papás, a los muchachos les dieron
+pasaportes rusos y ellos tuvieron que irse a Moscú.
+Tim se convirtió en Timoféy y Alex – en Alexander Vavilov. Como decía Tim,
+se les dificultaba mucho pronunciar sus nuevos nombres.</p>
+
+<iframe style="text: align-center;" width="560" height="315" src="https://www.youtube.com/embed/Lz0eQtTGh84" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Entrevista con Andrey Bezrukov publicada en la revista Experto
+<a href="http://expert.ru/russian_reporter/2012/40/pochemu-shpionyi-pohozhi-na-uchenyih/">[5]</a>:</p>
+
+<p><em>– Dicen que durante todo el tiempo de su servicio usted no dijo ni una palabra en ruso. ¿Es verdad?</em></p>
+
+<p>– Sí, es verdad. Es la particularidad del trabajo ilegal. Tú no puedes hablar
+tu lengua materna incluso en la casa, todo está bajo un autodominio.
+Aunque después de unos años de trabajo eso se vuelve algo natural.
+Incluso tienes sueños en otros idiomas.</p>
+
+<p><em>– ¿Su esposa también trabajaba con usted?</em></p>
+
+<p>– Sí, mi esposa Elena es una espía profesional y estuvimos trabajando
+juntos hasta el último día.</p>
+
+<p><em>– Dinero, el negocio, que hay que mantener – es toda una vida completa en el extranjero…</em></p>
+
+<p>– Sí, por supuesto. En general , al verlo desde un punto de vista profesional,
+cuando una persona se encuentra en el exterior en una situación como la mía,
+se tiene que construir una nueva vida: resolver la situación económica y familiar.
+Prácticamente, esa persona empieza su vida desde ceros. Se puede decir,
+que te sientes como una persona diferente. Nosotros con mi esposa nos fuimos
+a la comisión de servicio sólo con una maleta. Tuvimos que graduarnos de nuevo
+de universidad, buscar trabajo, crear el negocio y no solo uno.
+Y todo sin ninguna ayuda y con los recursos mínimos – tú entiendas
+la situación en la que estaba nuestro país en esa época. Y a pesar de eso,
+teníamos que cumplir nuestra misión – realizar el trabajo que nos dieron.</p>
+
+<p><em>La imagen tomada de <a href="http://www.nytimes.com/2010/07/01/us/01cambridge.html?_r=0">nytimes.com</a></em></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -908,196 +1125,6 @@ Price: <strong><span style="color:red;">SOLD</span></strong></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/">Zuleijá abre los ojos por Guzél Yájina</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-01-11T15:26:29-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:26 pm</span></time>
-        
-           | <a href="/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2016/01/11/zuleija-abre-los-ojos-por-guzel-yajina/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img class="center" src="/images/guzel.jpg" title="'Guzél Yájina'" ></p>
-
-<p>La novela empieza en el año 1930. La protagonista es una mujer tártara de 30 años
-llamada Zuleijá, que vivía en una aldea apartada con su esposo, que era 30 años
-mayor que ella, y con la suegra cuyo apodo era Upirija (Vampira).
-La vida de Zuleijá era muy difícil: ella trabajaba día a día, atendiendo
-a su esposo Murtazá y a su mamá, pero nunca se había quejado, porque así había
-sido educada por sus padres: aguantar todas los insultos, las humillaciones y
-las palizas de su esposo y obedecerle en todo.</p>
-
-<p>En el primer capítulo nos familiarizamos con la vida diaria de Zuleijá:
-cuáles eran sus deberes de la casa, qué pasaba durante su día habitual,
-qué pasaba durante su día habitual, qué había pasado en su vida durante
-sus últimos 15 años de matrimonio. Nosotros conocemos su cosmovisión,
-sus creencias y supersticiones, que Zuleijá tuvo cuatro hijas, pero
-todas habían muerto cuando todavía eran bebés. Vemos cómo ella hablaba
-con los duendes y les llevaba comida.</p>
-
-<p>Pero su vida mesurada se interrumpió cuando los soldados del Ejército Rojo
-(o de &ldquo;Horda Roja&rdquo;, como los llamaban por allá) llegaron a su aldea para
-realizar la campaña de
-<a href="https://es.wikipedia.org/wiki/Deskulakizaci%C3%B3n">deskulakización</a>,
-es decir, quitar los bienes de los
-campesinos más ricos (kuláks) y deportarles para &ldquo;desarrollar las tierras
-lejanas del país&rdquo;. Murtazá puso resistencia y fue asesinado por el soldado
-Ignatov. A Zuleijá la enviaron a Siberia a las orillas del río Angará junto
-con otros campesinos, algunos intelectuales de Leningrado y unos criminales,
-escoltados por Ignatov.</p>
-
-<p>Durante el viaje Zuleijá se dio cuanta de que había quedado embarazada de
-su esposo ya hace unos meces, pero a pesar de eso, ella logró soportar
-la deportación, y al llegar a Siberia dio luz a su hijo Josep.</p>
-
-<p><img class="center" src="/images/taiga.jpg" title="'Siberia'" ></p>
-
-<p>En Siberia a Ignatov y sus tutelados les dejaron en un área inhabitada
-del bosque sólo con una escopeta, la bolsa llena de balas y un saco de sal.
-Así el soldado, Zuleijá, Josep, el pintor Ikonnikov, el doctor Leibe,
-enloquecido por ver los cambios tan radicales en el país, el pescador Lukká,
-la anciana intelectual Isabella, que con orgullo llevaba su sombrero de moda
-y hablaba francés, y los demás compañeros tenían que aprender a construir
-las casas, armar la estufa y cazar para poder sobrevivir sólos en el bosque.
-Pero esa experiencia ayudó a Zuleijá a abrir sus ojos verdes y ver el mundo
-de una forma distinta, le permitió cambiar sus costumbres y creencias
-(ya no le parecía que Alá la podía ver en un lugar tan lejano), su carácter
-(porque se convirtió en una mujer fuerte y decidida). Todo lo que entes le
-parecía imposible o vergonzoso, como sentarse tan cerca a un hombre desconocido
-en el vagón del tren, ó hacer sus necesidades frente a los demás en el
-mismo vagón), formó parte de su vida.</p>
-
-<p>La oficina de prensa de Pospechat informó que la novela de Guzél Yájina será
-traducida a 16 idiomas.</p>
-
-<hr />
-
-<p><strong>Guezel Yájina</strong> nació en Kazán, se graduó del Instituto Pedagógico Estatal de
-Kazán de la facultad de idiomas extranjeros, y desde el año 1999 vive en Moscú.
-Ella ha trabajado en el cambo de las relaciones públicas, publicidad y mercadeo.
-En 2015 Guzel se graduó de la facultad de esritura de guiones de la Escuela
-de Cine de Moscú. En la revisa &ldquo;Luces de Siberi&rdquo; fue publicada su primera novela
-&ldquo;Zuleijá abre los ojos&rdquo;, que ha ganado los premios del &ldquo;Libro Grande&rdquo; y &ldquo;Yasnaya Polyana&rdquo;.</p>
-
-<p>Enlaces:</p>
-
-<ul>
-<li><a href="http://es.rbth.com/cultura/literatura/2015/12/22/las-tres-grandes-novelas-rusas-del-2015_553705">Las tres grandes novelas rusas del 2015</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/26/caminata/">Caminata</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-26T17:45:30-05:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:45 pm</span></time>
-        
-           | <a href="/blog/2015/10/26/caminata/#disqus_thread"
-             data-disqus-identifier="http://blog.vero4ka.info/blog/2015/10/26/caminata/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Normalmente cuando me siento mal o muy estresada me pongo a caminar.
-Cojo ritmo y esto me ayuda a concentrarme en mis pensamientos, cobrar ánimo y relajarme.</p>
-
-<p>&hellip;Son la cinco y media de la tarde, salgo del edificio en la 100 con 14 y
-giro a la derecha. No me gusta mucho ese pedazo porque hay mucha gente
-caminando al encuentro y formando multitudes. A mi izquierda hay una
-peluquería donde hay clientes a cualquier hora (¡incluso a las 6 de la mañana!),
-una cafetería nueva en la que nunca he entrado (pero siempre he querido) y
-una farmacia donde te dan un caramelo cuando compras algo. Además siempre
-hay varios carros saliendo de un parqueadero para entrar a la glorieta.</p>
-
-<p>Llego al semáforo en la 100 con 15, que nunca me sale en verde, y espero
-un rato mientras pasan los colectivos y buses del SITP. Luego cruzo rápido,
-porque el verde no dura mucho, y paso por un pedazo con el asfalto todo
-roto y variso vendedores callejeros. Paso frente un tipo curioso que tiene
-rastas y vende cactuses pequeños o jugos naturales por las mañanas, y miro
-hacía la izquierda porque por allá siempre salen las motos y camiones de
-la novena y no hay un semáforo que les detenga. Si sobrevivo ese pedazo,
-enfrento mi siguiente reto: cruzar el otro carril de la novena, y tomo a
-la izquierda para seguir por el barrio y evitar la muchedumbre de la 100.</p>
-
-<p>Paso por un sendero en el pasto cubierto de unos bloques cuadrados de cemento,
-y llego al puente peatonal. Este puente me parece muy chistoso. Primero,
-tiene sólo una caneca con un aviso encima diciendo que a la basura hay que
-separarla en tres canecas diferentes. Segundo, tiene unas señales interesantes
-diciendo que está prohibido subir el puente con armas y también detenerse
-en el puente. Y tercero, en unos de postes del puente hay una silla amarrada y
-colgada de un gancho.</p>
-
-<p>Después del puente paso por Carulla, intento de resistir la tentación de
-entrar y comprar un paquete de rosquitas o maizitos y entro a una plaza con
-una iglesia a mi izquierda ya mi derecha una sala donde, como me lo dijeron,
-toman tinto con los muertos. Siempre me sorprende la escultura de Jesús en
-una de las paredes de la iglesia: en Rusia a Jesús o a los santos siempre
-les pintan muy flacos y con la cara de infelicidad y sufrimiento.</p>
-
-<p>Luego cruzo la 19 y voy por una calle con edificios bonitos y llego hasta
-el puente de Transmilenio de la autopista. Me acuerdo del señor con la cara
-del presidente de Colombia de mis fantasías que vende sánduches por las mañanas.
-Cruzo el puente y trato de no entrar en pánico por la vibración que hace tanta
-gente caminando al tiempo.</p>
-
-<p>Me meto otra vez en los barrios y ya de forma automática busco la casa con el
-loro para mirar si salió a gritar o no.</p>
-
-<p>Después de cruzar varias calles de forma salvaje (o #comonosgusta) me acerco a
-la panadería con roscones y siento cómo mi solitaria se despierta, pero tomo
-la decisión de comprar uno en otra ocasión, cuando esté con compañía, porque
-sólo de esta forma realmente puedo disfrutar de un roscón.</p>
-
-<p>El siguiente paso es tratar de meterse en un bus de Transmilenio en la estación
-&ldquo;Calle 100&rdquo; y durante 15 minutos reflexionar acerca del sistema de transporte
-y la urbanística en general: los pensamientos que me llegan en los momentos
-cuando me aprietan por todos lados y además tratan de sacarme en una estación
-que no me sirve. Luego, después de acomodarme bien entre las rodillas y codos
-de los otros pasajeros, miro por la ventana y veo las montañas tan majestuosas
-y tan bellas, y así, al llegar a Suba pasa todo: el estrés, el mal genio y
-otras tonterías.</p>
-
-<p><img class="center" src="/images/caminata.png" title="'Caminata'" ></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -1113,6 +1140,14 @@ otras tonterías.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/06/17/te-kusmi/">Té KUSMI</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/06/11/un-error/">Un error</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/05/30/perv-el-desviado-sexual-en-todos-nosotros/">Perv: El desviado sexual en todos nosotros</a>
@@ -1146,20 +1181,16 @@ otras tonterías.</p>
         <a href="/blog/2017/04/03/no-es-dimon-para-ustedes/">Él para ustedes no es Dimón</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/03/20/login-con-facebook-en-django/">Login con Facebook en Django</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/03/11/dia-de-la-mujer/">Día de la mujer</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Featured Posts</h1>
   <ul id="recent_posts">
     
+    
+      
+    
+      
     
       
     
@@ -1687,7 +1718,7 @@ otras tonterías.</p>
 
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.6086956521739%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.6086956521739%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.6086956521739%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.6086956521739%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.21739130434783%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.6086956521739%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.6086956521739%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.6086956521739%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.6086956521739%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 110.43478260869566%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.6086956521739%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 107.82608695652173%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.6086956521739%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.6086956521739%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 107.82608695652173%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.6086956521739%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 113.04347826086956%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 107.82608695652173%'>colombia</a> <a href='/blog/categories/colombias' style='font-size: 102.6086956521739%'>colombias</a> <a href='/blog/categories/comida' style='font-size: 105.21739130434783%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.21739130434783%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.21739130434783%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 146.95652173913044%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.6086956521739%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.21739130434783%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.6086956521739%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.21739130434783%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.6086956521739%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 107.82608695652173%'>flask</a> <a href='/blog/categories/gramatica' style='font-size: 102.6086956521739%'>gramática</a> <a href='/blog/categories/historia' style='font-size: 105.21739130434783%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.6086956521739%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.6086956521739%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.21739130434783%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.6086956521739%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 128.69565217391303%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.6086956521739%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.6086956521739%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.6086956521739%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 107.82608695652173%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.6086956521739%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.6086956521739%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 107.82608695652173%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.6086956521739%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.6086956521739%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.6086956521739%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.6086956521739%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.6086956521739%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 126.08695652173913%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.21739130434783%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.6086956521739%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.21739130434783%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.6086956521739%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 107.82608695652173%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.6086956521739%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.6086956521739%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.6086956521739%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.6086956521739%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.6086956521739%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.6086956521739%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.21739130434783%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.21739130434783%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.6086956521739%'>trenes</a> <a href='/blog/categories/unittests' style='font-size: 102.6086956521739%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.21739130434783%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.6086956521739%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.6086956521739%'>viajes</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ajax' style='font-size: 102.5%'>ajax</a> <a href='/blog/categories/amazon-s3' style='font-size: 102.5%'>amazon s3</a> <a href='/blog/categories/amazon-ses' style='font-size: 102.5%'>amazon ses</a> <a href='/blog/categories/api' style='font-size: 102.5%'>api</a> <a href='/blog/categories/aventuras' style='font-size: 105.0%'>aventuras</a> <a href='/blog/categories/bicicleta' style='font-size: 102.5%'>bicicleta</a> <a href='/blog/categories/bogota' style='font-size: 102.5%'>bogotá</a> <a href='/blog/categories/bootstrap' style='font-size: 102.5%'>bootstrap</a> <a href='/blog/categories/bot' style='font-size: 102.5%'>bot</a> <a href='/blog/categories/chiste' style='font-size: 112.5%'>chiste</a> <a href='/blog/categories/chrome' style='font-size: 102.5%'>chrome</a> <a href='/blog/categories/ciencia' style='font-size: 107.5%'>ciencia</a> <a href='/blog/categories/cine' style='font-size: 102.5%'>cine</a> <a href='/blog/categories/cita' style='font-size: 102.5%'>cita</a> <a href='/blog/categories/ciudad' style='font-size: 107.5%'>ciudad</a> <a href='/blog/categories/cocina' style='font-size: 102.5%'>cocina</a> <a href='/blog/categories/colegio' style='font-size: 112.5%'>colegio</a> <a href='/blog/categories/colombia' style='font-size: 110.0%'>colombia</a> <a href='/blog/categories/comida' style='font-size: 105.0%'>comida</a> <a href='/blog/categories/cultura' style='font-size: 105.0%'>cultura</a> <a href='/blog/categories/desarrollo' style='font-size: 105.0%'>desarrollo</a> <a href='/blog/categories/django' style='font-size: 145.0%'>django</a> <a href='/blog/categories/ensayo' style='font-size: 102.5%'>ensayo</a> <a href='/blog/categories/espanol' style='font-size: 105.0%'>español</a> <a href='/blog/categories/estaciones' style='font-size: 102.5%'>estaciones</a> <a href='/blog/categories/facebook' style='font-size: 105.0%'>facebook</a> <a href='/blog/categories/feminismo' style='font-size: 102.5%'>feminismo</a> <a href='/blog/categories/flask' style='font-size: 107.5%'>flask</a> <a href='/blog/categories/gramatica' style='font-size: 102.5%'>gramática</a> <a href='/blog/categories/historia' style='font-size: 105.0%'>historia</a> <a href='/blog/categories/holanda' style='font-size: 102.5%'>holanda</a> <a href='/blog/categories/invierno' style='font-size: 102.5%'>invierno</a> <a href='/blog/categories/jardineria' style='font-size: 105.0%'>jardinería</a> <a href='/blog/categories/jquery' style='font-size: 102.5%'>jquery</a> <a href='/blog/categories/libros' style='font-size: 127.5%'>libros</a> <a href='/blog/categories/mel-script' style='font-size: 102.5%'>mel script</a> <a href='/blog/categories/messenger' style='font-size: 102.5%'>messenger</a> <a href='/blog/categories/montanas' style='font-size: 102.5%'>montañas</a> <a href='/blog/categories/moscu' style='font-size: 107.5%'>moscú</a> <a href='/blog/categories/nginx' style='font-size: 102.5%'>nginx</a> <a href='/blog/categories/nieve' style='font-size: 102.5%'>nieve</a> <a href='/blog/categories/ninez' style='font-size: 107.5%'>niñez</a> <a href='/blog/categories/ninos' style='font-size: 102.5%'>niños</a> <a href='/blog/categories/oauth' style='font-size: 102.5%'>oauth</a> <a href='/blog/categories/parques' style='font-size: 102.5%'>parques</a> <a href='/blog/categories/plantas' style='font-size: 102.5%'>plantas</a> <a href='/blog/categories/pycharm' style='font-size: 102.5%'>pycharm</a> <a href='/blog/categories/python' style='font-size: 125.0%'>python</a> <a href='/blog/categories/recuerdos' style='font-size: 105.0%'>recuerdos</a> <a href='/blog/categories/requests' style='font-size: 102.5%'>requests</a> <a href='/blog/categories/resistencia' style='font-size: 105.0%'>resistencia</a> <a href='/blog/categories/rusia' style='font-size: 160.0%'>rusia</a> <a href='/blog/categories/sql' style='font-size: 102.5%'>sql</a> <a href='/blog/categories/sqlalchemy' style='font-size: 107.5%'>sqlalchemy</a> <a href='/blog/categories/suenos' style='font-size: 102.5%'>sueños</a> <a href='/blog/categories/supervisor' style='font-size: 102.5%'>supervisor</a> <a href='/blog/categories/tarea' style='font-size: 102.5%'>tarea</a> <a href='/blog/categories/tdd' style='font-size: 102.5%'>tdd</a> <a href='/blog/categories/tools' style='font-size: 102.5%'>tools</a> <a href='/blog/categories/tpaga' style='font-size: 102.5%'>tpaga</a> <a href='/blog/categories/traduccion' style='font-size: 105.0%'>traducción</a> <a href='/blog/categories/transporte' style='font-size: 105.0%'>transporte</a> <a href='/blog/categories/trenes' style='font-size: 102.5%'>trenes</a> <a href='/blog/categories/te' style='font-size: 102.5%'>té</a> <a href='/blog/categories/unittests' style='font-size: 102.5%'>unittests</a> <a href='/blog/categories/urbanismo' style='font-size: 105.0%'>urbanismo</a> <a href='/blog/categories/uwsgi' style='font-size: 102.5%'>uwsgi</a> <a href='/blog/categories/viajes' style='font-size: 102.5%'>viajes</a> </span>
 </section><section>
   <h1>Stats</h1>
   <a href="https://www.revolvermaps.com/?target=enlarge&amp;i=2m8hggs9gk4"><img
