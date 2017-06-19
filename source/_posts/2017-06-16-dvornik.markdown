@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Dvornik"
+date: 2017-06-16 19:19:03 -0500
+comments: true
+published: false
+categories: 
+---
+
+
+{% img center /images/dvornik_1.jpg 300 %}
+
+
+{% img center /images/dvornik_2.jpg 300 %}

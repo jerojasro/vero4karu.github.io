@@ -16,11 +16,11 @@ categories:
 
 <!-- more -->
 
-“El desviado sexual en todos nosotros” es otro libro que encontré recientemente en el booktube ruso y que leí en Bookmate, porque aquí en Bogotá no tengo acceso a los libros físicos en ruso.
+**“El desviado sexual en todos nosotros”** es otro libro que encontré recientemente en el booktube ruso y que leí en Bookmate, porque aquí en Bogotá no tengo acceso a los libros físicos en ruso.
 
 Es muy sorprendente que en Rusia tradujeran ese libro del estadounidense Jesse Bering, teniendo en cuenta que la sociedad rusa está enferma de “cristianismo cerebral” y se vuelve cada día menos tolerante. Mientras estamos esperando a que Putin ~~muera~~ se vaya del poder, podemos solo soñar con una sociedad libre.
 
-Jesse Bering es un psicólogo, periodista científico, reconocido por sus artículos en la revista Scientific American, y escritor de libros no ficción. Pero hay otro hecho sobre él - es un gay abierto. Su libro “Todos somos pervertidos sexuales” es algo entre no ficción y autobiografía. El libro está escrito por un hombre, cuyas preferencias sexuales hasta hace muy poco eran consideradas como innaturales, y no hace mucho - ilegales.
+**Jesse Bering** es un psicólogo, periodista científico, reconocido por sus artículos en la revista Scientific American, y escritor de libros no ficción. Pero hay otro hecho sobre él - es un gay abierto. Su libro “Todos somos pervertidos sexuales” es algo entre no ficción y autobiografía. El libro está escrito por un hombre, cuyas preferencias sexuales hasta hace muy poco eran consideradas como innaturales, y no hace mucho - ilegales.
 
 Bering, por supuesto, no se dedica sólo a explicar que la homosexualidad no es un delito. Él va mucho más allá, tratando de demostrar lo siguiente: todo lo que nosotros nos acostumbramos a considerar como desviaciones, perversiones, excentricidades (desde la zoofilia hasta el fetichismo de pies ó odofilia) - todo es natural y causado por diversas exigencias de la naturaleza, la necesidad de supervivencia. 
 
@@ -31,8 +31,6 @@ Jesse Bering decidió escribir sobre los temas tabú que, al parecer, se tocaron
 La evidencia científica acumulada sugiere que no es correcto considerar casi cualquier deseo obsesivo asociado con el comportamiento sexual, como el resultado de "la elección deliberada" y "promiscuidad": son codificados internamente en el cerebro y pueden ser asociados tanto con alguna experiencia de la infancia, como con las características biológicas de los seres humanos. Es necesario estudiar nuestros comportamientos sexuales, porque eso nos permite entender mejor nuestra naturaleza, También nos permite deshacernos del ostracismo en los casos cuando las preferencias de una persona no hacen daño a nadie más, y también pensar en los métodos aceptables para prevenir el daño, cuando esto sea posible.
 
 Al hablar de los pedófilos, Bering plantea una cuestión moral muy importante que tendremos que resolver tarde ó temprano: cuando la neurociencia nos pueda decir que un niño recién nacido es pre-pedófilo, ¿qué hacer en este caso? ¿Hay que hablar con el joven, explicándole la situación y lo que tendrá que enfrentar en su vida para ayudarlo a superar el miedo al rechazo? “Entre dos personas: la que consume pornografía infantil y la que es juzgada por corrupción de menores - la primera lo más probable es que sea pedófila. “Es extraño” - dirían ustedes. ¿El es un seductor de menores y no es un pedófilo? No hay nada extraño: muchos de los seductores cometen sus acciones violentas con los niños, sólo porque no pueden realizar sus deseos con los adultos (opportunistic offenders).” ¿Qué como sociedad tenemos que hacer en este caso?
-
------
 
 {% blockquote Perv: The Sexual Deviant in All of Us by Jesse Bering %}
 “Важнее всего то, что хотя мы не можем повернуть естественный отбор вспять и перепрограммировать социальное познание так, чтобы нас не интересовали желания и поведение других, мы, тем не менее, способны решить, как использовать информацию и относиться к человеку, ставшему беззащитным из-за того, что мы обладаем этим знанием о нем. Как и в случае борьбы с алкоголизмом, первый шаг преодоления сексуального ханжества – это признание того, что мы ханжи.”

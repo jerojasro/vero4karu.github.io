@@ -7,7 +7,7 @@ featured: true
 categories: 
 - Feminismo
 - Resistencia
-- Colombias
+- Colombia
 ---
 
 La semana pasada escuchando durante el Día Internacional de la Mujer las frases como *gracias por acompañarnos*, *gracias por consentirnos*, *gracias por ser bonitas* o *gracias por dar color y sentido a la vida...* me estaba preguntando: ¿es en serio? ¿Soy una trabajadora o un adorno para la oficina?

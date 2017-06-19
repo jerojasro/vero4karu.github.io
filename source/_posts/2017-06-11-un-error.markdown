@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Un error"
+date: 2017-06-11 17:21:06 -0500
+comments: true
+categories: 
+- Chiste
+---
+
+Albert Einstein murió y se encontró en el cielo frente de Dios. Y Dios le dijo: <br>
+– Yo sé que eres Albert Einstein – un científico muy bueno, y entonces puedes hacer cualquiera pregunta, yo te responderé. <br>
+Y Einstein dijo: <br>
+– Tengo solo una pregunta: cuál es la fórmula de universo? <br>
+Y Dios le respondió: “Vale, aquí la tienes”, y escribió la fórmula. Einstein miró a la fórmula atentamente y dijo: <br>
+– Aquí está un error. <br>
+Y Dios respondió: <br>
+– Ya lo sé.
